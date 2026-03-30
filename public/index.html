@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoriten Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="logo" style="display:flex; flex-direction:column; align-items:flex-start;">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid fa-star"></i>
+                <span>Favoriten</span>
+            </div>
+            <span id="save-path-display"
+                style="font-size: 0.75rem; color: #636e72; margin-top: 4px; font-weight: normal; word-break: break-all;">Serververbindung
+                wird geprüft...</span>
+        </div>
+        <div class="actions">
+            <button id="btn-load" class="btn btn-secondary" title="Zuletzt gespeicherten Stand holen"><i
+                    class="fa-solid fa-cloud-arrow-down"></i> Laden</button>
+            <button id="btn-save" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Speichern</button>
+            <button id="btn-import" class="btn btn-secondary"><i class="fa-solid fa-file-import"></i>
+                Importieren</button>
+            <button id="btn-github" class="btn btn-secondary" style="background:#24292e; color:white;"><i
+                    class="fa-brands fa-github"></i> Sync</button>
+            <button id="btn-info" class="btn btn-secondary" title="Info & Shortcuts"><i
+                    class="fa-solid fa-circle-info"></i></button>
+            <button id="btn-reset" class="btn btn-secondary" style="background:#ff7675; color:white;"><i
+                    class="fa-solid fa-bomb"></i> Reset</button>
+            <button id="btn-add-project" class="btn btn-accent"><i class="fa-solid fa-plus"></i> Neues Projekt</button>
+        </div>
+    </header>
+
+    <!-- Main Board -->
+    <main class="board-container">
+        <div id="board" class="board">
+            <!-- Columns will be injected here -->
+        </div>
+    </main>
+
+    <!-- Info Modal -->
+    <div id="info-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3><i class="fa-solid fa-circle-info"></i> Info & Shortcuts</h3>
+            <ul style="list-style:none; padding:0; margin-top:16px; line-height:2;">
+                <li><strong>Strg + S</strong> : Speichern</li>
+                <li><strong>Strg + F</strong> : Suchen (Browser)</li>
+                <li><strong>Drag & Drop</strong> : Links verschieben</li>
+            </ul>
+            <div class="modal-actions">
+                <button id="btn-close-info" class="btn btn-primary">Verstanden</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div id="import-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Favoriten Importieren</h3>
+            <p>Lade deine HTML-Lesezeichen-Datei hoch.</p>
+            <input type="file" id="file-input" accept=".html">
+            <div class="modal-actions">
+                <button id="btn-cancel-import" class="btn btn-text">Abbrechen</button>
+                <button id="btn-confirm-import" class="btn btn-primary" disabled>Importieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div id="add-item-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Neuer Favorit</h3>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div>
+                    <label style="font-size:0.8rem; font-weight:bold; display:block; margin-bottom:4px;">Titel
+                        (Name)</label>
+                    <input type="text" id="input-item-title" placeholder="z.B. Google"
+                        style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
+                </div>
+                <div>
+                    <label style="font-size:0.8rem; font-weight:bold; display:block; margin-bottom:4px;">Link
+                        (URL)</label>
+                    <input type="text" id="input-item-url" placeholder="https://..."
+                        style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="btn-cancel-add" class="btn btn-text">Abbrechen</button>
+                <button id="btn-confirm-add" class="btn btn-primary">Hinzufügen</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

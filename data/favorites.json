@@ -175,17 +175,7 @@
           ]
         },
         {
-          "id": "qqz0ek42d",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "i0kl0sgjp",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "6uww1exip",
+          "id": "lp6jw3h60",
           "isSpacer": false,
           "projects": [
             {
@@ -200,7 +190,18 @@
                   "url": "https://www.udio.com/my-creations"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "id": "i0kl0sgjp",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "6uww1exip",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "pivlutxra",
               "title": "für Suno",

@@ -1723,16 +1723,9 @@
           ]
         },
         {
-          "id": "elqj5nvl2",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "vwp3fp9zu",
-              "title": "xxxxx",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "so20ittwm",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "oxwv8i8nn",

@@ -331,7 +331,7 @@
             {
               "id": "0uz5mfpj0",
               "title": "Musik KI",
-              "collapsed": false,
+              "collapsed": true,
               "items": [
                 {
                   "id": "ua7gbkenb",
@@ -363,7 +363,7 @@
             {
               "id": "824rmo5jc",
               "title": "AI",
-              "collapsed": true,
+              "collapsed": false,
               "items": [
                 {
                   "id": "l4boigeos",

@@ -1715,7 +1715,7 @@
     "link": "#050505",
     "rowBg": "#2d3436",
     "itemBg": "#C0C0C0",
-    "itemFontSize": "25",
+    "itemFontSize": "10",
     "itemFontWeight": "bold",
     "itemFontStyle": "normal",
     "rowTitleColor": "#00FF00"

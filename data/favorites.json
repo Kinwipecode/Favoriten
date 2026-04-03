@@ -497,55 +497,6 @@
           "collapsed": true
         },
         {
-          "id": "e8mybe6z4",
-          "title": "Video",
-          "items": [
-            {
-              "id": "qkxhe8osw",
-              "type": "link",
-              "title": "CapCut",
-              "url": "https://www.capcut.com/my-edit?start_tab=video"
-            },
-            {
-              "id": "hwieioi0d",
-              "type": "link",
-              "title": "InVideo AI",
-              "url": "https://ai.invideo.io/"
-            },
-            {
-              "id": "mhkd4z8qo",
-              "type": "link",
-              "title": "Kaiber",
-              "url": "https://kaiber.ai/"
-            },
-            {
-              "id": "tezmv8cld",
-              "type": "link",
-              "title": "Suno AI Komplettkurs (YouTube)",
-              "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
-            },
-            {
-              "id": "34l3y6qdd",
-              "type": "link",
-              "title": "ChatGPT - Video GPT by VEED",
-              "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
-            }
-          ],
-          "collapsed": true
-        },
-        {
-          "id": "3akj7oymm",
-          "title": "",
-          "items": [],
-          "isSpacer": true
-        },
-        {
-          "id": "vqo622316",
-          "title": "",
-          "items": [],
-          "isSpacer": true
-        },
-        {
           "id": "u90iipaxp",
           "title": "Bild",
           "items": [
@@ -569,6 +520,24 @@
             }
           ],
           "collapsed": true
+        },
+        {
+          "id": "3akj7oymm",
+          "title": "",
+          "items": [],
+          "isSpacer": true
+        },
+        {
+          "id": "vqo622316",
+          "title": "",
+          "items": [],
+          "isSpacer": true
+        },
+        {
+          "id": "9mxme5yfj",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "u2jqbq1c0",

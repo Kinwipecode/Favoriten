@@ -1735,23 +1735,6 @@
         },
         {
           "id": "12q8ni83i",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "oxwv8i8nn",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "l1mwv9tsi",
-              "title": "Linux",
-              "collapsed": false,
-              "items": []
-            }
-          ]
-        },
-        {
-          "id": "bm1olnqyj",
           "isSpacer": false,
           "projects": [
             {
@@ -1778,7 +1761,25 @@
                   "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "id": "oxwv8i8nn",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "l1mwv9tsi",
+              "title": "Linux",
+              "collapsed": false,
+              "items": []
+            }
+          ]
+        },
+        {
+          "id": "bm1olnqyj",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "vwp3fp9zu",
               "title": "xxxxx",

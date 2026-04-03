@@ -497,26 +497,20 @@
           "collapsed": true
         },
         {
-          "id": "u90iipaxp",
-          "title": "Bild",
+          "id": "1nqrdzrpn",
+          "title": "Produkte",
           "items": [
             {
-              "id": "7qlm2c120",
+              "id": "0ntscwo5u",
               "type": "link",
-              "title": "Pixlr Express",
-              "url": "https://pixlr.com/de/express/"
+              "title": "ArmaWin",
+              "url": "https://armawin.com/"
             },
             {
-              "id": "1bcsgw420",
+              "id": "8vm94q632",
               "type": "link",
-              "title": "ArtGuru",
-              "url": "https://www.artguru.ai/de/"
-            },
-            {
-              "id": "p4y4m34mt",
-              "type": "link",
-              "title": "Refusion AI",
-              "url": "https://refusion.ai/lander"
+              "title": "IMI Hydronic Engineering ohne kein Webinare",
+              "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
             }
           ],
           "collapsed": true
@@ -788,23 +782,10 @@
           "collapsed": true
         },
         {
-          "id": "1nqrdzrpn",
-          "title": "Produkte",
-          "items": [
-            {
-              "id": "0ntscwo5u",
-              "type": "link",
-              "title": "ArmaWin",
-              "url": "https://armawin.com/"
-            },
-            {
-              "id": "8vm94q632",
-              "type": "link",
-              "title": "IMI Hydronic Engineering ohne kein Webinare",
-              "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
-            }
-          ],
-          "collapsed": true
+          "id": "lgkgnlsku",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "zn5tgobmh",

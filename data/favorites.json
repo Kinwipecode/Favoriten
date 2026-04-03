@@ -546,18 +546,6 @@
                 }
               ],
               "collapsed": true
-            },
-            {
-              "id": "lbg8iplgz",
-              "title": "Produkte",
-              "items": [
-                {
-                  "id": "xwh410xci",
-                  "title": "ArmaWin",
-                  "url": "https://armawin.com/"
-                }
-              ],
-              "collapsed": true
             }
           ]
         },
@@ -798,6 +786,18 @@
                   "id": "vdeqijpvo",
                   "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
                   "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "lbg8iplgz",
+              "title": "Produkte",
+              "items": [
+                {
+                  "id": "xwh410xci",
+                  "title": "ArmaWin",
+                  "url": "https://armawin.com/"
                 }
               ],
               "collapsed": true

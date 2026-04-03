@@ -5,6 +5,49 @@
       "title": "Hauptzeile",
       "projects": [
         {
+          "id": "i7ysct7kf",
+          "title": "Suno",
+          "items": [
+            {
+              "id": "ph5nfl66a",
+              "type": "link",
+              "title": "Suno Musik kompo",
+              "url": "https://suno.com/"
+            },
+            {
+              "id": "92jkwrfha",
+              "type": "link",
+              "title": "Suno Prompt Generator -  M6UU628n",
+              "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+            },
+            {
+              "id": "qpdmow5mi",
+              "type": "link",
+              "title": "Song Structure Tags – Suno.wiki",
+              "url": "https://www.suno.wiki/faq/metatags/song-structure/"
+            },
+            {
+              "id": "vjmnevemz",
+              "type": "link",
+              "title": "video  Suno AI Komplettkurs",
+              "url": "https://www.youtube.com/watch?v=btRebZvL37Q&t=134s"
+            },
+            {
+              "id": "51rrwgos6",
+              "type": "link",
+              "title": "(2) Suno AI Tutorial: Vom Anfänger zum Profi + Prompt Tipps aus der Praxis! - YouTube",
+              "url": "https://www.youtube.com/watch?v=O08B-vvBPKI"
+            },
+            {
+              "id": "5oi1p2oqj",
+              "type": "link",
+              "title": "Download Techno Sample Packs - Slooply",
+              "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
+            }
+          ],
+          "collapsed": true
+        },
+        {
           "id": "bar1mlv15",
           "title": "Lesezeichenleiste",
           "items": [
@@ -388,49 +431,6 @@
               "type": "link",
               "title": "(1) Gesang mit Künstlicher Intelligenz erstellen: Die besten KI Tools für AI-Vocals 2025 - YouTube",
               "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
-            }
-          ],
-          "collapsed": true
-        },
-        {
-          "id": "i7ysct7kf",
-          "title": "Suno",
-          "items": [
-            {
-              "id": "ph5nfl66a",
-              "type": "link",
-              "title": "Suno Musik kompo",
-              "url": "https://suno.com/"
-            },
-            {
-              "id": "92jkwrfha",
-              "type": "link",
-              "title": "Suno Prompt Generator -  M6UU628n",
-              "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
-            },
-            {
-              "id": "qpdmow5mi",
-              "type": "link",
-              "title": "Song Structure Tags – Suno.wiki",
-              "url": "https://www.suno.wiki/faq/metatags/song-structure/"
-            },
-            {
-              "id": "vjmnevemz",
-              "type": "link",
-              "title": "video  Suno AI Komplettkurs",
-              "url": "https://www.youtube.com/watch?v=btRebZvL37Q&t=134s"
-            },
-            {
-              "id": "51rrwgos6",
-              "type": "link",
-              "title": "(2) Suno AI Tutorial: Vom Anfänger zum Profi + Prompt Tipps aus der Praxis! - YouTube",
-              "url": "https://www.youtube.com/watch?v=O08B-vvBPKI"
-            },
-            {
-              "id": "5oi1p2oqj",
-              "type": "link",
-              "title": "Download Techno Sample Packs - Slooply",
-              "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
             }
           ],
           "collapsed": true

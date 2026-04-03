@@ -393,6 +393,19 @@
           "collapsed": true
         },
         {
+          "id": "98c12nmif",
+          "title": "für Suno ",
+          "items": [
+            {
+              "id": "8uiln0ay5",
+              "type": "link",
+              "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+              "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+            }
+          ],
+          "collapsed": true
+        },
+        {
           "id": "i7ysct7kf",
           "title": "Suno",
           "items": [
@@ -431,19 +444,6 @@
               "type": "link",
               "title": "Download Techno Sample Packs - Slooply",
               "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
-            }
-          ],
-          "collapsed": true
-        },
-        {
-          "id": "98c12nmif",
-          "title": "für Suno ",
-          "items": [
-            {
-              "id": "8uiln0ay5",
-              "type": "link",
-              "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-              "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
             }
           ],
           "collapsed": true

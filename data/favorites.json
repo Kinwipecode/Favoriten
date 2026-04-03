@@ -470,18 +470,6 @@
                 }
               ],
               "collapsed": true
-            },
-            {
-              "id": "cmoz7jzsg",
-              "title": "Wissen",
-              "items": [
-                {
-                  "id": "7p8mh4p3n",
-                  "title": "IMI Hydronic Engineering ohne kein Webinare",
-                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
-                }
-              ],
-              "collapsed": true
             }
           ]
         },
@@ -517,6 +505,18 @@
                   "id": "j68mwuvb0",
                   "title": "ChatGPT - Video GPT by VEED",
                   "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "cmoz7jzsg",
+              "title": "Wissen",
+              "items": [
+                {
+                  "id": "7p8mh4p3n",
+                  "title": "IMI Hydronic Engineering ohne kein Webinare",
+                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
                 }
               ],
               "collapsed": true

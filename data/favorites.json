@@ -1713,6 +1713,7 @@
     "headerBg": "#004080",
     "headerText": "#008040",
     "link": "#00FF00",
-    "rowBg": "#2d3436"
+    "rowBg": "#2d3436",
+    "itemBg": "#0000FF"
   }
 }

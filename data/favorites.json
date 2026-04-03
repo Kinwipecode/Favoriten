@@ -1717,29 +1717,9 @@
           ]
         },
         {
-          "id": "lw5wxkvyd",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "br47liuk6",
-              "title": "CAD",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "29hodggwf",
-                  "type": "link",
-                  "title": "IGH - Katalogkonverter",
-                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
-                },
-                {
-                  "id": "v1wt22l8r",
-                  "type": "link",
-                  "title": "IGH - Publizierte Kataloge",
-                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
-                }
-              ]
-            }
-          ]
+          "id": "60s9ytrg7",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "p5u0qmeql",
@@ -1799,23 +1779,9 @@
           ]
         },
         {
-          "id": "lgkbzb6w2",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "y53l6efrg",
-              "title": "Musik",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "kykkvc3y1",
-                  "type": "link",
-                  "title": "bild genratoren  AI",
-                  "url": "https://modelplayground.ai/"
-                }
-              ]
-            }
-          ]
+          "id": "7y3b232v8",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "sbnzj95m7",

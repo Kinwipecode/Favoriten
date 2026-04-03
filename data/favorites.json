@@ -1310,8 +1310,36 @@
         },
         {
           "id": "0cvl098a6",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "2ym1dcugy",
+              "title": "GitHub",
+              "items": [
+                {
+                  "id": "o5sn5g3gj",
+                  "title": "Swissradio Git Hub",
+                  "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
+                },
+                {
+                  "id": "mf0ourcw7",
+                  "title": "Miro_Plus",
+                  "url": "https://kinwipecode.github.io/Miro_plus/"
+                },
+                {
+                  "id": "95athjy8o",
+                  "title": "KinPDF",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
+                },
+                {
+                  "id": "6o276ulyt",
+                  "title": "Favoriten Manager ⭐️ | Favoriten",
+                  "url": "https://kinwipecode.github.io/Favoriten/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
         },
         {
           "id": "6cx5dpo51",
@@ -1611,37 +1639,9 @@
           ]
         },
         {
-          "id": "n2num824w",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "2ym1dcugy",
-              "title": "GitHub",
-              "items": [
-                {
-                  "id": "o5sn5g3gj",
-                  "title": "Swissradio Git Hub",
-                  "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
-                },
-                {
-                  "id": "mf0ourcw7",
-                  "title": "Miro_Plus",
-                  "url": "https://kinwipecode.github.io/Miro_plus/"
-                },
-                {
-                  "id": "95athjy8o",
-                  "title": "KinPDF",
-                  "url": "https://kinwipecode.github.io/Kinpdf/"
-                },
-                {
-                  "id": "6o276ulyt",
-                  "title": "Favoriten Manager ⭐️ | Favoriten",
-                  "url": "https://kinwipecode.github.io/Favoriten/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "8tuk0j7we",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "fjwsqhmu8",

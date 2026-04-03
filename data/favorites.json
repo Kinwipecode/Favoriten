@@ -867,11 +867,6 @@
           ]
         },
         {
-          "id": "olotgxakp",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
           "id": "rw810pupo",
           "isSpacer": false,
           "projects": [
@@ -944,16 +939,6 @@
               "collapsed": true
             }
           ]
-        },
-        {
-          "id": "jeo6rrie6",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "k8tkffm4h",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "e9b8232le",
@@ -1652,11 +1637,6 @@
               "collapsed": true
             }
           ]
-        },
-        {
-          "id": "2yu59kh94",
-          "isSpacer": true,
-          "projects": []
         }
       ]
     },

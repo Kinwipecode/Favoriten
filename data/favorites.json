@@ -548,6 +548,18 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "lbg8iplgz",
+              "title": "Produkte",
+              "items": [
+                {
+                  "id": "xwh410xci",
+                  "title": "ArmaWin",
+                  "url": "https://armawin.com/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -778,22 +790,9 @@
           "projects": []
         },
         {
-          "id": "iwna79jdl",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "lbg8iplgz",
-              "title": "Produkte",
-              "items": [
-                {
-                  "id": "xwh410xci",
-                  "title": "ArmaWin",
-                  "url": "https://armawin.com/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "ir7nfy0o0",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "4n0f667l3",

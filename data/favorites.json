@@ -1,3 +1,50 @@
 {
-  "rows": []
+  "rows": [
+    {
+      "id": "3ph4ps5ny",
+      "title": "Hauptzeile",
+      "projects": [
+        {
+          "id": "hg6trvfll",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "szwo7vzfv",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "8vvzzf438",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "bai2bmlny",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "2gaaumx41",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "gdqhpu9nn",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "fxgg1vfn0",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "k9u3jazq4",
+          "isSpacer": true,
+          "projects": []
+        }
+      ]
+    }
+  ]
 }

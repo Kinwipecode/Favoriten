@@ -1581,8 +1581,15 @@
         },
         {
           "id": "mfh3720ts",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "4cx0pbuwj",
+              "title": "fgghg",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         },
         {
           "id": "al1b4hfi3",
@@ -1715,16 +1722,9 @@
           ]
         },
         {
-          "id": "oxaro1bcw",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "4cx0pbuwj",
-              "title": "fgghg",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "vzmnksnpl",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     },

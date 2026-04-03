@@ -1599,18 +1599,7 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "4nvjfu92c",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "y726d2hgz",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "geud8ypqx",
               "title": "GitHub",
@@ -1639,6 +1628,16 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "4nvjfu92c",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "3iicl45lr",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "6onwkwjwk",

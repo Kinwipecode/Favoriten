@@ -1734,7 +1734,12 @@
           ]
         },
         {
-          "id": "4c5j4vw9i",
+          "id": "ll8xwnlxg",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "oxwv8i8nn",
           "isSpacer": false,
           "projects": [
             {
@@ -1744,11 +1749,6 @@
               "items": []
             }
           ]
-        },
-        {
-          "id": "oxwv8i8nn",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "bm1olnqyj",

@@ -1580,32 +1580,9 @@
           ]
         },
         {
-          "id": "wl6v1026d",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "bf14a06gq",
-              "title": "VST",
-              "items": [
-                {
-                  "id": "0wgd41q4f",
-                  "title": "500+ Best Free VST Plugins & Instruments ( PC & Mac )",
-                  "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
-                },
-                {
-                  "id": "562g3chxk",
-                  "title": "16 Best FREE VST Host Applications ( Windows & Mac )",
-                  "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
-                },
-                {
-                  "id": "4u3toqdc9",
-                  "title": "Hermann Seibs Hauptseite",
-                  "url": "https://www.hermannseib.com/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "3ahehif3v",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "al1b4hfi3",
@@ -1632,6 +1609,28 @@
               "id": "4cx0pbuwj",
               "title": "fgghg",
               "items": [],
+              "collapsed": true
+            },
+            {
+              "id": "bf14a06gq",
+              "title": "VST",
+              "items": [
+                {
+                  "id": "0wgd41q4f",
+                  "title": "500+ Best Free VST Plugins & Instruments ( PC & Mac )",
+                  "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
+                },
+                {
+                  "id": "562g3chxk",
+                  "title": "16 Best FREE VST Host Applications ( Windows & Mac )",
+                  "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
+                },
+                {
+                  "id": "4u3toqdc9",
+                  "title": "Hermann Seibs Hauptseite",
+                  "url": "https://www.hermannseib.com/"
+                }
+              ],
               "collapsed": true
             }
           ]

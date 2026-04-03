@@ -1022,29 +1022,9 @@
           ]
         },
         {
-          "id": "o3feo30yz",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "br47liuk6",
-              "title": "CAD",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "29hodggwf",
-                  "type": "link",
-                  "title": "IGH - Katalogkonverter",
-                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
-                },
-                {
-                  "id": "v1wt22l8r",
-                  "type": "link",
-                  "title": "IGH - Publizierte Kataloge",
-                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
-                }
-              ]
-            }
-          ]
+          "id": "kf3es46dc",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "031dpvogp",
@@ -1085,6 +1065,25 @@
                   "type": "link",
                   "title": "Objekte für Archicad – Graphisoft Österreich",
                   "url": "https://graphisoft.com/at/downloads/parametric_objects"
+                }
+              ]
+            },
+            {
+              "id": "br47liuk6",
+              "title": "CAD",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "29hodggwf",
+                  "type": "link",
+                  "title": "IGH - Katalogkonverter",
+                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
+                },
+                {
+                  "id": "v1wt22l8r",
+                  "type": "link",
+                  "title": "IGH - Publizierte Kataloge",
+                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
                 }
               ]
             }

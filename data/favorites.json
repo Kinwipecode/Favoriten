@@ -390,13 +390,7 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "b8kx2wjad",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "u21db9mjt",
               "title": "Suno",
@@ -430,6 +424,11 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "f5n2vzdvk",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "kqva3y8h9",

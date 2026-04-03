@@ -995,8 +995,21 @@
         },
         {
           "id": "rsvjnwvm9",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "6a5v6macg",
+              "title": "Hosttech",
+              "items": [
+                {
+                  "id": "lc7jbln6p",
+                  "title": "File Menager",
+                  "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
         },
         {
           "id": "bujk3r7gf",
@@ -1296,22 +1309,9 @@
           ]
         },
         {
-          "id": "jcpga4508",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "6a5v6macg",
-              "title": "Hosttech",
-              "items": [
-                {
-                  "id": "lc7jbln6p",
-                  "title": "File Menager",
-                  "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "0cvl098a6",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "6cx5dpo51",

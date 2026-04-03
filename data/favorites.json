@@ -765,42 +765,14 @@
           "projects": []
         },
         {
-          "id": "x8dalhsfk",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "e96qezj33",
-              "title": "Musik",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "gwafoi1z0",
-                  "type": "link",
-                  "title": "bild genratoren  AI",
-                  "url": "https://modelplayground.ai/"
-                }
-              ]
-            }
-          ]
+          "id": "urzz6ui7h",
+          "isSpacer": true,
+          "projects": []
         },
         {
-          "id": "45gh53ssk",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "ye1ibhbqk",
-              "title": "Musik KI",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "u03jjp0vx",
-                  "type": "link",
-                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-                }
-              ]
-            }
-          ]
+          "id": "kqs3634lv",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "ij0k4iikt",
@@ -864,6 +836,19 @@
                   "type": "link",
                   "title": "WORKFLOW.CH @ Work",
                   "url": "https://www.workflow.ch/atwork/"
+                }
+              ]
+            },
+            {
+              "id": "e96qezj33",
+              "title": "Musik",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "gwafoi1z0",
+                  "type": "link",
+                  "title": "bild genratoren  AI",
+                  "url": "https://modelplayground.ai/"
                 }
               ]
             }

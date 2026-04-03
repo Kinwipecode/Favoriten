@@ -524,42 +524,9 @@
           "projects": []
         },
         {
-          "id": "fxwn0rpfv",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "o1dwufinq",
-              "title": "Video",
-              "items": [
-                {
-                  "id": "c1qx2wgww",
-                  "title": "CapCut",
-                  "url": "https://www.capcut.com/my-edit?start_tab=video"
-                },
-                {
-                  "id": "zip6obkiw",
-                  "title": "InVideo AI",
-                  "url": "https://ai.invideo.io/"
-                },
-                {
-                  "id": "ignrrwgah",
-                  "title": "Kaiber",
-                  "url": "https://kaiber.ai/"
-                },
-                {
-                  "id": "b1b9t1vql",
-                  "title": "Suno AI Komplettkurs (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
-                },
-                {
-                  "id": "0lqp0doxb",
-                  "title": "ChatGPT - Video GPT by VEED",
-                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "0nks3jcq3",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "2ixvpz0qc",
@@ -1721,6 +1688,44 @@
                   "id": "4u3toqdc9",
                   "title": "Hermann Seibs Hauptseite",
                   "url": "https://www.hermannseib.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "fa46iwclu",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "o1dwufinq",
+              "title": "Video",
+              "items": [
+                {
+                  "id": "c1qx2wgww",
+                  "title": "CapCut",
+                  "url": "https://www.capcut.com/my-edit?start_tab=video"
+                },
+                {
+                  "id": "zip6obkiw",
+                  "title": "InVideo AI",
+                  "url": "https://ai.invideo.io/"
+                },
+                {
+                  "id": "ignrrwgah",
+                  "title": "Kaiber",
+                  "url": "https://kaiber.ai/"
+                },
+                {
+                  "id": "b1b9t1vql",
+                  "title": "Suno AI Komplettkurs (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
+                },
+                {
+                  "id": "0lqp0doxb",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
                 }
               ],
               "collapsed": true

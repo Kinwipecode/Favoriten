@@ -867,32 +867,9 @@
           ]
         },
         {
-          "id": "r3admb30c",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "dx508vph6",
-              "title": "CAD",
-              "items": [
-                {
-                  "id": "8pb4as0gc",
-                  "title": "(2) Solibri DACH - Erstellen einer eigenen Regel im Solibri Rulesetmanager - YouTube",
-                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
-                },
-                {
-                  "id": "6aa7lnb2r",
-                  "title": "IFC Examples - IFC Wiki",
-                  "url": "https://www.ifcwiki.org/index.php?title=KIT_IFC_Examples"
-                },
-                {
-                  "id": "jklsv1z1h",
-                  "title": "Kostenlose Revit-Familien & Autocad-BIM-Content | MEPcontent",
-                  "url": "https://www.mepcontent.com/de/bim-files/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "olotgxakp",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "rw810pupo",
@@ -923,6 +900,28 @@
                   "id": "tf6gzpy2a",
                   "title": "supp",
                   "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "dx508vph6",
+              "title": "CAD",
+              "items": [
+                {
+                  "id": "8pb4as0gc",
+                  "title": "(2) Solibri DACH - Erstellen einer eigenen Regel im Solibri Rulesetmanager - YouTube",
+                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
+                },
+                {
+                  "id": "6aa7lnb2r",
+                  "title": "IFC Examples - IFC Wiki",
+                  "url": "https://www.ifcwiki.org/index.php?title=KIT_IFC_Examples"
+                },
+                {
+                  "id": "jklsv1z1h",
+                  "title": "Kostenlose Revit-Familien & Autocad-BIM-Content | MEPcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
                 }
               ],
               "collapsed": true

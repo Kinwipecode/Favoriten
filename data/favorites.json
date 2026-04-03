@@ -761,22 +761,9 @@
           ]
         },
         {
-          "id": "54oxo72wd",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "cmoz7jzsg",
-              "title": "Wissen",
-              "items": [
-                {
-                  "id": "7p8mh4p3n",
-                  "title": "IMI Hydronic Engineering ohne kein Webinare",
-                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "av5927yfi",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "e657vhctw",
@@ -1698,6 +1685,24 @@
                   "id": "wb2udszuw",
                   "title": "Suno | AI Music",
                   "url": "https://suno.com/create?wid=b5ae5e05-c289-42cd-8732-89af0a5031a7&page=1"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "kqs99qe2x",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "cmoz7jzsg",
+              "title": "Wissen",
+              "items": [
+                {
+                  "id": "7p8mh4p3n",
+                  "title": "IMI Hydronic Engineering ohne kein Webinare",
+                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
                 }
               ],
               "collapsed": true

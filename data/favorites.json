@@ -400,14 +400,7 @@
     {
       "id": "98c12nmif",
       "title": "für Suno ",
-      "items": [
-        {
-          "id": "92jkwrfha",
-          "type": "link",
-          "title": "Suno Prompt Generator -  M6UU628n",
-          "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
-        }
-      ]
+      "items": []
     },
     {
       "id": "i7ysct7kf",
@@ -418,6 +411,12 @@
           "type": "link",
           "title": "Suno Musik kompo",
           "url": "https://suno.com/"
+        },
+        {
+          "id": "92jkwrfha",
+          "type": "link",
+          "title": "Suno Prompt Generator -  M6UU628n",
+          "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
         },
         {
           "id": "qpdmow5mi",

@@ -1957,16 +1957,9 @@
           ]
         },
         {
-          "id": "6b4i9icz3",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "l1mwv9tsi",
-              "title": "Linux",
-              "collapsed": false,
-              "items": []
-            }
-          ]
+          "id": "f31eeibeo",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     }

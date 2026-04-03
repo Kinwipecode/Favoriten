@@ -1857,9 +1857,16 @@
           "collapsed": true
         },
         {
+          "id": "f9qk2hg98",
+          "isSpacer": true,
+          "title": "",
+          "items": [],
+          "collapsed": true
+        },
+        {
           "id": "98ynxdiw2",
           "title": "Produkte",
-          "collapsed": false,
+          "collapsed": true,
           "items": [
             {
               "id": "dwbh8eeui",

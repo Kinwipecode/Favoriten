@@ -1718,6 +1718,8 @@
     "itemFontSize": "20px",
     "itemFontWeight": "bold",
     "itemFontStyle": "normal",
-    "rowTitleColor": "#00FF00"
+    "rowTitleColor": "#00FF00",
+    "groupFontSize": "1rem",
+    "rowFontSize": "1.5rem"
   }
 }

@@ -1698,29 +1698,9 @@
           ]
         },
         {
-          "id": "ovaj94c56",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "yj82qqnxu",
-              "title": "GitHub",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "ixwtxoss3",
-                  "type": "link",
-                  "title": "Nummertafelbeleuchtung für Kawasaki Z 650 H ABS ER650H 2019",
-                  "url": "https://mtp-racing.de/LED-Mini-Kennzeichenbeleuchtung-Raximo-universal-MTP18144__Kawasaki-Z-650-H-ER650H-2019"
-                },
-                {
-                  "id": "a96f3v7cj",
-                  "type": "link",
-                  "title": "File Menager",
-                  "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
-                }
-              ]
-            }
-          ]
+          "id": "pvxqfz9lu",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "hv91sn342",

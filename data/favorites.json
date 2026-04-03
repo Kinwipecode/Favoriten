@@ -1604,6 +1604,12 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "4cx0pbuwj",
+              "title": "fgghg",
+              "items": [],
+              "collapsed": true
             }
           ]
         },
@@ -1705,16 +1711,9 @@
           ]
         },
         {
-          "id": "criizmkm0",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "4cx0pbuwj",
-              "title": "fgghg",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "yd5i6iy2",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     }

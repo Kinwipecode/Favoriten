@@ -1708,11 +1708,11 @@
     }
   ],
   "config": {
-    "primary": "#00cec9",
-    "bg": "#0984e3",
-    "headerBg": "#74b9ff",
+    "primary": "#6c5ce7",
+    "bg": "#2d3436",
+    "headerBg": "#353b48",
     "headerText": "#ffffff",
-    "link": "#2d3436",
-    "rowBg": "rgba(255,255,255,0.2)"
+    "link": "#dfe6e9",
+    "rowBg": "#2d3436"
   }
 }

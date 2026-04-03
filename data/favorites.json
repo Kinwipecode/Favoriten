@@ -845,6 +845,38 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "se3vcopbg",
+              "title": "EDV",
+              "items": [
+                {
+                  "id": "4wtfs7n5l",
+                  "title": "neu Citrix Gateway",
+                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
+                },
+                {
+                  "id": "veynar1l3",
+                  "title": "Office 2016 Professional Lizenz und Aktivierung | Lizenzguru",
+                  "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
+                },
+                {
+                  "id": "9dplxqvnz",
+                  "title": "Linux Mint neben Windows 10 installieren: So geht´s | NETZWELT",
+                  "url": "https://www.netzwelt.de/anleitung/179687-linux-mint-neben-windows-10-installieren-so-gehts.html"
+                },
+                {
+                  "id": "arhi0gsd9",
+                  "title": "Duck DNS",
+                  "url": "https://www.duckdns.org/"
+                },
+                {
+                  "id": "pd54bjvms",
+                  "title": "kinweb",
+                  "url": "http://www.kinweb.duckdns.org/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -964,42 +996,9 @@
           ]
         },
         {
-          "id": "rt6cglhz7",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "se3vcopbg",
-              "title": "EDV",
-              "items": [
-                {
-                  "id": "4wtfs7n5l",
-                  "title": "neu Citrix Gateway",
-                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
-                },
-                {
-                  "id": "veynar1l3",
-                  "title": "Office 2016 Professional Lizenz und Aktivierung | Lizenzguru",
-                  "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
-                },
-                {
-                  "id": "9dplxqvnz",
-                  "title": "Linux Mint neben Windows 10 installieren: So geht´s | NETZWELT",
-                  "url": "https://www.netzwelt.de/anleitung/179687-linux-mint-neben-windows-10-installieren-so-gehts.html"
-                },
-                {
-                  "id": "arhi0gsd9",
-                  "title": "Duck DNS",
-                  "url": "https://www.duckdns.org/"
-                },
-                {
-                  "id": "pd54bjvms",
-                  "title": "kinweb",
-                  "url": "http://www.kinweb.duckdns.org/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "fuml6t0t0",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "j4p3v3i2w",

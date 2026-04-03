@@ -5,6 +5,19 @@
       "title": "Hauptzeile",
       "projects": [
         {
+          "id": "98c12nmif",
+          "title": "für Suno ",
+          "items": [
+            {
+              "id": "8uiln0ay5",
+              "type": "link",
+              "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+              "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+            }
+          ],
+          "collapsed": true
+        },
+        {
           "id": "87pz2efnn",
           "title": "Weitere",
           "items": [
@@ -388,19 +401,6 @@
               "type": "link",
               "title": "(1) Gesang mit Künstlicher Intelligenz erstellen: Die besten KI Tools für AI-Vocals 2025 - YouTube",
               "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
-            }
-          ],
-          "collapsed": true
-        },
-        {
-          "id": "98c12nmif",
-          "title": "für Suno ",
-          "items": [
-            {
-              "id": "8uiln0ay5",
-              "type": "link",
-              "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-              "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
             }
           ],
           "collapsed": true

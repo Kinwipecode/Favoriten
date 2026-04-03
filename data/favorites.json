@@ -1010,23 +1010,9 @@
           ]
         },
         {
-          "id": "ldise5wva",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "l1mwv9tsi",
-              "title": "Linux",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "a96f3v7cj",
-                  "type": "link",
-                  "title": "File Menager",
-                  "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
-                }
-              ]
-            }
-          ]
+          "id": "mzmttcwzq",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "ecb10llic",
@@ -1819,28 +1805,28 @@
           ]
         },
         {
-          "id": "b95yb2hh4",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "tac2e1s2m",
+          "id": "mfnitmard",
           "isSpacer": false,
           "projects": [
             {
-              "id": "a7eajrwoq",
-              "title": "FR",
+              "id": "l1mwv9tsi",
+              "title": "Linux",
               "collapsed": true,
               "items": [
                 {
-                  "id": "rgpt77p7u",
+                  "id": "a96f3v7cj",
                   "type": "link",
-                  "title": "d.kinal@bluewin.ch - Bluewin Webmail",
-                  "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
+                  "title": "File Menager",
+                  "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
                 }
               ]
             }
           ]
+        },
+        {
+          "id": "ps1nq7rby",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "b6o2ewnuc",

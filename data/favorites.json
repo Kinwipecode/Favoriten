@@ -1,5 +1,1712 @@
 {
-  "rows": [],
+  "rows": [
+    {
+      "id": "iw2zy4qyv",
+      "title": "Import",
+      "projects": [
+        {
+          "id": "2lr893b86",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "kre1h354c",
+              "title": "Lesezeichenleiste",
+              "items": [
+                {
+                  "id": "ygt19gk2h",
+                  "title": "Google",
+                  "url": "https://www.google.com/"
+                },
+                {
+                  "id": "2ly2gr6od",
+                  "title": "FRITZ!Box",
+                  "url": "http://192.168.178.1/"
+                },
+                {
+                  "id": "zotvhw145",
+                  "title": "Netflix",
+                  "url": "https://www.netflix.com/YourAccount"
+                },
+                {
+                  "id": "pfq06k0yn",
+                  "title": "d.kinal@bluewin.ch - Bluewin Webmail",
+                  "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
+                },
+                {
+                  "id": "u3k4jlvx4",
+                  "title": "Miro Board lokal",
+                  "url": "file:///G:/Miro%20copy/index.html"
+                },
+                {
+                  "id": "gocewpkls",
+                  "title": "Converter: YouTube MP3, Tiktok MP4 and more! - noTube",
+                  "url": "https://notube.net/en/youtube-app-155"
+                },
+                {
+                  "id": "w9vlhg8ki",
+                  "title": "To-Do Liste",
+                  "url": "https://filedn.eu/l9B9c0qnIV5k2PVR8vdTK40/Todo/index_pro.html"
+                },
+                {
+                  "id": "fxuz1dvyv",
+                  "title": "Radio",
+                  "url": "https://filedn.eu/l9B9c0qnIV5k2PVR8vdTK40/Radio/index.html"
+                },
+                {
+                  "id": "eqttcng6h",
+                  "title": "FMSTREAM",
+                  "url": "https://fmstream.org/index.php"
+                },
+                {
+                  "id": "am4nhwgou",
+                  "title": "Free Stock Footage Videos, 4k After Effects Templates and More!",
+                  "url": "https://www.videezy.com/"
+                },
+                {
+                  "id": "x0pczc7vz",
+                  "title": "Video Komprimieren – Video Verkleinern Kostenlos Online | FlexClip",
+                  "url": "https://www.flexclip.com/de/tools/compress-video/"
+                },
+                {
+                  "id": "nmgdp5otm",
+                  "title": "Bolt AI builder",
+                  "url": "https://bolt.new/"
+                },
+                {
+                  "id": "5w2a9oyjz",
+                  "title": "https://www.erdsondenoptimierung.ch/",
+                  "url": "https://www.erdsondenoptimierung.ch/"
+                },
+                {
+                  "id": "00qa6f1zo",
+                  "title": "Cloudflare HTML Online",
+                  "url": "https://dash.cloudflare.com/23e8d19ed8337818e554e2ac87b3029a/pages/new/upload"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "cyvzk59xs",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "grtzv27bl",
+              "title": "für Suno",
+              "items": [
+                {
+                  "id": "zvqylvsxk",
+                  "title": "Suno Prompt Generator -  M6UU628n",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "c16e112r4",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "elfrnsgpa",
+              "title": "AI",
+              "items": [
+                {
+                  "id": "8jhtw8dxl",
+                  "title": "Bard",
+                  "url": "https://bard.google.com/"
+                },
+                {
+                  "id": "cdd23hodu",
+                  "title": "Führendes AI-Tool für Videolokalisierung und -synchronisation",
+                  "url": "https://de.rask.ai/"
+                },
+                {
+                  "id": "ncqyumszd",
+                  "title": "1000+ AI-Tools: Die ultimative Liste | Buzzmatic",
+                  "url": "https://buzzmatic.net/ai-tools-die-ultimative-liste/"
+                },
+                {
+                  "id": "feq734a71",
+                  "title": "Photo Editor : Pixlr X - kostenlose Bildbearbeitung online",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "nuhxx1uyk",
+                  "title": "Copilot  Bing-Chat mit GPT-4",
+                  "url": "https://www.bing.com/search?form=MW00X7&ef_id=_k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&OCID=AIDcmm3kkv2p4j_SEM__k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&gad_source=1&gclid=Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB&q=Bing+AI&showconv=1"
+                },
+                {
+                  "id": "9knytaz76",
+                  "title": "Grammatik-, Stil- und Rechtschreibprüfung - LanguageTool",
+                  "url": "https://languagetool.org/de/?utm_source=google&utm_medium=cpc&utm_campaign=GA_LT_DACH_de_Sales_KW_BroadMatch_3Upgrade&utm_content=textkorrektur&utm_term=text%20korrektur&gad_source=1&gclid=CjwKCAiAopuvBhBCEiwAm8jaMdphHRuufYQVAf2-DiHQ09Z4GLPG0q3H_Z0hvJ7OILb-cs9r5sOoHhoCbaUQAvD_BwE"
+                },
+                {
+                  "id": "v2gg4m6ym",
+                  "title": "ChatGPT",
+                  "url": "https://chat.openai.com/"
+                },
+                {
+                  "id": "o84n2vxya",
+                  "title": "Die besten KI-Chatbots des Jahres 2023: Alternativen zu ChatGPT",
+                  "url": "https://filmora.wondershare.de/chatgpt/alternatives-to-chat-gpt.html?gad_source=1&gclid=Cj0KCQjwqdqvBhCPARIsANrmZhNYjTpYZTb1zv3NKtojbM1CZKMqilYRZTxY9o5LfHYtltbXa92feEwaAoDVEALw_wcB"
+                },
+                {
+                  "id": "khe5f7him",
+                  "title": "Top 100 Gen AI Consumer",
+                  "url": "https://a16z.com/100-gen-ai-apps-3/"
+                },
+                {
+                  "id": "wxljmi9lj",
+                  "title": "Hugging Face – The AI community building the future.",
+                  "url": "https://huggingface.co/"
+                },
+                {
+                  "id": "zazt4j8zi",
+                  "title": "Video Translater BlipCut AI Video Translator - Fast & Accurate",
+                  "url": "https://videotranslator.blipcut.com/en/tool?page=1"
+                },
+                {
+                  "id": "5ew21ouo6",
+                  "title": "NotebookLM",
+                  "url": "https://notebooklm.google.com/"
+                },
+                {
+                  "id": "cpkzp9x2w",
+                  "title": "Perplexity",
+                  "url": "https://www.perplexity.ai/"
+                },
+                {
+                  "id": "4aonvoleq",
+                  "title": "KI-Bilder-Generator",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "li65enyc7",
+                  "title": "ch text lesen",
+                  "url": "https://www.narakeet.com/app/text-to-audio/?projectId=6cb75bd9-8d7d-4814-986f-9ca0c71f8955"
+                },
+                {
+                  "id": "i4rsza5j0",
+                  "title": "Zebracat video",
+                  "url": "https://studio.zebracat.ai/"
+                },
+                {
+                  "id": "c7pn92ho6",
+                  "title": "CapCut video editor",
+                  "url": "https://www.capcut.com/my-edit?start_tab=video"
+                },
+                {
+                  "id": "027yoa7tr",
+                  "title": "invideo AI",
+                  "url": "https://ai.invideo.io/workspace/93698270-13da-4083-b32a-46f9cf008d6d/v30-copilot"
+                },
+                {
+                  "id": "u8xha3h6t",
+                  "title": "Kaiber mehrere modele in 1",
+                  "url": "https://kaiber.ai/superstudio/canvas/0b04529b-65d9-41d6-8104-f3f921ff9346"
+                },
+                {
+                  "id": "0pgdtjknc",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed/c/676feeb3-ea68-8007-b5f5-d3dfea18de2a"
+                },
+                {
+                  "id": "e2vhukjym",
+                  "title": "Excel in App umwandeln | PowerApps - YouTube",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4&ab_channel=KaiWeissmann"
+                },
+                {
+                  "id": "xd98ll5g0",
+                  "title": "Video online komprimieren - Kostenlos - VEED.IO",
+                  "url": "https://www.veed.io/de-DE/werkzeuge/videokompressor/mp4-kompressor"
+                },
+                {
+                  "id": "tqrtpnund",
+                  "title": "Sora | OpenAI",
+                  "url": "https://openai.com/index/sora/"
+                },
+                {
+                  "id": "4en34cn6e",
+                  "title": "Video Skalieren – gut",
+                  "url": "https://online-video-cutter.com/de/resize-video"
+                },
+                {
+                  "id": "onlo3rcb7",
+                  "title": "(1) Geld verdienen mit KI-Musik | Erprobte Strategie | 100€+ pro Tag mit Spotify - YouTube",
+                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s&ab_channel=AIMentors"
+                },
+                {
+                  "id": "scmtxzva0",
+                  "title": "DeepSeek - Into the Unknown",
+                  "url": "https://chat.deepseek.com/"
+                },
+                {
+                  "id": "52uah8j9c",
+                  "title": "Hedra",
+                  "url": "https://www.hedra.com/app/characters"
+                },
+                {
+                  "id": "7yge51u12",
+                  "title": "Qwen",
+                  "url": "https://chat.qwenlm.ai/"
+                },
+                {
+                  "id": "8d67otpob",
+                  "title": "KLING AI: Next-Generation AI Creative Studio",
+                  "url": "https://klingai.com/community/material"
+                },
+                {
+                  "id": "x4yslu5o3",
+                  "title": "Le Chat - Mistral AI",
+                  "url": "https://chat.mistral.ai/chat"
+                },
+                {
+                  "id": "k678c9r7h",
+                  "title": "Turn ideas into videos | AI video creator | invideo AI",
+                  "url": "https://ai.invideo.io/workspace/93698270-13da-4083-b32a-46f9cf008d6d/v30-copilot"
+                },
+                {
+                  "id": "9drdn1kir",
+                  "title": "refusion.ai/lander",
+                  "url": "https://www.riffusion.com/?filter=staff-picks"
+                },
+                {
+                  "id": "vp4h9wolt",
+                  "title": "Grok",
+                  "url": "https://grok.com/"
+                },
+                {
+                  "id": "m33m0wtgk",
+                  "title": "AI Sammlung",
+                  "url": "https://theresanaiforthat.com/"
+                },
+                {
+                  "id": "cur2qr2nf",
+                  "title": "UPDATE: Noch EINFACHER! Stable Diffusion lokal auf dem eigenen PC | Installationsanleitung Deutsch - YouTube",
+                  "url": "https://www.youtube.com/watch?v=M5CrqQnqRCA&ab_channel=BoCodemy"
+                },
+                {
+                  "id": "r05r14ysk",
+                  "title": "Dreamina",
+                  "url": "https://dreamina.capcut.com/ai-tool/generate"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "paruxx0qb",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "p1enkawv1",
+              "title": "Musik KI",
+              "items": [
+                {
+                  "id": "8k58h0t10",
+                  "title": "Udio | AI Music Generator - Official Website",
+                  "url": "https://www.udio.com/my-creations"
+                },
+                {
+                  "id": "66somuw4a",
+                  "title": "Vocal remover",
+                  "url": "https://vocalremover.org/de/"
+                },
+                {
+                  "id": "3pkgq4mkd",
+                  "title": "RVC Models: AI Voices - 388 Model Downloads & Examples - AI Models",
+                  "url": "https://aimodels.org/ai-models/rvc-models-ai-voice/"
+                },
+                {
+                  "id": "5kxjcsx53",
+                  "title": "AI-Musikgenerator Online Kostenloser",
+                  "url": "https://aimusic.so/de/app"
+                },
+                {
+                  "id": "8lquh0ron",
+                  "title": "Visla video aus text",
+                  "url": "https://app.visla.us/project/1320538910622818304"
+                },
+                {
+                  "id": "0kecg6vec",
+                  "title": "(1) Gesang mit Künstlicher Intelligenz erstellen: Die besten KI Tools für AI-Vocals 2025 - YouTube",
+                  "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "b8kx2wjad",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "u21db9mjt",
+              "title": "Suno",
+              "items": [
+                {
+                  "id": "1qj53p5u3",
+                  "title": "Suno Musik kompo",
+                  "url": "https://suno.com/"
+                },
+                {
+                  "id": "e6c87s3ok",
+                  "title": "Song Structure Tags – Suno.wiki",
+                  "url": "https://www.suno.wiki/faq/metatags/song-structure/"
+                },
+                {
+                  "id": "4nfpjlcxy",
+                  "title": "video  Suno AI Komplettkurs",
+                  "url": "https://www.youtube.com/watch?v=btRebZvL37Q&t=134s"
+                },
+                {
+                  "id": "nlh34czmk",
+                  "title": "(2) Suno AI Tutorial: Vom Anfänger zum Profi + Prompt Tipps aus der Praxis! - YouTube",
+                  "url": "https://www.youtube.com/watch?v=O08B-vvBPKI"
+                },
+                {
+                  "id": "bddpral1o",
+                  "title": "Download Techno Sample Packs - Slooply",
+                  "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "kqva3y8h9",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "qdrttd4m1",
+              "title": "schneiden",
+              "items": [
+                {
+                  "id": "jm8luv6te",
+                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "i1i5foxqf",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "18cassi4a",
+              "title": "KI",
+              "items": [
+                {
+                  "id": "28yz8m5dr",
+                  "title": "bild genratoren  AI",
+                  "url": "https://modelplayground.ai/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "2x6eb04e7",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "eqaw1b4b9",
+              "title": "Musik",
+              "items": [
+                {
+                  "id": "60258pi5i",
+                  "title": "Riffusion",
+                  "url": "https://www.riffusion.com/?filter=staff-picks"
+                },
+                {
+                  "id": "x3ngi4h7e",
+                  "title": "Suno.wiki",
+                  "url": "https://suno.wiki/"
+                },
+                {
+                  "id": "awcoz0soj",
+                  "title": "Udio",
+                  "url": "https://udio.com/"
+                },
+                {
+                  "id": "qy9w95tod",
+                  "title": "Slooply",
+                  "url": "https://www.slooply.com/"
+                },
+                {
+                  "id": "97j5nciqu",
+                  "title": "Geld verdienen mit KI-Musik (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
+                },
+                {
+                  "id": "qajb0tbn8",
+                  "title": "Udio AI",
+                  "url": "https://www.udio.com/home"
+                },
+                {
+                  "id": "fidmi23p2",
+                  "title": "≻ Mubert Music",
+                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+                },
+                {
+                  "id": "nklnepyq3",
+                  "title": "Revid AI - video zu musik",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
+                  "id": "86i0haf34",
+                  "title": "Plazmapunk | AI Music Video Generator - Create",
+                  "url": "https://app.plazmapunk.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "fxwn0rpfv",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "o1dwufinq",
+              "title": "Video",
+              "items": [
+                {
+                  "id": "c1qx2wgww",
+                  "title": "CapCut",
+                  "url": "https://www.capcut.com/my-edit?start_tab=video"
+                },
+                {
+                  "id": "zip6obkiw",
+                  "title": "InVideo AI",
+                  "url": "https://ai.invideo.io/"
+                },
+                {
+                  "id": "ignrrwgah",
+                  "title": "Kaiber",
+                  "url": "https://kaiber.ai/"
+                },
+                {
+                  "id": "b1b9t1vql",
+                  "title": "Suno AI Komplettkurs (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
+                },
+                {
+                  "id": "0lqp0doxb",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ddgpfak41",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "109xjhnc0",
+              "title": "Bild",
+              "items": [
+                {
+                  "id": "fkyp16ea4",
+                  "title": "Pixlr Express",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "mutv7ejvf",
+                  "title": "ArtGuru",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "o4b9ccla2",
+                  "title": "Refusion AI",
+                  "url": "https://refusion.ai/lander"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "931j1gn1g",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "arkc9qr3n",
+              "title": "Allgemein",
+              "items": [
+                {
+                  "id": "sv09p3rkd",
+                  "title": "Google Bard",
+                  "url": "https://bard.google.com/"
+                },
+                {
+                  "id": "u64jh4vw8",
+                  "title": "ChatGPT",
+                  "url": "https://chat.openai.com/"
+                },
+                {
+                  "id": "uregomvmf",
+                  "title": "Perplexity",
+                  "url": "https://www.perplexity.ai/"
+                },
+                {
+                  "id": "nwzvfg0j4",
+                  "title": "DeepSeek",
+                  "url": "https://chat.deepseek.com/"
+                },
+                {
+                  "id": "y6mldl8uv",
+                  "title": "Hugging Face",
+                  "url": "https://huggingface.co/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ijmcgz2nr",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "wslr2dpq5",
+              "title": "HLK",
+              "items": [
+                {
+                  "id": "bbvzu6l28",
+                  "title": "Optimierung von Erdwärmesonden",
+                  "url": "https://www.erdsondenoptimierung.ch/"
+                },
+                {
+                  "id": "w545ai6kw",
+                  "title": "Video vorträge",
+                  "url": "https://j3l7h.de/videos.html"
+                },
+                {
+                  "id": "xstszru8s",
+                  "title": "Google Docs",
+                  "url": "https://docs.google.com/document/u/0/"
+                },
+                {
+                  "id": "81bznysow",
+                  "title": "VKF Brandschutzvorschriften 2015 | Vereinigung Kantonaler Feuerversicherungen VKF",
+                  "url": "https://www.bsvonline.ch/de/vorschriften/"
+                },
+                {
+                  "id": "tavaae8ub",
+                  "title": "Log P Diagramme",
+                  "url": "http://www.reftec.ch/downloads.htm"
+                },
+                {
+                  "id": "jpu9dnjdo",
+                  "title": "Formelsammlung ML",
+                  "url": "http://formeln.technis.ch/"
+                },
+                {
+                  "id": "mpf4miqb5",
+                  "title": "Heizung-Lüftung-Elektrizität",
+                  "url": "https://enbau-online.ch/heizung-lueftung-elektrizitaet/"
+                },
+                {
+                  "id": "ag6ujs6jk",
+                  "title": "EN-100 bis EN-142 (MuKEn 2014) — Aktuelles",
+                  "url": "https://www.endk.ch/de/fachleute-1/energienachweis/EN-101%20bis%20EN-141"
+                },
+                {
+                  "id": "wb2sqvkyq",
+                  "title": "Siemens Schieber",
+                  "url": "https://www.hqs.sbt.siemens.com/gip/hq/webapps/ventilschieber/index.html"
+                },
+                {
+                  "id": "0e0nrbr3e",
+                  "title": "# Edelstahl Plattenwaermetauscher - Berechnung/Auslegung #",
+                  "url": "https://www.edelstahl-waermetauscher.de/berechnung/berechnung.htm"
+                },
+                {
+                  "id": "pxgcc2cxc",
+                  "title": "HIT Siemens",
+                  "url": "https://hit.sbt.siemens.com/RWD/app.aspx?lang=de&RC=CH&WINX=1259&WINY=828"
+                },
+                {
+                  "id": "9dklxwahy",
+                  "title": "Grundfos",
+                  "url": "https://product-selection-classic.grundfos.com/front-page.html?custid=GWS&qcid=1163726686"
+                },
+                {
+                  "id": "d1ri3qbx7",
+                  "title": "Rundrohre M100604 - Debrunner Acifer",
+                  "url": "https://www.d-a.ch/product.cfm?CFID=248046615&CFTOKEN=cdf256dff6db341d-7DC52C24-90CC-C0CF-1D7427AB1F49445D&id=32937&ParentID=6535"
+                },
+                {
+                  "id": "klouva3po",
+                  "title": "Wärmeinhalt Pufferspeicher berechnen mit IP-Symcon - Regelung, Datenlogger und Smart Home - BHKW-Forum.de",
+                  "url": "https://www.bhkw-forum.de/diskussion/thread/3542-w%C3%A4rmeinhalt-pufferspeicher-berechnen-mit-ip-symcon/"
+                },
+                {
+                  "id": "jsqdwjk2n",
+                  "title": "Lüftungstool Isolation",
+                  "url": "https://berechnungstool.isolsuisse.ch/"
+                },
+                {
+                  "id": "ktilpw9ku",
+                  "title": "Merkblätter - suissetec",
+                  "url": "https://suissetec.ch/de/merkblaetter.html"
+                },
+                {
+                  "id": "5gxs3k75c",
+                  "title": "Rohr & Formteile",
+                  "url": "https://lueftungsteile.ch/13-rohr-formteile"
+                },
+                {
+                  "id": "218f01nej",
+                  "title": "1.3 Planungsvorgehen | Heizung, Lüftung, Elektrizität",
+                  "url": "https://enbau-online.ch/heizung-lueftung-elektrizitaet/1-3-planungsvorgehen/"
+                },
+                {
+                  "id": "0ao6jw5ry",
+                  "title": "Berechnung einer Rohrisolierung",
+                  "url": "https://www.schweizer-fn.de/berechnung/waerme/rohrisol/rohrisol_start.php"
+                },
+                {
+                  "id": "p4p62pmvv",
+                  "title": "Wärmetauscher Reflex",
+                  "url": "https://www.reflex-winkelmann.com/reflexhex/?lang=de"
+                },
+                {
+                  "id": "h5ie7bikl",
+                  "title": "Sortiment - Durrisol Kuster AG - Fachhandel für Isolierbaustoffe",
+                  "url": "https://durrisolkuster.ch/sortiment/"
+                },
+                {
+                  "id": "er0i9olql",
+                  "title": "rohre_c_stahl.pdf",
+                  "url": "https://www.kindlimann.ch/sites/en/assets/File/rohre_c_stahl.pdf"
+                },
+                {
+                  "id": "eybjro2e6",
+                  "title": "Stahlrohre",
+                  "url": "https://www.kindlimann.ch/de/downloads/"
+                },
+                {
+                  "id": "yt6lel0br",
+                  "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "5gipbp1qy",
+                  "title": "HLK Technik videos",
+                  "url": "https://www.youtube.com/channel/UCogSE6uiJyiL31IG-tlxBAw"
+                },
+                {
+                  "id": "gz2lobipb",
+                  "title": "Kataloggenerator (xml) - IGH",
+                  "url": "https://www.igh.ch/de/kgenerator-it.html"
+                },
+                {
+                  "id": "n9jkz6nxf",
+                  "title": "Fastplot, Online Print and Plot for Trimble Connect",
+                  "url": "https://tc.fastplot.ch/"
+                },
+                {
+                  "id": "ebk08pw1q",
+                  "title": "Kostenlose Revit-Familien & Autocad-BIM-Content | MEPcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/?query=manufacturer%3D416"
+                },
+                {
+                  "id": "fo2kyhejf",
+                  "title": "Swiss-Line - BKK Produkte GmbH",
+                  "url": "https://www.bkk-produkte.ch/sortiment/swiss-line.html"
+                },
+                {
+                  "id": "mjlwl22l0",
+                  "title": "hx Diagramm Rechner online I TLK Energy",
+                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
+                },
+                {
+                  "id": "eh8oyyuts",
+                  "title": "Meier Tobler E-SHOP",
+                  "url": "https://eshop.meiertobler.ch/shop/?_gl=1*1ojjt51*_ga*NzExNjYzODYxLjE3MDkzOTI4MDI.*_ga_6LZT1ZHS61*MTcxNTI1NDA4OS45LjAuMTcxNTI1NDA4OS42MC4wLjA."
+                },
+                {
+                  "id": "ji3vclh6y",
+                  "title": "Nenndruckbestimmung",
+                  "url": "https://www.druckgeraete-online.de/seiten/konstruktion/pn_bestimmung_a_test.htm"
+                },
+                {
+                  "id": "s1f6xfhnm",
+                  "title": "Ausschreibungstexte zum Download",
+                  "url": "https://www.ausschreiben.de/katalog/imi/position/1861"
+                },
+                {
+                  "id": "8vxt8xpas",
+                  "title": "DataSelect",
+                  "url": "https://www.dataselect.ch/public/Catalogue.aspx"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "k8ekwtf7a",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "sxt6pzgbg",
+              "title": "Wissen",
+              "items": [
+                {
+                  "id": "f6dapdiah",
+                  "title": "IMI Hydronic Engineering ohne kein Webinare",
+                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "iwna79jdl",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "lbg8iplgz",
+              "title": "Produkte",
+              "items": [
+                {
+                  "id": "xwh410xci",
+                  "title": "ArmaWin",
+                  "url": "https://armawin.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "4n0f667l3",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "m5dof2sao",
+              "title": "Dämmung",
+              "items": [
+                {
+                  "id": "pw5ee9vuu",
+                  "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "pomxqf83m",
+                  "title": "Kältedämmung: Neues System von Rockwool | a3BAU",
+                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
+                },
+                {
+                  "id": "vdeqijpvo",
+                  "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
+                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "b4jqieiek",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "sboi79aa1",
+              "title": "Div",
+              "items": [
+                {
+                  "id": "3iuolipec",
+                  "title": "Mietwagen Luzern ab CHF 25: Autovermietung Vergleich | HAPPYCAR",
+                  "url": "https://www.happycar.ch/mietwagen-luzern"
+                },
+                {
+                  "id": "m19fs8ufl",
+                  "title": "10 Quellen wo es GEMA-freie Musik kostenlos gibt!",
+                  "url": "https://kreativfilm.tv/quellen-gemafreie-musik-kostenlos/"
+                },
+                {
+                  "id": "cw97zgkkb",
+                  "title": "oLiente NOCHE Eau de Parfum | Parfum | Marionnaud",
+                  "url": "https://www.marionnaud.ch/de/oliente/noche/eau-de-parfum/p/BP_1309364?varSel=1309364&gclid=Cj0KCQiAnNacBhDvARIsABnDa6-VSKH8X4yK4WsgziUUmDZbr4PjQYVttLCALqr6ULbIfABtPhw-egoaAusJEALw_wcB&gclsrc=aw.ds"
+                },
+                {
+                  "id": "acsq1gfpr",
+                  "title": "Saccess Perfum | Home",
+                  "url": "https://saccessperfume.com/?fbclid=PAAaZkm4oshZihvFcLA8iutn8EzcLCv5Wu13Qe5-v24DzwPIUZX9B0bROQ-jE"
+                },
+                {
+                  "id": "uwiz1qj49",
+                  "title": "WORKFLOW.CH @ Work",
+                  "url": "https://www.workflow.ch/atwork/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "x8gaeu8fe",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "sz10h3yvv",
+              "title": "div",
+              "items": [
+                {
+                  "id": "v9q5301to",
+                  "title": "EuroMillions Gewinnabfrage - prüfe deine Eurolotto-Zahlen",
+                  "url": "https://www.euromillions.online/de/euromillionen-gewinnabfrage/"
+                },
+                {
+                  "id": "5o6oe7vwz",
+                  "title": "Swiss Lotto: Gewinnzahlen und Joker-Nummern",
+                  "url": "https://www.euro-millions.com/de-ch/swiss-lotto"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "0dhn9h5i6",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "2m59ru9w6",
+              "title": "Leki",
+              "items": [
+                {
+                  "id": "ptuh1vclx",
+                  "title": "N-Acetylcystein: NAC Kapseln kaufen | Vitality Nutritionals",
+                  "url": "https://www.vitaminexpress.org/ch-de/nac-n-acetyl-l-cystein-nac-kapseln?utm_source=google&utm_medium=cpc&utm_content=154418361589&utm_campaign=20582193567&utm_term=&gclid=CjwKCAiA_5WvBhBAEiwAZtCU784PZmn-XBC2340lrh_TnY-4dis9Bt2ecXLgRgd3Ufwk7qUleii6phoCNlQQAvD_BwE"
+                },
+                {
+                  "id": "dfysrpdwr",
+                  "title": "Rich Piana Keto Asalt by 5% Nutrition kaufen",
+                  "url": "https://www.american-supps.com/Rich-Piana-5-Nutrition-Keto-Asalt-252g"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "u2oqiawzw",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "3gohh324l",
+              "title": "Ticket",
+              "items": [
+                {
+                  "id": "rubk1z6rd",
+                  "title": "Ticketmaster",
+                  "url": "https://www.ticketmaster.ch/?utm_source=TM-google&gad_source=1&gad_campaignid=12808319707&gbraid=0AAAAADHXLq3LOFgI82hzETTZVlL08IqMT&gclid=Cj0KCQjw_8rBBhCFARIsAJrc9yBWve8pYzY3JL6zvq4lX9P8TNvcathlazI-BgBkbMTuYpXYcEHMP5oaApAIEALw_wcB&gclsrc=aw.ds"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "r3admb30c",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "dx508vph6",
+              "title": "CAD",
+              "items": [
+                {
+                  "id": "8pb4as0gc",
+                  "title": "(2) Solibri DACH - Erstellen einer eigenen Regel im Solibri Rulesetmanager - YouTube",
+                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
+                },
+                {
+                  "id": "6aa7lnb2r",
+                  "title": "IFC Examples - IFC Wiki",
+                  "url": "https://www.ifcwiki.org/index.php?title=KIT_IFC_Examples"
+                },
+                {
+                  "id": "jklsv1z1h",
+                  "title": "Kostenlose Revit-Familien & Autocad-BIM-Content | MEPcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "rw810pupo",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bk09k2vah",
+              "title": "CAD IFC mit nova",
+              "items": [
+                {
+                  "id": "2a42bfzvp",
+                  "title": "NEUESIN 12-0 - IFC Property Sets - YouTube",
+                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
+                },
+                {
+                  "id": "d0o2skrac",
+                  "title": "BIM & IFC",
+                  "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "81cj65ked",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "4cag3ot2y",
+              "title": "Trimble",
+              "items": [
+                {
+                  "id": "tf6gzpy2a",
+                  "title": "supp",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "t40r3kezl",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "gua3bl3le",
+              "title": "CAD BIM",
+              "items": [
+                {
+                  "id": "xc5cumin6",
+                  "title": "Kostenlose Revit-Familien & Autocad-BIM-Content | MEPcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                },
+                {
+                  "id": "zzpzbbpaz",
+                  "title": "Objekte für Archicad – Graphisoft Österreich",
+                  "url": "https://graphisoft.com/at/downloads/parametric_objects"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "e9b8232le",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "nwn8xda3i",
+              "title": "AAA",
+              "items": [
+                {
+                  "id": "b14r7mfxw",
+                  "title": "IGH - Katalogkonverter",
+                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
+                },
+                {
+                  "id": "103zuw1ie",
+                  "title": "IGH - Publizierte Kataloge",
+                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "rt6cglhz7",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "se3vcopbg",
+              "title": "EDV",
+              "items": [
+                {
+                  "id": "4wtfs7n5l",
+                  "title": "neu Citrix Gateway",
+                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
+                },
+                {
+                  "id": "veynar1l3",
+                  "title": "Office 2016 Professional Lizenz und Aktivierung | Lizenzguru",
+                  "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
+                },
+                {
+                  "id": "9dplxqvnz",
+                  "title": "Linux Mint neben Windows 10 installieren: So geht´s | NETZWELT",
+                  "url": "https://www.netzwelt.de/anleitung/179687-linux-mint-neben-windows-10-installieren-so-gehts.html"
+                },
+                {
+                  "id": "arhi0gsd9",
+                  "title": "Duck DNS",
+                  "url": "https://www.duckdns.org/"
+                },
+                {
+                  "id": "pd54bjvms",
+                  "title": "kinweb",
+                  "url": "http://www.kinweb.duckdns.org/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "j4p3v3i2w",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "1by78h6fg",
+              "title": "Laptop",
+              "items": [
+                {
+                  "id": "za1pklaar",
+                  "title": "ASUS Zenbook Pro 15 Flip OLED (UP6502) Test - ein fleißiges Produkt für ernsthafte Nutzer | LaptopMedia DE",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/#p8"
+                },
+                {
+                  "id": "c7vuplsq7",
+                  "title": "ASUS ZenBook Pro 15 Flip OLED UP6502ZA-M8019W, Core i7-12700H (14x 1.7/4.7GHz), 16GB, 1.0TB SSD, Schweizer Tastaturlayout (90NB0W22-M00220) ab CHF 1'119.00 bei Toppreise.ch",
+                  "url": "https://www.toppreise.ch/preisvergleich/Notebooks/ASUS-ZenBook-Pro-15-Flip-OLED-UP6502ZA-M8019W-Core-90NB0W22-M00220-p701333?selsort=rd#f_anchorRelated_products"
+                },
+                {
+                  "id": "vz35vs3tx",
+                  "title": "Test HP Pavilion Power 15 (i7-7700HQ, GTX 1050) Laptop - Notebookcheck.com Tests",
+                  "url": "https://www.notebookcheck.com/Test-HP-Pavilion-Power-15-i7-7700HQ-GTX-1050-Laptop.232274.0.html"
+                },
+                {
+                  "id": "9sdrxw0ny",
+                  "title": "Test Asus Zenbook Pro 15 OLED UM535Q Laptop: Im Prinzip ein XPS 15 AMD - Notebookcheck.com Tests",
+                  "url": "https://www.notebookcheck.com/Test-Asus-Zenbook-Pro-15-OLED-UM535Q-Laptop-Im-Prinzip-ein-XPS-15-AMD.620326.0.html"
+                },
+                {
+                  "id": "hmwtr2zyn",
+                  "title": "HP Pavilion Laptop 15-eg2717nz (15.6\", Intel Core i7, 16 GB RAM, 1000 GB SSD) - Interdiscount",
+                  "url": "https://www.interdiscount.ch/de/computer-gaming/notebooks/notebooks--c511000/hp-pavilion-laptop-15-eg2717nz-15-6-intel-core-i7-16-gb-ram-1000-gb-ssd--p0006277540"
+                },
+                {
+                  "id": "kpx6vqcyr",
+                  "title": "ASUS Zenbook Pro 15 Flip OLED (UP6502) Test - ein fleißiges Produkt für ernsthafte Nutzer | LaptopMedia DE",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "cd9r7ov1v",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "rn3459lku",
+              "title": "Linux",
+              "items": [
+                {
+                  "id": "v4yzkmljj",
+                  "title": "PHP Update",
+                  "url": "https://www.youtube.com/watch?v=bHTv0FmvrTo"
+                },
+                {
+                  "id": "e8st7q4jp",
+                  "title": "conif nextcloud config",
+                  "url": "https://pastebin.com/pnu311ih"
+                },
+                {
+                  "id": "96gw09kno",
+                  "title": "Tutorial: Domain auf Verzeichnis weiterleiten (Apache2 Virtual Hosts) [Deutsch] [Full-HD] - YouTube",
+                  "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+                },
+                {
+                  "id": "qvkxo2zsu",
+                  "title": "linux netzwerk",
+                  "url": "https://www.youtube.com/watch?v=IoPiRccFQb0"
+                },
+                {
+                  "id": "2wws8drh6",
+                  "title": "pscp",
+                  "url": "https://www.youtube.com/watch?v=Sc0f-sxDJy0"
+                },
+                {
+                  "id": "2swh5337m",
+                  "title": "gute Sammlung",
+                  "url": "https://wiki.zassenhaus.net/ubuntu/eclipse_latex"
+                },
+                {
+                  "id": "hwjrnlqho",
+                  "title": "Datenträgerstruktur: wo finde ich die persönlichen Dateien? - 🌐 Non-english support / 🇩🇪 Deutsch (german) - Nextcloud community",
+                  "url": "https://help.nextcloud.com/t/datentragerstruktur-wo-finde-ich-die-personlichen-dateien/77308/4"
+                },
+                {
+                  "id": "81f1aexdx",
+                  "title": "So erkennt Nextcloud Ihre unkonventionell hinzugefügten Dateien",
+                  "url": "https://www.hostflash.de/blog/webhosting/so-erkennt-nextcloud-ihre-unkonventionell-hinzugefuegten-dateien.html"
+                },
+                {
+                  "id": "dhf4tyudx",
+                  "title": "ssh auf VM",
+                  "url": "http://www.tuxfixer.com/configure-ssh-service-in-manjaro-linux/"
+                },
+                {
+                  "id": "zymdrkhj7",
+                  "title": "Ubuntu: Zugriffsrechte ändern - so geht's - CHIP",
+                  "url": "https://praxistipps.chip.de/ubuntu-zugriffsrechte-aendern-so-gehts_49353"
+                },
+                {
+                  "id": "kc5bexase",
+                  "title": "Service - OpenSSH | Ubuntu",
+                  "url": "https://ubuntu.com/server/docs/service-openssh"
+                },
+                {
+                  "id": "a8kzxb0d6",
+                  "title": "Festplatten nach Inaktivität in Standby versetzen unter Proxmox/ZFS (Debian) | U-Labs",
+                  "url": "https://u-labs.de/portal/festplatten-nach-inaktivitaet-in-standby-versetzen-unter-proxmox-zfs-debian/"
+                },
+                {
+                  "id": "ae53b0t5h",
+                  "title": "[TUTORIAL] - Disk prevent from spinning down because of pvestatd | Proxmox Support Forum",
+                  "url": "https://forum.proxmox.com/threads/disk-prevent-from-spinning-down-because-of-pvestatd.53237/"
+                },
+                {
+                  "id": "movegwuwg",
+                  "title": "ProxMox - Migration, Backup, and Restoration Tutorial - YouTube",
+                  "url": "https://www.youtube.com/watch?v=BkVi2vRB75Q"
+                },
+                {
+                  "id": "bg60hb9tt",
+                  "title": "Proxmox full disk for local storage without lvm-thin - YouTube",
+                  "url": "https://www.youtube.com/watch?v=3zIZS6A9RR4"
+                },
+                {
+                  "id": "49etc2ypn",
+                  "title": "2 webs auf einem Webserver",
+                  "url": "https://www.youtube.com/watch?v=bazbHDek0t0"
+                },
+                {
+                  "id": "9t810rt0z",
+                  "title": "Datensynchronisation mit FreeFileSync in Debian XFCE - Gutes Backup-Werkzeug - LINUX - YouTube",
+                  "url": "https://www.youtube.com/watch?v=xno647YMnj0"
+                },
+                {
+                  "id": "wdbcx7pw6",
+                  "title": "sudo: /etc/sudoers.d is world writable // sudo: /etc/sudoers ist für alle beschreibbar (world writable) // Lese- und Schreibrechte - Code Reminder",
+                  "url": "https://www.code-reminder.com/sudo-etc-sudoers-d-world-writable-sudo-etcsudoers-ist-fur-alle-beschreibbar-world-writable-lese-und-schreibrechte/"
+                },
+                {
+                  "id": "mguj479bc",
+                  "title": "Nextcloud und das lästige Problem mit /.well-known/caldav & /.well-known/carddav - Stefan's Weblog",
+                  "url": "https://strobelstefan.org/2020/03/02/nextcloud-und-das-laestige-problem-mit-well-known-caldav-well-known-carddav/"
+                },
+                {
+                  "id": "dcbua3htl",
+                  "title": "Tutorial: Domain auf Verzeichnis weiterleiten (Apache2 Virtual Hosts) [Deutsch] [Full-HD] - YouTube",
+                  "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+                },
+                {
+                  "id": "gxp2gpqfo",
+                  "title": "How to configure SSL using LetsEncrypt and Certbot on Apache in Ubuntu 16.04 · GitHub",
+                  "url": "https://gist.github.com/giantas/2c61f5495e89a288ca9934d80110c0a1"
+                },
+                {
+                  "id": "ze8qmfrol",
+                  "title": "Https-Verschlüsselung einfach & schnell auf Linux Server einrichten (Certbot) - Tutorial - YouTube",
+                  "url": "https://www.youtube.com/watch?v=--8cYE2_juU"
+                },
+                {
+                  "id": "wkb83y6d5",
+                  "title": "WichtigLINUX Tutorial 6/9 | Apache | SFTP Upload | UserMod | Einsteiger Anfänger Grundlagen How TO - YouTube",
+                  "url": "https://www.youtube.com/watch?v=EBx0APWD7Hc"
+                },
+                {
+                  "id": "8mbek4xbq",
+                  "title": "Linux: list users (Gruppen und Benutzer anzeigen) – so geht's",
+                  "url": "https://www.giga.de/downloads/linux-mint/tipps/linux-gruppen-und-benutzer-anzeigen-so-gehts/"
+                },
+                {
+                  "id": "ovcpp0jur",
+                  "title": "How To Chown Recursively on Linux – devconnected",
+                  "url": "https://devconnected.com/how-to-chown-recursive-on-linux/"
+                },
+                {
+                  "id": "pdm6j4mpv",
+                  "title": "FTP Server Dienst installieren und konfigurieren - gridscale",
+                  "url": "https://gridscale.io/community/tutorials/ftp-ubuntu-erstellen/"
+                },
+                {
+                  "id": "r02x37ocy",
+                  "title": "\"Zugriff über eine nicht vertrauenswürdige Domain\" - config.php - 🌐 Non-english support / 🇩🇪 Deutsch (german) - Nextcloud community",
+                  "url": "https://help.nextcloud.com/t/zugriff-uber-eine-nicht-vertrauenswurdige-domain-config-php/101145"
+                },
+                {
+                  "id": "wz073sipg",
+                  "title": "Konfigurationsanweisungen in httpd.conf",
+                  "url": "https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-rg-de-4/s1-apache-config.html"
+                },
+                {
+                  "id": "9l7mtzmas",
+                  "title": "Httpd.conf – What's its Location on Ubuntu? | Smart Web Developer",
+                  "url": "http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu"
+                },
+                {
+                  "id": "18hjm18el",
+                  "title": "HOW TO SETUP DUCKDNS - YouTube",
+                  "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&ab_channel=PWS"
+                },
+                {
+                  "id": "n390abus8",
+                  "title": "LAMP-Server – die Lösung für dynamische Websites - IONOS",
+                  "url": "https://www.ionos.de/digitalguide/server/knowhow/lamp-server-die-loesung-fuer-dynamische-websites/"
+                },
+                {
+                  "id": "uh5yt4wy5",
+                  "title": "The Morpheus Tutorials - YouTube",
+                  "url": "https://www.youtube.com/c/TheMorpheus407/search?query=linux"
+                },
+                {
+                  "id": "glev7ewmb",
+                  "title": "Linux FTP Server einrichten | HOST-UNLIMITED TUTORIAL - YouTube",
+                  "url": "https://www.youtube.com/watch?v=jljNPn02pe4&ab_channel=HostUnlimitedDE-Tutorials"
+                },
+                {
+                  "id": "ynjwp52rq",
+                  "title": "DUCK HOW TO SETUP DUCKDNS - YouTube",
+                  "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&list=PLk1geQSwTgPud7QC2DVBL4nNmeNOzwzAy&ab_channel=PWS"
+                },
+                {
+                  "id": "nvrqavdpo",
+                  "title": "Apache mehrere Webseiten auf einem Webserver - YouTube",
+                  "url": "https://www.youtube.com/watch?v=bazbHDek0t0&ab_channel=Tutorialwork"
+                },
+                {
+                  "id": "6y5rkbsdr",
+                  "title": "gute seite",
+                  "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "obs0sk9za",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "1sqkacohq",
+              "title": "Hosttech",
+              "items": [
+                {
+                  "id": "2050vw4od",
+                  "title": "File Menager",
+                  "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "jrgj2picd",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "8aqnq419w",
+              "title": "Virt PC",
+              "items": [
+                {
+                  "id": "x4578hs1j",
+                  "title": "Webhosting, Homepage, Server, Onlinespeicher, Webbaukasten & Domains: 1blu",
+                  "url": "https://www.1blu.de/?gad_source=1&gclid=Cj0KCQjw6auyBhDzARIsALIo6v_siiWhXT53QPaGIUPoIjb-VSDWQzHYnybyeVSfVplQLS9vm_o6a6UaAqGKEALw_wcB"
+                },
+                {
+                  "id": "p4qa9nai0",
+                  "title": "(2) 01 Oracle Cloud Gratis VPS Server, Anmeldung und Einrichtung - YouTube",
+                  "url": "https://www.youtube.com/watch?v=3YsoTnsg8E0"
+                },
+                {
+                  "id": "0vfv7ibi6",
+                  "title": "Microsoft Azure",
+                  "url": "https://portal.azure.com/#home"
+                },
+                {
+                  "id": "ub7lwulmd",
+                  "title": "(8) How to Create Microsoft Azure 12 Months FREE RDP Virtual Machine - YouTube",
+                  "url": "https://www.youtube.com/watch?v=Ty7lslVYc5s"
+                },
+                {
+                  "id": "5xki0llyz",
+                  "title": "Copilot AI ChatGPT",
+                  "url": "https://chatgpt.com/g/g-myd1ckFtF-copilot-ai"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "chx79noqi",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "z8f9ygte1",
+              "title": "Keybord",
+              "items": [
+                {
+                  "id": "jcfsmfbra",
+                  "title": "Rafał Piwowarczuk - YouTube",
+                  "url": "https://www.youtube.com/c/Rafa%C5%82Piwowarczuk"
+                },
+                {
+                  "id": "d42q21j43",
+                  "title": "DGX-670 - Specs - Portable Grand - Pianos - Musikinstrumente - Produkte - Yamaha - Deutschland",
+                  "url": "https://de.yamaha.com/de/products/musical_instruments/pianos/portable_grand/dgx-670/specs.html"
+                },
+                {
+                  "id": "zwn1wkdz6",
+                  "title": "About Us",
+                  "url": "https://www.houseofsound.ch/about_us/"
+                },
+                {
+                  "id": "19sx2ijn3",
+                  "title": "Katarzyna - Wrocław,Dolnośląskie : Witam, chętnie udzielę lekcji gry na pianinie osobom początkującym lub dzieciom zainteresowanym rozwijaniem swojej muzycznej pasji. Mam doświadczenie w pracy z osobami w wieku 5-13lat.",
+                  "url": "https://www.superprof.pl/witam-tnie-udziel-lekcji-gry-pianinie-osobom-pocz-tkuj-cym-lub-dzieciom-zainteresowanym-rozwijaniem-swojej-muzycznej.html"
+                },
+                {
+                  "id": "o93738mby",
+                  "title": "Popular MIDIs — BitMidi",
+                  "url": "https://bitmidi.com/"
+                },
+                {
+                  "id": "9516a24py",
+                  "title": "Noten lesen im Violinschlüssel Online Übung - theorie-musik.de",
+                  "url": "https://www.theorie-musik.de/training/violin-noten-lesen.php"
+                },
+                {
+                  "id": "9lxo0xnva",
+                  "title": "Index of /Karaoke/KARAOKE/Karaoke midi/k",
+                  "url": "http://peterson.interblock.pl/Karaoke/KARAOKE/Karaoke%20midi/k/?C=M;O=D"
+                },
+                {
+                  "id": "876k4cd0k",
+                  "title": "Witam potrzebuje to literowo na akordeon Nuty daje zalacznik - Brainly.pl",
+                  "url": "https://brainly.pl/zadanie/8453409?source=offer-page-top-continue&cb=1659728971644"
+                },
+                {
+                  "id": "qj5jptx85",
+                  "title": "flowkey - 3 Months Subscription Voucher | Buy cheap on Kinguin.net",
+                  "url": "https://www.kinguin.net/category/69713/flowkey-3-months-subscription-voucher?noff=1&nosalesbooster=1"
+                },
+                {
+                  "id": "depnbctqn",
+                  "title": "MIDI Files and Backing Tracks for Performers | Hit Trax",
+                  "url": "https://www.midi.com.au/"
+                },
+                {
+                  "id": "kuwm66j93",
+                  "title": "Liste musikalischer Symbole – Wikipedia",
+                  "url": "https://de.wikipedia.org/wiki/Liste_musikalischer_Symbole"
+                },
+                {
+                  "id": "4apqxkk0r",
+                  "title": "Vittorio & PapaVe review Yamaha DGX670 bluetooth & chord tracker - YouTube",
+                  "url": "https://www.youtube.com/watch?v=1QPmL-2PhgU"
+                },
+                {
+                  "id": "z5zel4e1g",
+                  "title": "▷ Korepetycje i lekcje prywatne | Superprof Polska",
+                  "url": "https://www.superprof.pl/"
+                },
+                {
+                  "id": "rmrxp8e17",
+                  "title": "Dokonywanie płatności | Revolut Centrum Pomocy | Revolut PL",
+                  "url": "https://www.revolut.com/pl-PL/help/dokonywanie-platnosci"
+                },
+                {
+                  "id": "i93pg6lbq",
+                  "title": "KLAVIER LERNEN I 4 UNGLAUBLICHE Piano Pattern für die linke Hand I Wie Du wie ein MEISTER klingst - YouTube",
+                  "url": "https://www.youtube.com/watch?v=OxNe9pqSAik"
+                },
+                {
+                  "id": "6b9o55akc",
+                  "title": "We Are The Champions Sheet Music Queen - ♪ SHEETMUSIC-FREE.COM",
+                  "url": "https://sheetmusic-free.com/we-are-the-champions-sheet-music-queen/"
+                },
+                {
+                  "id": "7yvpgexlm",
+                  "title": "https://learn.piano.university/login",
+                  "url": "https://learn.piano.university/login"
+                },
+                {
+                  "id": "qdprriav3",
+                  "title": "does clara luciani piano - YouTube",
+                  "url": "https://www.youtube.com/results?search_query=does+clara+luciani+piano"
+                },
+                {
+                  "id": "zx1ndl7jx",
+                  "title": "als ich fortging piano tutorial - YouTube",
+                  "url": "https://www.youtube.com/results?search_query=als+ich+fortging+piano+tutorial"
+                },
+                {
+                  "id": "8hftoai76",
+                  "title": "How to play EVERY BREATH YOU TAKE - The Police Piano Tutorial Chords Accompaniment - YouTube",
+                  "url": "https://www.youtube.com/watch?v=9CyRAyenVts"
+                },
+                {
+                  "id": "6t8tsp1zt",
+                  "title": "Papier nutowy | Musicca",
+                  "url": "https://www.musicca.com/pl/papier-nutowy"
+                },
+                {
+                  "id": "fkkrbdhrt",
+                  "title": "Flames Of Love by Fancy Chords, Melody, and Music Theory Analysis - Hooktheory",
+                  "url": "https://www.hooktheory.com/theorytab/view/fancy/flames-of-love"
+                },
+                {
+                  "id": "5q2cze2c1",
+                  "title": "Classic/Cheesy '80s Keytar Riffs (Played on the Roland AX-Edge) - YouTube",
+                  "url": "https://www.youtube.com/watch?v=rFcAQybcIms"
+                },
+                {
+                  "id": "qqa7ldxqb",
+                  "title": "Sławomir - Miłość w Zakopanem cover Korg PA 600 - YouTube",
+                  "url": "https://www.youtube.com/watch?v=GFPLOw4f8jI"
+                },
+                {
+                  "id": "pv94tdc3w",
+                  "title": "Midi - muzyka na karaoke - piosenki - podkłady muzyczne | Podkłady profesjonalne midi24.pl",
+                  "url": "https://www.midi24.pl/"
+                },
+                {
+                  "id": "6kele6sp6",
+                  "title": "Roland Klavierbank RPB-200 – Satin Black",
+                  "url": "https://www.brack.ch/roland-klavierbank-rpb-200--satin-black-1352062?utm_source=google&utm_medium=cpc&utm_campaign=%21cc-pssh%21l-d%21e-g%21t-pla%21k1-it%21z-it_multimedia_channable&utm_term=&adgroup_id=95297775786&ad_type=pla&prod_id=1352062&campaign_id=9422718872&gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmM8_b6HFkaWPbGS8qXHg45DtAmzzpihNJN0LD7dZzV52gf_pHr2n7saAiTQEALw_wcB&hc_fcv=Y1OlXAKYAtRjezJc~MpCZLBM3E-fvXE0vzzzzzzzz~MKvtBs71ARRwek3nzzzzzzzz"
+                },
+                {
+                  "id": "i7geajp1n",
+                  "title": "Thomann KB-15WHM – Thomann Switzerland",
+                  "url": "https://www.thomannmusic.ch/thomann_kb_15whm.htm?glp=1&gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOmXpijNFcW6Hb1Z8ilAfRdeqrwoZWPHdIOmJTWgNJGXYlORCi4094aAid7EALw_wcB"
+                },
+                {
+                  "id": "2f375hauy",
+                  "title": "Nauka Gry Na Pianinie - Szkoła Pianina",
+                  "url": "https://szkolapianina.pl/"
+                },
+                {
+                  "id": "lf6gtnfqh",
+                  "title": "Nauka gry na pianinie Online - Korepetycje muzyka",
+                  "url": "https://www.e-korepetycje.net/ogloszenia-online/muzyka,pianino"
+                },
+                {
+                  "id": "ny6zx0frl",
+                  "title": "Koło kwintowe w końcu wyjaśnione / Circle of fifths finally explained - YouTube",
+                  "url": "https://www.youtube.com/watch?v=r9_hspxjIik"
+                },
+                {
+                  "id": "uxjau7g00",
+                  "title": "Koło kwintowe w końcu wyjaśnione / Circle of fifths finally explained - YouTube",
+                  "url": "https://www.youtube.com/watch?v=r9_hspxjIik"
+                },
+                {
+                  "id": "2z9gzr1il",
+                  "title": "TEORETYCZNIE: Wszystko o kole kwintowym - YouTube",
+                  "url": "https://www.youtube.com/watch?v=-BrWdwpVeoo"
+                },
+                {
+                  "id": "7ns1pemzc",
+                  "title": "Jak Zagrać Ponad 100 PIOSENEK I UTWORÓW Dzięki Kilku Akordom , oraz Tworzyć Piękny Akompaniament?! - YouTube",
+                  "url": "https://www.youtube.com/watch?v=hmTkq_7QGRc"
+                },
+                {
+                  "id": "n530funuy",
+                  "title": "Neuer Tab",
+                  "url": "chrome://newtab/"
+                },
+                {
+                  "id": "zzofgjwhy",
+                  "title": "停看聽音樂培訓中心 - YouTube",
+                  "url": "https://www.youtube.com/@user-bp1xk6vj2h"
+                },
+                {
+                  "id": "1gu63izxi",
+                  "title": "Upload as much as you need! Unlimited volume of uploaded files. - PDFCOFFEE.COM",
+                  "url": "https://pdfcoffee.com/"
+                },
+                {
+                  "id": "ng56khmsp",
+                  "title": "Saramonic Übertragungssystem Blink100 B3",
+                  "url": "https://www.brack.ch/saramonic-uebertragungssystem-blink100-b3-1486611"
+                },
+                {
+                  "id": "e6i7cpln4",
+                  "title": "Sklep DJ - Sprzęt DJ / Studio - Słuchawki, Kontrolery, Klawiatury - Soundium.pl",
+                  "url": "https://soundium.pl/"
+                },
+                {
+                  "id": "0uqk9vcn2",
+                  "title": "Noten lesen im Violinschlüssel Online Übung - theorie-musik.de",
+                  "url": "https://notebooklm.google.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "wl6v1026d",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bf14a06gq",
+              "title": "VST",
+              "items": [
+                {
+                  "id": "0wgd41q4f",
+                  "title": "500+ Best Free VST Plugins & Instruments ( PC & Mac )",
+                  "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
+                },
+                {
+                  "id": "562g3chxk",
+                  "title": "16 Best FREE VST Host Applications ( Windows & Mac )",
+                  "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
+                },
+                {
+                  "id": "4u3toqdc9",
+                  "title": "Hermann Seibs Hauptseite",
+                  "url": "https://www.hermannseib.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "vg8qb2v2r",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "elohbljhz",
+              "title": "Musik Videos",
+              "items": [
+                {
+                  "id": "35rqt9sai",
+                  "title": "(2) Joy, Bad Boys Blue, Modern Talking, C C Catch, Ken laszlo - Best Nonstop Eurodisco Hits 70s 80s 90s - YouTube",
+                  "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
+                },
+                {
+                  "id": "h0ldh7pj5",
+                  "title": "Retro Party czy 2 - Mr. Presidet, La Bouche, Loft, Dj BoBo. ( Remix Dance Techno. 90 Hitys 2017) - YouTube",
+                  "url": "https://www.youtube.com/watch?v=-wAhuCmfXFI&list=RDtr9_NDVYoJc&index=4"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "y726d2hgz",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "geud8ypqx",
+              "title": "GitHub",
+              "items": [
+                {
+                  "id": "i061g0j8z",
+                  "title": "Swissradio Git Hub",
+                  "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
+                },
+                {
+                  "id": "va1nm2uxk",
+                  "title": "Miro_Plus",
+                  "url": "https://kinwipecode.github.io/Miro_plus/"
+                },
+                {
+                  "id": "ob0qofmbl",
+                  "title": "KinPDF",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
+                },
+                {
+                  "id": "y2cct43kh",
+                  "title": "Favoriten Manager ⭐️ | Favoriten",
+                  "url": "https://kinwipecode.github.io/Favoriten/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "6onwkwjwk",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "649mvb56l",
+              "title": "Motorrad",
+              "items": [
+                {
+                  "id": "0qkzv43ep",
+                  "title": "Nummertafelbeleuchtung für Kawasaki Z 650 H ABS ER650H 2019",
+                  "url": "https://mtp-racing.de/LED-Mini-Kennzeichenbeleuchtung-Raximo-universal-MTP18144__Kawasaki-Z-650-H-ER650H-2019"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "u80jkvt1g",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "7h036pd30",
+              "title": "FR",
+              "items": [
+                {
+                  "id": "smmj8ahan",
+                  "title": "Nemea Appart Hotel Cannes Palais, Cannes (aktualisierte Preise für 2025)",
+                  "url": "https://www.booking.com/hotel/fr/cannes-palais.de.html?aid=2311236&label=de-ch-booking-desktop-AwtDBrnbKfbY5w%2AnVlwfWAS652829000584%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9187028%3Ali%3Adec%3Adm&sid=e323f6018906327c5e0789c4cefafa95&all_sr_blocks=342360101_400674165_2_1_0&checkin=2025-07-21&checkout=2025-07-28&dest_id=-1416533&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=4&highlighted_blocks=342360101_400674165_2_1_0&hpos=4&matching_block_id=342360101_400674165_2_1_0&nflt=mealplan%3D1%3Bhotelfacility%3D2%3Bprice%3DCHF-min-250-1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=342360101_400674165_2_1_0__148391&srepoch=1752946227&srpvid=1ae1cb6d311f6dd1c9be65c4b4de1a98&type=total&ucfs=1&"
+                },
+                {
+                  "id": "475d6v88q",
+                  "title": "Suno | AI Music",
+                  "url": "https://suno.com/create?wid=b5ae5e05-c289-42cd-8732-89af0a5031a7&page=1"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "config": {
     "primary": "#101010",
     "bg": "#008080",

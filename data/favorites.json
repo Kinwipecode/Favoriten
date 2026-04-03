@@ -1671,19 +1671,6 @@
           "isSpacer": false,
           "projects": [
             {
-              "id": "bbwn5j1fi",
-              "title": "CAD IFC mit nova",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "na42hs153",
-                  "type": "link",
-                  "title": "supp",
-                  "url": "https://www.trimbleenterprisecommunity.com/s/"
-                }
-              ]
-            },
-            {
               "id": "kd7kkhpc0",
               "title": "Motorrad",
               "collapsed": true,
@@ -2114,9 +2101,23 @@
           ]
         },
         {
-          "id": "ac9kzcmsk",
-          "isSpacer": true,
-          "projects": []
+          "id": "2q9dnszwg",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bbwn5j1fi",
+              "title": "CAD IFC mit nova",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "na42hs153",
+                  "type": "link",
+                  "title": "supp",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

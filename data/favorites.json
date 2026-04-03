@@ -1043,19 +1043,6 @@
                   "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
                 }
               ]
-            },
-            {
-              "id": "na1dzzgd2",
-              "title": "Wissen",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "84x38fe2q",
-                  "type": "link",
-                  "title": "hx Diagramm Rechner online I TLK Energy",
-                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
-                }
-              ]
             }
           ]
         },
@@ -1098,6 +1085,19 @@
                   "type": "link",
                   "title": "Objekte für Archicad – Graphisoft Österreich",
                   "url": "https://graphisoft.com/at/downloads/parametric_objects"
+                }
+              ]
+            },
+            {
+              "id": "na1dzzgd2",
+              "title": "Wissen",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "84x38fe2q",
+                  "type": "link",
+                  "title": "hx Diagramm Rechner online I TLK Energy",
+                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
                 }
               ]
             }

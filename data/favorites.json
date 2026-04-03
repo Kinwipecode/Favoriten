@@ -180,23 +180,9 @@
           ]
         },
         {
-          "id": "k0cwencgu",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "ye1ibhbqk",
-              "title": "Musik KI",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "u03jjp0vx",
-                  "type": "link",
-                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-                }
-              ]
-            }
-          ]
+          "id": "i0kl0sgjp",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "6uww1exip",
@@ -811,6 +797,19 @@
                   "type": "link",
                   "title": "Udio AI",
                   "url": "https://www.udio.com/home"
+                }
+              ]
+            },
+            {
+              "id": "ye1ibhbqk",
+              "title": "Musik KI",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "u03jjp0vx",
+                  "type": "link",
+                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
                 }
               ]
             }

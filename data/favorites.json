@@ -512,19 +512,6 @@
               ]
             },
             {
-              "id": "ub3uf5upo",
-              "title": "schneiden",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "rba0g133l",
-                  "type": "link",
-                  "title": "Top 100 Gen AI Consumer",
-                  "url": "https://a16z.com/100-gen-ai-apps-3/"
-                }
-              ]
-            },
-            {
               "id": "y53l6efrg",
               "title": "Musik",
               "collapsed": true,
@@ -1724,9 +1711,23 @@
           ]
         },
         {
-          "id": "bw3whzcmu",
-          "isSpacer": true,
-          "projects": []
+          "id": "zgys4uzht",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "ub3uf5upo",
+              "title": "schneiden",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "rba0g133l",
+                  "type": "link",
+                  "title": "Top 100 Gen AI Consumer",
+                  "url": "https://a16z.com/100-gen-ai-apps-3/"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "w6kqflzat",

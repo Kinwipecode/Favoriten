@@ -449,19 +449,6 @@
           "collapsed": true
         },
         {
-          "id": "9pjr0ygb8",
-          "title": "KI",
-          "items": [
-            {
-              "id": "d6c8esj6i",
-              "type": "link",
-              "title": "bild genratoren  AI",
-              "url": "https://modelplayground.ai/"
-            }
-          ],
-          "collapsed": true
-        },
-        {
           "id": "fqgbhqu5x",
           "title": "Musik",
           "items": [
@@ -518,6 +505,19 @@
               "type": "link",
               "title": "Suno.wiki",
               "url": "https://suno.wiki/"
+            }
+          ],
+          "collapsed": true
+        },
+        {
+          "id": "9pjr0ygb8",
+          "title": "KI",
+          "items": [
+            {
+              "id": "d6c8esj6i",
+              "type": "link",
+              "title": "bild genratoren  AI",
+              "url": "https://modelplayground.ai/"
             }
           ],
           "collapsed": true

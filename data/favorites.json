@@ -2014,6 +2014,19 @@
               "title": "xxxxx",
               "items": [],
               "collapsed": true
+            },
+            {
+              "id": "u9jkzrq25",
+              "title": "VST",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "73wsgcr3x",
+                  "type": "link",
+                  "title": "Saramonic Übertragungssystem Blink100 B3",
+                  "url": "https://www.brack.ch/saramonic-uebertragungssystem-blink100-b3-1486611"
+                }
+              ]
             }
           ]
         },
@@ -2033,23 +2046,9 @@
           "projects": []
         },
         {
-          "id": "qn9p896pi",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "u9jkzrq25",
-              "title": "VST",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "73wsgcr3x",
-                  "type": "link",
-                  "title": "Saramonic Übertragungssystem Blink100 B3",
-                  "url": "https://www.brack.ch/saramonic-uebertragungssystem-blink100-b3-1486611"
-                }
-              ]
-            }
-          ]
+          "id": "3iszf0fa9",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     }

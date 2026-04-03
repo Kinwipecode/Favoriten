@@ -1087,19 +1087,6 @@
                   "url": "https://graphisoft.com/at/downloads/parametric_objects"
                 }
               ]
-            },
-            {
-              "id": "na1dzzgd2",
-              "title": "Wissen",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "84x38fe2q",
-                  "type": "link",
-                  "title": "hx Diagramm Rechner online I TLK Energy",
-                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
-                }
-              ]
             }
           ]
         },
@@ -1954,6 +1941,19 @@
                   "type": "link",
                   "title": "gute seite",
                   "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
+                }
+              ]
+            },
+            {
+              "id": "na1dzzgd2",
+              "title": "Wissen",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "84x38fe2q",
+                  "type": "link",
+                  "title": "hx Diagramm Rechner online I TLK Energy",
+                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
                 }
               ]
             }

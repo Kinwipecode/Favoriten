@@ -1887,6 +1887,13 @@
           "title": "xxxxx",
           "items": [],
           "collapsed": true
+        },
+        {
+          "id": "3muv1yc6d",
+          "isSpacer": true,
+          "title": "",
+          "items": [],
+          "collapsed": true
         }
       ]
     }

@@ -463,227 +463,10 @@
           "collapsed": true
         },
         {
-          "id": "gk2gsim45",
-          "title": "Linux",
-          "items": [
-            {
-              "id": "u98urqem6",
-              "type": "link",
-              "title": "PHP Update",
-              "url": "https://www.youtube.com/watch?v=bHTv0FmvrTo"
-            },
-            {
-              "id": "bao5ef9d9",
-              "type": "link",
-              "title": "conif nextcloud config",
-              "url": "https://pastebin.com/pnu311ih"
-            },
-            {
-              "id": "xjae7ored",
-              "type": "link",
-              "title": "Tutorial: Domain auf Verzeichnis weiterleiten (Apache2 Virtual Hosts) [Deutsch] [Full-HD] - YouTube",
-              "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
-            },
-            {
-              "id": "2gn9o0ozc",
-              "type": "link",
-              "title": "linux netzwerk",
-              "url": "https://www.youtube.com/watch?v=IoPiRccFQb0"
-            },
-            {
-              "id": "65ps08po5",
-              "type": "link",
-              "title": "pscp",
-              "url": "https://www.youtube.com/watch?v=Sc0f-sxDJy0"
-            },
-            {
-              "id": "k44sryhmn",
-              "type": "link",
-              "title": "gute Sammlung ",
-              "url": "https://wiki.zassenhaus.net/ubuntu/eclipse_latex"
-            },
-            {
-              "id": "rtgy5e4pu",
-              "type": "link",
-              "title": "Datenträgerstruktur: wo finde ich die persönlichen Dateien? - 🌐 Non-english support / 🇩🇪 Deutsch (german) - Nextcloud community",
-              "url": "https://help.nextcloud.com/t/datentragerstruktur-wo-finde-ich-die-personlichen-dateien/77308/4"
-            },
-            {
-              "id": "ccf3ht16i",
-              "type": "link",
-              "title": "So erkennt Nextcloud Ihre unkonventionell hinzugefügten Dateien",
-              "url": "https://www.hostflash.de/blog/webhosting/so-erkennt-nextcloud-ihre-unkonventionell-hinzugefuegten-dateien.html"
-            },
-            {
-              "id": "pgya0a9pd",
-              "type": "link",
-              "title": "ssh auf VM",
-              "url": "http://www.tuxfixer.com/configure-ssh-service-in-manjaro-linux/"
-            },
-            {
-              "id": "dw8m0ceet",
-              "type": "link",
-              "title": "Ubuntu: Zugriffsrechte ändern - so geht's - CHIP",
-              "url": "https://praxistipps.chip.de/ubuntu-zugriffsrechte-aendern-so-gehts_49353"
-            },
-            {
-              "id": "7jrmjkq9x",
-              "type": "link",
-              "title": "Service - OpenSSH | Ubuntu",
-              "url": "https://ubuntu.com/server/docs/service-openssh"
-            },
-            {
-              "id": "53azeivti",
-              "type": "link",
-              "title": "Festplatten nach Inaktivität in Standby versetzen unter Proxmox/ZFS (Debian) | U-Labs",
-              "url": "https://u-labs.de/portal/festplatten-nach-inaktivitaet-in-standby-versetzen-unter-proxmox-zfs-debian/"
-            },
-            {
-              "id": "wvazox4q7",
-              "type": "link",
-              "title": "[TUTORIAL] - Disk prevent from spinning down because of pvestatd | Proxmox Support Forum",
-              "url": "https://forum.proxmox.com/threads/disk-prevent-from-spinning-down-because-of-pvestatd.53237/"
-            },
-            {
-              "id": "wvd26srsu",
-              "type": "link",
-              "title": "ProxMox - Migration, Backup, and Restoration Tutorial - YouTube",
-              "url": "https://www.youtube.com/watch?v=BkVi2vRB75Q"
-            },
-            {
-              "id": "ptkli0uyy",
-              "type": "link",
-              "title": "Proxmox full disk for local storage without lvm-thin - YouTube",
-              "url": "https://www.youtube.com/watch?v=3zIZS6A9RR4"
-            },
-            {
-              "id": "t25l6z7ef",
-              "type": "link",
-              "title": "2 webs auf einem Webserver",
-              "url": "https://www.youtube.com/watch?v=bazbHDek0t0"
-            },
-            {
-              "id": "rpwxdaf5u",
-              "type": "link",
-              "title": "Datensynchronisation mit FreeFileSync in Debian XFCE - Gutes Backup-Werkzeug - LINUX - YouTube",
-              "url": "https://www.youtube.com/watch?v=xno647YMnj0"
-            },
-            {
-              "id": "ta2ty3l80",
-              "type": "link",
-              "title": "sudo: /etc/sudoers.d is world writable // sudo: /etc/sudoers ist für alle beschreibbar (world writable) // Lese- und Schreibrechte - Code Reminder",
-              "url": "https://www.code-reminder.com/sudo-etc-sudoers-d-world-writable-sudo-etcsudoers-ist-fur-alle-beschreibbar-world-writable-lese-und-schreibrechte/"
-            },
-            {
-              "id": "zv6br9tml",
-              "type": "link",
-              "title": "Nextcloud und das lästige Problem mit /.well-known/caldav & /.well-known/carddav - Stefan's Weblog",
-              "url": "https://strobelstefan.org/2020/03/02/nextcloud-und-das-laestige-problem-mit-well-known-caldav-well-known-carddav/"
-            },
-            {
-              "id": "en98nv6k0",
-              "type": "link",
-              "title": "Tutorial: Domain auf Verzeichnis weiterleiten (Apache2 Virtual Hosts) [Deutsch] [Full-HD] - YouTube",
-              "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
-            },
-            {
-              "id": "x0crjtjdz",
-              "type": "link",
-              "title": "How to configure SSL using LetsEncrypt and Certbot on Apache in Ubuntu 16.04 · GitHub",
-              "url": "https://gist.github.com/giantas/2c61f5495e89a288ca9934d80110c0a1"
-            },
-            {
-              "id": "rgforus1w",
-              "type": "link",
-              "title": "Https-Verschlüsselung einfach & schnell auf Linux Server einrichten (Certbot) - Tutorial - YouTube",
-              "url": "https://www.youtube.com/watch?v=--8cYE2_juU"
-            },
-            {
-              "id": "w20cql09v",
-              "type": "link",
-              "title": "WichtigLINUX Tutorial 6/9 | Apache | SFTP Upload | UserMod | Einsteiger Anfänger Grundlagen How TO - YouTube",
-              "url": "https://www.youtube.com/watch?v=EBx0APWD7Hc"
-            },
-            {
-              "id": "nfegkaa1s",
-              "type": "link",
-              "title": "Linux: list users (Gruppen und Benutzer anzeigen) – so geht's",
-              "url": "https://www.giga.de/downloads/linux-mint/tipps/linux-gruppen-und-benutzer-anzeigen-so-gehts/"
-            },
-            {
-              "id": "hp2swb797",
-              "type": "link",
-              "title": "How To Chown Recursively on Linux – devconnected",
-              "url": "https://devconnected.com/how-to-chown-recursive-on-linux/"
-            },
-            {
-              "id": "c3ouqhm57",
-              "type": "link",
-              "title": "FTP Server Dienst installieren und konfigurieren - gridscale",
-              "url": "https://gridscale.io/community/tutorials/ftp-ubuntu-erstellen/"
-            },
-            {
-              "id": "t8m5t5eal",
-              "type": "link",
-              "title": "\"Zugriff über eine nicht vertrauenswürdige Domain\" - config.php - 🌐 Non-english support / 🇩🇪 Deutsch (german) - Nextcloud community",
-              "url": "https://help.nextcloud.com/t/zugriff-uber-eine-nicht-vertrauenswurdige-domain-config-php/101145"
-            },
-            {
-              "id": "4my8zce5f",
-              "type": "link",
-              "title": "Konfigurationsanweisungen in httpd.conf",
-              "url": "https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-rg-de-4/s1-apache-config.html"
-            },
-            {
-              "id": "6segtou2z",
-              "type": "link",
-              "title": "Httpd.conf – What's its Location on Ubuntu? | Smart Web Developer",
-              "url": "http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu"
-            },
-            {
-              "id": "ivpuao9xe",
-              "type": "link",
-              "title": "HOW TO SETUP DUCKDNS - YouTube",
-              "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&ab_channel=PWS"
-            },
-            {
-              "id": "155tmqn7d",
-              "type": "link",
-              "title": "LAMP-Server – die Lösung für dynamische Websites - IONOS",
-              "url": "https://www.ionos.de/digitalguide/server/knowhow/lamp-server-die-loesung-fuer-dynamische-websites/"
-            },
-            {
-              "id": "qro6zah40",
-              "type": "link",
-              "title": "The Morpheus Tutorials - YouTube",
-              "url": "https://www.youtube.com/c/TheMorpheus407/search?query=linux"
-            },
-            {
-              "id": "j1emtemdg",
-              "type": "link",
-              "title": "Linux FTP Server einrichten | HOST-UNLIMITED TUTORIAL - YouTube",
-              "url": "https://www.youtube.com/watch?v=jljNPn02pe4&ab_channel=HostUnlimitedDE-Tutorials"
-            },
-            {
-              "id": "3f92h0pvz",
-              "type": "link",
-              "title": "DUCK HOW TO SETUP DUCKDNS - YouTube",
-              "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&list=PLk1geQSwTgPud7QC2DVBL4nNmeNOzwzAy&ab_channel=PWS"
-            },
-            {
-              "id": "9py0rres3",
-              "type": "link",
-              "title": "Apache mehrere Webseiten auf einem Webserver - YouTube",
-              "url": "https://www.youtube.com/watch?v=bazbHDek0t0&ab_channel=Tutorialwork"
-            },
-            {
-              "id": "p47j7o17r",
-              "type": "link",
-              "title": "gute seite",
-              "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
-            }
-          ],
-          "collapsed": true
+          "id": "g7up6b2my",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "k4la8k25e",
@@ -989,20 +772,224 @@
           "collapsed": true
         },
         {
-          "id": "knmec2mnf",
-          "title": "Musik Videos",
+          "id": "gk2gsim45",
+          "title": "Linux",
           "items": [
             {
-              "id": "cmy1s65ar",
+              "id": "u98urqem6",
               "type": "link",
-              "title": "(2) Joy, Bad Boys Blue, Modern Talking, C C Catch, Ken laszlo - Best Nonstop Eurodisco Hits 70s 80s 90s - YouTube",
-              "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
+              "title": "PHP Update",
+              "url": "https://www.youtube.com/watch?v=bHTv0FmvrTo"
             },
             {
-              "id": "e4qu4re9c",
+              "id": "bao5ef9d9",
               "type": "link",
-              "title": "Retro Party czy 2 - Mr. Presidet, La Bouche, Loft, Dj BoBo. ( Remix Dance Techno. 90 Hitys 2017) - YouTube",
-              "url": "https://www.youtube.com/watch?v=-wAhuCmfXFI&list=RDtr9_NDVYoJc&index=4"
+              "title": "conif nextcloud config",
+              "url": "https://pastebin.com/pnu311ih"
+            },
+            {
+              "id": "xjae7ored",
+              "type": "link",
+              "title": "Tutorial: Domain auf Verzeichnis weiterleiten (Apache2 Virtual Hosts) [Deutsch] [Full-HD] - YouTube",
+              "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+            },
+            {
+              "id": "2gn9o0ozc",
+              "type": "link",
+              "title": "linux netzwerk",
+              "url": "https://www.youtube.com/watch?v=IoPiRccFQb0"
+            },
+            {
+              "id": "65ps08po5",
+              "type": "link",
+              "title": "pscp",
+              "url": "https://www.youtube.com/watch?v=Sc0f-sxDJy0"
+            },
+            {
+              "id": "k44sryhmn",
+              "type": "link",
+              "title": "gute Sammlung ",
+              "url": "https://wiki.zassenhaus.net/ubuntu/eclipse_latex"
+            },
+            {
+              "id": "rtgy5e4pu",
+              "type": "link",
+              "title": "Datenträgerstruktur: wo finde ich die persönlichen Dateien? - 🌐 Non-english support / 🇩🇪 Deutsch (german) - Nextcloud community",
+              "url": "https://help.nextcloud.com/t/datentragerstruktur-wo-finde-ich-die-personlichen-dateien/77308/4"
+            },
+            {
+              "id": "ccf3ht16i",
+              "type": "link",
+              "title": "So erkennt Nextcloud Ihre unkonventionell hinzugefügten Dateien",
+              "url": "https://www.hostflash.de/blog/webhosting/so-erkennt-nextcloud-ihre-unkonventionell-hinzugefuegten-dateien.html"
+            },
+            {
+              "id": "pgya0a9pd",
+              "type": "link",
+              "title": "ssh auf VM",
+              "url": "http://www.tuxfixer.com/configure-ssh-service-in-manjaro-linux/"
+            },
+            {
+              "id": "dw8m0ceet",
+              "type": "link",
+              "title": "Ubuntu: Zugriffsrechte ändern - so geht's - CHIP",
+              "url": "https://praxistipps.chip.de/ubuntu-zugriffsrechte-aendern-so-gehts_49353"
+            },
+            {
+              "id": "7jrmjkq9x",
+              "type": "link",
+              "title": "Service - OpenSSH | Ubuntu",
+              "url": "https://ubuntu.com/server/docs/service-openssh"
+            },
+            {
+              "id": "53azeivti",
+              "type": "link",
+              "title": "Festplatten nach Inaktivität in Standby versetzen unter Proxmox/ZFS (Debian) | U-Labs",
+              "url": "https://u-labs.de/portal/festplatten-nach-inaktivitaet-in-standby-versetzen-unter-proxmox-zfs-debian/"
+            },
+            {
+              "id": "wvazox4q7",
+              "type": "link",
+              "title": "[TUTORIAL] - Disk prevent from spinning down because of pvestatd | Proxmox Support Forum",
+              "url": "https://forum.proxmox.com/threads/disk-prevent-from-spinning-down-because-of-pvestatd.53237/"
+            },
+            {
+              "id": "wvd26srsu",
+              "type": "link",
+              "title": "ProxMox - Migration, Backup, and Restoration Tutorial - YouTube",
+              "url": "https://www.youtube.com/watch?v=BkVi2vRB75Q"
+            },
+            {
+              "id": "ptkli0uyy",
+              "type": "link",
+              "title": "Proxmox full disk for local storage without lvm-thin - YouTube",
+              "url": "https://www.youtube.com/watch?v=3zIZS6A9RR4"
+            },
+            {
+              "id": "t25l6z7ef",
+              "type": "link",
+              "title": "2 webs auf einem Webserver",
+              "url": "https://www.youtube.com/watch?v=bazbHDek0t0"
+            },
+            {
+              "id": "rpwxdaf5u",
+              "type": "link",
+              "title": "Datensynchronisation mit FreeFileSync in Debian XFCE - Gutes Backup-Werkzeug - LINUX - YouTube",
+              "url": "https://www.youtube.com/watch?v=xno647YMnj0"
+            },
+            {
+              "id": "ta2ty3l80",
+              "type": "link",
+              "title": "sudo: /etc/sudoers.d is world writable // sudo: /etc/sudoers ist für alle beschreibbar (world writable) // Lese- und Schreibrechte - Code Reminder",
+              "url": "https://www.code-reminder.com/sudo-etc-sudoers-d-world-writable-sudo-etcsudoers-ist-fur-alle-beschreibbar-world-writable-lese-und-schreibrechte/"
+            },
+            {
+              "id": "zv6br9tml",
+              "type": "link",
+              "title": "Nextcloud und das lästige Problem mit /.well-known/caldav & /.well-known/carddav - Stefan's Weblog",
+              "url": "https://strobelstefan.org/2020/03/02/nextcloud-und-das-laestige-problem-mit-well-known-caldav-well-known-carddav/"
+            },
+            {
+              "id": "en98nv6k0",
+              "type": "link",
+              "title": "Tutorial: Domain auf Verzeichnis weiterleiten (Apache2 Virtual Hosts) [Deutsch] [Full-HD] - YouTube",
+              "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+            },
+            {
+              "id": "x0crjtjdz",
+              "type": "link",
+              "title": "How to configure SSL using LetsEncrypt and Certbot on Apache in Ubuntu 16.04 · GitHub",
+              "url": "https://gist.github.com/giantas/2c61f5495e89a288ca9934d80110c0a1"
+            },
+            {
+              "id": "rgforus1w",
+              "type": "link",
+              "title": "Https-Verschlüsselung einfach & schnell auf Linux Server einrichten (Certbot) - Tutorial - YouTube",
+              "url": "https://www.youtube.com/watch?v=--8cYE2_juU"
+            },
+            {
+              "id": "w20cql09v",
+              "type": "link",
+              "title": "WichtigLINUX Tutorial 6/9 | Apache | SFTP Upload | UserMod | Einsteiger Anfänger Grundlagen How TO - YouTube",
+              "url": "https://www.youtube.com/watch?v=EBx0APWD7Hc"
+            },
+            {
+              "id": "nfegkaa1s",
+              "type": "link",
+              "title": "Linux: list users (Gruppen und Benutzer anzeigen) – so geht's",
+              "url": "https://www.giga.de/downloads/linux-mint/tipps/linux-gruppen-und-benutzer-anzeigen-so-gehts/"
+            },
+            {
+              "id": "hp2swb797",
+              "type": "link",
+              "title": "How To Chown Recursively on Linux – devconnected",
+              "url": "https://devconnected.com/how-to-chown-recursive-on-linux/"
+            },
+            {
+              "id": "c3ouqhm57",
+              "type": "link",
+              "title": "FTP Server Dienst installieren und konfigurieren - gridscale",
+              "url": "https://gridscale.io/community/tutorials/ftp-ubuntu-erstellen/"
+            },
+            {
+              "id": "t8m5t5eal",
+              "type": "link",
+              "title": "\"Zugriff über eine nicht vertrauenswürdige Domain\" - config.php - 🌐 Non-english support / 🇩🇪 Deutsch (german) - Nextcloud community",
+              "url": "https://help.nextcloud.com/t/zugriff-uber-eine-nicht-vertrauenswurdige-domain-config-php/101145"
+            },
+            {
+              "id": "4my8zce5f",
+              "type": "link",
+              "title": "Konfigurationsanweisungen in httpd.conf",
+              "url": "https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-rg-de-4/s1-apache-config.html"
+            },
+            {
+              "id": "6segtou2z",
+              "type": "link",
+              "title": "Httpd.conf – What's its Location on Ubuntu? | Smart Web Developer",
+              "url": "http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu"
+            },
+            {
+              "id": "ivpuao9xe",
+              "type": "link",
+              "title": "HOW TO SETUP DUCKDNS - YouTube",
+              "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&ab_channel=PWS"
+            },
+            {
+              "id": "155tmqn7d",
+              "type": "link",
+              "title": "LAMP-Server – die Lösung für dynamische Websites - IONOS",
+              "url": "https://www.ionos.de/digitalguide/server/knowhow/lamp-server-die-loesung-fuer-dynamische-websites/"
+            },
+            {
+              "id": "qro6zah40",
+              "type": "link",
+              "title": "The Morpheus Tutorials - YouTube",
+              "url": "https://www.youtube.com/c/TheMorpheus407/search?query=linux"
+            },
+            {
+              "id": "j1emtemdg",
+              "type": "link",
+              "title": "Linux FTP Server einrichten | HOST-UNLIMITED TUTORIAL - YouTube",
+              "url": "https://www.youtube.com/watch?v=jljNPn02pe4&ab_channel=HostUnlimitedDE-Tutorials"
+            },
+            {
+              "id": "3f92h0pvz",
+              "type": "link",
+              "title": "DUCK HOW TO SETUP DUCKDNS - YouTube",
+              "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&list=PLk1geQSwTgPud7QC2DVBL4nNmeNOzwzAy&ab_channel=PWS"
+            },
+            {
+              "id": "9py0rres3",
+              "type": "link",
+              "title": "Apache mehrere Webseiten auf einem Webserver - YouTube",
+              "url": "https://www.youtube.com/watch?v=bazbHDek0t0&ab_channel=Tutorialwork"
+            },
+            {
+              "id": "p47j7o17r",
+              "type": "link",
+              "title": "gute seite",
+              "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
             }
           ],
           "collapsed": true

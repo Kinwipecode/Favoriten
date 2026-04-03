@@ -1681,9 +1681,23 @@
           ]
         },
         {
-          "id": "ywh3vd3g0",
-          "isSpacer": true,
-          "projects": []
+          "id": "7hif1sk2z",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bbwn5j1fi",
+              "title": "CAD IFC mit nova",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "na42hs153",
+                  "type": "link",
+                  "title": "supp",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "j9b3d3348",
@@ -2115,23 +2129,9 @@
           ]
         },
         {
-          "id": "8gv6vgppx",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "bbwn5j1fi",
-              "title": "CAD IFC mit nova",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "na42hs153",
-                  "type": "link",
-                  "title": "supp",
-                  "url": "https://www.trimbleenterprisecommunity.com/s/"
-                }
-              ]
-            }
-          ]
+          "id": "ac9kzcmsk",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     }

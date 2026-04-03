@@ -516,61 +516,6 @@
           "collapsed": true
         },
         {
-          "id": "58kw0jvr2",
-          "title": "Info 380/1",
-          "items": [],
-          "collapsed": true
-        },
-        {
-          "id": "vqo622316",
-          "title": "",
-          "items": [],
-          "isSpacer": true
-        },
-        {
-          "id": "9mxme5yfj",
-          "title": "",
-          "items": [],
-          "isSpacer": true
-        },
-        {
-          "id": "u2jqbq1c0",
-          "title": "Allgemein",
-          "items": [
-            {
-              "id": "lb30kvnhy",
-              "type": "link",
-              "title": "Google Bard",
-              "url": "https://bard.google.com/"
-            },
-            {
-              "id": "5tvx0ef5k",
-              "type": "link",
-              "title": "ChatGPT",
-              "url": "https://chat.openai.com/"
-            },
-            {
-              "id": "rubr6c1pq",
-              "type": "link",
-              "title": "Perplexity",
-              "url": "https://www.perplexity.ai/"
-            },
-            {
-              "id": "h2k3jdvlj",
-              "type": "link",
-              "title": "DeepSeek",
-              "url": "https://chat.deepseek.com/"
-            },
-            {
-              "id": "yjb14gyrs",
-              "type": "link",
-              "title": "Hugging Face",
-              "url": "https://huggingface.co/"
-            }
-          ],
-          "collapsed": true
-        },
-        {
           "id": "n7ecwudwy",
           "title": "HLK",
           "items": [
@@ -780,6 +725,61 @@
             }
           ],
           "collapsed": true
+        },
+        {
+          "id": "vqo622316",
+          "title": "",
+          "items": [],
+          "isSpacer": true
+        },
+        {
+          "id": "9mxme5yfj",
+          "title": "",
+          "items": [],
+          "isSpacer": true
+        },
+        {
+          "id": "u2jqbq1c0",
+          "title": "Allgemein",
+          "items": [
+            {
+              "id": "lb30kvnhy",
+              "type": "link",
+              "title": "Google Bard",
+              "url": "https://bard.google.com/"
+            },
+            {
+              "id": "5tvx0ef5k",
+              "type": "link",
+              "title": "ChatGPT",
+              "url": "https://chat.openai.com/"
+            },
+            {
+              "id": "rubr6c1pq",
+              "type": "link",
+              "title": "Perplexity",
+              "url": "https://www.perplexity.ai/"
+            },
+            {
+              "id": "h2k3jdvlj",
+              "type": "link",
+              "title": "DeepSeek",
+              "url": "https://chat.deepseek.com/"
+            },
+            {
+              "id": "yjb14gyrs",
+              "type": "link",
+              "title": "Hugging Face",
+              "url": "https://huggingface.co/"
+            }
+          ],
+          "collapsed": true
+        },
+        {
+          "id": "gd9y0h5yl",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "lgkgnlsku",

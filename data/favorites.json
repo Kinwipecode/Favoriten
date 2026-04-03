@@ -867,35 +867,9 @@
           ]
         },
         {
-          "id": "gi464durg",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "98ynxdiw2",
-              "title": "Produkte",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "dwbh8eeui",
-                  "type": "link",
-                  "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
-                  "url": "https://www.jada.ch/leitungen"
-                },
-                {
-                  "id": "aq3jdx1xs",
-                  "type": "link",
-                  "title": "Kältedämmung: Neues System von Rockwool | a3BAU",
-                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
-                },
-                {
-                  "id": "26mhejsls",
-                  "type": "link",
-                  "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
-                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
-                }
-              ]
-            }
-          ]
+          "id": "dxgqdz72h",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "bst1au732",
@@ -2117,6 +2091,37 @@
                   "type": "link",
                   "title": "gute seite",
                   "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7c2gpawko",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "98ynxdiw2",
+              "title": "Produkte",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "dwbh8eeui",
+                  "type": "link",
+                  "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "aq3jdx1xs",
+                  "type": "link",
+                  "title": "Kältedämmung: Neues System von Rockwool | a3BAU",
+                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
+                },
+                {
+                  "id": "26mhejsls",
+                  "type": "link",
+                  "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
+                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
                 }
               ]
             }

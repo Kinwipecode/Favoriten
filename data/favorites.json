@@ -1723,23 +1723,9 @@
           ]
         },
         {
-          "id": "hreq87pfv",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "u9jkzrq25",
-              "title": "VST",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "73wsgcr3x",
-                  "type": "link",
-                  "title": "Saramonic Übertragungssystem Blink100 B3",
-                  "url": "https://www.brack.ch/saramonic-uebertragungssystem-blink100-b3-1486611"
-                }
-              ]
-            }
-          ]
+          "id": "elqj5nvl2",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "oxwv8i8nn",

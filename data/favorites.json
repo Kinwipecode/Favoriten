@@ -1723,11 +1723,6 @@
           ]
         },
         {
-          "id": "so20ittwm",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
           "id": "oxwv8i8nn",
           "isSpacer": false,
           "projects": [
@@ -1967,16 +1962,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "869460te0",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "l3ex3zpqq",
-          "isSpacer": true,
-          "projects": []
         }
       ]
     }

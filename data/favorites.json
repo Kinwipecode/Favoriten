@@ -1709,7 +1709,7 @@
   ],
   "config": {
     "primary": "#800080",
-    "bg": "#dfe6e9",
+    "bg": "#C0C0C0",
     "headerBg": "#a29bfe",
     "headerText": "#202020",
     "link": "#2d3436",

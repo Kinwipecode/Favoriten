@@ -393,47 +393,10 @@
           "collapsed": true
         },
         {
-          "id": "i7ysct7kf",
-          "title": "Suno",
-          "items": [
-            {
-              "id": "ph5nfl66a",
-              "type": "link",
-              "title": "Suno Musik kompo",
-              "url": "https://suno.com/"
-            },
-            {
-              "id": "92jkwrfha",
-              "type": "link",
-              "title": "Suno Prompt Generator -  M6UU628n",
-              "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
-            },
-            {
-              "id": "qpdmow5mi",
-              "type": "link",
-              "title": "Song Structure Tags – Suno.wiki",
-              "url": "https://www.suno.wiki/faq/metatags/song-structure/"
-            },
-            {
-              "id": "vjmnevemz",
-              "type": "link",
-              "title": "video  Suno AI Komplettkurs",
-              "url": "https://www.youtube.com/watch?v=btRebZvL37Q&t=134s"
-            },
-            {
-              "id": "51rrwgos6",
-              "type": "link",
-              "title": "(2) Suno AI Tutorial: Vom Anfänger zum Profi + Prompt Tipps aus der Praxis! - YouTube",
-              "url": "https://www.youtube.com/watch?v=O08B-vvBPKI"
-            },
-            {
-              "id": "5oi1p2oqj",
-              "type": "link",
-              "title": "Download Techno Sample Packs - Slooply",
-              "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
-            }
-          ],
-          "collapsed": true
+          "id": "si8kzxl6t",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "4tz8bkrwk",
@@ -498,38 +461,44 @@
           "collapsed": true
         },
         {
-          "id": "47358k39p",
-          "title": "Div",
+          "id": "i7ysct7kf",
+          "title": "Suno",
           "items": [
             {
-              "id": "lni6hpbkw",
+              "id": "ph5nfl66a",
               "type": "link",
-              "title": "Mietwagen Luzern ab CHF 25: Autovermietung Vergleich | HAPPYCAR",
-              "url": "https://www.happycar.ch/mietwagen-luzern"
+              "title": "Suno Musik kompo",
+              "url": "https://suno.com/"
             },
             {
-              "id": "tw6yyxd1y",
+              "id": "92jkwrfha",
               "type": "link",
-              "title": "10 Quellen wo es GEMA-freie Musik kostenlos gibt!",
-              "url": "https://kreativfilm.tv/quellen-gemafreie-musik-kostenlos/"
+              "title": "Suno Prompt Generator -  M6UU628n",
+              "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
             },
             {
-              "id": "cma07e1go",
+              "id": "qpdmow5mi",
               "type": "link",
-              "title": "oLiente NOCHE Eau de Parfum | Parfum | Marionnaud",
-              "url": "https://www.marionnaud.ch/de/oliente/noche/eau-de-parfum/p/BP_1309364?varSel=1309364&gclid=Cj0KCQiAnNacBhDvARIsABnDa6-VSKH8X4yK4WsgziUUmDZbr4PjQYVttLCALqr6ULbIfABtPhw-egoaAusJEALw_wcB&gclsrc=aw.ds"
+              "title": "Song Structure Tags – Suno.wiki",
+              "url": "https://www.suno.wiki/faq/metatags/song-structure/"
             },
             {
-              "id": "2k3oc4jek",
+              "id": "vjmnevemz",
               "type": "link",
-              "title": "Saccess Perfum | Home",
-              "url": "https://saccessperfume.com/?fbclid=PAAaZkm4oshZihvFcLA8iutn8EzcLCv5Wu13Qe5-v24DzwPIUZX9B0bROQ-jE"
+              "title": "video  Suno AI Komplettkurs",
+              "url": "https://www.youtube.com/watch?v=btRebZvL37Q&t=134s"
             },
             {
-              "id": "70h0ojip2",
+              "id": "51rrwgos6",
               "type": "link",
-              "title": "WORKFLOW.CH @ Work",
-              "url": "https://www.workflow.ch/atwork/"
+              "title": "(2) Suno AI Tutorial: Vom Anfänger zum Profi + Prompt Tipps aus der Praxis! - YouTube",
+              "url": "https://www.youtube.com/watch?v=O08B-vvBPKI"
+            },
+            {
+              "id": "5oi1p2oqj",
+              "type": "link",
+              "title": "Download Techno Sample Packs - Slooply",
+              "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
             }
           ],
           "collapsed": true

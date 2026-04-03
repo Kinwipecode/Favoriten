@@ -925,18 +925,7 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "jeo6rrie6",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "t40r3kezl",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "gua3bl3le",
               "title": "CAD BIM",
@@ -955,6 +944,16 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "jeo6rrie6",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "k8tkffm4h",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "e9b8232le",

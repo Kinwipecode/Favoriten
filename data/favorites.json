@@ -1035,23 +1035,9 @@
           ]
         },
         {
-          "id": "ecb10llic",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "sttfo3wt2",
-              "title": "CAD BIM",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "i3dy18qqn",
-                  "type": "link",
-                  "title": "(2) Solibri DACH - Erstellen einer eigenen Regel im Solibri Rulesetmanager - YouTube",
-                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
-                }
-              ]
-            }
-          ]
+          "id": "oy5eiyw6g",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "9u5l6j9tt",
@@ -1811,9 +1797,23 @@
           ]
         },
         {
-          "id": "ps1nq7rby",
-          "isSpacer": true,
-          "projects": []
+          "id": "vjuqdvj87",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bbwn5j1fi",
+              "title": "CAD IFC mit nova",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "na42hs153",
+                  "type": "link",
+                  "title": "supp",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "b6o2ewnuc",
@@ -2101,23 +2101,9 @@
           ]
         },
         {
-          "id": "2q9dnszwg",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "bbwn5j1fi",
-              "title": "CAD IFC mit nova",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "na42hs153",
-                  "type": "link",
-                  "title": "supp",
-                  "url": "https://www.trimbleenterprisecommunity.com/s/"
-                }
-              ]
-            }
-          ]
+          "id": "6vp3pp57q",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     }

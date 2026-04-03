@@ -780,13 +780,7 @@
                   "url": "https://modelplayground.ai/"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "45gh53ssk",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "ytx2siutr",
               "title": "Video",
@@ -799,7 +793,13 @@
                   "url": "https://www.udio.com/home"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "id": "45gh53ssk",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "ye1ibhbqk",
               "title": "Musik KI",

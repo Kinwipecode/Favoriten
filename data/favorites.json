@@ -1041,9 +1041,23 @@
           ]
         },
         {
-          "id": "4cd6a8vzm",
-          "isSpacer": true,
-          "projects": []
+          "id": "ecb10llic",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "sttfo3wt2",
+              "title": "CAD BIM",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "i3dy18qqn",
+                  "type": "link",
+                  "title": "(2) Solibri DACH - Erstellen einer eigenen Regel im Solibri Rulesetmanager - YouTube",
+                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "9u5l6j9tt",
@@ -1071,23 +1085,9 @@
           ]
         },
         {
-          "id": "k8u0sa5vi",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "sttfo3wt2",
-              "title": "CAD BIM",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "i3dy18qqn",
-                  "type": "link",
-                  "title": "(2) Solibri DACH - Erstellen einer eigenen Regel im Solibri Rulesetmanager - YouTube",
-                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
-                }
-              ]
-            }
-          ]
+          "id": "3zimp2bam",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "t6g5wn8u3",

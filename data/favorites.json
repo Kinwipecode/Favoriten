@@ -2016,6 +2016,12 @@
                   "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
                 }
               ]
+            },
+            {
+              "id": "vwp3fp9zu",
+              "title": "xxxxx",
+              "items": [],
+              "collapsed": true
             }
           ]
         },
@@ -2060,16 +2066,9 @@
           "projects": []
         },
         {
-          "id": "w2l8yueuy",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "vwp3fp9zu",
-              "title": "xxxxx",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "1mwfe8uvy",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     }

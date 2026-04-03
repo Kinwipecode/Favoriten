@@ -338,6 +338,58 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "eqaw1b4b9",
+              "title": "Musik",
+              "items": [
+                {
+                  "id": "60258pi5i",
+                  "title": "Riffusion",
+                  "url": "https://www.riffusion.com/?filter=staff-picks"
+                },
+                {
+                  "id": "x3ngi4h7e",
+                  "title": "Suno.wiki",
+                  "url": "https://suno.wiki/"
+                },
+                {
+                  "id": "awcoz0soj",
+                  "title": "Udio",
+                  "url": "https://udio.com/"
+                },
+                {
+                  "id": "qy9w95tod",
+                  "title": "Slooply",
+                  "url": "https://www.slooply.com/"
+                },
+                {
+                  "id": "97j5nciqu",
+                  "title": "Geld verdienen mit KI-Musik (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
+                },
+                {
+                  "id": "qajb0tbn8",
+                  "title": "Udio AI",
+                  "url": "https://www.udio.com/home"
+                },
+                {
+                  "id": "fidmi23p2",
+                  "title": "≻ Mubert Music",
+                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+                },
+                {
+                  "id": "nklnepyq3",
+                  "title": "Revid AI - video zu musik",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
+                  "id": "86i0haf34",
+                  "title": "Plazmapunk | AI Music Video Generator - Create",
+                  "url": "https://app.plazmapunk.com/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -416,62 +468,9 @@
           ]
         },
         {
-          "id": "2x6eb04e7",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "eqaw1b4b9",
-              "title": "Musik",
-              "items": [
-                {
-                  "id": "60258pi5i",
-                  "title": "Riffusion",
-                  "url": "https://www.riffusion.com/?filter=staff-picks"
-                },
-                {
-                  "id": "x3ngi4h7e",
-                  "title": "Suno.wiki",
-                  "url": "https://suno.wiki/"
-                },
-                {
-                  "id": "awcoz0soj",
-                  "title": "Udio",
-                  "url": "https://udio.com/"
-                },
-                {
-                  "id": "qy9w95tod",
-                  "title": "Slooply",
-                  "url": "https://www.slooply.com/"
-                },
-                {
-                  "id": "97j5nciqu",
-                  "title": "Geld verdienen mit KI-Musik (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
-                },
-                {
-                  "id": "qajb0tbn8",
-                  "title": "Udio AI",
-                  "url": "https://www.udio.com/home"
-                },
-                {
-                  "id": "fidmi23p2",
-                  "title": "≻ Mubert Music",
-                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
-                },
-                {
-                  "id": "nklnepyq3",
-                  "title": "Revid AI - video zu musik",
-                  "url": "https://www.revid.ai/projects"
-                },
-                {
-                  "id": "86i0haf34",
-                  "title": "Plazmapunk | AI Music Video Generator - Create",
-                  "url": "https://app.plazmapunk.com/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "il1ly1aeg",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "fxwn0rpfv",

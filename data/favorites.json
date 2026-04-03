@@ -3,48 +3,7 @@
     {
       "id": "bskgnh89b",
       "title": "Hauptzeile",
-      "projects": [
-        {
-          "id": "p15ulix73",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "6as15deyp",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "nuw4pcvnl",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "yjzhnufjo",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "04l6yrtne",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "eaaja7uyj",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "v64fjlvbh",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "fz8p0lp9d",
-          "isSpacer": true,
-          "projects": []
-        }
-      ]
+      "projects": []
     }
   ],
   "config": {

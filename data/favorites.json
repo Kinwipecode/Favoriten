@@ -1710,7 +1710,7 @@
   "config": {
     "primary": "#6c5ce7",
     "bg": "#008080",
-    "headerBg": "#353b48",
+    "headerBg": "#004080",
     "headerText": "#ffffff",
     "link": "#dfe6e9",
     "rowBg": "#2d3436"

@@ -459,12 +459,6 @@
           "type": "link",
           "title": "bild genratoren  AI",
           "url": "https://modelplayground.ai/"
-        },
-        {
-          "id": "7byt1ozcf",
-          "type": "link",
-          "title": "Suno.wiki",
-          "url": "https://suno.wiki/"
         }
       ]
     },
@@ -519,6 +513,12 @@
           "type": "link",
           "title": "Plazmapunk | AI Music Video Generator - Create",
           "url": "https://app.plazmapunk.com/"
+        },
+        {
+          "id": "7byt1ozcf",
+          "type": "link",
+          "title": "Suno.wiki",
+          "url": "https://suno.wiki/"
         }
       ]
     },

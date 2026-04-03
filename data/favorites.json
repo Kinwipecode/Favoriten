@@ -516,10 +516,29 @@
           "collapsed": true
         },
         {
-          "id": "3akj7oymm",
-          "title": "",
-          "items": [],
-          "isSpacer": true
+          "id": "zn5tgobmh",
+          "title": "Dämmung",
+          "items": [
+            {
+              "id": "0b81amu6x",
+              "type": "link",
+              "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
+              "url": "https://www.jada.ch/leitungen"
+            },
+            {
+              "id": "blvincl70",
+              "type": "link",
+              "title": "Kältedämmung: Neues System von Rockwool | a3BAU",
+              "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
+            },
+            {
+              "id": "9jbyn8sdi",
+              "type": "link",
+              "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
+              "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+            }
+          ],
+          "collapsed": true
         },
         {
           "id": "vqo622316",
@@ -788,29 +807,10 @@
           "isSpacer": true
         },
         {
-          "id": "zn5tgobmh",
-          "title": "Dämmung",
-          "items": [
-            {
-              "id": "0b81amu6x",
-              "type": "link",
-              "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
-              "url": "https://www.jada.ch/leitungen"
-            },
-            {
-              "id": "blvincl70",
-              "type": "link",
-              "title": "Kältedämmung: Neues System von Rockwool | a3BAU",
-              "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
-            },
-            {
-              "id": "9jbyn8sdi",
-              "type": "link",
-              "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
-              "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
-            }
-          ],
-          "collapsed": true
+          "id": "he5312ta1",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "58kw0jvr2",

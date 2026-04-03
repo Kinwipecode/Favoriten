@@ -1581,11 +1581,6 @@
         },
         {
           "id": "3ahehif3v",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "al1b4hfi3",
           "isSpacer": false,
           "projects": [
             {
@@ -1604,7 +1599,13 @@
                 }
               ],
               "collapsed": true
-            },
+            }
+          ]
+        },
+        {
+          "id": "al1b4hfi3",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "4cx0pbuwj",
               "title": "fgghg",

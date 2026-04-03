@@ -1614,11 +1614,6 @@
         },
         {
           "id": "i7k58rtpb",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "3iicl45lr",
           "isSpacer": false,
           "projects": [
             {
@@ -1639,6 +1634,11 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "anyfdhyi2",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "6onwkwjwk",

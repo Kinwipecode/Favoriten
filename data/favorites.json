@@ -2003,7 +2003,13 @@
                   "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "id": "g2z5hzslb",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "u9jkzrq25",
               "title": "VST",
@@ -2018,11 +2024,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "g2z5hzslb",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "fzjm6ymhn",

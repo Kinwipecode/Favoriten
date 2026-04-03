@@ -395,8 +395,15 @@
         {
           "id": "98c12nmif",
           "title": "für Suno ",
-          "items": [],
-          "collapsed": true
+          "items": [
+            {
+              "id": "8uiln0ay5",
+              "type": "link",
+              "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+              "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+            }
+          ],
+          "collapsed": false
         },
         {
           "id": "i7ysct7kf",
@@ -444,14 +451,7 @@
         {
           "id": "deoczzujv",
           "title": "schneiden",
-          "items": [
-            {
-              "id": "8uiln0ay5",
-              "type": "link",
-              "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-              "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-            }
-          ],
+          "items": [],
           "collapsed": false
         },
         {

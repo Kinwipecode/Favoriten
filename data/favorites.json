@@ -523,6 +523,19 @@
                   "url": "https://a16z.com/100-gen-ai-apps-3/"
                 }
               ]
+            },
+            {
+              "id": "y53l6efrg",
+              "title": "Musik",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "kykkvc3y1",
+                  "type": "link",
+                  "title": "bild genratoren  AI",
+                  "url": "https://modelplayground.ai/"
+                }
+              ]
             }
           ]
         },
@@ -774,23 +787,9 @@
           ]
         },
         {
-          "id": "ixk98lflk",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "y53l6efrg",
-              "title": "Musik",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "kykkvc3y1",
-                  "type": "link",
-                  "title": "bild genratoren  AI",
-                  "url": "https://modelplayground.ai/"
-                }
-              ]
-            }
-          ]
+          "id": "kts3rh9wu",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "hc80wygzl",

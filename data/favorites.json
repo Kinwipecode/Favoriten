@@ -506,18 +506,6 @@
                 }
               ],
               "collapsed": true
-            },
-            {
-              "id": "sxt6pzgbg",
-              "title": "Wissen",
-              "items": [
-                {
-                  "id": "f6dapdiah",
-                  "title": "IMI Hydronic Engineering ohne kein Webinare",
-                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
-                }
-              ],
-              "collapsed": true
             }
           ]
         },
@@ -798,6 +786,18 @@
                   "id": "xwh410xci",
                   "title": "ArmaWin",
                   "url": "https://armawin.com/"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "sxt6pzgbg",
+              "title": "Wissen",
+              "items": [
+                {
+                  "id": "f6dapdiah",
+                  "title": "IMI Hydronic Engineering ohne kein Webinare",
+                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
                 }
               ],
               "collapsed": true

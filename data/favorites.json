@@ -1714,6 +1714,9 @@
     "headerText": "#008040",
     "link": "#202020",
     "rowBg": "#2d3436",
-    "itemBg": "#0000FF"
+    "itemBg": "#0000FF",
+    "itemFontSize": "1",
+    "itemFontWeight": "500",
+    "itemFontStyle": "normal"
   }
 }

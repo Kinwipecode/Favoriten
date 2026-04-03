@@ -867,23 +867,9 @@
           ]
         },
         {
-          "id": "cs0zkw19d",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "na1dzzgd2",
-              "title": "Wissen",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "84x38fe2q",
-                  "type": "link",
-                  "title": "hx Diagramm Rechner online I TLK Energy",
-                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
-                }
-              ]
-            }
-          ]
+          "id": "zcvq9k6kq",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "gi464durg",
@@ -1060,6 +1046,19 @@
                   "type": "link",
                   "title": "IGH - Publizierte Kataloge",
                   "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
+                }
+              ]
+            },
+            {
+              "id": "na1dzzgd2",
+              "title": "Wissen",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "84x38fe2q",
+                  "type": "link",
+                  "title": "hx Diagramm Rechner online I TLK Energy",
+                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
                 }
               ]
             }

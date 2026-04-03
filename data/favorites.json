@@ -996,23 +996,9 @@
           ]
         },
         {
-          "id": "k68saigxb",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "bbwn5j1fi",
-              "title": "CAD IFC mit nova",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "na42hs153",
-                  "type": "link",
-                  "title": "supp",
-                  "url": "https://www.trimbleenterprisecommunity.com/s/"
-                }
-              ]
-            }
-          ]
+          "id": "pxg2it8kq",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "ecb10llic",
@@ -2122,6 +2108,25 @@
                   "type": "link",
                   "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
                   "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8gv6vgppx",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bbwn5j1fi",
+              "title": "CAD IFC mit nova",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "na42hs153",
+                  "type": "link",
+                  "title": "supp",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
                 }
               ]
             }

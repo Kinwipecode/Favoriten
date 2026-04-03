@@ -512,10 +512,10 @@
           "collapsed": true
         },
         {
-          "id": "xw2ke3iw0",
-          "title": "Musik",
+          "id": "nfsd1ih2c",
+          "title": "",
           "items": [],
-          "collapsed": true
+          "isSpacer": true
         },
         {
           "id": "a8995db4w",
@@ -759,16 +759,9 @@
           "collapsed": true
         },
         {
-          "id": "rkddbyp3g",
-          "title": "Hosttech",
-          "items": [
-            {
-              "id": "s3vx3w1yc",
-              "type": "link",
-              "title": "File Menager",
-              "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
-            }
-          ],
+          "id": "xw2ke3iw0",
+          "title": "Musik",
+          "items": [],
           "collapsed": true
         },
         {

@@ -889,17 +889,7 @@
           ]
         },
         {
-          "id": "uicfpnx83",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "mx1qgplif",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "g9q7e42kd",
+          "id": "ri80xxy7w",
           "isSpacer": false,
           "projects": [
             {
@@ -916,6 +906,16 @@
               ]
             }
           ]
+        },
+        {
+          "id": "mx1qgplif",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "sz8vf3khh",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "84h6dbcz9",

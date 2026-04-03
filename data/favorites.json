@@ -1085,9 +1085,23 @@
           ]
         },
         {
-          "id": "3zimp2bam",
-          "isSpacer": true,
-          "projects": []
+          "id": "1sth0zwic",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "1vzuc8jwc",
+              "title": "Virt PC",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "sljbteadd",
+                  "type": "link",
+                  "title": "neu Citrix Gateway",
+                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "t6g5wn8u3",
@@ -1778,23 +1792,9 @@
           ]
         },
         {
-          "id": "rfztspaaj",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "1vzuc8jwc",
-              "title": "Virt PC",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "sljbteadd",
-                  "type": "link",
-                  "title": "neu Citrix Gateway",
-                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
-                }
-              ]
-            }
-          ]
+          "id": "c7oi4x0dt",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "j9b3d3348",

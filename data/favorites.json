@@ -1067,25 +1067,6 @@
                   "url": "https://graphisoft.com/at/downloads/parametric_objects"
                 }
               ]
-            },
-            {
-              "id": "br47liuk6",
-              "title": "CAD",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "29hodggwf",
-                  "type": "link",
-                  "title": "IGH - Katalogkonverter",
-                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
-                },
-                {
-                  "id": "v1wt22l8r",
-                  "type": "link",
-                  "title": "IGH - Publizierte Kataloge",
-                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
-                }
-              ]
             }
           ]
         },
@@ -2177,6 +2158,31 @@
                   "type": "link",
                   "title": "d.kinal@bluewin.ch - Bluewin Webmail",
                   "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b6o2ewnuc",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "br47liuk6",
+              "title": "CAD",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "29hodggwf",
+                  "type": "link",
+                  "title": "IGH - Katalogkonverter",
+                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
+                },
+                {
+                  "id": "v1wt22l8r",
+                  "type": "link",
+                  "title": "IGH - Publizierte Kataloge",
+                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
                 }
               ]
             }

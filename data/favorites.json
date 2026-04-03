@@ -1851,13 +1851,6 @@
           ]
         },
         {
-          "id": "xycwb08pz",
-          "isSpacer": true,
-          "title": "",
-          "items": [],
-          "collapsed": true
-        },
-        {
           "id": "98ynxdiw2",
           "title": "Produkte",
           "collapsed": true,
@@ -1881,6 +1874,13 @@
               "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
             }
           ]
+        },
+        {
+          "id": "xycwb08pz",
+          "isSpacer": true,
+          "title": "",
+          "items": [],
+          "collapsed": true
         },
         {
           "id": "vwp3fp9zu",

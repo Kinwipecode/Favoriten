@@ -1766,7 +1766,7 @@
             {
               "id": "l1mwv9tsi",
               "title": "Linux",
-              "collapsed": true,
+              "collapsed": false,
               "items": []
             }
           ]
@@ -2027,5 +2027,13 @@
         }
       ]
     }
-  ]
+  ],
+  "config": {
+    "primary": "#6c5ce7",
+    "bg": "#dfe6e9",
+    "headerBg": "#a29bfe",
+    "headerText": "#ffffff",
+    "link": "#2d3436",
+    "rowBg": "#ffffff"
+  }
 }

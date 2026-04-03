@@ -914,13 +914,7 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "81cj65ked",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "4cag3ot2y",
               "title": "Trimble",
@@ -934,6 +928,11 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "jeo6rrie6",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "t40r3kezl",

@@ -179,49 +179,6 @@
                 }
               ],
               "collapsed": true
-            },
-            {
-              "id": "v0kavhyii",
-              "title": "Musik KI",
-              "items": [
-                {
-                  "id": "zhph1zi1g",
-                  "type": "link",
-                  "title": "Udio | AI Music Generator - Official Website",
-                  "url": "https://www.udio.com/my-creations"
-                },
-                {
-                  "id": "cvdync1of",
-                  "type": "link",
-                  "title": "Vocal remover",
-                  "url": "https://vocalremover.org/de/"
-                },
-                {
-                  "id": "tedg6ath5",
-                  "type": "link",
-                  "title": "RVC Models: AI Voices - 388 Model Downloads & Examples - AI Models",
-                  "url": "https://aimodels.org/ai-models/rvc-models-ai-voice/"
-                },
-                {
-                  "id": "msp5a16ij",
-                  "type": "link",
-                  "title": "AI-Musikgenerator Online Kostenloser",
-                  "url": "https://aimusic.so/de/app"
-                },
-                {
-                  "id": "v09yq3uaj",
-                  "type": "link",
-                  "title": "Visla video aus text",
-                  "url": "https://app.visla.us/project/1320538910622818304"
-                },
-                {
-                  "id": "c9h6xw8t4",
-                  "type": "link",
-                  "title": "(1) Gesang mit Künstlicher Intelligenz erstellen: Die besten KI Tools für AI-Vocals 2025 - YouTube",
-                  "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
-                }
-              ],
-              "collapsed": true
             }
           ]
         },
@@ -275,6 +232,49 @@
                   "type": "link",
                   "title": "Ticketmaster",
                   "url": "https://www.ticketmaster.ch/?utm_source=TM-google&gad_source=1&gad_campaignid=12808319707&gbraid=0AAAAADHXLq3LOFgI82hzETTZVlL08IqMT&gclid=Cj0KCQjw_8rBBhCFARIsAJrc9yBWve8pYzY3JL6zvq4lX9P8TNvcathlazI-BgBkbMTuYpXYcEHMP5oaApAIEALw_wcB&gclsrc=aw.ds"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "v0kavhyii",
+              "title": "Musik KI",
+              "items": [
+                {
+                  "id": "zhph1zi1g",
+                  "type": "link",
+                  "title": "Udio | AI Music Generator - Official Website",
+                  "url": "https://www.udio.com/my-creations"
+                },
+                {
+                  "id": "cvdync1of",
+                  "type": "link",
+                  "title": "Vocal remover",
+                  "url": "https://vocalremover.org/de/"
+                },
+                {
+                  "id": "tedg6ath5",
+                  "type": "link",
+                  "title": "RVC Models: AI Voices - 388 Model Downloads & Examples - AI Models",
+                  "url": "https://aimodels.org/ai-models/rvc-models-ai-voice/"
+                },
+                {
+                  "id": "msp5a16ij",
+                  "type": "link",
+                  "title": "AI-Musikgenerator Online Kostenloser",
+                  "url": "https://aimusic.so/de/app"
+                },
+                {
+                  "id": "v09yq3uaj",
+                  "type": "link",
+                  "title": "Visla video aus text",
+                  "url": "https://app.visla.us/project/1320538910622818304"
+                },
+                {
+                  "id": "c9h6xw8t4",
+                  "type": "link",
+                  "title": "(1) Gesang mit Künstlicher Intelligenz erstellen: Die besten KI Tools für AI-Vocals 2025 - YouTube",
+                  "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
                 }
               ],
               "collapsed": true

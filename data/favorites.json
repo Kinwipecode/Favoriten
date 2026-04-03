@@ -1717,29 +1717,9 @@
           ]
         },
         {
-          "id": "w6kqflzat",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "br47liuk6",
-              "title": "CAD",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "29hodggwf",
-                  "type": "link",
-                  "title": "IGH - Katalogkonverter",
-                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
-                },
-                {
-                  "id": "v1wt22l8r",
-                  "type": "link",
-                  "title": "IGH - Publizierte Kataloge",
-                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
-                }
-              ]
-            }
-          ]
+          "id": "xi4g1f7ye",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "p5u0qmeql",
@@ -1818,9 +1798,29 @@
           ]
         },
         {
-          "id": "kg5nnkbsz",
-          "isSpacer": true,
-          "projects": []
+          "id": "zu7w3pkcb",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "br47liuk6",
+              "title": "CAD",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "29hodggwf",
+                  "type": "link",
+                  "title": "IGH - Katalogkonverter",
+                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
+                },
+                {
+                  "id": "v1wt22l8r",
+                  "type": "link",
+                  "title": "IGH - Publizierte Kataloge",
+                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "olkricydu",

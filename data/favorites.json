@@ -436,65 +436,10 @@
           "collapsed": true
         },
         {
-          "id": "fqgbhqu5x",
-          "title": "Musik",
-          "items": [
-            {
-              "id": "2q53yul7t",
-              "type": "link",
-              "title": "Riffusion",
-              "url": "https://www.riffusion.com/?filter=staff-picks"
-            },
-            {
-              "id": "1xeuugm2o",
-              "type": "link",
-              "title": "Udio",
-              "url": "https://udio.com/"
-            },
-            {
-              "id": "mrl4vs0vr",
-              "type": "link",
-              "title": "Slooply",
-              "url": "https://www.slooply.com/"
-            },
-            {
-              "id": "z9bwidbap",
-              "type": "link",
-              "title": "Geld verdienen mit KI-Musik (YouTube)",
-              "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
-            },
-            {
-              "id": "0x312ryb7",
-              "type": "link",
-              "title": "Udio AI",
-              "url": "https://www.udio.com/home"
-            },
-            {
-              "id": "4kpnr13rd",
-              "type": "link",
-              "title": "≻ Mubert Music",
-              "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
-            },
-            {
-              "id": "owqiptqba",
-              "type": "link",
-              "title": "Revid AI - video zu musik",
-              "url": "https://www.revid.ai/projects"
-            },
-            {
-              "id": "sufokacsy",
-              "type": "link",
-              "title": "Plazmapunk | AI Music Video Generator - Create",
-              "url": "https://app.plazmapunk.com/"
-            },
-            {
-              "id": "7byt1ozcf",
-              "type": "link",
-              "title": "Suno.wiki",
-              "url": "https://suno.wiki/"
-            }
-          ],
-          "collapsed": true
+          "id": "4tz8bkrwk",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "1nqrdzrpn",
@@ -1336,26 +1281,62 @@
           "collapsed": true
         },
         {
-          "id": "j7myrwo4a",
-          "title": "VST",
+          "id": "fqgbhqu5x",
+          "title": "Musik",
           "items": [
             {
-              "id": "wglqq2ggg",
+              "id": "2q53yul7t",
               "type": "link",
-              "title": "500+ Best Free VST Plugins & Instruments ( PC & Mac )",
-              "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
+              "title": "Riffusion",
+              "url": "https://www.riffusion.com/?filter=staff-picks"
             },
             {
-              "id": "831s8un1d",
+              "id": "1xeuugm2o",
               "type": "link",
-              "title": "16 Best FREE VST Host Applications ( Windows & Mac )",
-              "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
+              "title": "Udio",
+              "url": "https://udio.com/"
             },
             {
-              "id": "7atxpo9d5",
+              "id": "mrl4vs0vr",
               "type": "link",
-              "title": "Hermann Seibs Hauptseite",
-              "url": "https://www.hermannseib.com/"
+              "title": "Slooply",
+              "url": "https://www.slooply.com/"
+            },
+            {
+              "id": "z9bwidbap",
+              "type": "link",
+              "title": "Geld verdienen mit KI-Musik (YouTube)",
+              "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
+            },
+            {
+              "id": "0x312ryb7",
+              "type": "link",
+              "title": "Udio AI",
+              "url": "https://www.udio.com/home"
+            },
+            {
+              "id": "4kpnr13rd",
+              "type": "link",
+              "title": "≻ Mubert Music",
+              "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+            },
+            {
+              "id": "owqiptqba",
+              "type": "link",
+              "title": "Revid AI - video zu musik",
+              "url": "https://www.revid.ai/projects"
+            },
+            {
+              "id": "sufokacsy",
+              "type": "link",
+              "title": "Plazmapunk | AI Music Video Generator - Create",
+              "url": "https://app.plazmapunk.com/"
+            },
+            {
+              "id": "7byt1ozcf",
+              "type": "link",
+              "title": "Suno.wiki",
+              "url": "https://suno.wiki/"
             }
           ],
           "collapsed": true

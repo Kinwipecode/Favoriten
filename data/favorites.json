@@ -596,28 +596,6 @@
                 }
               ],
               "collapsed": true
-            },
-            {
-              "id": "m5dof2sao",
-              "title": "Dämmung",
-              "items": [
-                {
-                  "id": "pw5ee9vuu",
-                  "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
-                  "url": "https://www.jada.ch/leitungen"
-                },
-                {
-                  "id": "pomxqf83m",
-                  "title": "Kältedämmung: Neues System von Rockwool | a3BAU",
-                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
-                },
-                {
-                  "id": "vdeqijpvo",
-                  "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
-                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
-                }
-              ],
-              "collapsed": true
             }
           ]
         },
@@ -798,6 +776,28 @@
                   "id": "8vxt8xpas",
                   "title": "DataSelect",
                   "url": "https://www.dataselect.ch/public/Catalogue.aspx"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "m5dof2sao",
+              "title": "Dämmung",
+              "items": [
+                {
+                  "id": "pw5ee9vuu",
+                  "title": "JADA Isolierungen | Leitungsdämmungen | Technische Isolierugen",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "pomxqf83m",
+                  "title": "Kältedämmung: Neues System von Rockwool | a3BAU",
+                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
+                },
+                {
+                  "id": "vdeqijpvo",
+                  "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
+                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
                 }
               ],
               "collapsed": true

@@ -24,9 +24,197 @@
           ]
         },
         {
-          "id": "ec15c52av",
+          "id": "ra5g7alt2",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "ba6kjes4d",
           "isSpacer": false,
           "projects": [
+            {
+              "id": "dnttwgqd1",
+              "title": "AI",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "dc5mj9idw",
+                  "type": "link",
+                  "title": "Riffusion",
+                  "url": "https://www.riffusion.com/?filter=staff-picks"
+                },
+                {
+                  "id": "jsehmiwlb",
+                  "type": "link",
+                  "title": "Suno.wiki",
+                  "url": "https://suno.wiki/"
+                },
+                {
+                  "id": "5l2ki8qga",
+                  "type": "link",
+                  "title": "Udio",
+                  "url": "https://udio.com/"
+                },
+                {
+                  "id": "7imo7cciz",
+                  "type": "link",
+                  "title": "Slooply",
+                  "url": "https://www.slooply.com/"
+                },
+                {
+                  "id": "b99hfqhdq",
+                  "type": "link",
+                  "title": "Geld verdienen mit KI-Musik (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
+                },
+                {
+                  "id": "dtrdrc574",
+                  "type": "link",
+                  "title": "CapCut",
+                  "url": "https://www.capcut.com/my-edit?start_tab=video"
+                },
+                {
+                  "id": "z8elhecx4",
+                  "type": "link",
+                  "title": "InVideo AI",
+                  "url": "https://ai.invideo.io/"
+                },
+                {
+                  "id": "xj7skgb52",
+                  "type": "link",
+                  "title": "Kaiber",
+                  "url": "https://kaiber.ai/"
+                },
+                {
+                  "id": "fmzsuiyee",
+                  "type": "link",
+                  "title": "Suno AI Komplettkurs (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
+                },
+                {
+                  "id": "9lyxsac8w",
+                  "type": "link",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
+                },
+                {
+                  "id": "zdae4rqwa",
+                  "type": "link",
+                  "title": "Pixlr Express",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "dz4jimbd4",
+                  "type": "link",
+                  "title": "ArtGuru",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "4jpsyqcz5",
+                  "type": "link",
+                  "title": "Refusion AI",
+                  "url": "https://refusion.ai/lander"
+                },
+                {
+                  "id": "aeu4efwi0",
+                  "type": "link",
+                  "title": "Google Bard",
+                  "url": "https://bard.google.com/"
+                },
+                {
+                  "id": "vagkqoh6z",
+                  "type": "link",
+                  "title": "ChatGPT",
+                  "url": "https://chat.openai.com/"
+                },
+                {
+                  "id": "l3sltbiin",
+                  "type": "link",
+                  "title": "Perplexity",
+                  "url": "https://www.perplexity.ai/"
+                },
+                {
+                  "id": "qvp1pmbbo",
+                  "type": "link",
+                  "title": "DeepSeek",
+                  "url": "https://chat.deepseek.com/"
+                },
+                {
+                  "id": "w3zvbn031",
+                  "type": "link",
+                  "title": "Hugging Face",
+                  "url": "https://huggingface.co/"
+                },
+                {
+                  "id": "8c97vr2v6",
+                  "type": "link",
+                  "title": "Udio AI",
+                  "url": "https://www.udio.com/home"
+                },
+                {
+                  "id": "uc00wq3f6",
+                  "type": "link",
+                  "title": "≻ Mubert Music",
+                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+                },
+                {
+                  "id": "0citfrrvb",
+                  "type": "link",
+                  "title": "Revid AI - video zu musik",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
+                  "id": "ab4fvoyj9",
+                  "type": "link",
+                  "title": "Plazmapunk | AI Music Video Generator - Create",
+                  "url": "https://app.plazmapunk.com/"
+                },
+                {
+                  "id": "o2ofvsyrr",
+                  "type": "link",
+                  "title": "bild genratoren  AI",
+                  "url": "https://modelplayground.ai/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "k0cwencgu",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "ye1ibhbqk",
+              "title": "Musik KI",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "u03jjp0vx",
+                  "type": "link",
+                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6uww1exip",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "mr2yn68gt",
+              "title": "Suno",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "5zw9eauuk",
+                  "type": "link",
+                  "title": "Udio | AI Music Generator - Official Website",
+                  "url": "https://www.udio.com/my-creations"
+                }
+              ]
+            },
             {
               "id": "pivlutxra",
               "title": "für Suno",
@@ -319,195 +507,6 @@
                   "type": "link",
                   "title": "Dreamina",
                   "url": "https://dreamina.capcut.com/ai-tool/generate"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "ba6kjes4d",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "dnttwgqd1",
-              "title": "AI",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "dc5mj9idw",
-                  "type": "link",
-                  "title": "Riffusion",
-                  "url": "https://www.riffusion.com/?filter=staff-picks"
-                },
-                {
-                  "id": "jsehmiwlb",
-                  "type": "link",
-                  "title": "Suno.wiki",
-                  "url": "https://suno.wiki/"
-                },
-                {
-                  "id": "5l2ki8qga",
-                  "type": "link",
-                  "title": "Udio",
-                  "url": "https://udio.com/"
-                },
-                {
-                  "id": "7imo7cciz",
-                  "type": "link",
-                  "title": "Slooply",
-                  "url": "https://www.slooply.com/"
-                },
-                {
-                  "id": "b99hfqhdq",
-                  "type": "link",
-                  "title": "Geld verdienen mit KI-Musik (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
-                },
-                {
-                  "id": "dtrdrc574",
-                  "type": "link",
-                  "title": "CapCut",
-                  "url": "https://www.capcut.com/my-edit?start_tab=video"
-                },
-                {
-                  "id": "z8elhecx4",
-                  "type": "link",
-                  "title": "InVideo AI",
-                  "url": "https://ai.invideo.io/"
-                },
-                {
-                  "id": "xj7skgb52",
-                  "type": "link",
-                  "title": "Kaiber",
-                  "url": "https://kaiber.ai/"
-                },
-                {
-                  "id": "fmzsuiyee",
-                  "type": "link",
-                  "title": "Suno AI Komplettkurs (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
-                },
-                {
-                  "id": "9lyxsac8w",
-                  "type": "link",
-                  "title": "ChatGPT - Video GPT by VEED",
-                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
-                },
-                {
-                  "id": "zdae4rqwa",
-                  "type": "link",
-                  "title": "Pixlr Express",
-                  "url": "https://pixlr.com/de/express/"
-                },
-                {
-                  "id": "dz4jimbd4",
-                  "type": "link",
-                  "title": "ArtGuru",
-                  "url": "https://www.artguru.ai/de/"
-                },
-                {
-                  "id": "4jpsyqcz5",
-                  "type": "link",
-                  "title": "Refusion AI",
-                  "url": "https://refusion.ai/lander"
-                },
-                {
-                  "id": "aeu4efwi0",
-                  "type": "link",
-                  "title": "Google Bard",
-                  "url": "https://bard.google.com/"
-                },
-                {
-                  "id": "vagkqoh6z",
-                  "type": "link",
-                  "title": "ChatGPT",
-                  "url": "https://chat.openai.com/"
-                },
-                {
-                  "id": "l3sltbiin",
-                  "type": "link",
-                  "title": "Perplexity",
-                  "url": "https://www.perplexity.ai/"
-                },
-                {
-                  "id": "qvp1pmbbo",
-                  "type": "link",
-                  "title": "DeepSeek",
-                  "url": "https://chat.deepseek.com/"
-                },
-                {
-                  "id": "w3zvbn031",
-                  "type": "link",
-                  "title": "Hugging Face",
-                  "url": "https://huggingface.co/"
-                },
-                {
-                  "id": "8c97vr2v6",
-                  "type": "link",
-                  "title": "Udio AI",
-                  "url": "https://www.udio.com/home"
-                },
-                {
-                  "id": "uc00wq3f6",
-                  "type": "link",
-                  "title": "≻ Mubert Music",
-                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
-                },
-                {
-                  "id": "0citfrrvb",
-                  "type": "link",
-                  "title": "Revid AI - video zu musik",
-                  "url": "https://www.revid.ai/projects"
-                },
-                {
-                  "id": "ab4fvoyj9",
-                  "type": "link",
-                  "title": "Plazmapunk | AI Music Video Generator - Create",
-                  "url": "https://app.plazmapunk.com/"
-                },
-                {
-                  "id": "o2ofvsyrr",
-                  "type": "link",
-                  "title": "bild genratoren  AI",
-                  "url": "https://modelplayground.ai/"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "k0cwencgu",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "ye1ibhbqk",
-              "title": "Musik KI",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "u03jjp0vx",
-                  "type": "link",
-                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "6uww1exip",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "mr2yn68gt",
-              "title": "Suno",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "5zw9eauuk",
-                  "type": "link",
-                  "title": "Udio | AI Music Generator - Official Website",
-                  "url": "https://www.udio.com/my-creations"
                 }
               ]
             }

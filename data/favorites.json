@@ -1343,16 +1343,9 @@
           ]
         },
         {
-          "id": "jgqbym9no",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "4cx0pbuwj",
-              "title": "fgghg",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "8eeuyco7s",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "j9uyx3zxw",

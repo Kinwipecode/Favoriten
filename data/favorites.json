@@ -1085,25 +1085,6 @@
           ]
         },
         {
-          "id": "1sth0zwic",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "1vzuc8jwc",
-              "title": "Virt PC",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "sljbteadd",
-                  "type": "link",
-                  "title": "neu Citrix Gateway",
-                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "id": "t6g5wn8u3",
           "isSpacer": false,
           "projects": [
@@ -1742,59 +1723,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "38jvmocbq",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "tpapebuke",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "iwd7sywpi",
-              "title": "Hosttech",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "lu0g3tqo3",
-                  "type": "link",
-                  "title": "Webhosting, Homepage, Server, Onlinespeicher, Webbaukasten & Domains: 1blu",
-                  "url": "https://www.1blu.de/?gad_source=1&gclid=Cj0KCQjw6auyBhDzARIsALIo6v_siiWhXT53QPaGIUPoIjb-VSDWQzHYnybyeVSfVplQLS9vm_o6a6UaAqGKEALw_wcB"
-                },
-                {
-                  "id": "jx8q4cyoz",
-                  "type": "link",
-                  "title": "(2) 01 Oracle Cloud Gratis VPS Server, Anmeldung und Einrichtung - YouTube",
-                  "url": "https://www.youtube.com/watch?v=3YsoTnsg8E0"
-                },
-                {
-                  "id": "4u7hzdni3",
-                  "type": "link",
-                  "title": "Microsoft Azure",
-                  "url": "https://portal.azure.com/#home"
-                },
-                {
-                  "id": "tns495b9k",
-                  "type": "link",
-                  "title": "(8) How to Create Microsoft Azure 12 Months FREE RDP Virtual Machine - YouTube",
-                  "url": "https://www.youtube.com/watch?v=Ty7lslVYc5s"
-                },
-                {
-                  "id": "ir1p02ikb",
-                  "type": "link",
-                  "title": "Copilot AI ChatGPT",
-                  "url": "https://chatgpt.com/g/g-myd1ckFtF-copilot-ai"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "c7oi4x0dt",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "j9b3d3348",

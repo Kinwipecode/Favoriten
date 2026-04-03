@@ -357,6 +357,12 @@
           "type": "link",
           "title": "Dreamina",
           "url": "https://dreamina.capcut.com/ai-tool/generate"
+        },
+        {
+          "id": "c750fvpye",
+          "type": "folder",
+          "title": "test",
+          "children": []
         }
       ]
     },

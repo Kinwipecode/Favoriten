@@ -489,17 +489,7 @@
           ]
         },
         {
-          "id": "i0kl0sgjp",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "nn7q9iwo5",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "vlgegspli",
+          "id": "02ohu52jx",
           "isSpacer": false,
           "projects": [
             {
@@ -516,6 +506,16 @@
               ]
             }
           ]
+        },
+        {
+          "id": "nn7q9iwo5",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "2db842a2s",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "k3kzgj5l2",

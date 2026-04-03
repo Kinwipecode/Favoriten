@@ -636,7 +636,8 @@
               "title": "Hugging Face",
               "url": "https://huggingface.co/"
             }
-          ]
+          ],
+          "collapsed": true
         },
         {
           "id": "n7ecwudwy",

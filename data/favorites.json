@@ -500,6 +500,38 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "o1dwufinq",
+              "title": "Video",
+              "items": [
+                {
+                  "id": "c1qx2wgww",
+                  "title": "CapCut",
+                  "url": "https://www.capcut.com/my-edit?start_tab=video"
+                },
+                {
+                  "id": "zip6obkiw",
+                  "title": "InVideo AI",
+                  "url": "https://ai.invideo.io/"
+                },
+                {
+                  "id": "ignrrwgah",
+                  "title": "Kaiber",
+                  "url": "https://kaiber.ai/"
+                },
+                {
+                  "id": "b1b9t1vql",
+                  "title": "Suno AI Komplettkurs (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
+                },
+                {
+                  "id": "0lqp0doxb",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -879,38 +911,6 @@
                   "id": "d0o2skrac",
                   "title": "BIM & IFC",
                   "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "o1dwufinq",
-              "title": "Video",
-              "items": [
-                {
-                  "id": "c1qx2wgww",
-                  "title": "CapCut",
-                  "url": "https://www.capcut.com/my-edit?start_tab=video"
-                },
-                {
-                  "id": "zip6obkiw",
-                  "title": "InVideo AI",
-                  "url": "https://ai.invideo.io/"
-                },
-                {
-                  "id": "ignrrwgah",
-                  "title": "Kaiber",
-                  "url": "https://kaiber.ai/"
-                },
-                {
-                  "id": "b1b9t1vql",
-                  "title": "Suno AI Komplettkurs (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
-                },
-                {
-                  "id": "0lqp0doxb",
-                  "title": "ChatGPT - Video GPT by VEED",
-                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
                 }
               ],
               "collapsed": true

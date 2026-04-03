@@ -510,19 +510,6 @@
                   "url": "https://www.udio.com/my-creations"
                 }
               ]
-            },
-            {
-              "id": "y53l6efrg",
-              "title": "Musik",
-              "collapsed": true,
-              "items": [
-                {
-                  "id": "kykkvc3y1",
-                  "type": "link",
-                  "title": "bild genratoren  AI",
-                  "url": "https://modelplayground.ai/"
-                }
-              ]
             }
           ]
         },
@@ -1812,9 +1799,23 @@
           ]
         },
         {
-          "id": "97alc9ods",
-          "isSpacer": true,
-          "projects": []
+          "id": "lgkbzb6w2",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "y53l6efrg",
+              "title": "Musik",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "kykkvc3y1",
+                  "type": "link",
+                  "title": "bild genratoren  AI",
+                  "url": "https://modelplayground.ai/"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "kg5nnkbsz",

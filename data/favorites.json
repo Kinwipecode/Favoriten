@@ -497,25 +497,6 @@
           "collapsed": true
         },
         {
-          "id": "9pjr0ygb8",
-          "title": "KI",
-          "items": [
-            {
-              "id": "d6c8esj6i",
-              "type": "link",
-              "title": "bild genratoren  AI",
-              "url": "https://modelplayground.ai/"
-            }
-          ],
-          "collapsed": true
-        },
-        {
-          "id": "3akj7oymm",
-          "title": "",
-          "items": [],
-          "isSpacer": true
-        },
-        {
           "id": "e8mybe6z4",
           "title": "Video",
           "items": [
@@ -551,6 +532,18 @@
             }
           ],
           "collapsed": true
+        },
+        {
+          "id": "3akj7oymm",
+          "title": "",
+          "items": [],
+          "isSpacer": true
+        },
+        {
+          "id": "vqo622316",
+          "title": "",
+          "items": [],
+          "isSpacer": true
         },
         {
           "id": "u90iipaxp",

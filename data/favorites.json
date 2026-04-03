@@ -143,16 +143,16 @@
       "title": "AI",
       "items": [
         {
-          "id": "y7o8wjhic",
-          "type": "link",
-          "title": "Bard",
-          "url": "https://bard.google.com/"
-        },
-        {
           "id": "85lygscnj",
           "type": "link",
           "title": "Copilot  Bing-Chat mit GPT-4",
           "url": "https://www.bing.com/search?form=MW00X7&ef_id=_k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&OCID=AIDcmm3kkv2p4j_SEM__k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&gad_source=1&gclid=Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB&q=Bing+AI&showconv=1"
+        },
+        {
+          "id": "y7o8wjhic",
+          "type": "link",
+          "title": "Bard",
+          "url": "https://bard.google.com/"
         },
         {
           "id": "nyx8dfj7j",

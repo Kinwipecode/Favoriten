@@ -1717,6 +1717,7 @@
     "itemBg": "#C0C0C0",
     "itemFontSize": "1",
     "itemFontWeight": "bold",
-    "itemFontStyle": "normal"
+    "itemFontStyle": "normal",
+    "rowTitleColor": "#00FF00"
   }
 }

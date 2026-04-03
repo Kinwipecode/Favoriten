@@ -1086,7 +1086,8 @@
               "title": "IGH - Publizierte Kataloge",
               "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
             }
-          ]
+          ],
+          "collapsed": true
         },
         {
           "id": "yut0gbr10",

@@ -1753,9 +1753,9 @@
     "rowBg": "#2d3436",
     "itemBg": "#C0C0C0",
     "buttonOrder": [
+      "btn-save",
       "btn-load",
       "btn-add-project",
-      "btn-save",
       "btn-import",
       "btn-export",
       "btn-github",

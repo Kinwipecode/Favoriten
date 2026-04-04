@@ -361,13 +361,7 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "paruxx0qb",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "p1enkawv1",
               "title": "Musik KI",
@@ -488,7 +482,13 @@
                 }
               ],
               "collapsed": true
-            },
+            }
+          ]
+        },
+        {
+          "id": "paruxx0qb",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "o1dwufinq",
               "title": "Video",
@@ -3109,7 +3109,8 @@
       "btn-info",
       "btn-collapse-gaps",
       "btn-add-row",
-      "btn-settings"
+      "btn-settings",
+      "btn-move-mode"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

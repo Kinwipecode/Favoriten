@@ -2911,14 +2911,8 @@
             {
               "id": "iem1bqsr6",
               "title": "maro",
-              "items": [
-                {
-                  "id": "yem2o961o",
-                  "title": ".holidaycheck riu-palace-tikida-taghazout  89%",
-                  "url": "https://www.holidaycheck.ch/hr/bewertungen-hotel-riu-palace-tikida-taghazout/0e233e4e-ece4-4790-b844-56982f2aa8d5?sort=entrydate"
-                }
-              ],
-              "collapsed": false
+              "items": [],
+              "collapsed": true
             }
           ]
         }

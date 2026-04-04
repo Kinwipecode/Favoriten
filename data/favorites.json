@@ -2934,8 +2934,15 @@
         },
         {
           "id": "4lmqjl5db",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "6n2mkofre",
+              "title": "fdgg",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         }
       ],
       "order": 1,

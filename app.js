@@ -70,13 +70,29 @@ async function loadFromGitHub() {
 
 async function saveData() {
     const payload = { rows: state.rows, config: state.config };
+    const btn = document.getElementById('btn-save');
+    if (btn) btn.disabled = true;
+
     try {
-        await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        const res = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        if (res.ok) {
+            showSavedFeedback();
+            if (btn) btn.disabled = false;
+            return;
+        }
     } catch (e) {
-        if (ghToken) await saveToGitHub();
-        else localStorage.setItem('favoriten_backup', JSON.stringify(payload));
+        // Fallback for online mode
     }
-    showSavedFeedback();
+
+    if (ghToken) {
+        const success = await saveToGitHub();
+        if (success) showSavedFeedback();
+        else alert('GitHub Speicherung fehlgeschlagen. Bitte Token prüfen!');
+    } else {
+        localStorage.setItem('favoriten_backup', JSON.stringify(payload));
+        alert('Kein Server/Token gefunden. Daten im Browser-Cache gesichert.');
+    }
+    if (btn) btn.disabled = false;
 }
 
 async function saveToGitHub() {
@@ -84,8 +100,16 @@ async function saveToGitHub() {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify({ rows: state.rows, config: state.config }, null, 2))));
     try {
         const res = await fetch(url, { method: 'PUT', headers: { 'Authorization': `token ${ghToken}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Update', content, sha: ghSha }) });
-        if (res.ok) { const d = await res.json(); ghSha = d.content.sha; }
-    } catch (e) { console.error(e); }
+        if (res.ok) {
+            const d = await res.json();
+            ghSha = d.content.sha;
+            return true;
+        }
+        return false;
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
 }
 
 function migrate(data) {

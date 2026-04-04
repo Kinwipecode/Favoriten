@@ -2864,8 +2864,15 @@
         },
         {
           "id": "dohrli3k1",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "3ekslppa7",
+              "title": "test hub",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         }
       ]
     }

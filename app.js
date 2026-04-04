@@ -194,9 +194,20 @@ function renderBoard() {
                         handleColDragStart(e, p.id);
                     };
                     col.ondragend = handleDragEnd;
-                    col.ondragover = (e) => { if (!state.moveMode.active) { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; col.classList.add('drag-over-external'); } };
+                    col.ondragover = (e) => {
+                        if (!state.moveMode.active && !document.body.classList.contains('is-dragging-item')) {
+                            e.preventDefault();
+                            e.dataTransfer.dropEffect = 'copy';
+                            col.classList.add('drag-over-external');
+                        }
+                    };
                     col.ondragleave = () => col.classList.remove('drag-over-external');
-                    col.ondrop = (e) => { col.classList.remove('drag-over-external'); handleExternalDrop(e, p.id); };
+                    col.ondrop = (e) => {
+                        if (!document.body.classList.contains('is-dragging-item')) {
+                            col.classList.remove('drag-over-external');
+                            handleExternalDrop(e, p.id);
+                        }
+                    };
                     col.onclick = (e) => {
                         if (state.moveMode.active) { e.stopPropagation(); toggleMoveSelect('group', p.id); }
                         else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('group', p.id); }

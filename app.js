@@ -144,7 +144,7 @@ function renderBoard() {
                 <div class="row-header-main" onclick="if(!event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <input type="checkbox" ${row.collapsed ? "checked" : ""} readonly>
                     <input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
-                    <input type="text" class="row-title-input" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)">
+                    <input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">
                 </div>
                 <div class="row-actions">
                     <button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button>

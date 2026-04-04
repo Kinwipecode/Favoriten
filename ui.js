@@ -135,16 +135,14 @@ window.setTheme = (type) => {
 
 
 const buttonMetadata = {
-    'btn-load': { icon: 'fa-solid fa-rotate-left', text: 'Lokal Laden', class: 'btn btn-secondary', title: 'Laden von diesem PC' },
     'btn-pull-cloud': { icon: 'fa-solid fa-cloud-arrow-down', text: 'Cloud Download', class: 'btn btn-secondary', title: 'Daten von GitHub auf diesen PC laden (überschreibt lokal)' },
     'btn-save': { icon: 'fa-solid fa-floppy-disk', text: 'Speichern', class: 'btn btn-secondary' },
-    'btn-import': { icon: 'fa-solid fa-file-import', text: 'Importieren', class: 'btn btn-secondary' },
+    'btn-import': { icon: 'fa-solid fa-file-import', text: 'Importieren', class: 'btn btn-secondary', title: 'HTML Bookmarks Datei importieren' },
     'btn-export': { icon: 'fa-solid fa-file-export', text: 'Exportieren', class: 'btn btn-secondary' },
     'btn-github': { icon: 'fa-brands fa-github', text: 'Sync-Token', class: 'btn btn-secondary', style: 'background:#24292e; color:white;' },
     'btn-info': { icon: 'fa-solid fa-circle-info', text: '', class: 'btn btn-secondary', title: 'Info & Shortcuts' },
-    'btn-collapse-gaps': { icon: 'fa-solid fa-compress', text: 'Lücken schließen', class: 'btn btn-secondary', title: 'Alle Lücken im Raster entfernen' },
-    'btn-add-row': { icon: 'fa-solid fa-layer-group', text: 'Neue Zeile', class: 'btn btn-secondary' },
-    'btn-add-spacer': { icon: 'fa-solid fa-plus-square', text: 'Lücke einfügen', class: 'btn btn-secondary', title: 'Eine leere Position am Ende der letzten Zeile hinzufügen' },
+    'btn-collapse-gaps': { icon: 'fa-solid fa-compress-arrows-alt', text: 'Lücken schließen', class: 'btn btn-secondary', title: 'Alle Lücken in allen Zeilen gleichzeitig entfernen' },
+    'btn-add-row': { icon: 'fa-solid fa-layer-group', text: 'Neue Zeile', class: 'btn btn-secondary', title: 'Eine neue horizontale Zeile hinzufügen' },
     'btn-add-project': { icon: 'fa-solid fa-plus', text: 'Neue Fav. Gruppe', class: 'btn btn-accent' },
     'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Verschieben', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
     'btn-multi-delete': { icon: 'fa-solid fa-eraser', text: 'Mehrere Löschen', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links gleichzeitig löschen' },

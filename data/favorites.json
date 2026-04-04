@@ -2946,16 +2946,9 @@
       "title": "Neue Zeile",
       "projects": [
         {
-          "id": "nkzxv2k0n",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "09zj5br4u",
-              "title": "fgdfg",
-              "items": [],
-              "collapsed": false
-            }
-          ]
+          "id": "hwuwc6hv9",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 50,

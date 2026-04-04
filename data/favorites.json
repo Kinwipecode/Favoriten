@@ -1372,11 +1372,6 @@
         },
         {
           "id": "5pfo7o3st",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "8038l4gi6",
           "isSpacer": false,
           "projects": [
             {
@@ -1392,6 +1387,11 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "dl4dng52e",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 40

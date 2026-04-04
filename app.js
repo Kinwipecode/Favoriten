@@ -22,7 +22,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-load', 'btn-pull-cloud', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-spacer', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
+            'btn-pull-cloud', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
         ]
     }
 };
@@ -495,6 +495,7 @@ window.showContextMenu = (e, type, id) => {
         const row = state.rows.find(r => r.id === id);
         items = [
             { title: row.title, type: 'header' },
+            { icon: 'fa-rotate', text: 'Lokal laden', action: () => loadData().then(() => renderBoard()) },
             { icon: 'fa-compress', text: 'Lücken schließen', action: () => collapseRow(id) },
             {
                 icon: 'fa-plus', text: 'Neue Fav. Gruppe', action: () => {

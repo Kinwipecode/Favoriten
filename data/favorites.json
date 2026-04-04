@@ -2928,6 +2928,18 @@
               "collapsed": false
             }
           ]
+        },
+        {
+          "id": "onz0e0a0g",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "l8oky2lfw",
+              "title": "11",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         }
       ],
       "order": 1
@@ -2955,7 +2967,8 @@
       "btn-move-mode",
       "btn-pull-cloud",
       "btn-add-spacer",
-      "btn-sort-rows"
+      "btn-sort-rows",
+      "btn-multi-delete"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

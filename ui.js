@@ -32,6 +32,12 @@ window.initSortable = () => {
                     const itemEl = evt.item;
                     const fromCol = evt.from.closest('.column');
                     const toCol = evt.to.closest('.column');
+
+                    if (!fromCol || !toCol) {
+                        renderBoard();
+                        return;
+                    }
+
                     const itemId = itemEl.dataset.id;
                     const fromProjectId = fromCol.dataset.projectId;
                     const toProjectId = toCol.dataset.projectId;
@@ -45,13 +51,13 @@ window.initSortable = () => {
                             const [item] = fromProject.items.splice(itemIdx, 1);
                             toProject.items.splice(evt.newIndex, 0, item);
                             saveData();
-                            // Re-render board to ensure IDs and listeners are fresh
-                            setTimeout(() => renderBoard(), 10);
                         }
                     }
+                    // Always re-render to sync DOM with data (especially for invalid drops)
+                    renderBoard();
                 } catch (err) {
                     console.error("Sortable error:", err);
-                    renderBoard(); // Recovery
+                    renderBoard();
                 }
             }
         });

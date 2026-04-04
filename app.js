@@ -308,14 +308,29 @@ function handleRowDrop(e, targetRowId, explicitSlotId = null) {
     if (!draggedProjectId) return;
     const row = state.rows.find(r => r.id === targetRowId);
     let slot = explicitSlotId ? row.projects.find(s => s.id === explicitSlotId) : null;
+
     if (!slot) {
         const c = e.currentTarget.closest(".row-projects");
         const idx = getGridSlotIndex(c, e.clientX, e.clientY);
-        while (row.projects.length <= idx) row.projects.push({ id: generateId(), isSpacer: true, projects: [] });
+        if (idx >= row.projects.length) {
+            // Drop outside slots - don't move or add spacer
+            renderBoard();
+            return;
+        }
         slot = row.projects[idx];
     }
-    const p = findProjectAndClear(draggedProjectId); if (!p) return;
-    if (slot.isSpacer) { slot.isSpacer = false; slot.projects = [p]; } else slot.projects.push(p);
+
+    if (!slot) { renderBoard(); return; }
+
+    const p = findProjectAndClear(draggedProjectId);
+    if (!p) { renderBoard(); return; }
+
+    if (slot.isSpacer) {
+        slot.isSpacer = false;
+        slot.projects = [p];
+    } else {
+        slot.projects.push(p);
+    }
     renderBoard(); saveData();
 }
 function getGridSlotIndex(container, x, y) { const slots = [...container.children]; for (let i = 0; i < slots.length; i++) { const b = slots[i].getBoundingClientRect(); if (x >= b.left && x <= b.right && y >= b.top && y <= b.bottom) return i; } return slots.length; }

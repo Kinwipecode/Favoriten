@@ -188,6 +188,9 @@ function renderBoard() {
                     col.draggable = !state.moveMode.active && !state.deleteMode.active;
                     col.ondragstart = (e) => handleColDragStart(e, p.id);
                     col.ondragend = handleDragEnd;
+                    col.ondragover = (e) => { if (!state.moveMode.active) { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; col.classList.add('drag-over-external'); } };
+                    col.ondragleave = () => col.classList.remove('drag-over-external');
+                    col.ondrop = (e) => { col.classList.remove('drag-over-external'); handleExternalDrop(e, p.id); };
                     col.onclick = (e) => {
                         if (state.moveMode.active) { e.stopPropagation(); toggleMoveSelect('group', p.id); }
                         else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('group', p.id); }
@@ -219,6 +222,30 @@ function renderBoard() {
         board.appendChild(rowEl);
     });
     if (window.initSortable) initSortable();
+}
+
+async function handleExternalDrop(e, projectId) {
+    const url = e.dataTransfer.getData('URL') || e.dataTransfer.getData('text/uri-list') || e.dataTransfer.getData('text/plain');
+    if (url && (url.startsWith('http') || url.startsWith('www'))) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const finalUrl = url.startsWith('www') ? 'https://' + url : url;
+        let title = finalUrl;
+
+        const html = e.dataTransfer.getData('text/html');
+        if (html) {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const a = doc.querySelector('a');
+            if (a) title = a.textContent.trim() || finalUrl;
+        }
+
+        const p = findProject(projectId);
+        if (p) {
+            p.items.push({ id: generateId(), title: title.substring(0, 100), url: finalUrl });
+            renderBoard(); saveData();
+        }
+    }
 }
 
 
@@ -539,6 +566,18 @@ window.showContextMenu = (e, type, id) => {
         items = [
             { title: p.title, type: 'header' },
             { icon: 'fa-plus', text: 'Favorit hinzufügen', action: () => addItem(id) },
+            {
+                icon: 'fa-paste', text: 'Link aus Zwischenablage', action: async () => {
+                    try {
+                        const text = await navigator.clipboard.readText();
+                        if (text && (text.startsWith('http') || text.startsWith('www'))) {
+                            const u = text.startsWith('www') ? 'https://' + text : text;
+                            p.items.push({ id: generateId(), title: u, url: u });
+                            renderBoard(); saveData();
+                        } else alert('Keine gültige URL in der Zwischenablage.');
+                    } catch (e) { alert('Zugriff auf Zwischenablage verweigert.'); }
+                }
+            },
             { icon: 'fa-arrows-up-down-left-right', text: 'Verschieben Modus', action: () => toggleMoveMode() },
             { divider: true },
             { icon: 'fa-trash', text: 'Gruppe löschen', action: () => deleteProject(id), class: 'danger' }

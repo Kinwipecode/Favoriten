@@ -2953,7 +2953,13 @@
     {
       "id": "ymylbqwfj",
       "title": "Neue Zeile",
-      "projects": [],
+      "projects": [
+        {
+          "id": "nkzxv2k0n",
+          "isSpacer": true,
+          "projects": []
+        }
+      ],
       "order": 50
     }
   ],

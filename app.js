@@ -137,6 +137,7 @@ function renderBoard() {
 
     sortedRows.forEach(row => {
         const rowEl = document.createElement("div"); rowEl.className = "board-row";
+        rowEl.oncontextmenu = (e) => showContextMenu(e, 'row', row.id);
         rowEl.innerHTML = `<div class="row-header">
                 <div class="row-header-main">
                     <input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
@@ -169,6 +170,7 @@ function renderBoard() {
             } else {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");
+                    col.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'group', p.id); };
                     const moveSelected = state.moveMode.active && state.moveMode.type === 'group' && state.moveMode.selectedIds.includes(p.id);
                     const deleteSelected = state.deleteMode.active && state.deleteMode.type === 'group' && state.deleteMode.selectedIds.includes(p.id);
 
@@ -185,6 +187,7 @@ function renderBoard() {
                     const b = col.querySelector(".column-body");
                     p.items.forEach(it => {
                         const i = document.createElement("div");
+                        i.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'link', it.id); };
                         const mSel = state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id);
                         const dSel = state.deleteMode.active && state.deleteMode.type === 'link' && state.deleteMode.selectedIds.includes(it.id);
 
@@ -205,6 +208,7 @@ function renderBoard() {
         board.appendChild(rowEl);
     });
 }
+
 
 window.importFromHTML = (html, targetRowId) => {
     const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -454,5 +458,97 @@ window.addGroupAtSlot = (slotId) => {
         }
     }
 };
+
+window.showContextMenu = (e, type, id) => {
+    e.preventDefault();
+    const menu = document.getElementById('context-menu');
+    if (!menu) return;
+
+    menu.innerHTML = '';
+    let items = [];
+
+    if (type === 'row') {
+        const row = state.rows.find(r => r.id === id);
+        items = [
+            { title: row.title, type: 'header' },
+            { icon: 'fa-compress', text: 'Lücken schließen', action: () => collapseRow(id) },
+            {
+                icon: 'fa-plus', text: 'Neue Fav. Gruppe', action: () => {
+                    const t = prompt('Projekt Name:');
+                    if (t) {
+                        row.projects.push({ id: generateId(), isSpacer: false, projects: [{ id: generateId(), title: t, items: [], collapsed: true }] });
+                        renderBoard(); saveData();
+                    }
+                }
+            },
+            {
+                icon: 'fa-plus-square', text: 'Lücke einfügen', action: () => {
+                    row.projects.push({ id: generateId(), isSpacer: true, projects: [] });
+                    renderBoard(); saveData();
+                }
+            },
+            { icon: 'fa-file-import', text: 'Importieren', action: () => btnHandlers['btn-import']() },
+            {
+                icon: 'fa-file-export', text: 'Exportieren hieraus', action: () => {
+                    const html = convertToHTMLBookmarks([row]);
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+                    a.download = `favoriten_${row.title.replace(/\s+/g, '_')}.html`;
+                    a.click();
+                }
+            },
+            { divider: true },
+            { icon: 'fa-trash', text: 'Reihe löschen', action: () => deleteRow(id), class: 'danger' }
+        ];
+    } else if (type === 'group') {
+        const p = findProject(id);
+        items = [
+            { title: p.title, type: 'header' },
+            { icon: 'fa-plus', text: 'Favorit hinzufügen', action: () => addItem(id) },
+            { icon: 'fa-arrows-up-down-left-right', text: 'Verschieben Modus', action: () => toggleMoveMode() },
+            { divider: true },
+            { icon: 'fa-trash', text: 'Gruppe löschen', action: () => deleteProject(id), class: 'danger' }
+        ];
+    } else if (type === 'link') {
+        items = [
+            { icon: 'fa-pen', text: 'Bearbeiten', action: () => editItem(id) },
+            { icon: 'fa-trash', text: 'Löschen', action: () => deleteItem(id), class: 'danger' }
+        ];
+    }
+
+    items.forEach(item => {
+        if (item.divider) {
+            const div = document.createElement('div'); div.className = 'context-menu-divider';
+            menu.appendChild(div);
+        } else if (item.type === 'header') {
+            const title = document.createElement('div'); title.className = 'context-menu-title';
+            title.textContent = item.title;
+            menu.appendChild(title);
+        } else {
+            const el = document.createElement('div');
+            el.className = `context-menu-item ${item.class || ''}`;
+            el.innerHTML = `<i class="fa-solid ${item.icon}"></i> ${item.text}`;
+            el.onclick = () => { item.action(); hideContextMenu(); };
+            menu.appendChild(el);
+        }
+    });
+
+    menu.classList.remove('hidden');
+
+    // Position menu
+    const x = e.clientX, y = e.clientY;
+    const w = window.innerWidth, h = window.innerHeight;
+    const mw = menu.offsetWidth, mh = menu.offsetHeight;
+
+    menu.style.left = (x + mw > w ? x - mw : x) + 'px';
+    menu.style.top = (y + mh > h ? y - mh : y) + 'px';
+};
+
+window.hideContextMenu = () => {
+    document.getElementById('context-menu')?.classList.add('hidden');
+};
+
+document.addEventListener('click', hideContextMenu);
+document.addEventListener('scroll', hideContextMenu, true);
 
 init();

@@ -179,6 +179,7 @@ function renderBoard() {
             } else {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");
+                    col.dataset.projectId = p.id;
                     col.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'group', p.id); };
                     const moveSelected = state.moveMode.active && state.moveMode.type === 'group' && state.moveMode.selectedIds.includes(p.id);
                     const deleteSelected = state.deleteMode.active && state.deleteMode.type === 'group' && state.deleteMode.selectedIds.includes(p.id);
@@ -196,6 +197,7 @@ function renderBoard() {
                     const b = col.querySelector(".column-body");
                     p.items.forEach(it => {
                         const i = document.createElement("div");
+                        i.dataset.id = it.id;
                         i.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'link', it.id); };
                         const mSel = state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id);
                         const dSel = state.deleteMode.active && state.deleteMode.type === 'link' && state.deleteMode.selectedIds.includes(it.id);
@@ -216,6 +218,7 @@ function renderBoard() {
         });
         board.appendChild(rowEl);
     });
+    if (window.initSortable) initSortable();
 }
 
 

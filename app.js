@@ -121,11 +121,12 @@ function migrate(data) {
         data.rows.forEach((r, index) => {
             if (!r.projects) r.projects = [];
             if (r.order === undefined) r.order = (index + 1) * 10;
+            if (r.collapsed === undefined) r.collapsed = false;
             r.projects = r.projects.map(p => (p.projects && Array.isArray(p.projects)) ? p : (p.isSpacer ? { id: generateId(), isSpacer: true, projects: [] } : { id: generateId(), isSpacer: false, projects: [p] }));
         });
         return data.rows;
     }
-    return [{ id: generateId(), title: 'Hauptzeile', projects: [], order: 10 }];
+    return [{ id: generateId(), title: 'Hauptzeile', projects: [], order: 10, collapsed: false }];
 }
 
 function renderBoard() {
@@ -136,10 +137,12 @@ function renderBoard() {
     const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
 
     sortedRows.forEach(row => {
-        const rowEl = document.createElement("div"); rowEl.className = "board-row";
+        const rowEl = document.createElement("div");
+        rowEl.className = `board-row ${row.collapsed ? "collapsed" : ""}`;
         rowEl.oncontextmenu = (e) => showContextMenu(e, 'row', row.id);
         rowEl.innerHTML = `<div class="row-header">
-                <div class="row-header-main">
+                <div class="row-header-main" onclick="if(!event.target.closest('button') && !event.target.closest('input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                    <input type="checkbox" ${row.collapsed ? "checked" : ""} readonly>
                     <input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
                     <input type="text" class="row-title-input" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)">
                 </div>
@@ -277,6 +280,7 @@ window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === i
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
 window.sortRows = () => { renderBoard(); };
 window.deleteRow = (id) => { if (confirm('Reihe löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
+window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(); } };
 window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
 window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
 window.deleteProject = (id) => { findProjectAndClear(id); renderBoard(); saveData(); };

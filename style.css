@@ -227,12 +227,15 @@ body {
 .row-title-input {
     background: transparent;
     border: none;
-    font-size: var(--row-font-size, 1.5rem);
+    font-size: var(--row-font-size, 1.3rem);
     font-weight: 800;
     color: var(--row-title-color, var(--text-color));
-    flex: 1;
+    flex: none;
+    min-width: 5ch;
+    max-width: 50%;
     outline: none;
-    transition: color 0.2s, font-size 0.2s;
+    transition: color 0.2s;
+    font-family: inherit;
 }
 
 .row-header input::-webkit-outer-spin-button,

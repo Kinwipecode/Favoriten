@@ -598,14 +598,20 @@ window.showContextMenu = (e, type, id) => {
             { icon: 'fa-plus', text: 'Favorit hinzufügen', action: () => addItem(id) },
             {
                 icon: 'fa-paste', text: 'Link aus Zwischenablage', action: async () => {
-                    if (!navigator.clipboard || !navigator.clipboard.readText) {
-                        alert('Deine Browser-Sicherheit (oder fehlendes HTTPS) verhindert diesen Zugriff. Bitte nutze "Favorit hinzufügen".');
-                        return;
-                    }
+                    let text = "";
                     try {
-                        let text = await navigator.clipboard.readText();
-                        if (text) text = text.trim();
-                        if (text && (text.includes('.') || text.startsWith('http'))) {
+                        if (navigator.clipboard && navigator.clipboard.readText) {
+                            text = await navigator.clipboard.readText();
+                        }
+                    } catch (e) { console.warn("Clipboard access denied, using prompt instead."); }
+
+                    if (!text || !text.includes('.')) {
+                        text = prompt('Link einfügen (Strg+V oder URL eintippen):');
+                    }
+
+                    if (text) {
+                        text = text.trim();
+                        if (text.includes('.') || text.startsWith('http')) {
                             const u = (text.startsWith('http') || text.startsWith('www')) ?
                                 (text.startsWith('www') ? 'https://' + text : text) :
                                 'https://' + text;
@@ -615,10 +621,7 @@ window.showContextMenu = (e, type, id) => {
                                 p.items.push({ id: generateId(), title: cleanTitle(u), url: u });
                                 renderBoard(); saveData();
                             }
-                        } else alert('Keine gültige URL in der Zwischenablage (z.B. google.de).');
-                    } catch (e) {
-                        console.error(e);
-                        alert('Zugriff verweigert. Bitte erlaube der Seite Zugriff auf die Zwischenablage.');
+                        }
                     }
                 }
             },

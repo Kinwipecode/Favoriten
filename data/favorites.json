@@ -1382,7 +1382,8 @@
             }
           ]
         }
-      ]
+      ],
+      "order": 40
     },
     {
       "id": "wf2ec3g0j",
@@ -2898,7 +2899,8 @@
             }
           ]
         }
-      ]
+      ],
+      "order": 20
     },
     {
       "id": "yawanswyh",
@@ -2922,7 +2924,8 @@
             }
           ]
         }
-      ]
+      ],
+      "order": 30
     }
   ],
   "config": {
@@ -2946,7 +2949,8 @@
       "btn-settings",
       "btn-move-mode",
       "btn-pull-cloud",
-      "btn-add-spacer"
+      "btn-add-spacer",
+      "btn-sort-rows"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

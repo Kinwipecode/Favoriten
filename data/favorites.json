@@ -2936,16 +2936,9 @@
           ]
         },
         {
-          "id": "u8w3g4rjj",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "yt7z2oz02",
-              "title": "11s",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "jjp8dxne4",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 1

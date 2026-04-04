@@ -116,7 +116,13 @@ async function saveToGitHub() {
 }
 
 function migrate(data) {
-    if (data.config) state.config = { ...state.config, ...data.config };
+    if (data.config) {
+        state.config = { ...state.config, ...data.config };
+        // Force remove unwanted buttons from existing config
+        if (state.config.buttonOrder) {
+            state.config.buttonOrder = state.config.buttonOrder.filter(id => id !== 'btn-load' && id !== 'btn-add-spacer');
+        }
+    }
     if (data.rows && data.rows.length > 0) {
         data.rows.forEach((r, index) => {
             if (!r.projects) r.projects = [];

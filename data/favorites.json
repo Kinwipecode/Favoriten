@@ -1389,7 +1389,8 @@
           ]
         }
       ],
-      "order": 40
+      "order": 40,
+      "collapsed": false
     },
     {
       "id": "wf2ec3g0j",
@@ -2906,7 +2907,8 @@
           ]
         }
       ],
-      "order": 20
+      "order": 20,
+      "collapsed": false
     },
     {
       "id": "yawanswyh",
@@ -2941,7 +2943,8 @@
           "projects": []
         }
       ],
-      "order": 1
+      "order": 1,
+      "collapsed": true
     },
     {
       "id": "ymylbqwfj",
@@ -2960,7 +2963,8 @@
           ]
         }
       ],
-      "order": 50
+      "order": 50,
+      "collapsed": false
     }
   ],
   "config": {

@@ -2934,8 +2934,15 @@
         },
         {
           "id": "6xcfqsr4f",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "rrw2zpt09",
+              "title": "rtz67ze",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         }
       ],
       "order": 1,

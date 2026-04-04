@@ -2930,28 +2930,14 @@
           ]
         },
         {
-          "id": "onz0e0a0g",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "l8oky2lfw",
-              "title": "11",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "p85qcxqua",
+          "isSpacer": true,
+          "projects": []
         },
         {
-          "id": "q1sls5m5w",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "ftj8b6n9c",
-              "title": "fdgh",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "2umndcg93",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 1

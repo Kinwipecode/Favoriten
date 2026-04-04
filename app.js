@@ -242,7 +242,27 @@ window.importFromHTML = (html, targetRowId) => {
     renderBoard(); saveData();
 };
 
-function showSavedFeedback() { const btn = document.getElementById('btn-save'); if (btn) { const o = btn.innerHTML; btn.innerHTML = '✅ OK'; setTimeout(() => btn.innerHTML = o, 1500); } }
+function showSavedFeedback() {
+    const btn = document.getElementById('btn-save');
+    if (!btn) return;
+
+    // Store original HTML if NOT already in OK state
+    if (!btn.dataset.originalHtml) {
+        btn.dataset.originalHtml = btn.innerHTML;
+    }
+
+    btn.innerHTML = '✅ OK';
+    btn.classList.add('btn-success-anim'); // Add visual feedback if needed
+
+    // Clear any existing timeout to avoid premature resets or getting stuck
+    if (btn.feedbackTimeout) clearTimeout(btn.feedbackTimeout);
+
+    btn.feedbackTimeout = setTimeout(() => {
+        btn.innerHTML = btn.dataset.originalHtml;
+        delete btn.dataset.originalHtml;
+        btn.feedbackTimeout = null;
+    }, 2000);
+}
 let draggedItem = null, draggedProjectId = null;
 function handleColDragStart(e, projectId) { draggedProjectId = projectId; e.target.classList.add("dragging-col"); }
 function handleDragEnd(e) { e.target.classList.remove("dragging-col"); draggedProjectId = null; document.querySelectorAll(".column, .row-projects, .grid-slot").forEach(el => el.classList.remove("drag-over", "drag-over-slot")); }

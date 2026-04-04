@@ -369,7 +369,10 @@ window.editItem = (id) => {
 function cleanTitle(url) {
     if (!url) return "";
     let clean = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
-    if (clean.endsWith('/')) clean = clean.slice(0, -1);
+    const splitIndex = clean.search(/\/|\?|#/);
+    if (splitIndex !== -1) {
+        clean = clean.substring(0, splitIndex);
+    }
     return clean.substring(0, 50);
 }
 

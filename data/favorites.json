@@ -501,6 +501,11 @@
                   "url": "https://suno.com/"
                 },
                 {
+                  "id": "b1b9t1vql",
+                  "title": "Suno AI Komplettkurs (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
+                },
+                {
                   "id": "e6c87s3ok",
                   "title": "Song Structure Tags – Suno.wiki",
                   "url": "https://www.suno.wiki/faq/metatags/song-structure/"
@@ -519,11 +524,6 @@
                   "id": "bddpral1o",
                   "title": "Download Techno Sample Packs - Slooply",
                   "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
-                },
-                {
-                  "id": "b1b9t1vql",
-                  "title": "Suno AI Komplettkurs (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
                 }
               ],
               "collapsed": false

@@ -27,7 +27,9 @@ window.initSortable = () => {
         el.sortable = new Sortable(el, {
             group: 'shared',
             animation: 150,
+            onStart: () => { document.body.classList.add('is-dragging-item'); },
             onEnd: (evt) => {
+                document.body.classList.remove('is-dragging-item');
                 try {
                     const itemEl = evt.item;
                     const fromCol = evt.from.closest('.column');

@@ -21,6 +21,36 @@ window.makeDraggable = (content, header) => {
     };
 };
 
+window.initSortable = () => {
+    document.querySelectorAll('.column-body').forEach(el => {
+        if (el.sortable) return;
+        el.sortable = new Sortable(el, {
+            group: 'shared',
+            animation: 150,
+            onEnd: (evt) => {
+                const itemEl = evt.item;
+                const fromCol = evt.from.closest('.column');
+                const toCol = evt.to.closest('.column');
+                const itemId = itemEl.dataset.id;
+                const fromProjectId = fromCol.dataset.projectId;
+                const toProjectId = toCol.dataset.projectId;
+
+                const fromProject = findProject(fromProjectId);
+                const toProject = findProject(toProjectId);
+
+                if (fromProject && toProject) {
+                    const itemIdx = fromProject.items.findIndex(it => it.id === itemId);
+                    if (itemIdx !== -1) {
+                        const [item] = fromProject.items.splice(itemIdx, 1);
+                        toProject.items.splice(evt.newIndex, 0, item);
+                        saveData();
+                    }
+                }
+            }
+        });
+    });
+};
+
 window.showModal = (id) => {
     const m = document.getElementById(id);
     if (m) {

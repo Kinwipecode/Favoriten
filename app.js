@@ -21,7 +21,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-load', 'btn-pull-cloud', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-add-spacer', 'btn-add-project', 'btn-move-mode', 'btn-settings'
+            'btn-load', 'btn-pull-cloud', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-spacer', 'btn-add-project', 'btn-move-mode', 'btn-settings'
         ]
     }
 };
@@ -117,21 +117,36 @@ async function saveToGitHub() {
 function migrate(data) {
     if (data.config) state.config = { ...state.config, ...data.config };
     if (data.rows && data.rows.length > 0) {
-        data.rows.forEach(r => {
+        data.rows.forEach((r, index) => {
             if (!r.projects) r.projects = [];
+            if (r.order === undefined) r.order = (index + 1) * 10;
             r.projects = r.projects.map(p => (p.projects && Array.isArray(p.projects)) ? p : (p.isSpacer ? { id: generateId(), isSpacer: true, projects: [] } : { id: generateId(), isSpacer: false, projects: [p] }));
         });
         return data.rows;
     }
-    return [{ id: generateId(), title: 'Hauptzeile', projects: [] }];
+    return [{ id: generateId(), title: 'Hauptzeile', projects: [], order: 10 }];
 }
 
 function renderBoard() {
     if (!board) return;
     board.innerHTML = "";
-    state.rows.forEach(row => {
+
+    // Sort rows by order
+    const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    sortedRows.forEach(row => {
         const rowEl = document.createElement("div"); rowEl.className = "board-row";
-        rowEl.innerHTML = `<div class="row-header"><input type="text" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)"><div class="row-actions"><button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button><button class="btn-icon" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
+        rowEl.innerHTML = `<div class="row-header">
+            <div class="row-header-main">
+                <input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
+                <input type="text" class="row-title-input" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)">
+            </div>
+            <div class="row-actions">
+                <button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button>
+                <button class="btn-icon" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
         const container = rowEl.querySelector(".row-projects");
         row.projects.forEach(slot => {
             const slotEl = document.createElement("div"); slotEl.className = "grid-slot";
@@ -186,12 +201,14 @@ window.importFromHTML = (html, targetRowId) => {
 
     let targetRow;
     if (targetRowId === 'new' || !targetRowId) {
-        targetRow = { id: generateId(), title: 'Import ' + new Date().toLocaleDateString(), projects: [] };
+        const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
+        targetRow = { id: generateId(), title: 'Import ' + new Date().toLocaleDateString(), projects: [], order: nextOrder };
         state.rows.push(targetRow);
     } else {
         targetRow = state.rows.find(r => r.id === targetRowId);
         if (!targetRow) {
-            targetRow = { id: generateId(), title: 'Import', projects: [] };
+            const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
+            targetRow = { id: generateId(), title: 'Import', projects: [], order: nextOrder };
             state.rows.push(targetRow);
         }
     }
@@ -242,6 +259,8 @@ function findProjectAndClear(id) {
 }
 function findProject(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) { const p = s.projects.find(x => x.id === id); if (p) return p; } }
 window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.title = val; saveData(); };
+window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
+window.sortRows = () => { renderBoard(); };
 window.deleteRow = (id) => { if (confirm('Reihe löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
 window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
 window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };

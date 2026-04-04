@@ -2861,6 +2861,11 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "dohrli3k1",
+          "isSpacer": true,
+          "projects": []
         }
       ]
     }
@@ -2884,7 +2889,9 @@
       "btn-collapse-gaps",
       "btn-add-row",
       "btn-settings",
-      "btn-move-mode"
+      "btn-move-mode",
+      "btn-pull-cloud",
+      "btn-add-spacer"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

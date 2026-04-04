@@ -11,6 +11,7 @@ let ghSha = null;
 
 const state = {
     rows: [],
+    searchTerm: "",
     moveMode: { active: false, type: null, selectedIds: [] },
     deleteMode: { active: false, type: null, selectedIds: [] },
     config: {
@@ -137,12 +138,21 @@ function migrate(data) {
 
 function renderBoard() {
     if (!board) return;
+    const isSearching = !!state.searchTerm;
     board.innerHTML = "";
 
     // Sort rows by order
     const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
 
     sortedRows.forEach(row => {
+        if (state.searchTerm) {
+            const hasMatch = row.projects.some(s => !s.isSpacer && s.projects.some(p => {
+                const pMatch = p.title.toLowerCase().includes(state.searchTerm);
+                const iMatch = p.items.some(it => it.title.toLowerCase().includes(state.searchTerm) || it.url.toLowerCase().includes(state.searchTerm));
+                return pMatch || iMatch;
+            }));
+            if (!hasMatch) return;
+        }
         const rowEl = document.createElement("div");
         rowEl.className = `board-row ${row.collapsed ? "collapsed" : ""}`;
         rowEl.oncontextmenu = (e) => showContextMenu(e, 'row', row.id);
@@ -160,6 +170,15 @@ function renderBoard() {
             <div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
         const container = rowEl.querySelector(".row-projects");
         row.projects.forEach(slot => {
+            if (isSearching) {
+                if (slot.isSpacer) return;
+                const hasMatch = slot.projects.some(p => {
+                    const pMatch = p.title.toLowerCase().includes(state.searchTerm);
+                    const iMatch = p.items.some(it => it.title.toLowerCase().includes(state.searchTerm) || it.url.toLowerCase().includes(state.searchTerm));
+                    return pMatch || iMatch;
+                });
+                if (!hasMatch) return;
+            }
             const slotEl = document.createElement("div"); slotEl.className = "grid-slot";
             slotEl.ondragover = (e) => { e.preventDefault(); slotEl.classList.add("drag-over-slot"); };
             slotEl.ondragleave = () => slotEl.classList.remove("drag-over-slot");
@@ -213,13 +232,14 @@ function renderBoard() {
                     col.innerHTML = `<div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleCollapse('${p.id}')" style="cursor:pointer;"><div class="header-left"><input type="checkbox" ${p.collapsed ? "checked" : ""} readonly><span>${p.title}</span>${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}</div><div class="column-actions"><button onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button><button onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="column-body"></div>`;
                     const b = col.querySelector(".column-body");
                     p.items.forEach(it => {
+                        const match = isSearching && (it.title.toLowerCase().includes(state.searchTerm) || it.url.toLowerCase().includes(state.searchTerm));
                         const i = document.createElement("div");
                         i.dataset.id = it.id;
                         i.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'link', it.id); };
                         const mSel = state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id);
                         const dSel = state.deleteMode.active && state.deleteMode.type === 'link' && state.deleteMode.selectedIds.includes(it.id);
 
-                        i.className = `favorite-item ${mSel ? 'selected-for-move' : ''} ${dSel ? 'selected-for-delete' : ''}`;
+                        i.className = `favorite-item ${mSel ? 'selected-for-move' : ''} ${dSel ? 'selected-for-delete' : ''} ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''}`;
                         i.onclick = (e) => {
                             if (state.moveMode.active) { e.stopPropagation(); toggleMoveSelect('link', it.id); }
                             else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('link', it.id); }
@@ -703,5 +723,10 @@ window.hideContextMenu = () => {
 
 document.addEventListener('click', hideContextMenu);
 document.addEventListener('scroll', hideContextMenu, true);
+
+window.handleSearch = (val) => {
+    state.searchTerm = val.toLowerCase();
+    renderBoard();
+};
 
 init();

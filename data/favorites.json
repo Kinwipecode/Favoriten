@@ -2949,11 +2949,6 @@
       "projects": [
         {
           "id": "nkzxv2k0n",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "dz0lw8y4u",
           "isSpacer": false,
           "projects": [
             {
@@ -2963,6 +2958,11 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "nsjwfx8t5",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 50

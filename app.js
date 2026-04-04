@@ -105,7 +105,7 @@ function renderBoard() {
     board.innerHTML = "";
     state.rows.forEach(row => {
         const rowEl = document.createElement("div"); rowEl.className = "board-row";
-        rowEl.innerHTML = `<div class="row-header"><input type="text" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)"><button class="btn-icon" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash"></i></button></div><div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
+        rowEl.innerHTML = `<div class="row-header"><input type="text" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)"><div class="row-actions"><button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button><button class="btn-icon" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
         const container = rowEl.querySelector(".row-projects");
         row.projects.forEach(slot => {
             const slotEl = document.createElement("div"); slotEl.className = "grid-slot";
@@ -217,6 +217,7 @@ function findProjectAndClear(id) {
 function findProject(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) { const p = s.projects.find(x => x.id === id); if (p) return p; } }
 window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.title = val; saveData(); };
 window.deleteRow = (id) => { if (confirm('Reihe löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
+window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
 window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
 window.deleteProject = (id) => { findProjectAndClear(id); renderBoard(); saveData(); };
 window.addItem = (id) => { const t = prompt('Titel:'), u = prompt('URL:'); if (t && u) { const p = findProject(id); if (p) { p.items.push({ id: generateId(), title: t, url: u.startsWith('http') ? u : 'https://' + u }); renderBoard(); saveData(); } } };

@@ -60,8 +60,10 @@ async function loadFromGitHub() {
         const res = await fetch(url, { headers: { 'Authorization': `token ${ghToken}` } });
         if (res.ok) {
             const data = await res.json(); ghSha = data.sha;
-            state.rows = migrate(JSON.parse(decodeURIComponent(escape(atob(data.content)))));
+            const content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+            state.rows = migrate(content);
             if (window.applyTheme) applyTheme();
+            renderBoard();
             const disp = document.getElementById('save-path-display');
             if (disp) { disp.textContent = '☁️ GitHub Sync'; disp.style.color = '#0984e3'; }
         }

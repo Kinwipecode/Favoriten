@@ -12,6 +12,7 @@ let ghSha = null;
 const state = {
     rows: [],
     moveMode: { active: false, type: null, selectedIds: [] },
+    deleteMode: { active: false, type: null, selectedIds: [] },
     config: {
         primary: '#6c5ce7',
         bg: '#dfe6e9',
@@ -21,7 +22,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-load', 'btn-pull-cloud', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-spacer', 'btn-add-project', 'btn-move-mode', 'btn-settings'
+            'btn-load', 'btn-pull-cloud', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-spacer', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
         ]
     }
 };
@@ -137,16 +138,16 @@ function renderBoard() {
     sortedRows.forEach(row => {
         const rowEl = document.createElement("div"); rowEl.className = "board-row";
         rowEl.innerHTML = `<div class="row-header">
-            <div class="row-header-main">
-                <input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
-                <input type="text" class="row-title-input" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)">
+                <div class="row-header-main">
+                    <input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
+                    <input type="text" class="row-title-input" value="${row.title}" onchange="updateRowTitle('${row.id}', this.value)">
+                </div>
+                <div class="row-actions">
+                    <button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button>
+                    <button class="btn-icon" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash"></i></button>
+                </div>
             </div>
-            <div class="row-actions">
-                <button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button>
-                <button class="btn-icon" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash"></i></button>
-            </div>
-        </div>
-        <div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
+            <div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
         const container = rowEl.querySelector(".row-projects");
         row.projects.forEach(slot => {
             const slotEl = document.createElement("div"); slotEl.className = "grid-slot";
@@ -168,19 +169,29 @@ function renderBoard() {
             } else {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");
-                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${(state.moveMode.active && state.moveMode.type === 'group' && state.moveMode.selectedIds.includes(p.id)) ? 'selected-for-move' : ''}`;
-                    col.draggable = !state.moveMode.active;
+                    const moveSelected = state.moveMode.active && state.moveMode.type === 'group' && state.moveMode.selectedIds.includes(p.id);
+                    const deleteSelected = state.deleteMode.active && state.deleteMode.type === 'group' && state.deleteMode.selectedIds.includes(p.id);
+
+                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${moveSelected ? 'selected-for-move' : ''} ${deleteSelected ? 'selected-for-delete' : ''}`;
+                    col.draggable = !state.moveMode.active && !state.deleteMode.active;
                     col.ondragstart = (e) => handleColDragStart(e, p.id);
                     col.ondragend = handleDragEnd;
-                    col.onclick = (e) => { if (state.moveMode.active) { e.stopPropagation(); toggleSelect('group', p.id); } };
+                    col.onclick = (e) => {
+                        if (state.moveMode.active) { e.stopPropagation(); toggleMoveSelect('group', p.id); }
+                        else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('group', p.id); }
+                    };
 
-                    col.innerHTML = `<div class="column-header" onclick="if(!state.moveMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')" style="cursor:pointer;"><div class="header-left"><input type="checkbox" ${p.collapsed ? "checked" : ""} readonly><span>${p.title}</span>${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}</div><div class="column-actions"><button onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button><button onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="column-body"></div>`;
+                    col.innerHTML = `<div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')" style="cursor:pointer;"><div class="header-left"><input type="checkbox" ${p.collapsed ? "checked" : ""} readonly><span>${p.title}</span>${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}</div><div class="column-actions"><button onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button><button onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="column-body"></div>`;
                     const b = col.querySelector(".column-body");
                     p.items.forEach(it => {
                         const i = document.createElement("div");
-                        i.className = `favorite-item ${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id)) ? 'selected-for-move' : ''}`;
+                        const mSel = state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id);
+                        const dSel = state.deleteMode.active && state.deleteMode.type === 'link' && state.deleteMode.selectedIds.includes(it.id);
+
+                        i.className = `favorite-item ${mSel ? 'selected-for-move' : ''} ${dSel ? 'selected-for-delete' : ''}`;
                         i.onclick = (e) => {
-                            if (state.moveMode.active) { e.stopPropagation(); toggleSelect('link', it.id); }
+                            if (state.moveMode.active) { e.stopPropagation(); toggleMoveSelect('link', it.id); }
+                            else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('link', it.id); }
                             else { window.open(it.url); }
                         };
                         i.innerHTML = `<span>${it.title}</span><div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); editItem('${it.id}')" title="Bearbeiten"><i class="fa-solid fa-pen" style="font-size:0.7rem;"></i></button><button class="btn-text" onclick="event.stopPropagation(); deleteItem('${it.id}')" title="Löschen">×</button></div>`;
@@ -275,13 +286,28 @@ window.toggleMoveMode = () => {
         state.moveMode.type = null;
         document.body.classList.remove('move-mode-active');
     } else {
+        if (state.deleteMode.active) toggleDeleteMode();
         document.body.classList.add('move-mode-active');
     }
     updateMoveToolbar();
     renderBoard();
 };
 
-function toggleSelect(type, id) {
+window.toggleDeleteMode = () => {
+    state.deleteMode.active = !state.deleteMode.active;
+    if (!state.deleteMode.active) {
+        state.deleteMode.selectedIds = [];
+        state.deleteMode.type = null;
+        document.body.classList.remove('delete-mode-active');
+    } else {
+        if (state.moveMode.active) toggleMoveMode();
+        document.body.classList.add('delete-mode-active');
+    }
+    updateDeleteToolbar();
+    renderBoard();
+};
+
+function toggleMoveSelect(type, id) {
     if (state.moveMode.type && state.moveMode.type !== type && state.moveMode.selectedIds.length > 0) {
         alert("Du kannst nur Gruppen ODER Links gleichzeitig markieren.");
         return;
@@ -297,6 +323,22 @@ function toggleSelect(type, id) {
     renderBoard();
 }
 
+function toggleDeleteSelect(type, id) {
+    if (state.deleteMode.type && state.deleteMode.type !== type && state.deleteMode.selectedIds.length > 0) {
+        alert("Du kannst nur Gruppen ODER Links gleichzeitig markieren.");
+        return;
+    }
+    state.deleteMode.type = type;
+    const idx = state.deleteMode.selectedIds.indexOf(id);
+    if (idx === -1) state.deleteMode.selectedIds.push(id);
+    else {
+        state.deleteMode.selectedIds.splice(idx, 1);
+        if (state.deleteMode.selectedIds.length === 0) state.deleteMode.type = null;
+    }
+    updateDeleteToolbar();
+    renderBoard();
+}
+
 function updateMoveToolbar() {
     const bar = document.getElementById('move-toolbar');
     const count = document.getElementById('move-count');
@@ -307,10 +349,53 @@ function updateMoveToolbar() {
         bar.classList.remove('hidden');
         const typeName = state.moveMode.type === 'group' ? 'Gruppen' : (state.moveMode.type === 'link' ? 'Links' : 'Elemente');
         count.textContent = `${state.moveMode.selectedIds.length} ${typeName} ausgewählt`;
+        if (count) count.textContent = `${state.moveMode.selectedIds.length} ${typeName} ausgewählt`;
         if (btn) btn.disabled = state.moveMode.selectedIds.length === 0;
     } else {
         bar.classList.add('hidden');
     }
+}
+
+function updateDeleteToolbar() {
+    const bar = document.getElementById('delete-toolbar');
+    const count = document.getElementById('delete-count');
+    const btn = document.getElementById('btn-confirm-delete');
+    if (!bar) return;
+
+    if (state.deleteMode.active) {
+        bar.classList.remove('hidden');
+        const typeName = state.deleteMode.type === 'group' ? 'Gruppen' : (state.deleteMode.type === 'link' ? 'Links' : 'Elemente');
+        if (count) count.textContent = `${state.deleteMode.selectedIds.length} ${typeName} zum Löschen markiert`;
+        if (btn) btn.disabled = state.deleteMode.selectedIds.length === 0;
+    } else {
+        bar.classList.add('hidden');
+    }
+}
+
+function applyDelete() {
+    if (state.deleteMode.selectedIds.length === 0) return;
+    if (!confirm(`${state.deleteMode.selectedIds.length} Elemente wirklich löschen?`)) return;
+
+    if (state.deleteMode.type === 'group') {
+        state.deleteMode.selectedIds.forEach(id => findProjectAndClear(id));
+    } else if (state.deleteMode.type === 'link') {
+        state.deleteMode.selectedIds.forEach(id => {
+            for (const r of state.rows) {
+                for (const s of r.projects) {
+                    if (!s.isSpacer) {
+                        for (const p of s.projects) {
+                            const idx = p.items.findIndex(it => it.id === id);
+                            if (idx !== -1) { p.items.splice(idx, 1); break; }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    toggleDeleteMode();
+    renderBoard();
+    saveData();
 }
 
 function applyMove(targetType, targetId, slotId = null) {

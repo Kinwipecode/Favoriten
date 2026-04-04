@@ -2908,7 +2908,7 @@
         }
       ],
       "order": 20,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "yawanswyh",
@@ -2984,7 +2984,6 @@
     "itemBg": "#C0C0C0",
     "buttonOrder": [
       "btn-save",
-      "btn-load",
       "btn-add-project",
       "btn-import",
       "btn-export",
@@ -2995,7 +2994,6 @@
       "btn-settings",
       "btn-move-mode",
       "btn-pull-cloud",
-      "btn-add-spacer",
       "btn-sort-rows",
       "btn-multi-delete"
     ],

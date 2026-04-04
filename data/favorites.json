@@ -2924,7 +2924,7 @@
                 },
                 {
                   "id": "uhxzkan6f",
-                  "title": "hollydaycheck hyatt-regency-taghazout",
+                  "title": "holldaycheck hyatt-regency-taghazout",
                   "url": "https://www.holidaycheck.ch/hi/hyatt-regency-taghazout/39f66d35-f720-4f97-b8bd-17495aad965c"
                 }
               ],
@@ -2933,9 +2933,16 @@
           ]
         },
         {
-          "id": "it82xm5c3",
-          "isSpacer": true,
-          "projects": []
+          "id": "gd06t7p0j",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bac8w9qh9",
+              "title": "hjhiuiiiiiii",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         }
       ],
       "order": 1,
@@ -2946,9 +2953,16 @@
       "title": "Neue Zeile",
       "projects": [
         {
-          "id": "hwuwc6hv9",
-          "isSpacer": true,
-          "projects": []
+          "id": "nkzxv2k0n",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "09zj5br4u",
+              "title": "fgdfg",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         }
       ],
       "order": 50,

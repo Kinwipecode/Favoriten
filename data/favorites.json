@@ -2933,27 +2933,9 @@
           ]
         },
         {
-          "id": "2p6liri1y",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "8ic8p458k",
-              "title": "rtetrer",
-              "items": [
-                {
-                  "id": "cjh03atca",
-                  "title": "my105.ch",
-                  "url": "https://www.my105.ch/tomorrowland-owr/"
-                },
-                {
-                  "id": "l4ir4qpw0",
-                  "title": "my105.ch",
-                  "url": "https://www.my105.ch/tomorrowland-owr/"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
+          "id": "7raw2dwel",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 1,

@@ -2938,22 +2938,9 @@
           ]
         },
         {
-          "id": "7tk8rgzfp",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "lu0t0sx5s",
-              "title": "asdfsdf",
-              "items": [
-                {
-                  "id": "k1qwow20a",
-                  "title": "stwertert",
-                  "url": "https://zuuuzertsd"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "ztkxshqns",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "gd06t7p0j",

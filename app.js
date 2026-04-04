@@ -186,7 +186,13 @@ function renderBoard() {
 
                     col.className = `column ${p.collapsed ? "collapsed" : ""} ${moveSelected ? 'selected-for-move' : ''} ${deleteSelected ? 'selected-for-delete' : ''}`;
                     col.draggable = !state.moveMode.active && !state.deleteMode.active;
-                    col.ondragstart = (e) => handleColDragStart(e, p.id);
+                    col.ondragstart = (e) => {
+                        if (e.target.closest('.favorite-item')) {
+                            e.preventDefault();
+                            return;
+                        }
+                        handleColDragStart(e, p.id);
+                    };
                     col.ondragend = handleDragEnd;
                     col.ondragover = (e) => { if (!state.moveMode.active) { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; col.classList.add('drag-over-external'); } };
                     col.ondragleave = () => col.classList.remove('drag-over-external');
@@ -201,6 +207,7 @@ function renderBoard() {
                     p.items.forEach(it => {
                         const i = document.createElement("div");
                         i.dataset.id = it.id;
+                        i.draggable = false;
                         i.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'link', it.id); };
                         const mSel = state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id);
                         const dSel = state.deleteMode.active && state.deleteMode.type === 'link' && state.deleteMode.selectedIds.includes(it.id);

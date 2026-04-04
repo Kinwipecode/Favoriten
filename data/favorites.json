@@ -470,6 +470,28 @@
               "collapsed": true
             },
             {
+              "id": "o1dwufinq",
+              "title": "Video",
+              "items": [
+                {
+                  "id": "zip6obkiw",
+                  "title": "InVideo AI",
+                  "url": "https://ai.invideo.io/"
+                },
+                {
+                  "id": "ignrrwgah",
+                  "title": "Kaiber",
+                  "url": "https://kaiber.ai/"
+                },
+                {
+                  "id": "0lqp0doxb",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
+                }
+              ],
+              "collapsed": false
+            },
+            {
               "id": "u21db9mjt",
               "title": "Suno",
               "items": [
@@ -502,28 +524,6 @@
                   "id": "b1b9t1vql",
                   "title": "Suno AI Komplettkurs (YouTube)",
                   "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
-                }
-              ],
-              "collapsed": false
-            },
-            {
-              "id": "o1dwufinq",
-              "title": "Video",
-              "items": [
-                {
-                  "id": "zip6obkiw",
-                  "title": "InVideo AI",
-                  "url": "https://ai.invideo.io/"
-                },
-                {
-                  "id": "ignrrwgah",
-                  "title": "Kaiber",
-                  "url": "https://kaiber.ai/"
-                },
-                {
-                  "id": "0lqp0doxb",
-                  "title": "ChatGPT - Video GPT by VEED",
-                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
                 }
               ],
               "collapsed": false

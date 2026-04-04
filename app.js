@@ -240,7 +240,7 @@ async function handleExternalDrop(e, projectId) {
             if (a) title = a.textContent.trim() || finalUrl;
         }
 
-        if (title === finalUrl) title = cleanTitle(finalUrl);
+        title = cleanTitle(title);
 
         const p = findProject(projectId);
         if (p) {
@@ -366,9 +366,10 @@ window.editItem = (id) => {
     }
 };
 
-function cleanTitle(url) {
-    if (!url) return "";
-    let clean = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+function cleanTitle(str) {
+    if (!str) return "";
+    let clean = str.trim().replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+    // Split at first slash (if not preceded by :) question mark or hash
     const splitIndex = clean.search(/\/|\?|#/);
     if (splitIndex !== -1) {
         clean = clean.substring(0, splitIndex);

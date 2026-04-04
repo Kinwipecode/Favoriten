@@ -147,7 +147,8 @@ const buttonMetadata = {
     'btn-add-spacer': { icon: 'fa-solid fa-plus-square', text: 'Lücke einfügen', class: 'btn btn-secondary', title: 'Eine leere Position am Ende der letzten Zeile hinzufügen' },
     'btn-add-project': { icon: 'fa-solid fa-plus', text: 'Neue Fav. Gruppe', class: 'btn btn-accent' },
     'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Verschieben', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
-    'btn-settings': { icon: 'fa-solid fa-palette', text: 'Design', class: 'btn btn-secondary', title: 'Farben & Design', iconStyle: 'color:var(--primary-color)' }
+    'btn-settings': { icon: 'fa-solid fa-palette', text: 'Design', class: 'btn btn-secondary', title: 'Farben & Design', iconStyle: 'color:var(--primary-color)' },
+    'btn-sort-rows': { icon: 'fa-solid fa-sort-numeric-down', text: 'Zeilen sortieren', class: 'btn btn-secondary', title: 'Zeilen nach Nummern sortieren' }
 };
 
 const btnHandlers = {
@@ -211,9 +212,14 @@ const btnHandlers = {
         if (token !== null) { localStorage.setItem('gh_token', token); ghToken = token; await loadFromGitHub(); }
     },
     'btn-info': () => showModal('info-modal'),
-    'btn-reset': () => { if (confirm('Alles löschen?')) { state.rows = [{ id: generateId(), title: 'Hauptzeile', projects: [] }]; renderBoard(); saveData(); } },
+    'btn-reset': () => { if (confirm('Alles löschen?')) { state.rows = [{ id: generateId(), title: 'Hauptzeile', projects: [], order: 10 }]; renderBoard(); saveData(); } },
     'btn-collapse-gaps': () => { state.rows.forEach(r => r.projects = r.projects.filter(s => !s.isSpacer)); renderBoard(); saveData(); },
-    'btn-add-row': () => { state.rows.push({ id: generateId(), title: 'Neue Zeile', projects: [] }); renderBoard(); saveData(); },
+    'btn-add-row': () => {
+        const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
+        state.rows.push({ id: generateId(), title: 'Neue Zeile', projects: [], order: nextOrder });
+        renderBoard(); saveData();
+    },
+    'btn-sort-rows': () => sortRows(),
     'btn-add-spacer': () => {
         if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [] });
         state.rows[state.rows.length - 1].projects.push({ id: generateId(), isSpacer: true, projects: [] });

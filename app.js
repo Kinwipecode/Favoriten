@@ -175,7 +175,7 @@ function renderBoard() {
             }
 
             if (slot.isSpacer) {
-                slotEl.innerHTML += `<div class="column spacer" ondragover="event.preventDefault(); this.classList.add('drag-over');" ondragleave="this.classList.remove('drag-over');" ondrop="event.stopPropagation(); handleRowDrop(event, '${row.id}', '${slot.id}')"><div class="spacer-actions"><button class="btn-create-group" onclick="addGroupAtSlot('${slot.id}')" title="Gruppe hier erstellen"><i class="fa-solid fa-plus"></i></button><button class="btn-delete-slot" onclick="deleteProject('${slot.id}')" title="Lücke löschen">×</button></div></div>`;
+                slotEl.innerHTML += `<div class="column spacer" ondragover="if(!document.body.classList.contains('is-dragging-item')) { event.preventDefault(); this.classList.add('drag-over'); }" ondragleave="this.classList.remove('drag-over');" ondrop="if(!document.body.classList.contains('is-dragging-item')) { event.stopPropagation(); this.classList.remove('drag-over'); handleRowDrop(event, '${row.id}', '${slot.id}') }"><div class="spacer-actions"><button class="btn-create-group" onclick="addGroupAtSlot('${slot.id}')" title="Gruppe hier erstellen"><i class="fa-solid fa-plus"></i></button><button class="btn-delete-slot" onclick="deleteProject('${slot.id}')" title="Lücke löschen">×</button></div></div>`;
             } else {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");

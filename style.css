@@ -638,6 +638,26 @@ body.move-mode-active .favorite-item {
     transform: translateX(8px) !important;
 }
 
+body.delete-mode-active .column,
+body.delete-mode-active .favorite-item {
+    cursor: crosshair !important;
+}
+
+.column.selected-for-delete {
+    outline: 3px solid #ff7675 !important;
+    outline-offset: 4px;
+    box-shadow: 0 0 30px rgba(255, 118, 117, 0.4) !important;
+    transform: scale(0.98) !important;
+    opacity: 0.8;
+}
+
+.favorite-item.selected-for-delete {
+    background: rgba(255, 118, 117, 0.15) !important;
+    border: 1px solid #ff7675 !important;
+    transform: translateX(-4px) !important;
+    opacity: 0.7;
+}
+
 .move-target-btn {
     padding: 4px 10px;
     font-size: 0.75rem;

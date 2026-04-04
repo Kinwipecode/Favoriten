@@ -147,6 +147,7 @@ const buttonMetadata = {
     'btn-add-spacer': { icon: 'fa-solid fa-plus-square', text: 'Lücke einfügen', class: 'btn btn-secondary', title: 'Eine leere Position am Ende der letzten Zeile hinzufügen' },
     'btn-add-project': { icon: 'fa-solid fa-plus', text: 'Neue Fav. Gruppe', class: 'btn btn-accent' },
     'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Verschieben', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
+    'btn-multi-delete': { icon: 'fa-solid fa-eraser', text: 'Mehrere Löschen', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links gleichzeitig löschen' },
     'btn-settings': { icon: 'fa-solid fa-palette', text: 'Design', class: 'btn btn-secondary', title: 'Farben & Design', iconStyle: 'color:var(--primary-color)' },
     'btn-sort-rows': { icon: 'fa-solid fa-sort-numeric-down', text: 'Zeilen sortieren', class: 'btn btn-secondary', title: 'Zeilen nach Nummern sortieren' }
 };
@@ -206,7 +207,10 @@ const btnHandlers = {
         }
     },
     'btn-move-mode': () => toggleMoveMode(),
+    'btn-multi-delete': () => toggleDeleteMode(),
     'btn-cancel-move': () => toggleMoveMode(),
+    'btn-cancel-delete': () => toggleDeleteMode(),
+    'btn-confirm-delete': () => applyDelete(),
     'btn-github': async () => {
         const token = prompt('GitHub Token:', ghToken);
         if (token !== null) { localStorage.setItem('gh_token', token); ghToken = token; await loadFromGitHub(); }
@@ -318,7 +322,9 @@ window.setupUI = () => {
         'btn-confirm-import': btnHandlers['btn-confirm-import'],
         'btn-cancel-export': btnHandlers['btn-cancel-export'],
         'btn-confirm-export': btnHandlers['btn-confirm-export'],
-        'btn-cancel-move': btnHandlers['btn-cancel-move']
+        'btn-cancel-move': btnHandlers['btn-cancel-move'],
+        'btn-cancel-delete': btnHandlers['btn-cancel-delete'],
+        'btn-confirm-delete': btnHandlers['btn-confirm-delete']
     };
 
     Object.keys(btnMapSettings).forEach(id => {

@@ -2936,6 +2936,18 @@
           "id": "rdi2jpoka",
           "isSpacer": true,
           "projects": []
+        },
+        {
+          "id": "58q9q404d",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "o75i5and4",
+              "title": "cghjsdgf",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         }
       ],
       "order": 1,

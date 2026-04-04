@@ -598,14 +598,28 @@ window.showContextMenu = (e, type, id) => {
             { icon: 'fa-plus', text: 'Favorit hinzufügen', action: () => addItem(id) },
             {
                 icon: 'fa-paste', text: 'Link aus Zwischenablage', action: async () => {
+                    if (!navigator.clipboard || !navigator.clipboard.readText) {
+                        alert('Deine Browser-Sicherheit (oder fehlendes HTTPS) verhindert diesen Zugriff. Bitte nutze "Favorit hinzufügen".');
+                        return;
+                    }
                     try {
-                        const text = await navigator.clipboard.readText();
-                        if (text && (text.startsWith('http') || text.startsWith('www'))) {
-                            const u = text.startsWith('www') ? 'https://' + text : text;
-                            p.items.push({ id: generateId(), title: cleanTitle(u), url: u });
-                            renderBoard(); saveData();
-                        } else alert('Keine gültige URL in der Zwischenablage.');
-                    } catch (e) { alert('Zugriff auf Zwischenablage verweigert.'); }
+                        let text = await navigator.clipboard.readText();
+                        if (text) text = text.trim();
+                        if (text && (text.includes('.') || text.startsWith('http'))) {
+                            const u = (text.startsWith('http') || text.startsWith('www')) ?
+                                (text.startsWith('www') ? 'https://' + text : text) :
+                                'https://' + text;
+
+                            const p = findProject(id);
+                            if (p) {
+                                p.items.push({ id: generateId(), title: cleanTitle(u), url: u });
+                                renderBoard(); saveData();
+                            }
+                        } else alert('Keine gültige URL in der Zwischenablage (z.B. google.de).');
+                    } catch (e) {
+                        console.error(e);
+                        alert('Zugriff verweigert. Bitte erlaube der Seite Zugriff auf die Zwischenablage.');
+                    }
                 }
             },
             { icon: 'fa-arrows-up-down-left-right', text: 'Verschieben Modus', action: () => toggleMoveMode() },

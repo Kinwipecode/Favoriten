@@ -181,16 +181,56 @@ body {
     transform: scale(1.1) rotate(10deg);
 }
 
-.row-header input {
+.row-header-main {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.row-order-input {
+    width: 70px !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 1.1rem !important;
+    text-align: center;
+    color: var(--row-title-color, var(--text-color)) !important;
+    font-weight: 800 !important;
+    flex: none !important;
+    margin-right: 0 !important;
+    transition: all 0.2s ease;
+}
+
+.row-order-input:focus {
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.row-title-input {
     background: transparent;
     border: none;
     font-size: var(--row-font-size, 1.5rem);
     font-weight: 800;
     color: var(--row-title-color, var(--text-color));
     flex: 1;
-    margin-right: 20px;
     outline: none;
     transition: color 0.2s, font-size 0.2s;
+}
+
+.row-header input::-webkit-outer-spin-button,
+.row-header input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.row-header input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .row-projects {

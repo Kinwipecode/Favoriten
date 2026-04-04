@@ -187,10 +187,7 @@ function renderBoard() {
                     col.className = `column ${p.collapsed ? "collapsed" : ""} ${moveSelected ? 'selected-for-move' : ''} ${deleteSelected ? 'selected-for-delete' : ''}`;
                     col.draggable = !state.moveMode.active && !state.deleteMode.active;
                     col.ondragstart = (e) => {
-                        if (e.target.closest('.favorite-item')) {
-                            e.preventDefault();
-                            return;
-                        }
+                        if (e.target.closest('.favorite-item')) return;
                         handleColDragStart(e, p.id);
                     };
                     col.ondragend = handleDragEnd;
@@ -218,7 +215,6 @@ function renderBoard() {
                     p.items.forEach(it => {
                         const i = document.createElement("div");
                         i.dataset.id = it.id;
-                        i.draggable = false;
                         i.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'link', it.id); };
                         const mSel = state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id);
                         const dSel = state.deleteMode.active && state.deleteMode.type === 'link' && state.deleteMode.selectedIds.includes(it.id);

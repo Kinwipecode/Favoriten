@@ -2934,8 +2934,15 @@
         },
         {
           "id": "bnllct45m",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "tddnmqjfy",
+              "title": "ziugizzugft",
+              "items": [],
+              "collapsed": true
+            }
+          ]
         }
       ],
       "order": 1,

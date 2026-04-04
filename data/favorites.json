@@ -361,6 +361,56 @@
                 }
               ],
               "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "paruxx0qb",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "o1dwufinq",
+              "title": "Video",
+              "items": [
+                {
+                  "id": "c1qx2wgww",
+                  "title": "CapCut",
+                  "url": "https://www.capcut.com/my-edit?start_tab=video"
+                },
+                {
+                  "id": "zip6obkiw",
+                  "title": "InVideo AI",
+                  "url": "https://ai.invideo.io/"
+                },
+                {
+                  "id": "ignrrwgah",
+                  "title": "Kaiber",
+                  "url": "https://kaiber.ai/"
+                },
+                {
+                  "id": "b1b9t1vql",
+                  "title": "Suno AI Komplettkurs (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
+                },
+                {
+                  "id": "0lqp0doxb",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "grtzv27bl",
+              "title": "für Suno",
+              "items": [
+                {
+                  "id": "zvqylvsxk",
+                  "title": "Suno Prompt Generator -  M6UU628n",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
             },
             {
               "id": "p1enkawv1",
@@ -479,56 +529,6 @@
                   "id": "bddpral1o",
                   "title": "Download Techno Sample Packs - Slooply",
                   "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "paruxx0qb",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "o1dwufinq",
-              "title": "Video",
-              "items": [
-                {
-                  "id": "c1qx2wgww",
-                  "title": "CapCut",
-                  "url": "https://www.capcut.com/my-edit?start_tab=video"
-                },
-                {
-                  "id": "zip6obkiw",
-                  "title": "InVideo AI",
-                  "url": "https://ai.invideo.io/"
-                },
-                {
-                  "id": "ignrrwgah",
-                  "title": "Kaiber",
-                  "url": "https://kaiber.ai/"
-                },
-                {
-                  "id": "b1b9t1vql",
-                  "title": "Suno AI Komplettkurs (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
-                },
-                {
-                  "id": "0lqp0doxb",
-                  "title": "ChatGPT - Video GPT by VEED",
-                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "grtzv27bl",
-              "title": "für Suno",
-              "items": [
-                {
-                  "id": "zvqylvsxk",
-                  "title": "Suno Prompt Generator -  M6UU628n",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
                 }
               ],
               "collapsed": true

@@ -240,6 +240,8 @@ async function handleExternalDrop(e, projectId) {
             if (a) title = a.textContent.trim() || finalUrl;
         }
 
+        if (title === finalUrl) title = cleanTitle(finalUrl);
+
         const p = findProject(projectId);
         if (p) {
             p.items.push({ id: generateId(), title: title.substring(0, 100), url: finalUrl });
@@ -340,8 +342,36 @@ window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id)
 window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
 window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
 window.deleteProject = (id) => { findProjectAndClear(id); renderBoard(); saveData(); };
-window.addItem = (id) => { const t = prompt('Titel:'), u = prompt('URL:'); if (t && u) { const p = findProject(id); if (p) { p.items.push({ id: generateId(), title: t, url: u.startsWith('http') ? u : 'https://' + u }); renderBoard(); saveData(); } } };
+window.addItem = (id) => { const t = prompt('Titel (Lassen für Auto-Name):'), u = prompt('URL:'); if (u) { const p = findProject(id); if (p) { p.items.push({ id: generateId(), title: t || cleanTitle(u), url: u.startsWith('http') ? u : 'https://' + u }); renderBoard(); saveData(); } } };
 window.deleteItem = (id) => { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const idx = p.items.findIndex(it => it.id === id); if (idx !== -1) { p.items.splice(idx, 1); renderBoard(); saveData(); return; } } };
+window.editItem = (id) => {
+    for (const r of state.rows) {
+        for (const s of r.projects) {
+            if (!s.isSpacer) {
+                for (const p of s.projects) {
+                    const item = p.items.find(it => it.id === id);
+                    if (item) {
+                        const nt = prompt('Neuer Titel:', item.title);
+                        const nu = prompt('Neue URL:', item.url);
+                        if (nt && nu) {
+                            item.title = nt;
+                            item.url = nu.startsWith('http') ? nu : 'https://' + nu;
+                            renderBoard(); saveData();
+                        }
+                        return;
+                    }
+                }
+            }
+        }
+    }
+};
+
+function cleanTitle(url) {
+    if (!url) return "";
+    let clean = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+    if (clean.endsWith('/')) clean = clean.slice(0, -1);
+    return clean.substring(0, 50);
+}
 
 window.toggleMoveMode = () => {
     state.moveMode.active = !state.moveMode.active;
@@ -572,7 +602,7 @@ window.showContextMenu = (e, type, id) => {
                         const text = await navigator.clipboard.readText();
                         if (text && (text.startsWith('http') || text.startsWith('www'))) {
                             const u = text.startsWith('www') ? 'https://' + text : text;
-                            p.items.push({ id: generateId(), title: u, url: u });
+                            p.items.push({ id: generateId(), title: cleanTitle(u), url: u });
                             renderBoard(); saveData();
                         } else alert('Keine gültige URL in der Zwischenablage.');
                     } catch (e) { alert('Zugriff auf Zwischenablage verweigert.'); }

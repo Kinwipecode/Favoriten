@@ -7,7 +7,9 @@
     <title>Favoriten Manager</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -19,25 +21,14 @@
         <div class="logo" style="display:flex; flex-direction:column; align-items:flex-start;">
             <div style="display:flex; align-items:center; gap:8px;">
                 <i class="fa-solid fa-star"></i>
-                <span>Favoriten</span>
+                <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem;">Favoriten</span>
             </div>
             <span id="save-path-display"
                 style="font-size: 0.75rem; color: #636e72; margin-top: 4px; font-weight: normal; word-break: break-all;">Serververbindung
                 wird geprüft...</span>
         </div>
         <div class="actions">
-            <button id="btn-load" class="btn btn-secondary" title="Zuletzt gespeicherten Stand holen"><i
-                    class="fa-solid fa-cloud-arrow-down"></i> Laden</button>
-            <button id="btn-save" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Speichern</button>
-            <button id="btn-import" class="btn btn-secondary"><i class="fa-solid fa-file-import"></i>
-                Importieren</button>
-            <button id="btn-github" class="btn btn-secondary" style="background:#24292e; color:white;"><i
-                    class="fa-brands fa-github"></i> Sync</button>
-            <button id="btn-info" class="btn btn-secondary" title="Info & Shortcuts"><i
-                    class="fa-solid fa-circle-info"></i></button>
-            <button id="btn-reset" class="btn btn-secondary" style="background:#ff7675; color:white;"><i
-                    class="fa-solid fa-bomb"></i> Reset</button>
-            <button id="btn-add-project" class="btn btn-accent"><i class="fa-solid fa-plus"></i> Neues Projekt</button>
+            <!-- Buttons will be dynamically rendered here for reordering support -->
         </div>
     </header>
 
@@ -48,14 +39,159 @@
         </div>
     </main>
 
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 450px;">
+            <div class="modal-header drag-handle">
+                <h3 style="margin:0; font-family:'Outfit',sans-serif; font-weight:800; cursor:grab;"><i
+                        class="fa-solid fa-palette"></i> Design-Einstellungen</h3>
+                <button onclick="hideModal('settings-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body">
+
+                <p style="font-size: 0.85rem; margin-bottom: 8px; color: #666; font-weight: bold;">Design Presets:</p>
+                <div class="theme-presets"
+                    style="display: flex; gap: 8px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <div class="preset" onclick="setTheme('dark')"
+                        style="background:#2d3436; border:2px solid #fff; width:36px; height:36px; border-radius:6px; cursor:pointer;"
+                        title="Dark Mode"></div>
+                    <div class="preset" onclick="setTheme('ocean')"
+                        style="background:#0984e3; border:2px solid #fff; width:36px; height:36px; border-radius:6px; cursor:pointer;"
+                        title="Ocean Blue"></div>
+                    <div class="preset" onclick="setTheme('forest')"
+                        style="background:#00b894; border:2px solid #fff; width:36px; height:36px; border-radius:6px; cursor:pointer;"
+                        title="Forest Green"></div>
+                    <div class="preset" onclick="setTheme('neon')"
+                        style="background:#6c5ce7; border:2px solid #fff; width:36px; height:36px; border-radius:6px; cursor:pointer;"
+                        title="Neon Purple"></div>
+                </div>
+
+                <p style="font-size: 0.85rem; margin-bottom: 12px; color: #666; font-weight: bold;">Manuelle Farben
+                    (Anklicken zum Auswählen):</p>
+                <div class="settings-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="setting-item" onclick="openPicker('bg')">
+                        <label>Dashboard BG:</label>
+                        <div id="swatch-bg" class="color-swatch-display"></div>
+                    </div>
+                    <div class="setting-item" onclick="openPicker('primary')">
+                        <label>Akzentfarbe:</label>
+                        <div id="swatch-primary" class="color-swatch-display"></div>
+                    </div>
+                    <div class="setting-item" onclick="openPicker('headerBg')">
+                        <label>Gruppen Kopf (BG):</label>
+                        <div id="swatch-headerBg" class="color-swatch-display"></div>
+                    </div>
+                    <div class="setting-item" onclick="openPicker('headerText')">
+                        <label>Gruppen Kopf (Text):</label>
+                        <div id="swatch-headerText" class="color-swatch-display"></div>
+                    </div>
+                    <div class="setting-item" onclick="openPicker('link')">
+                        <label>Link-Text Farbe:</label>
+                        <div id="swatch-link" class="color-swatch-display"></div>
+                    </div>
+                    <div class="setting-item" onclick="openPicker('rowBg')">
+                        <label>Zeilen-BG:</label>
+                        <div id="swatch-rowBg" class="color-swatch-display"></div>
+                    </div>
+                    <div class="setting-item" onclick="openPicker('itemBg')">
+                        <label>Link-Feld (BG):</label>
+                        <div id="swatch-itemBg" class="color-swatch-display" style="border:1px solid #ccc;"></div>
+                    </div>
+                    <div class="setting-item" onclick="openPicker('rowTitleColor')">
+                        <label>Zeilen-Titel:</label>
+                        <div id="swatch-rowTitleColor" class="color-swatch-display"></div>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.85rem; margin-top:20px; margin-bottom: 12px; color: #666; font-weight: bold;">
+                    Text Formatierung:</p>
+                <div class="settings-grid" style="display: grid; grid-template-columns: 1fr; gap: 8px;">
+                    <div class="setting-item" style="cursor:default; background:rgba(0,0,0,0.05);"><label>Links
+                            Grösse:</label><input type="text" id="inp-font-size" value="0.85rem"
+                            style="width:60px; padding:4px;" onchange="updateFontConfig()"></div>
+                    <div class="setting-item" style="cursor:default; background:rgba(0,0,0,0.05);"><label>Name
+                            Gruppe:</label><input type="text" id="inp-group-size" value="0.95rem"
+                            style="width:60px; padding:4px;" onchange="updateFontConfig()"></div>
+                    <div class="setting-item" style="cursor:default; background:rgba(0,0,0,0.05);"><label>Zeilen
+                            Titel:</label><input type="text" id="inp-row-size" value="1.5rem"
+                            style="width:60px; padding:4px;" onchange="updateFontConfig()"></div>
+
+                    <div style="display:flex; gap:20px; padding:5px 10px;">
+                        <label style="cursor:pointer; display:flex; gap:6px; align-items:center;"><input type="checkbox"
+                                id="inp-bold" onchange="updateFontConfig()"> <b>Fett</b></label>
+                        <label style="cursor:pointer; display:flex; gap:6px; align-items:center;"><input type="checkbox"
+                                id="inp-italic" onchange="updateFontConfig()"> <i>Kursiv</i></label>
+                    </div>
+                </div>
+
+                <div class="modal-actions" style="margin-top:25px; display:flex; justify-content:flex-end;">
+                    <button id="btn-close-settings" class="btn btn-primary">Fertig & Speichern</button>
+                </div>
+            </div> <!-- End modal-body -->
+        </div> <!-- End modal-content -->
+    </div> <!-- End settings-modal -->
+
+    <!-- --- THE BIG WINDOWS STYLE PICKER MODAL --- -->
+    <div id="picker-modal" class="modal hidden" style="z-index: 2000;">
+        <div class="picker-window"
+            style="background:#f0f0f0; border:1px solid #777; box-shadow: 4px 4px 10px rgba(0,0,0,0.3); width: 550px; padding: 15px; border-radius: 4px;">
+            <div class="picker-header"
+                style="background:#ddd; padding: 10px 15px; display:flex; justify-content:space-between; cursor:grab; border-bottom:1px solid #999; margin:-15px -15px 15px -15px; border-radius:4px 4px 0 0;">
+                <span style="font-weight:bold; font-size:0.9rem; user-select:none;">Farbe auswählen</span>
+                <button class="btn-text" onclick="closePicker()" style="font-size:1.2rem;">×</button>
+            </div>
+
+            <div style="display:flex; gap:20px;">
+                <!-- Left Side: Grundfarben & Benutzerdefinierte -->
+                <div style="flex:1;">
+                    <p style="font-size:0.8rem; margin-bottom:5px;">Grundfarben:</p>
+                    <div id="classic-picker-grid" class="classic-grid-ui"></div>
+
+                    <p style="font-size:0.8rem; margin-top:15px; margin-bottom:5px;">Benutzerdefinierte Farben:</p>
+                    <div id="custom-picker-grid" class="classic-grid-ui">
+                        <!-- Empty slots -->
+                    </div>
+                </div>
+
+                <!-- Right Side: Spectrum & Inputs -->
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div id="spectrum"
+                        style="width:200px; height:180px; position:relative; cursor:crosshair; border:1px solid #777;">
+                        <img src="https://raw.githubusercontent.com/An-G-R/resources/main/color_spectrum.png"
+                            style="width:100%; height:100%; pointer-events:none;">
+                        <div id="spectrum-cursor"
+                            style="position:absolute; width:10px; height:10px; border:1px solid #fff; border-radius:50%; box-shadow:0 0 2px #000; transform:translate(-50%,-50%);">
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:10px; margin-top:15px; align-items:center; width:100%;">
+                        <div id="current-color-preview"
+                            style="width:50px; height:50px; border:1px solid #777; background:#fff;"></div>
+                        <div style="display:grid; grid-template-columns: auto 40px; gap:4px; font-size:0.8rem;">
+                            <span>Rot:</span> <input type="number" id="inp-r" min="0" max="255" value="255">
+                            <span>Grün:</span> <input type="number" id="inp-g" min="0" max="255" value="255">
+                            <span>Blau:</span> <input type="number" id="inp-b" min="0" max="255" value="255">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions" style="margin-top:20px; display:flex; gap:10px; justify-content: flex-start;">
+                <button onclick="confirmPicker()" style="padding:4px 25px;">OK</button>
+                <button onclick="closePicker()" style="padding:4px 25px;">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Info Modal -->
     <div id="info-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3><i class="fa-solid fa-circle-info"></i> Info & Shortcuts</h3>
-            <ul style="list-style:none; padding:0; margin-top:16px; line-height:2;">
-                <li><strong>Strg + S</strong> : Speichern</li>
-                <li><strong>Strg + F</strong> : Suchen (Browser)</li>
-                <li><strong>Drag & Drop</strong> : Links verschieben</li>
+        <div class="modal-content glass-effect">
+            <h3>📌 Info & Shortcuts</h3>
+            <ul>
+                <li><strong>Strg + S:</strong> Schnellspeichern</li>
+                <li><strong>Checkbox:</strong> Stapel ein/ausklappen</li>
+                <li><strong>Lücken schließen:</strong> Entfernt alle leeren Felder im Raster</li>
+                <li><strong>GitHub Sync:</strong> Speichert dein Board sicher in der Cloud</li>
             </ul>
             <div class="modal-actions">
                 <button id="btn-close-info" class="btn btn-primary">Verstanden</button>
@@ -65,42 +201,66 @@
 
     <!-- Import Modal -->
     <div id="import-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3>Favoriten Importieren</h3>
-            <p>Lade deine HTML-Lesezeichen-Datei hoch.</p>
-            <input type="file" id="file-input" accept=".html">
-            <div class="modal-actions">
-                <button id="btn-cancel-import" class="btn btn-text">Abbrechen</button>
-                <button id="btn-confirm-import" class="btn btn-primary" disabled>Importieren</button>
+        <div class="modal-content glass-effect">
+            <h3 style="font-family:'Outfit',sans-serif; font-weight:800; text-align:center;"><i
+                    class="fa-solid fa-file-import"></i> Favoriten Importieren</h3>
+            <div style="margin-bottom: 15px;">
+                <p style="font-size:0.85rem; color:#666; margin-bottom: 5px;">Ziel-Zeile auswählen:</p>
+                <select id="import-row-select"
+                    style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit;">
+                    <option value="new">-- Neue Zeile erstellen --</option>
+                </select>
+            </div>
+
+            <label for="file-input" class="file-upload-wrapper">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span id="file-label" style="font-size:0.9rem; font-weight:600; color:#555;">Datei auswählen oder
+                    hierher ziehen</span>
+                <input type="file" id="file-input" accept=".html">
+            </label>
+
+            <div class="modal-actions" style="justify-content:center; gap:15px; margin-top:10px;">
+                <button id="btn-cancel-import" class="btn btn-secondary">Abbrechen</button>
+                <button id="btn-confirm-import" class="btn btn-primary" disabled>Jetzt Importieren</button>
             </div>
         </div>
     </div>
 
-    <!-- Add Item Modal -->
-    <div id="add-item-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3>Neuer Favorit</h3>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-                <div>
-                    <label style="font-size:0.8rem; font-weight:bold; display:block; margin-bottom:4px;">Titel
-                        (Name)</label>
-                    <input type="text" id="input-item-title" placeholder="z.B. Google"
-                        style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
-                </div>
-                <div>
-                    <label style="font-size:0.8rem; font-weight:bold; display:block; margin-bottom:4px;">Link
-                        (URL)</label>
-                    <input type="text" id="input-item-url" placeholder="https://..."
-                        style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
-                </div>
+    <!-- Export Modal -->
+    <div id="export-modal" class="modal hidden">
+        <div class="modal-content glass-effect">
+            <h3 style="font-family:'Outfit',sans-serif; font-weight:800; text-align:center;"><i
+                    class="fa-solid fa-file-export"></i> Favoriten Exportieren</h3>
+
+            <div style="margin-top: 15px; margin-bottom: 15px;">
+                <p style="font-size:0.85rem; color:#666; margin-bottom: 5px;">Was möchtest du exportieren?</p>
+                <select id="export-row-select"
+                    style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit;">
+                    <option value="all">-- Alles exportieren --</option>
+                </select>
             </div>
-            <div class="modal-actions">
-                <button id="btn-cancel-add" class="btn btn-text">Abbrechen</button>
-                <button id="btn-confirm-add" class="btn btn-primary">Hinzufügen</button>
+
+            <div class="modal-actions" style="justify-content:center; gap:15px; margin-top:10px;">
+                <button id="btn-cancel-export" class="btn btn-secondary">Abbrechen</button>
+                <button id="btn-confirm-export" class="btn btn-primary">Jetzt Exportieren</button>
             </div>
         </div>
     </div>
 
+    <!-- Move Mode Toolbar -->
+    <div id="move-toolbar" class="move-toolbar hidden">
+        <div class="move-info">
+            <i class="fa-solid fa-arrows-to-dot"></i>
+            <span id="move-count">0 Elemente ausgewählt</span>
+        </div>
+        <div class="move-actions">
+            <button id="btn-cancel-move" class="btn btn-secondary">Abbrechen</button>
+            <button id="btn-confirm-move" class="btn btn-primary" disabled>Hierher verschieben</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="ui.js"></script>
     <script src="app.js"></script>
 </body>
 

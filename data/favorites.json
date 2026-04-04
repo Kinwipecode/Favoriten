@@ -909,6 +909,11 @@
                   "id": "d0o2skrac",
                   "title": "BIM & IFC",
                   "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                },
+                {
+                  "id": "tf6gzpy2a",
+                  "title": "supp",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
                 }
               ],
               "collapsed": false
@@ -916,13 +921,7 @@
             {
               "id": "4cag3ot2y",
               "title": "Trimble",
-              "items": [
-                {
-                  "id": "tf6gzpy2a",
-                  "title": "supp",
-                  "url": "https://www.trimbleenterprisecommunity.com/s/"
-                }
-              ],
+              "items": [],
               "collapsed": false
             },
             {

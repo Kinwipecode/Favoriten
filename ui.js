@@ -1,11 +1,8 @@
-/**
- * UI / Menu Logic Module
- * Features: Draggable Modals, Windows-Style Color Picker, Typography Controls, Event Handling
- */
+
 
 let posX = 0, posY = 0, currentPickerVar = null;
 
-// --- Modal & Window Handling ---
+
 window.makeDraggable = (content, header) => {
     header.onmousedown = (e) => {
         if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
@@ -45,7 +42,7 @@ window.hideModal = (id) => {
     document.getElementById(id)?.classList.add('hidden');
 };
 
-// --- Color Picker Logic ---
+
 window.openPicker = (varName) => {
     currentPickerVar = varName;
     const color = state.config[varName] || '#ffffff';
@@ -87,7 +84,7 @@ function renderClassicGrid() {
     }
 }
 
-// --- Typography & Theme Persistence ---
+
 window.applyTheme = () => {
     const root = document.documentElement; const c = state.config;
     console.log("Applying Theme Config:", c);
@@ -107,7 +104,7 @@ window.applyTheme = () => {
 
     Object.keys(c).forEach(k => { const s = document.getElementById(`swatch-${k}`); if (s) s.style.background = c[k]; });
 
-    // Sync UI Inputs
+
     const ifs = document.getElementById('inp-font-size'); if (ifs) ifs.value = c.itemFontSize || '0.85rem';
     const igs = document.getElementById('inp-group-size'); if (igs) igs.value = c.groupFontSize || '0.95rem';
     const irs = document.getElementById('inp-row-size'); if (irs) irs.value = c.rowFontSize || '1.5rem';
@@ -136,28 +133,79 @@ window.setTheme = (type) => {
     if (themes[type]) { state.config = { ...themes[type] }; applyTheme(); saveData(); }
 };
 
-// --- Interaction Hook ---
+
 const buttonMetadata = {
-    'btn-load': { icon: 'fa-solid fa-cloud-arrow-down', text: 'Laden', class: 'btn btn-secondary', title: 'Zuletzt gespeicherten Stand holen' },
+    'btn-load': { icon: 'fa-solid fa-rotate-left', text: 'Lokal Laden', class: 'btn btn-secondary', title: 'Laden von diesem PC' },
+    'btn-pull-cloud': { icon: 'fa-solid fa-cloud-arrow-down', text: 'Cloud Download', class: 'btn btn-secondary', title: 'Daten von GitHub auf diesen PC laden (überschreibt lokal)' },
     'btn-save': { icon: 'fa-solid fa-floppy-disk', text: 'Speichern', class: 'btn btn-secondary' },
     'btn-import': { icon: 'fa-solid fa-file-import', text: 'Importieren', class: 'btn btn-secondary' },
     'btn-export': { icon: 'fa-solid fa-file-export', text: 'Exportieren', class: 'btn btn-secondary' },
-    'btn-github': { icon: 'fa-brands fa-github', text: 'Sync', class: 'btn btn-secondary', style: 'background:#24292e; color:white;' },
+    'btn-github': { icon: 'fa-brands fa-github', text: 'Sync-Token', class: 'btn btn-secondary', style: 'background:#24292e; color:white;' },
     'btn-info': { icon: 'fa-solid fa-circle-info', text: '', class: 'btn btn-secondary', title: 'Info & Shortcuts' },
     'btn-collapse-gaps': { icon: 'fa-solid fa-compress', text: 'Lücken schließen', class: 'btn btn-secondary', title: 'Alle Lücken im Raster entfernen' },
     'btn-add-row': { icon: 'fa-solid fa-layer-group', text: 'Neue Zeile', class: 'btn btn-secondary' },
+    'btn-add-spacer': { icon: 'fa-solid fa-plus-square', text: 'Lücke einfügen', class: 'btn btn-secondary', title: 'Eine leere Position am Ende der letzten Zeile hinzufügen' },
     'btn-add-project': { icon: 'fa-solid fa-plus', text: 'Neue Fav. Gruppe', class: 'btn btn-accent' },
+    'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Verschieben', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
     'btn-settings': { icon: 'fa-solid fa-palette', text: 'Design', class: 'btn btn-secondary', title: 'Farben & Design', iconStyle: 'color:var(--primary-color)' }
 };
 
 const btnHandlers = {
-    'btn-load': () => { if (confirm('Laden?')) init(); },
+    'btn-load': () => { if (confirm('Lokal laden?')) init(); },
+    'btn-pull-cloud': async () => { if (confirm('Daten von GitHub laden? Lokale Änderungen auf diesem PC werden überschrieben!')) await pullFromCloud(); },
     'btn-save': () => saveData(),
-    'btn-import': () => showModal('import-modal'),
-    'btn-export': () => {
-        const data = JSON.stringify({ rows: state.rows, config: state.config }, null, 2);
-        const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' })); a.download = 'favoriten_backup.json'; a.click();
+    'btn-import': () => {
+        const select = document.getElementById('import-row-select');
+        if (select) {
+            select.innerHTML = '<option value="new">-- Neue Zeile erstellen --</option>';
+            state.rows.forEach(r => {
+                select.innerHTML += `<option value="${r.id}">${r.title}</option>`;
+            });
+        }
+        showModal('import-modal');
     },
+    'btn-export': () => {
+        const select = document.getElementById('export-row-select');
+        if (select) {
+            select.innerHTML = '<option value="all">-- Alles exportieren --</option>';
+            state.rows.forEach(r => {
+                select.innerHTML += `<option value="${r.id}">${r.title}</option>`;
+            });
+        }
+        showModal('export-modal');
+    },
+    'btn-cancel-export': () => hideModal('export-modal'),
+    'btn-confirm-export': () => {
+        const rowId = document.getElementById('export-row-select').value;
+        let exportRows = state.rows;
+        let filename = 'favoriten_chrome.html';
+
+        if (rowId !== 'all') {
+            const row = state.rows.find(r => r.id === rowId);
+            if (row) {
+                exportRows = [row];
+                filename = `favoriten_${row.title.replace(/\s+/g, '_')}.html`;
+            }
+        }
+
+        const html = convertToHTMLBookmarks(exportRows);
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+        a.download = filename;
+        a.click();
+        hideModal('export-modal');
+    },
+    'btn-confirm-import': () => {
+        const file = document.getElementById('file-input').files[0];
+        const rowId = document.getElementById('import-row-select').value;
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => { importFromHTML(e.target.result, rowId); hideModal('import-modal'); };
+            reader.readAsText(file);
+        }
+    },
+    'btn-move-mode': () => toggleMoveMode(),
+    'btn-cancel-move': () => toggleMoveMode(),
     'btn-github': async () => {
         const token = prompt('GitHub Token:', ghToken);
         if (token !== null) { localStorage.setItem('gh_token', token); ghToken = token; await loadFromGitHub(); }
@@ -166,6 +214,11 @@ const btnHandlers = {
     'btn-reset': () => { if (confirm('Alles löschen?')) { state.rows = [{ id: generateId(), title: 'Hauptzeile', projects: [] }]; renderBoard(); saveData(); } },
     'btn-collapse-gaps': () => { state.rows.forEach(r => r.projects = r.projects.filter(s => !s.isSpacer)); renderBoard(); saveData(); },
     'btn-add-row': () => { state.rows.push({ id: generateId(), title: 'Neue Zeile', projects: [] }); renderBoard(); saveData(); },
+    'btn-add-spacer': () => {
+        if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [] });
+        state.rows[state.rows.length - 1].projects.push({ id: generateId(), isSpacer: true, projects: [] });
+        renderBoard(); saveData();
+    },
     'btn-add-project': () => {
         const t = prompt('Projekt Name:');
         if (t) {
@@ -177,22 +230,59 @@ const btnHandlers = {
     },
     'btn-close-settings': () => hideModal('settings-modal'),
     'btn-close-info': () => hideModal('info-modal'),
-    'btn-cancel-import': () => hideModal('import-modal'),
-    'btn-confirm-import': () => {
-        const file = document.getElementById('file-input').files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => { importFromHTML(e.target.result); hideModal('import-modal'); };
-            reader.readAsText(file);
-        }
-    }
+    'btn-cancel-import': () => hideModal('import-modal')
 };
+
+function convertToHTMLBookmarks(rows) {
+    let html = `<!DOCTYPE NETSCAPE-Bookmark-file-1>
+<!-- This is an automatically generated file.
+     It will be read and rewritten.
+     DO NOT EDIT! -->
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Bookmarks</TITLE>
+<H1>Bookmarks</H1>
+<DL><p>
+    <DT><H3 PERSONAL_TOOLBAR_FOLDER="true">Lesezeichenleiste</H3>
+    <DL><p>\n`;
+
+    const allProjects = [];
+    rows.forEach(row => {
+        row.projects.forEach(slot => {
+            if (!slot.isSpacer) {
+                slot.projects.forEach(project => {
+                    allProjects.push(project);
+                });
+            }
+        });
+    });
+
+    allProjects.sort((a, b) => a.title.localeCompare(b.title));
+
+    allProjects.forEach(project => {
+        html += `        <DT><H3>${project.title}</H3>\n        <DL><p>\n`;
+        project.items.forEach(item => {
+            html += `            <DT><A HREF="${item.url}">${item.title}</A>\n`;
+        });
+        html += `        </DL><p>\n`;
+    });
+
+    html += `    </DL><p>\n</DL><p>\n`;
+    return html;
+}
 
 window.renderHeaderButtons = () => {
     const container = document.querySelector('.actions');
     if (!container) return;
     container.innerHTML = '';
-    const order = state.config.buttonOrder || Object.keys(buttonMetadata);
+    let order = state.config.buttonOrder || Object.keys(buttonMetadata);
+
+    // Ensure all currently available metadata buttons are included
+    Object.keys(buttonMetadata).forEach(id => {
+        if (!order.includes(id)) order.push(id);
+    });
+
+    if (!order.includes('btn-save')) order = ['btn-save', ...order];
+
     order.forEach(id => {
         const meta = buttonMetadata[id];
         if (!meta) return;
@@ -204,23 +294,25 @@ window.renderHeaderButtons = () => {
         let iconStyle = meta.iconStyle ? ` style="${meta.iconStyle}"` : '';
         btn.innerHTML = `<i class="${meta.icon}"${iconStyle}></i> ${meta.text}`;
 
-        // Handlers direkt beim Erstellen zuweisen
         if (btnHandlers[id]) btn.onclick = btnHandlers[id];
 
         container.appendChild(btn);
     });
 };
 
-// --- Interaction Hook ---
+
 window.setupUI = () => {
     renderHeaderButtons();
 
-    // Fixe Event-Zuweisung für Elemente, die nicht dynamisch neu gezeichnet werden
+
     const btnMapSettings = {
         'btn-close-settings': btnHandlers['btn-close-settings'],
         'btn-close-info': btnHandlers['btn-close-info'],
         'btn-cancel-import': btnHandlers['btn-cancel-import'],
-        'btn-confirm-import': btnHandlers['btn-confirm-import']
+        'btn-confirm-import': btnHandlers['btn-confirm-import'],
+        'btn-cancel-export': btnHandlers['btn-cancel-export'],
+        'btn-confirm-export': btnHandlers['btn-confirm-export'],
+        'btn-cancel-move': btnHandlers['btn-cancel-move']
     };
 
     Object.keys(btnMapSettings).forEach(id => {
@@ -238,7 +330,7 @@ window.setupUI = () => {
         };
     }
 
-    // Window Init
+
     const setW = document.querySelector('#settings-modal .modal-content');
     const setH = document.querySelector('#settings-modal .modal-header');
     if (setW && setH) makeDraggable(setW, setH);
@@ -247,7 +339,7 @@ window.setupUI = () => {
     const pickH = document.querySelector('#picker-modal .picker-header');
     if (pickW && pickH) makeDraggable(pickW, pickH);
 
-    // Initialisiere SortableJS für die Buttons
+
     const actionsContainer = document.querySelector('.actions');
     if (actionsContainer && typeof Sortable !== 'undefined') {
         new Sortable(actionsContainer, {
@@ -256,11 +348,28 @@ window.setupUI = () => {
             onEnd: () => {
                 const newOrder = Array.from(actionsContainer.querySelectorAll('button')).map(b => b.id);
                 state.config.buttonOrder = newOrder;
-                saveData(); // Speichert die neue Reihenfolge
+                saveData();
             }
         });
     }
 };
 
-// Global shorthand for color update from picker grid
+
 window.updateUIFromColor = updateUIFromColor;
+
+async function pullFromCloud() {
+    try {
+        const resp = await fetch('/api/github/pull', { method: 'POST' });
+        const data = await resp.json();
+        if (resp.ok) {
+            state.rows = data.rows;
+            state.config = data.config || state.config;
+            renderBoard();
+            alert('Geladen! Die Daten von GitHub wurden auf diesen PC übertragen und lokal gespeichert.');
+        } else {
+            alert('Fehler beim Laden von GitHub: ' + data.error);
+        }
+    } catch (e) {
+        alert('Verbindungsfehler zum lokalen Server.');
+    }
+}

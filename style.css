@@ -187,6 +187,20 @@ body {
     gap: 15px;
     flex: 1;
     margin-right: 20px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+
+.row-header-main:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.row-header-main input[type="checkbox"] {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .row-order-input {
@@ -238,6 +252,15 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
     gap: 20px;
     min-height: 100px;
+}
+
+.board-row.collapsed .row-projects {
+    display: none !important;
+}
+
+.board-row.collapsed {
+    padding-bottom: 0 !important;
+    margin-bottom: 10px !important;
 }
 
 .grid-slot {

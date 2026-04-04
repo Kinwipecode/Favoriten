@@ -1,7 +1,4 @@
-/**
- * Core Application Logic
- * Features: State Management, Data Persistence, Board Rendering, HTML Import
- */
+
 
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
@@ -14,6 +11,7 @@ let ghSha = null;
 
 const state = {
     rows: [],
+    moveMode: { active: false, type: null, selectedIds: [] },
     config: {
         primary: '#6c5ce7',
         bg: '#dfe6e9',
@@ -23,7 +21,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-load', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-add-project', 'btn-settings'
+            'btn-load', 'btn-pull-cloud', 'btn-save', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-add-spacer', 'btn-add-project', 'btn-move-mode', 'btn-settings'
         ]
     }
 };
@@ -31,7 +29,7 @@ const state = {
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
 async function init() {
-    if (window.setupUI) setupUI(); // From ui.js
+    if (window.setupUI) setupUI();
     await loadData();
     if (window.renderHeaderButtons) renderHeaderButtons();
     renderBoard();
@@ -115,20 +113,35 @@ function renderBoard() {
             slotEl.ondragleave = () => slotEl.classList.remove("drag-over-slot");
             slotEl.ondrop = (e) => { e.stopPropagation(); handleRowDrop(e, row.id, slot.id); };
 
+            // Move Target for Groups
+            if (state.moveMode.active && state.moveMode.type === 'group' && state.moveMode.selectedIds.length > 0) {
+                const moveBtn = document.createElement('button');
+                moveBtn.className = 'move-target-btn';
+                moveBtn.innerHTML = '<i class="fa-solid fa-download"></i> Hierher';
+                moveBtn.onclick = (e) => { e.stopPropagation(); applyMove('group', row.id, slot.id); };
+                slotEl.appendChild(moveBtn);
+            }
+
             if (slot.isSpacer) {
-                slotEl.innerHTML = `<div class="column spacer" ondragover="event.preventDefault(); this.classList.add('drag-over');" ondragleave="this.classList.remove('drag-over');" ondrop="event.stopPropagation(); handleRowDrop(event, '${row.id}', '${slot.id}')"><button class="btn-text" onclick="deleteProject('${slot.id}')">×</button></div>`;
+                slotEl.innerHTML += `<div class="column spacer" ondragover="event.preventDefault(); this.classList.add('drag-over');" ondragleave="this.classList.remove('drag-over');" ondrop="event.stopPropagation(); handleRowDrop(event, '${row.id}', '${slot.id}')"><div class="spacer-actions"><button class="btn-create-group" onclick="addGroupAtSlot('${slot.id}')" title="Gruppe hier erstellen"><i class="fa-solid fa-plus"></i></button><button class="btn-delete-slot" onclick="deleteProject('${slot.id}')" title="Lücke löschen">×</button></div></div>`;
             } else {
                 slot.projects.forEach(p => {
-                    const col = document.createElement("div"); col.className = `column ${p.collapsed ? "collapsed" : ""}`;
-                    col.draggable = true; col.ondragstart = (e) => handleColDragStart(e, p.id); col.ondragend = handleDragEnd;
-                    // Drops auf Gruppen erlauben sie im selben Slot zu stapeln
-                    col.ondragover = (e) => { e.preventDefault(); slotEl.classList.add("drag-over-slot"); };
-                    col.ondrop = (e) => { e.stopPropagation(); handleRowDrop(e, row.id, slot.id); };
+                    const col = document.createElement("div");
+                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${(state.moveMode.active && state.moveMode.type === 'group' && state.moveMode.selectedIds.includes(p.id)) ? 'selected-for-move' : ''}`;
+                    col.draggable = !state.moveMode.active;
+                    col.ondragstart = (e) => handleColDragStart(e, p.id);
+                    col.ondragend = handleDragEnd;
+                    col.onclick = (e) => { if (state.moveMode.active) { e.stopPropagation(); toggleSelect('group', p.id); } };
 
-                    col.innerHTML = `<div class="column-header" onclick="if(!event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')" style="cursor:pointer;"><div class="header-left"><input type="checkbox" ${p.collapsed ? "checked" : ""} readonly><span>${p.title}</span></div><div class="column-actions"><button onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button><button onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="column-body"></div>`;
+                    col.innerHTML = `<div class="column-header" onclick="if(!state.moveMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')" style="cursor:pointer;"><div class="header-left"><input type="checkbox" ${p.collapsed ? "checked" : ""} readonly><span>${p.title}</span>${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}</div><div class="column-actions"><button onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button><button onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="column-body"></div>`;
                     const b = col.querySelector(".column-body");
                     p.items.forEach(it => {
-                        const i = document.createElement("div"); i.className = "favorite-item"; i.onclick = () => window.open(it.url);
+                        const i = document.createElement("div");
+                        i.className = `favorite-item ${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id)) ? 'selected-for-move' : ''}`;
+                        i.onclick = (e) => {
+                            if (state.moveMode.active) { e.stopPropagation(); toggleSelect('link', it.id); }
+                            else { window.open(it.url); }
+                        };
                         i.innerHTML = `<span>${it.title}</span><div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); editItem('${it.id}')" title="Bearbeiten"><i class="fa-solid fa-pen" style="font-size:0.7rem;"></i></button><button class="btn-text" onclick="event.stopPropagation(); deleteItem('${it.id}')" title="Löschen">×</button></div>`;
                         b.appendChild(i);
                     });
@@ -141,16 +154,28 @@ function renderBoard() {
     });
 }
 
-window.importFromHTML = (html) => {
+window.importFromHTML = (html, targetRowId) => {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const headings = [...doc.querySelectorAll('h3, h1, dt > h3')];
-    if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Import', projects: [] });
+
+    let targetRow;
+    if (targetRowId === 'new' || !targetRowId) {
+        targetRow = { id: generateId(), title: 'Import ' + new Date().toLocaleDateString(), projects: [] };
+        state.rows.push(targetRow);
+    } else {
+        targetRow = state.rows.find(r => r.id === targetRowId);
+        if (!targetRow) {
+            targetRow = { id: generateId(), title: 'Import', projects: [] };
+            state.rows.push(targetRow);
+        }
+    }
+
     headings.forEach(h => {
         const title = h.textContent.trim();
         const container = h.closest('dt') || h.parentElement;
         const links = [...container.querySelectorAll('a')].filter(a => a.closest('dl') === h.nextElementSibling || a.parentElement === container);
         if (links.length > 0 && title && !['Bookmarks', 'Lesezeichen'].includes(title)) {
-            state.rows[0].projects.push({ id: generateId(), isSpacer: false, projects: [{ id: generateId(), title, items: links.map(a => ({ id: generateId(), title: a.textContent.trim(), url: a.href })), collapsed: true }] });
+            targetRow.projects.push({ id: generateId(), isSpacer: false, projects: [{ id: generateId(), title, items: links.map(a => ({ id: generateId(), title: a.textContent.trim(), url: a.href })), collapsed: true }] });
         }
     });
     renderBoard(); saveData();
@@ -196,5 +221,107 @@ window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapse
 window.deleteProject = (id) => { findProjectAndClear(id); renderBoard(); saveData(); };
 window.addItem = (id) => { const t = prompt('Titel:'), u = prompt('URL:'); if (t && u) { const p = findProject(id); if (p) { p.items.push({ id: generateId(), title: t, url: u.startsWith('http') ? u : 'https://' + u }); renderBoard(); saveData(); } } };
 window.deleteItem = (id) => { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const idx = p.items.findIndex(it => it.id === id); if (idx !== -1) { p.items.splice(idx, 1); renderBoard(); saveData(); return; } } };
+
+window.toggleMoveMode = () => {
+    state.moveMode.active = !state.moveMode.active;
+    if (!state.moveMode.active) {
+        state.moveMode.selectedIds = [];
+        state.moveMode.type = null;
+        document.body.classList.remove('move-mode-active');
+    } else {
+        document.body.classList.add('move-mode-active');
+    }
+    updateMoveToolbar();
+    renderBoard();
+};
+
+function toggleSelect(type, id) {
+    if (state.moveMode.type && state.moveMode.type !== type && state.moveMode.selectedIds.length > 0) {
+        alert("Du kannst nur Gruppen ODER Links gleichzeitig markieren.");
+        return;
+    }
+    state.moveMode.type = type;
+    const idx = state.moveMode.selectedIds.indexOf(id);
+    if (idx === -1) state.moveMode.selectedIds.push(id);
+    else {
+        state.moveMode.selectedIds.splice(idx, 1);
+        if (state.moveMode.selectedIds.length === 0) state.moveMode.type = null;
+    }
+    updateMoveToolbar();
+    renderBoard();
+}
+
+function updateMoveToolbar() {
+    const bar = document.getElementById('move-toolbar');
+    const count = document.getElementById('move-count');
+    const btn = document.getElementById('btn-confirm-move');
+    if (!bar) return;
+
+    if (state.moveMode.active) {
+        bar.classList.remove('hidden');
+        const typeName = state.moveMode.type === 'group' ? 'Gruppen' : (state.moveMode.type === 'link' ? 'Links' : 'Elemente');
+        count.textContent = `${state.moveMode.selectedIds.length} ${typeName} ausgewählt`;
+        if (btn) btn.disabled = state.moveMode.selectedIds.length === 0;
+    } else {
+        bar.classList.add('hidden');
+    }
+}
+
+function applyMove(targetType, targetId, slotId = null) {
+    if (state.moveMode.type === 'group') {
+        const row = state.rows.find(r => r.id === targetId);
+        const slot = row.projects.find(s => s.id === slotId);
+
+        state.moveMode.selectedIds.forEach(id => {
+            const p = findProjectAndClear(id);
+            if (p) {
+                if (slot.isSpacer) { slot.isSpacer = false; slot.projects = [p]; }
+                else slot.projects.push(p);
+            }
+        });
+    } else if (state.moveMode.type === 'link') {
+        const targetProject = findProject(targetId);
+        if (!targetProject) return;
+
+        state.moveMode.selectedIds.forEach(id => {
+            let foundItem = null;
+            for (const r of state.rows) {
+                for (const s of r.projects) {
+                    if (!s.isSpacer) {
+                        for (const p of s.projects) {
+                            const idx = p.items.findIndex(it => it.id === id);
+                            if (idx !== -1) {
+                                foundItem = p.items.splice(idx, 1)[0];
+                                break;
+                            }
+                        }
+                    }
+                    if (foundItem) break;
+                }
+                if (foundItem) break;
+            }
+            if (foundItem) targetProject.items.push(foundItem);
+        });
+    }
+
+    toggleMoveMode();
+    renderBoard();
+    saveData();
+}
+
+window.addGroupAtSlot = (slotId) => {
+    const t = prompt('Projekt Name:');
+    if (t) {
+        for (const r of state.rows) {
+            const s = r.projects.find(x => x.id === slotId);
+            if (s && s.isSpacer) {
+                s.isSpacer = false;
+                s.projects = [{ id: generateId(), title: t, items: [], collapsed: true }];
+                renderBoard(); saveData();
+                break;
+            }
+        }
+    }
+};
 
 init();

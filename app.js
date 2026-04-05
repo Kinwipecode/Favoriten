@@ -335,7 +335,7 @@ function renderBoard() {
                         itemEl.addEventListener('touchstart', (e) => { itTimer = setTimeout(() => triggerItemContext(e), 600); }, { passive: true });
                         ['touchend', 'touchmove'].forEach(ev => itemEl.addEventListener(ev, () => clearTimeout(itTimer)));
 
-                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" onclick="if(Date.now() - state.lastContextMenuTime < 500) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
+                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" draggable="false" onclick="if(Date.now() - state.lastContextMenuTime < 500) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
                         body.appendChild(itemEl);
                     });
                     slotEl.appendChild(col);
@@ -432,7 +432,13 @@ function renderBoard() {
         // 3. FAVORITES (Items)
         document.querySelectorAll('.column-body').forEach(el => {
             new Sortable(el, {
-                group: 'items', animation: 150, filter: '.item-actions',
+                group: 'items',
+                animation: 150,
+                filter: '.item-actions',
+                forceFallback: true,
+                fallbackClass: "sortable-fallback",
+                fallbackOnBody: true,
+                fallbackTolerance: 3,
                 onEnd: (e) => {
                     const fCol = e.from.closest('.column'), tCol = e.to.closest('.column');
                     if (!fCol || !tCol) { renderBoard(); return; }

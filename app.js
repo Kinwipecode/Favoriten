@@ -357,7 +357,56 @@ function renderBoard() {
     });
     document.body.classList.toggle('move-mode-active', state.moveMode.active);
     document.body.classList.toggle('delete-mode-active', state.deleteMode.active);
-    if (window.initSortable) initSortable();
+
+    // REWRITE SORTABLE SYSTEM
+    if (typeof Sortable !== 'undefined' && !isRead) {
+        // 1. ROWS
+        new Sortable(document.querySelector('.board'), {
+            animation: 150, handle: '.row-header-main',
+            onEnd: (e) => {
+                const [moved] = state.rows.splice(e.oldIndex, 1);
+                state.rows.splice(e.newIndex, 0, moved);
+                saveData(); renderBoard();
+            }
+        });
+
+        // 2. GROUPS (Slots)
+        document.querySelectorAll('.row-projects').forEach(el => {
+            new Sortable(el, {
+                group: 'row-slots', animation: 150, handle: '.column-header',
+                onEnd: (e) => {
+                    const fromR = state.rows.find(r => r.id === e.from.closest('.board-row').dataset.id);
+                    const toR = state.rows.find(r => r.id === e.to.closest('.board-row').dataset.id);
+                    if (fromR && toR) {
+                        const [slot] = fromR.projects.splice(e.oldIndex, 1);
+                        toR.projects.splice(e.newIndex, 0, slot);
+                        saveData(); renderBoard();
+                    }
+                }
+            });
+        });
+
+        // 3. FAVORITES (Items)
+        document.querySelectorAll('.column-body').forEach(el => {
+            new Sortable(el, {
+                group: 'items', animation: 150,
+                onEnd: (e) => {
+                    const fromP = findProject(e.from.closest('.column').dataset.projectId);
+                    const toP = findProject(e.to.closest('.column').dataset.projectId);
+                    const itId = e.item.getAttribute('data-id');
+                    if (fromP && toP) {
+                        const idx = fromP.items.findIndex(it => it.id === itId);
+                        if (idx !== -1) {
+                            const [item] = fromP.items.splice(idx, 1);
+                            toP.items.splice(e.newIndex, 0, item);
+                            saveData();
+                        }
+                    }
+                    renderBoard();
+                }
+            });
+        });
+    }
 }
 
 function cleanTitle(str) {

@@ -2906,8 +2906,15 @@
         },
         {
           "id": "wt6nofrg3",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "12l59634g",
+              "title": "asdfdasqwer",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         }
       ],
       "order": 60,

@@ -250,7 +250,8 @@ function renderBoard() {
             if (!slot.isSpacer) {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");
-                    col.className = `column ${p.collapsed ? "collapsed" : ""}`;
+                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${isRead ? "read-only" : ""}`;
+                    col.dataset.projectId = p.id;
 
                     const triggerProjContext = (e) => {
                         if (isRead) return;
@@ -295,6 +296,7 @@ function renderBoard() {
 
                         const itemEl = document.createElement("div");
                         itemEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''} ${isMoving && isSelected ? 'selected-for-move' : ''} ${isDeleting && isSelected ? 'selected-for-delete' : ''}`;
+                        itemEl.dataset.id = it.id;
 
                         const triggerItemContext = (e) => {
                             if (isRead) return;

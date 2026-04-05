@@ -322,7 +322,10 @@ function renderBoard() {
                         <div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleCollapse('${p.id}')" style="cursor:pointer;">
                             <div class="header-left">
                                 <input type="checkbox" ${p.collapsed ? "checked" : ""} readonly>
-                                <span>${p.title}</span>
+                                ${isRead ?
+                            `<span>${p.title}</span>` :
+                            `<input type="text" class="group-title-input" value="${p.title}" onchange="updateGroupTitle('${p.id}', this.value)">`
+                        }
                                 ${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}
                             </div>
                             ${!isRead ? `
@@ -502,6 +505,7 @@ function findProjectAndClear(id) {
 }
 function findProject(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) { const p = s.projects.find(x => x.id === id); if (p) return p; } }
 function findItem(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const item = p.items.find(x => x.id === id); if (item) return item; } }
+window.updateGroupTitle = (id, val) => { const p = findProject(id); if (p) p.title = val; saveData(); };
 window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.title = val; saveData(); };
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
 window.sortRows = () => { renderBoard(); };

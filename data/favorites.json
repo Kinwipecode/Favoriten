@@ -2955,16 +2955,9 @@
           "projects": []
         },
         {
-          "id": "7c0wrjja7",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "o6ab42kpn",
-              "title": "gzuziz",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "508zb8itj",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "sc2sfqv0d",

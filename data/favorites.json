@@ -2930,11 +2930,6 @@
               "collapsed": false
             }
           ]
-        },
-        {
-          "id": "7eo79xoc4",
-          "isSpacer": true,
-          "projects": []
         }
       ],
       "order": 60,
@@ -2943,28 +2938,7 @@
     {
       "id": "ymylbqwfj",
       "title": "Neue Zeile",
-      "projects": [
-        {
-          "id": "rtrlbogjg",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "q7d1mb68m",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "508zb8itj",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "921hbb2bh",
-          "isSpacer": true,
-          "projects": []
-        }
-      ],
+      "projects": [],
       "order": 50,
       "collapsed": false
     }

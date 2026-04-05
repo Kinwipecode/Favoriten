@@ -1267,14 +1267,14 @@
               "title": "GitHub",
               "items": [
                 {
-                  "id": "ob0qofmbl",
-                  "title": "KinPDF",
-                  "url": "https://kinwipecode.github.io/Kinpdf/"
-                },
-                {
                   "id": "i061g0j8z",
                   "title": "Swissradio Git Hub",
                   "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
+                },
+                {
+                  "id": "ob0qofmbl",
+                  "title": "KinPDF",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
                 },
                 {
                   "id": "va1nm2uxk",

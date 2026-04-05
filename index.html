@@ -31,7 +31,9 @@
             <i class="fa-solid fa-magnifying-glass"
                 style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#636e72;"></i>
             <input type="text" id="board-search" placeholder="Favoriten suchen..." oninput="handleSearch(this.value)"
-                style="width:100%; padding:10px 10px 10px 35px; border-radius:12px; border:2px solid #edeff2; background:#f1f2f6; font-family:'Inter',sans-serif; font-size:0.9rem; outline:none; transition:all 0.2s ease;">
+                style="width:100%; padding:10px 40px 10px 35px; border-radius:12px; border:2px solid #edeff2; background:#f1f2f6; font-family:'Inter',sans-serif; font-size:0.9rem; outline:none; transition:all 0.2s ease;">
+            <i id="search-clear" class="fa-solid fa-circle-xmark hidden" onclick="clearSearch()"
+                style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#636e72; cursor:pointer; font-size:1.1rem; transition:all 0.2s ease;"></i>
         </div>
         <div class="actions">
             <!-- Buttons will be dynamically rendered here for reordering support -->
@@ -191,16 +193,47 @@
 
     <!-- Info Modal -->
     <div id="info-modal" class="modal hidden">
-        <div class="modal-content glass-effect">
-            <h3>📌 Info & Shortcuts</h3>
-            <ul>
-                <li><strong>Strg + S:</strong> Schnellspeichern</li>
-                <li><strong>Checkbox:</strong> Stapel ein/ausklappen</li>
-                <li><strong>Lücken schließen:</strong> Entfernt alle leeren Felder im Raster</li>
-                <li><strong>GitHub Sync:</strong> Speichert dein Board sicher in der Cloud</li>
-            </ul>
-            <div class="modal-actions">
-                <button id="btn-close-info" class="btn btn-primary">Verstanden</button>
+        <div class="modal-content glass-effect" style="max-width: 550px;">
+            <div class="modal-header">
+                <h3 style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;"><i
+                        class="fa-solid fa-circle-info"></i> Info & Werkzeuge</h3>
+                <button onclick="hideModal('info-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div
+                    style="background: rgba(var(--primary-color-rgb), 0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <h4 style="margin-top:0; color:var(--primary-color);">Version 4.5</h4>
+                    <p style="font-size:0.9rem; color:#555;">Dein persönlicher Favoriten Manager mit
+                        Cloud-Synchronisation und Name-Cleaning.</p>
+                </div>
+
+                <h4 style="margin-bottom: 10px;"><i class="fa-solid fa-bookmark"></i> Favoriten-Bookmarklet</h4>
+                <p style="font-size:0.85rem; color:#666; line-height:1.4; margin-bottom:15px;">
+                    Ziehe den folgenden Button in deine Lesezeichenleiste. Wenn du auf einer anderen Webseite
+                    bist und den Button drückst, öffnet sich dieser Manager und fügt die Seite automatisch
+                    hinzu:
+                </p>
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <a id="bookmarklet-link" href="javascript:void(0);"
+                        style="display:inline-block; background:var(--primary-color); color:white; padding:12px 25px; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow:0 5px 15px rgba(108, 92, 231, 0.4); font-size:0.9rem;">
+                        <i class="fa-solid fa-plus-circle"></i> Zu Favoriten hinzufügen
+                    </a>
+                    <p style="font-size:0.75rem; color:#999; margin-top:8px;">(Button nach oben in die
+                        Lesezeichenleiste ziehen!)</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; font-size: 0.85rem; color: #666;">
+                    <h5 style="margin:0 0 5px 0;">📜 Shortcuts</h5>
+                    <ul style="margin:0; padding-left:20px;">
+                        <li><strong>Strg + S:</strong> Speichern</li>
+                        <li><strong>Rechtsklick:</strong> Kontextmenü öffnen</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions" style="justify-content:center; margin-top:20px;">
+                    <button onclick="hideModal('info-modal')" class="btn btn-primary"
+                        style="min-width: 150px;">Schließen</button>
+                </div>
             </div>
         </div>
     </div>
@@ -220,7 +253,8 @@
 
             <label for="file-input" class="file-upload-wrapper">
                 <i class="fa-solid fa-cloud-arrow-up"></i>
-                <span id="file-label" style="font-size:0.9rem; font-weight:600; color:#555;">Datei auswählen oder
+                <span id="file-label" style="font-size:0.9rem; font-weight:600; color:#555;">Datei auswählen
+                    oder
                     hierher ziehen</span>
                 <input type="file" id="file-input" accept=".html">
             </label>
@@ -253,6 +287,73 @@
         </div>
     </div>
 
+    <!-- Edit/Add Link Modal -->
+    <div id="edit-link-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 id="edit-link-title" style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;"><i
+                        class="fa-solid fa-pen-to-square"></i> Link bearbeiten</h3>
+                <button onclick="hideModal('edit-link-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div style="margin-bottom: 15px;">
+                    <label
+                        style="display:block; font-size:0.85rem; color:#666; margin-bottom:5px; font-weight:bold;">Titel:</label>
+                    <input type="text" id="edit-link-name"
+                        style="width:100%; padding:10px; border-radius:8px; border:2px solid #edeff2; font-family:inherit; outline:none;"
+                        placeholder="Name des Favoriten">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label
+                        style="display:block; font-size:0.85rem; color:#666; margin-bottom:5px; font-weight:bold;">URL /
+                        Adresse:</label>
+                    <input type="text" id="edit-link-url"
+                        style="width:100%; padding:10px; border-radius:8px; border:2px solid #edeff2; font-family:inherit; outline:none;"
+                        placeholder="https://www.beispiel.de">
+                </div>
+                <div id="target-group-wrapper" style="margin-bottom: 20px;">
+                    <label
+                        style="display:block; font-size:0.85rem; color:#666; margin-bottom:5px; font-weight:bold;">Speichern
+                        in Gruppe:</label>
+                    <select id="edit-link-group"
+                        style="width:100%; padding:10px; border-radius:8px; border:2px solid #edeff2; font-family:inherit; outline:none; background:white;">
+                        <!-- Groups will be loaded here -->
+                    </select>
+                </div>
+                <div class="modal-actions" style="justify-content:flex-end; gap:12px;">
+                    <button onclick="hideModal('edit-link-modal')" class="btn btn-secondary">Abbrechen</button>
+                    <button id="btn-save-link" class="btn btn-primary">Speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit/Add Group Modal -->
+    <div id="edit-group-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 id="edit-group-title" style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;"><i
+                        class="fa-solid fa-folder-plus"></i> Gruppe erstellen</h3>
+                <button onclick="hideModal('edit-group-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div style="margin-bottom: 20px;">
+                    <label
+                        style="display:block; font-size:0.85rem; color:#666; margin-bottom:8px; font-weight:bold;">Name
+                        der
+                        Gruppe:</label>
+                    <input type="text" id="edit-group-name"
+                        style="width:100%; padding:12px; border-radius:10px; border:2px solid #edeff2; font-family:inherit; outline:none;"
+                        placeholder="Z.B. Social Media">
+                </div>
+                <div class="modal-actions" style="justify-content:flex-end; gap:12px;">
+                    <button onclick="hideModal('edit-group-modal')" class="btn btn-secondary">Abbrechen</button>
+                    <button id="btn-save-group" class="btn btn-primary">Gruppe speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Move Mode Toolbar -->
     <div id="move-toolbar" class="move-toolbar hidden">
         <div class="move-info">
@@ -278,9 +379,58 @@
         </div>
     </div>
 
-    <!-- Context Menu -->
+    <!-- GitHub Token Modal -->
+    <div id="github-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;"><i
+                        class="fa-brands fa-github"></i>
+                    GitHub Sync-Token</h3>
+                <button onclick="hideModal('github-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <p
+                    style="font-size:0.8rem; color:#666; margin-bottom:15px; border-left:3px solid var(--primary-color); padding-left:10px;">
+                    Gib deinen persönlichen Token ein, um deine Favoriten mit GitHub zu synchronisieren.</p>
+                <div style="margin-bottom: 20px;">
+                    <label
+                        style="display:block; font-size:0.85rem; color:#666; margin-bottom:8px; font-weight:bold;">Personal
+                        Access Token:</label>
+                    <input type="password" id="gh-token-input"
+                        style="width:100%; padding:12px; border-radius:10px; border:2px solid #edeff2; font-family:inherit; outline:none;"
+                        placeholder="ghp_xxxxxxxxxxxx">
+                </div>
+                <div class="modal-actions" style="justify-content:flex-end; gap:12px;">
+                    <button onclick="hideModal('github-modal')" class="btn btn-secondary">Abbrechen</button>
+                    <button id="btn-save-github-token" class="btn btn-primary">Token speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom-tooltip" class="custom-tooltip hidden"></div>
     <div id="context-menu" class="context-menu hidden">
         <!-- Dynamic content -->
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Confirm Modal -->
+    <div id="confirm-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 400px; padding: 25px; text-align: center;">
+            <div id="confirm-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;">
+                <i class="fa-solid fa-circle-question"></i>
+            </div>
+            <h3 id="confirm-title" style="margin-bottom: 10px; font-family:'Outfit',sans-serif; font-weight:800;">Bitte
+                bestätigen</h3>
+            <p id="confirm-message" style="font-size: 0.95rem; color: #666; margin-bottom: 25px; line-height: 1.5;"></p>
+            <div class="modal-actions" style="justify-content: center; gap: 15px;">
+                <button id="btn-confirm-cancel" class="btn btn-secondary" style="min-width: 100px;">Abbrechen</button>
+                <button id="btn-confirm-ok" class="btn btn-primary" style="min-width: 100px;">Ja,
+                    fortfahren</button>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>

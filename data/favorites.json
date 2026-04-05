@@ -1675,6 +1675,43 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "enj3x18br",
+              "title": "Laptop",
+              "items": [
+                {
+                  "id": "7bbpkk8yq",
+                  "title": "ASUS Zenbook Pro 15 Flip OLED (UP6502) Test - ein fleißiges Produkt für ernsthafte Nutzer | LaptopMedia DE",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/#p8"
+                },
+                {
+                  "id": "0fqzszfzo",
+                  "title": "ASUS ZenBook Pro 15 Flip OLED UP6502ZA-M8019W, Core i7-12700H (14x 1.7/4.7GHz), 16GB, 1.0TB SSD, Schweizer Tastaturlayout (90NB0W22-M00220) ab CHF 1'119.00 bei Toppreise.ch",
+                  "url": "https://www.toppreise.ch/preisvergleich/Notebooks/ASUS-ZenBook-Pro-15-Flip-OLED-UP6502ZA-M8019W-Core-90NB0W22-M00220-p701333?selsort=rd#f_anchorRelated_products"
+                },
+                {
+                  "id": "stucg1xg0",
+                  "title": "Test HP Pavilion Power 15 (i7-7700HQ, GTX 1050) Laptop - Notebookcheck.com Tests",
+                  "url": "https://www.notebookcheck.com/Test-HP-Pavilion-Power-15-i7-7700HQ-GTX-1050-Laptop.232274.0.html"
+                },
+                {
+                  "id": "aff5goa95",
+                  "title": "Test Asus Zenbook Pro 15 OLED UM535Q Laptop: Im Prinzip ein XPS 15 AMD - Notebookcheck.com Tests",
+                  "url": "https://www.notebookcheck.com/Test-Asus-Zenbook-Pro-15-OLED-UM535Q-Laptop-Im-Prinzip-ein-XPS-15-AMD.620326.0.html"
+                },
+                {
+                  "id": "1a9kqk2o5",
+                  "title": "HP Pavilion Laptop 15-eg2717nz (15.6\", Intel Core i7, 16 GB RAM, 1000 GB SSD) - Interdiscount",
+                  "url": "https://www.interdiscount.ch/de/computer-gaming/notebooks/notebooks--c511000/hp-pavilion-laptop-15-eg2717nz-15-6-intel-core-i7-16-gb-ram-1000-gb-ssd--p0006277540"
+                },
+                {
+                  "id": "obmoz0tdm",
+                  "title": "ASUS Zenbook Pro 15 Flip OLED (UP6502) Test - ein fleißiges Produkt für ernsthafte Nutzer | LaptopMedia DE",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -2608,45 +2645,7 @@
         {
           "id": "c5qn8mg3x",
           "isSpacer": false,
-          "projects": [
-            {
-              "id": "enj3x18br",
-              "title": "Laptop",
-              "items": [
-                {
-                  "id": "7bbpkk8yq",
-                  "title": "ASUS Zenbook Pro 15 Flip OLED (UP6502) Test - ein fleißiges Produkt für ernsthafte Nutzer | LaptopMedia DE",
-                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/#p8"
-                },
-                {
-                  "id": "0fqzszfzo",
-                  "title": "ASUS ZenBook Pro 15 Flip OLED UP6502ZA-M8019W, Core i7-12700H (14x 1.7/4.7GHz), 16GB, 1.0TB SSD, Schweizer Tastaturlayout (90NB0W22-M00220) ab CHF 1'119.00 bei Toppreise.ch",
-                  "url": "https://www.toppreise.ch/preisvergleich/Notebooks/ASUS-ZenBook-Pro-15-Flip-OLED-UP6502ZA-M8019W-Core-90NB0W22-M00220-p701333?selsort=rd#f_anchorRelated_products"
-                },
-                {
-                  "id": "stucg1xg0",
-                  "title": "Test HP Pavilion Power 15 (i7-7700HQ, GTX 1050) Laptop - Notebookcheck.com Tests",
-                  "url": "https://www.notebookcheck.com/Test-HP-Pavilion-Power-15-i7-7700HQ-GTX-1050-Laptop.232274.0.html"
-                },
-                {
-                  "id": "aff5goa95",
-                  "title": "Test Asus Zenbook Pro 15 OLED UM535Q Laptop: Im Prinzip ein XPS 15 AMD - Notebookcheck.com Tests",
-                  "url": "https://www.notebookcheck.com/Test-Asus-Zenbook-Pro-15-OLED-UM535Q-Laptop-Im-Prinzip-ein-XPS-15-AMD.620326.0.html"
-                },
-                {
-                  "id": "1a9kqk2o5",
-                  "title": "HP Pavilion Laptop 15-eg2717nz (15.6\", Intel Core i7, 16 GB RAM, 1000 GB SSD) - Interdiscount",
-                  "url": "https://www.interdiscount.ch/de/computer-gaming/notebooks/notebooks--c511000/hp-pavilion-laptop-15-eg2717nz-15-6-intel-core-i7-16-gb-ram-1000-gb-ssd--p0006277540"
-                },
-                {
-                  "id": "obmoz0tdm",
-                  "title": "ASUS Zenbook Pro 15 Flip OLED (UP6502) Test - ein fleißiges Produkt für ernsthafte Nutzer | LaptopMedia DE",
-                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "projects": []
         },
         {
           "id": "s63nvdxbl",

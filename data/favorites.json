@@ -1560,11 +1560,6 @@
                   "url": "https://www.netflix.com/YourAccount"
                 },
                 {
-                  "id": "d0o3y9js5",
-                  "title": "Miro Board lokal",
-                  "url": "file:///G:/Miro%20copy/index.html"
-                },
-                {
                   "id": "zh0w8gfe4",
                   "title": "Converter: YouTube MP3, Tiktok MP4 and more! - noTube",
                   "url": "https://notube.net/en/youtube-app-155"
@@ -1826,6 +1821,11 @@
               "id": "5w22g4dsc",
               "title": "KI",
               "items": [
+                {
+                  "id": "d0o3y9js5",
+                  "title": "Miro Board lokal",
+                  "url": "file:///G:/Miro%20copy/index.html"
+                },
                 {
                   "id": "169bwdjby",
                   "title": "Google",

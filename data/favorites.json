@@ -5,46 +5,6 @@
       "title": "Für  Chrome",
       "projects": [
         {
-          "id": "cyvzk59xs",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "qdrttd4m1",
-              "title": "schneiden",
-              "items": [
-                {
-                  "id": "jm8luv6te",
-                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "109xjhnc0",
-              "title": "Bild",
-              "items": [
-                {
-                  "id": "fkyp16ea4",
-                  "title": "Pixlr Express",
-                  "url": "https://pixlr.com/de/express/"
-                },
-                {
-                  "id": "mutv7ejvf",
-                  "title": "ArtGuru",
-                  "url": "https://www.artguru.ai/de/"
-                },
-                {
-                  "id": "o4b9ccla2",
-                  "title": "Refusion AI",
-                  "url": "https://refusion.ai/lander"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
-        },
-        {
           "id": "2lr893b86",
           "isSpacer": false,
           "projects": [
@@ -326,6 +286,46 @@
                   "id": "28yz8m5dr",
                   "title": "bild genratoren  AI",
                   "url": "https://modelplayground.ai/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "cyvzk59xs",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "qdrttd4m1",
+              "title": "schneiden",
+              "items": [
+                {
+                  "id": "jm8luv6te",
+                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "109xjhnc0",
+              "title": "Bild",
+              "items": [
+                {
+                  "id": "fkyp16ea4",
+                  "title": "Pixlr Express",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "mutv7ejvf",
+                  "title": "ArtGuru",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "o4b9ccla2",
+                  "title": "Refusion AI",
+                  "url": "https://refusion.ai/lander"
                 }
               ],
               "collapsed": true

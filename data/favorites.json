@@ -2879,7 +2879,7 @@
         }
       ],
       "order": 20,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "yawanswyh",
@@ -2956,7 +2956,7 @@
               "id": "j3nknfyqt",
               "title": "test link",
               "items": [],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         }

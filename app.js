@@ -324,9 +324,9 @@ function renderBoard() {
                                 <input type="checkbox" ${p.collapsed ? "checked" : ""} readonly>
                                 ${isRead ?
                             `<span>${p.title}</span>` :
-                            `<input type="text" class="group-title-input" value="${p.title}" onchange="updateGroupTitle('${p.id}', this.value)">`
+                            `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`
                         }
-                                ${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}
+                           ${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}
                             </div>
                             ${!isRead ? `
                             <div class="column-actions">

@@ -25,7 +25,7 @@ window.initSortable = () => {
     const isRead = state.isReadOnly;
     if (typeof Sortable === 'undefined') return;
 
-    // 1. Rows (Horizontal)
+    // 1. Rows (Board Sorting)
     const board = document.querySelector('.board');
     if (board && !board.sortable) {
         board.sortable = new Sortable(board, {
@@ -40,11 +40,12 @@ window.initSortable = () => {
         });
     } else if (board && board.sortable) board.sortable.option('disabled', isRead);
 
-    // 2. Groups/Slots (Horizontal within a row)
+    // 2. Groups (Row Project Sorting)
     document.querySelectorAll('.row-projects').forEach(el => {
         if (el.sortable) { el.sortable.option('disabled', isRead); return; }
         el.sortable = new Sortable(el, {
             group: 'row-slots',
+            handle: '.column-header', // CRITICAL: Only drag by header!
             animation: 180,
             disabled: isRead,
             onEnd: (evt) => {
@@ -61,11 +62,11 @@ window.initSortable = () => {
         });
     });
 
-    // 3. Items (Individual links)
+    // 3. Items (Column Body Sorting)
     document.querySelectorAll('.column-body').forEach(el => {
         if (el.sortable) { el.sortable.option('disabled', isRead); return; }
         el.sortable = new Sortable(el, {
-            group: { name: 'shared', pull: true, put: true },
+            group: 'shared',
             animation: 180,
             disabled: isRead,
             onStart: () => document.body.classList.add('is-dragging-item'),

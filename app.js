@@ -140,7 +140,7 @@ async function loadFromGitHub() {
     }
 }
 
-async function saveData() {
+async function saveData(isSilent = false) {
     const payload = { rows: state.rows, config: state.config };
     const btn = document.getElementById('btn-save');
     if (btn) btn.disabled = true;
@@ -149,7 +149,7 @@ async function saveData() {
         // 1. Try local server
         const res = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         if (res.ok) {
-            showSavedFeedback();
+            if (!isSilent) showSavedFeedback();
             if (btn) btn.disabled = false;
             return;
         }
@@ -160,12 +160,14 @@ async function saveData() {
     // 2. If local fails, try direct GitHub (requires token)
     if (ghToken) {
         const success = await saveToGitHub();
-        if (success) showSavedFeedback();
-        else showToast('GitHub Speicherung fehlgeschlagen. Bitte Token prüfen!', 'error');
+        if (success) { if (!isSilent) showSavedFeedback(); }
+        else if (!isSilent) showToast('GitHub Speicherung fehlgeschlagen. Bitte Token prüfen!', 'error');
     } else {
         localStorage.setItem('favoriten_backup', JSON.stringify(payload));
-        showToast('Kein Server/Token: Daten nur im Browser-Cache!', 'warning');
-        showModal('github-token-modal'); // Trigger login
+        if (!isSilent) {
+            showToast('Kein Server/Token: Daten nur im Browser-Cache!', 'warning');
+            showModal('github-token-modal');
+        }
     }
     if (btn) btn.disabled = false;
 }
@@ -462,9 +464,9 @@ window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === i
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
 window.sortRows = () => { renderBoard(); };
 window.deleteRow = async (id) => { if (await showConfirm('Reihe wirklich löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
-window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(); } };
-window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
-window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
+window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(true); } };
+window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(true); } };
+window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(true); } };
 window.deleteProject = (id) => { findProjectAndClear(id); renderBoard(); saveData(); };
 window.addItem = (projectId, preUrl = "", preTitle = "") => {
     if (!checkAuth()) return;

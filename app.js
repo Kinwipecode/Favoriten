@@ -229,18 +229,18 @@ function renderBoard() {
             }));
             if (!hasMatch) return;
         }
-        const isRead = state.isReadOnly && !ghToken;
+        const isRead = state.isReadOnly;
 
         const rowEl = document.createElement("div");
         rowEl.className = `board-row ${row.collapsed ? "collapsed" : ""}`;
         if (!isRead) rowEl.oncontextmenu = (e) => showContextMenu(e, 'row', row.id);
 
         rowEl.innerHTML = `<div class="row-header">
-                <div class="row-header-main" onclick="if(!event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                <div class="row-header-main" onclick="if(!event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox' || event.target.tagName === 'SPAN')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <input type="checkbox" ${row.collapsed ? "checked" : ""} readonly>
                     ${isRead ?
-                `<div class="row-order-input text-only">${row.order || 0}</div>
-                         <div class="row-title-input text-only">${row.title}</div>` :
+                `<span class="row-order-display">${row.order || 0}</span>
+                         <span class="row-title-display">${row.title}</span>` :
                 `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
                          <input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`
             }
@@ -279,7 +279,11 @@ function renderBoard() {
             }
 
             if (slot.isSpacer) {
-                slotEl.innerHTML += `<div class="column spacer" ondragover="if(!document.body.classList.contains('is-dragging-item')) { event.preventDefault(); this.classList.add('drag-over'); }" ondragleave="this.classList.remove('drag-over');" ondrop="if(!document.body.classList.contains('is-dragging-item')) { event.stopPropagation(); this.classList.remove('drag-over'); handleRowDrop(event, '${row.id}', '${slot.id}') }"><div class="spacer-actions"><button class="btn-create-group" onclick="addGroupAtSlot('${slot.id}')" title="Gruppe hier erstellen"><i class="fa-solid fa-plus"></i></button><button class="btn-delete-slot" onclick="deleteProject('${slot.id}')" title="Lücke löschen">×</button></div></div>`;
+                if (isRead) {
+                    slotEl.innerHTML += `<div class="column spacer read-only"></div>`;
+                } else {
+                    slotEl.innerHTML += `<div class="column spacer" ondragover="if(!document.body.classList.contains('is-dragging-item')) { event.preventDefault(); this.classList.add('drag-over'); }" ondragleave="this.classList.remove('drag-over');" ondrop="if(!document.body.classList.contains('is-dragging-item')) { event.stopPropagation(); this.classList.remove('drag-over'); handleRowDrop(event, '${row.id}', '${slot.id}') }"><div class="spacer-actions"><button class="btn-create-group" onclick="addGroupAtSlot('${slot.id}')" title="Gruppe hier erstellen"><i class="fa-solid fa-plus"></i></button><button class="btn-delete-slot" onclick="deleteProject('${slot.id}')" title="Lücke löschen">×</button></div></div>`;
+                }
             } else {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");
@@ -289,14 +293,14 @@ function renderBoard() {
                     const deleteSelected = state.deleteMode.active && state.deleteMode.type === 'group' && state.deleteMode.selectedIds.includes(p.id);
 
                     col.className = `column ${p.collapsed ? "collapsed" : ""} ${moveSelected ? 'selected-for-move' : ''} ${deleteSelected ? 'selected-for-delete' : ''}`;
-                    col.draggable = !state.moveMode.active && !state.deleteMode.active;
+                    col.draggable = !isRead && !state.moveMode.active && !state.deleteMode.active;
                     col.ondragstart = (e) => {
                         if (e.target.closest('.favorite-item')) return;
                         handleColDragStart(e, p.id);
                     };
                     col.ondragend = handleDragEnd;
                     col.ondragover = (e) => {
-                        if (!state.moveMode.active && !document.body.classList.contains('is-dragging-item')) {
+                        if (!isRead && !state.moveMode.active && !document.body.classList.contains('is-dragging-item')) {
                             e.preventDefault();
                             e.dataTransfer.dropEffect = 'copy';
                             col.classList.add('drag-over-external');
@@ -304,7 +308,7 @@ function renderBoard() {
                     };
                     col.ondragleave = () => col.classList.remove('drag-over-external');
                     col.ondrop = (e) => {
-                        if (!document.body.classList.contains('is-dragging-item')) {
+                        if (!isRead && !document.body.classList.contains('is-dragging-item')) {
                             col.classList.remove('drag-over-external');
                             handleExternalDrop(e, p.id);
                         }
@@ -333,7 +337,7 @@ function renderBoard() {
                         const match = isSearching && (it.title.toLowerCase().includes(state.searchTerm) || it.url.toLowerCase().includes(state.searchTerm));
                         const i = document.createElement("div");
                         i.dataset.id = it.id;
-                        i.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'link', it.id); };
+                        if (!isRead) i.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'link', it.id); };
                         const mSel = state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.includes(it.id);
                         const dSel = state.deleteMode.active && state.deleteMode.type === 'link' && state.deleteMode.selectedIds.includes(it.id);
 
@@ -346,7 +350,7 @@ function renderBoard() {
                             else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('link', it.id); }
                             else { window.open(it.url); }
                         };
-                        i.innerHTML = `<span>${it.title}</span><div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); editItem('${it.id}')" title="Bearbeiten"><i class="fa-solid fa-pen" style="font-size:0.7rem;"></i></button><button class="btn-text" onclick="event.stopPropagation(); deleteItem('${it.id}')" title="Löschen">×</button></div>`;
+                        i.innerHTML = `<span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); editItem('${it.id}')" title="Bearbeiten"><i class="fa-solid fa-pen" style="font-size:0.7rem;"></i></button><button class="btn-text" onclick="event.stopPropagation(); deleteItem('${it.id}')" title="Löschen">×</button></div>` : ''}`;
                         b.appendChild(i);
                     });
                     slotEl.appendChild(col);

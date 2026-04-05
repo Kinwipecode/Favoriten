@@ -133,8 +133,7 @@ async function loadFromGitHub() {
                 state.isReadOnly = true;
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                if (disp) { disp.textContent = '📖 GitHub (Nur Lesen)'; disp.style.color = '#e17055'; }
-                showToast('Nur Lese-Modus aktiviert.', 'info');
+                if (disp) { disp.textContent = ''; }
                 return;
             } else {
                 console.warn(`Fetch für ${branch} ergab Status ${res.status}`);
@@ -167,10 +166,7 @@ async function saveData(isSilent = false) {
         else if (!isSilent) showToast('GitHub Speicherung fehlgeschlagen. Bitte Token prüfen!', 'error');
     } else {
         localStorage.setItem('favoriten_backup', JSON.stringify(payload));
-        if (!isSilent) {
-            showToast('Kein Server/Token: Daten nur im Browser-Cache!', 'warning');
-            showModal('github-token-modal');
-        }
+        // Silent failing for Read-Only
     }
     if (btn) btn.disabled = false;
 }
@@ -1224,12 +1220,9 @@ window.updateBookmarklet = () => {
 };
 
 window.checkAuth = () => {
-    const disp = document.getElementById('save-path-display');
-    const isReadOnly = disp && disp.textContent.includes('Nur Lesen');
+    const isReadOnly = state.isReadOnly;
     if (isReadOnly && !ghToken) {
-        showToast('Aktion erfordert Token (Nur-Lese-Modus)', 'warning');
-        showModal('github-token-modal');
-        return false;
+        return false; // Silently block
     }
     return true;
 };

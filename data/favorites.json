@@ -2934,7 +2934,7 @@
     "itemFontWeight": "bold",
     "itemFontStyle": "normal",
     "rowTitleColor": "#00FF00",
-    "groupFontSize": "2px",
+    "groupFontSize": "10px",
     "rowFontSize": "20px"
   }
 }

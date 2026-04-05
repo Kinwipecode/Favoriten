@@ -241,9 +241,27 @@ body {
     cursor: default;
 }
 
-.row-order-input.text-only {
-    min-width: 40px;
+/* Read-Only Displays that look like Inputs */
+.row-order-display {
+    width: 70px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 1.1rem;
     text-align: center;
+    color: var(--row-title-color, var(--text-color));
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-title-display {
+    font-size: var(--row-font-size, 1.3rem);
+    font-weight: 800;
+    color: var(--row-title-color, var(--text-color));
+    margin-left: 10px;
 }
 
 .row-order-input {

@@ -506,9 +506,9 @@ window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === i
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
 window.sortRows = () => { renderBoard(); };
 window.deleteRow = async (id) => { if (await showConfirm('Reihe wirklich löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
-window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(true); } };
-window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(true); } };
-window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(true); } };
+window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(null, true); } };
+window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(null, true); } };
+window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(null, true); } };
 window.deleteProject = (id) => { findProjectAndClear(id); renderBoard(); saveData(); };
 window.addItem = (projectId, preUrl = "", preTitle = "") => {
     if (!checkAuth()) return;

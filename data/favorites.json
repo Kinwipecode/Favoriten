@@ -3042,9 +3042,7 @@
       "btn-move-mode",
       "btn-pull-cloud",
       "btn-sort-rows",
-      "btn-multi-delete",
-      "btn-clean-all",
-      "btn-check-links"
+      "btn-multi-delete"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

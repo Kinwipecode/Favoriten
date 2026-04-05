@@ -993,3 +993,105 @@ body.delete-mode-active .favorite-item {
         opacity: 1;
     }
 }
+
+/* Responsive Mobile Styles */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 10px 15px;
+        flex-direction: column;
+        gap: 12px;
+        height: auto;
+    }
+
+    .logo span {
+        font-size: 1.2rem;
+    }
+
+    .actions {
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    /* On mobile, only show icons for most buttons to save space */
+    .btn span {
+        display: none;
+    }
+
+    .btn i {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 10px 12px;
+        min-width: auto !important;
+    }
+
+    .board-row {
+        padding: 15px 10px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .row-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .row-header-main {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .row-title-input {
+        font-size: 1.1rem;
+        max-width: 70%;
+    }
+
+    .row-projects {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+        gap: 15px;
+    }
+
+    .grid-slot {
+        padding: 8px;
+    }
+
+    .column-header {
+        padding: 10px;
+    }
+
+    .column-header span {
+        font-size: 0.9rem;
+    }
+
+    .favorite-item {
+        padding: 8px;
+    }
+
+    .fav-link {
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        width: 95% !important;
+        margin: 10px auto;
+        padding: 15px !important;
+    }
+
+    /* Floating toolbars (Move/Delete) adjustment */
+    .move-toolbar,
+    .delete-toolbar {
+        width: 90%;
+        padding: 10px;
+        gap: 10px;
+        font-size: 0.8rem;
+    }
+
+    .move-info span {
+        display: none;
+    }
+}

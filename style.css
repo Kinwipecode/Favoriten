@@ -35,12 +35,29 @@ body {
 
 .app-header {
     background: #fff;
-    padding: 16px 32px;
+    padding: 12px 24px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    /* Stack main and drawer */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    z-index: 10;
+    z-index: 1000;
+}
+
+.actions-drawer {
+    overflow: hidden;
+    max-height: 500px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 15px;
+    border-top: 1px solid #f0f2f5;
+    margin-top: 10px;
+}
+
+.actions-drawer.hidden {
+    max-height: 0;
+    padding-top: 0;
+    margin-top: 0;
+    border-top: none;
+    opacity: 0;
 }
 
 .logo span {
@@ -1093,5 +1110,43 @@ body.delete-mode-active .favorite-item {
 
     .move-info span {
         display: none;
+    }
+
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    .header-main-content {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .logo {
+        min-width: 100% !important;
+        order: 1;
+        margin-bottom: 5px;
+    }
+
+    .search-bar {
+        order: 3;
+        margin: 0 !important;
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+
+    .header-controls {
+        order: 2;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    .actions-drawer {
+        max-height: 600px;
+        /* More space for wrapped buttons on mobile */
+    }
+
+    .actions {
+        justify-content: center;
     }
 }

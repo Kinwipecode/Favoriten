@@ -432,6 +432,19 @@ body {
     align-items: center !important;
 }
 
+.group-title-input {
+    background: transparent !important;
+    border: none !important;
+    color: inherit !important;
+    font-size: inherit !important;
+    font-weight: 800 !important;
+    font-family: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: none !important;
+    cursor: text;
+}
+
 .column-header span {
     font-weight: 700;
     font-size: var(--group-font-size, 0.95rem);

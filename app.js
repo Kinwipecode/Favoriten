@@ -226,18 +226,24 @@ function renderBoard() {
             }));
             if (!hasMatch) return;
         }
+        const dispVal = document.getElementById('save-path-display');
+        const isRead = dispVal && dispVal.textContent.includes('Nur Lesen') && !ghToken;
+
         const rowEl = document.createElement("div");
         rowEl.className = `board-row ${row.collapsed ? "collapsed" : ""}`;
-        rowEl.oncontextmenu = (e) => showContextMenu(e, 'row', row.id);
+        if (!isRead) rowEl.oncontextmenu = (e) => showContextMenu(e, 'row', row.id);
+
         rowEl.innerHTML = `<div class="row-header">
                 <div class="row-header-main" onclick="if(!event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <input type="checkbox" ${row.collapsed ? "checked" : ""} readonly>
-                    <input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
-                    <input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">
+                    <input type="number" class="row-order-input" value="${row.order || 0}" ${isRead ? 'readonly' : ''} onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
+                    <input type="text" class="row-title-input" value="${row.title}" ${isRead ? 'readonly' : ''} oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">
                 </div>
                 <div class="row-actions">
+                    ${!isRead ? `
                     <button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button>
                     <button class="btn-icon" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash"></i></button>
+                    ` : ''}
                 </div>
             </div>
             <div class="row-projects" ondragover="event.preventDefault()" ondrop="handleRowDrop(event, '${row.id}')"></div>`;
@@ -272,7 +278,7 @@ function renderBoard() {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");
                     col.dataset.projectId = p.id;
-                    col.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'group', p.id); };
+                    if (!isRead) col.oncontextmenu = (e) => { e.stopPropagation(); showContextMenu(e, 'group', p.id); };
                     const moveSelected = state.moveMode.active && state.moveMode.type === 'group' && state.moveMode.selectedIds.includes(p.id);
                     const deleteSelected = state.deleteMode.active && state.deleteMode.type === 'group' && state.deleteMode.selectedIds.includes(p.id);
 
@@ -302,7 +308,20 @@ function renderBoard() {
                         else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('group', p.id); }
                     };
 
-                    col.innerHTML = `<div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleCollapse('${p.id}')" style="cursor:pointer;"><div class="header-left"><input type="checkbox" ${p.collapsed ? "checked" : ""} readonly><span>${p.title}</span>${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}</div><div class="column-actions"><button onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button><button onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash"></i></button></div></div><div class="column-body"></div>`;
+                    col.innerHTML = `
+                        <div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleCollapse('${p.id}')" style="cursor:pointer;">
+                            <div class="header-left">
+                                <input type="checkbox" ${p.collapsed ? "checked" : ""} readonly>
+                                <span>${p.title}</span>
+                                ${(state.moveMode.active && state.moveMode.type === 'link' && state.moveMode.selectedIds.length > 0) ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('link', '${p.id}')">Hierher</button>` : ''}
+                            </div>
+                            ${!isRead ? `
+                            <div class="column-actions">
+                                <button onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button>
+                                <button onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash"></i></button>
+                            </div>` : ''}
+                        </div>
+                        <div class="column-body"></div>`;
                     const b = col.querySelector(".column-body");
                     p.items.forEach(it => {
                         const match = isSearching && (it.title.toLowerCase().includes(state.searchTerm) || it.url.toLowerCase().includes(state.searchTerm));

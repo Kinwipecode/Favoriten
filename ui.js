@@ -23,49 +23,71 @@ window.makeDraggable = (content, header) => {
 
 window.initSortable = () => {
     const isRead = state.isReadOnly;
-    document.querySelectorAll('.column-body').forEach(el => {
-        if (el.sortable) {
-            el.sortable.option('disabled', isRead);
-            return;
-        }
+    if (typeof Sortable === 'undefined') return;
+
+    // 1. TOP-LEVEL: Sort ROWS in the BOARD
+    const board = document.querySelector('.board');
+    if (board && !board.sortable) {
+        board.sortable = new Sortable(board, {
+            animation: 150,
+            handle: '.row-header-main',
+            disabled: isRead,
+            onEnd: (evt) => {
+                const [movedRow] = state.rows.splice(evt.oldIndex, 1);
+                state.rows.splice(evt.newIndex, 0, movedRow);
+                saveData(); renderBoard();
+            }
+        });
+    } else if (board && board.sortable) { board.sortable.option('disabled', isRead); }
+
+    // 2. MID-LEVEL: Sort SLOTS in each ROW
+    document.querySelectorAll('.row-projects').forEach(el => {
+        if (el.sortable) { el.sortable.option('disabled', isRead); return; }
         el.sortable = new Sortable(el, {
-            group: 'shared',
+            group: 'row-slots',
+            animation: 150,
+            disabled: isRead,
+            onEnd: (evt) => {
+                const fromRowId = evt.from.closest('.board-row').dataset.id;
+                const toRowId = evt.to.closest('.board-row').dataset.id;
+                const rFrom = state.rows.find(r => r.id === fromRowId);
+                const rTo = state.rows.find(r => r.id === toRowId);
+                if (rFrom && rTo) {
+                    const [slot] = rFrom.projects.splice(evt.oldIndex, 1);
+                    rTo.projects.splice(evt.newIndex, 0, slot);
+                    saveData(); renderBoard();
+                }
+            }
+        });
+    });
+
+    // 3. BOTTOM-LEVEL: Sort ITEMS in each GROUP BODY
+    document.querySelectorAll('.column-body').forEach(el => {
+        if (el.sortable) { el.sortable.option('disabled', isRead); return; }
+        el.sortable = new Sortable(el, {
+            group: 'shared-items',
             animation: 150,
             disabled: isRead,
             onStart: () => { document.body.classList.add('is-dragging-item'); },
             onEnd: (evt) => {
                 document.body.classList.remove('is-dragging-item');
                 try {
-                    const itemEl = evt.item;
-                    const fromCol = evt.from.closest('.column');
-                    const toCol = evt.to.closest('.column');
-
-                    if (!fromCol || !toCol) {
-                        renderBoard();
-                        return;
-                    }
-
-                    const itemId = itemEl.dataset.id;
-                    const fromProjectId = fromCol.dataset.projectId;
-                    const toProjectId = toCol.dataset.projectId;
-
-                    const fromProject = findProject(fromProjectId);
-                    const toProject = findProject(toProjectId);
-
-                    if (fromProject && toProject) {
-                        const itemIdx = fromProject.items.findIndex(it => it.id === itemId);
+                    const fromCol = evt.from.closest('.column'), toCol = evt.to.closest('.column');
+                    if (!fromCol || !toCol) { renderBoard(); return; }
+                    const itemId = evt.item.querySelector('a')?.getAttribute('href') ? evt.item.querySelector('span').innerText : ""; // Need stable ID
+                    // Use data attributes for stable mapping
+                    const itId = evt.item.dataset.id;
+                    const fProj = findProject(fromCol.dataset.projectId), tProj = findProject(toCol.dataset.projectId);
+                    if (fProj && tProj) {
+                        const itemIdx = fProj.items.findIndex(it => it.id === itId || (it.title === itemId));
                         if (itemIdx !== -1) {
-                            const [item] = fromProject.items.splice(itemIdx, 1);
-                            toProject.items.splice(evt.newIndex, 0, item);
+                            const [item] = fProj.items.splice(itemIdx, 1);
+                            tProj.items.splice(evt.newIndex, 0, item);
                             saveData();
                         }
                     }
-                    // Always re-render to sync DOM with data (especially for invalid drops)
                     renderBoard();
-                } catch (err) {
-                    console.error("Sortable error:", err);
-                    renderBoard();
-                }
+                } catch (err) { console.error("Sortable error:", err); renderBoard(); }
             }
         });
     });

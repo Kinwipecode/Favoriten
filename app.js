@@ -296,7 +296,7 @@ function renderBoard() {
 
                         const itemEl = document.createElement("div");
                         itemEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''} ${isMoving && isSelected ? 'selected-for-move' : ''} ${isDeleting && isSelected ? 'selected-for-delete' : ''}`;
-                        itemEl.dataset.id = it.id;
+                        itemEl.setAttribute('data-id', it.id);
 
                         const triggerItemContext = (e) => {
                             if (isRead) return;

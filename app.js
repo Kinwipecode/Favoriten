@@ -239,6 +239,7 @@ function renderBoard() {
                                 ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
                             </div>
                             ${!isRead ? `<div class="column-actions">
+                                ${state.moveMode.active ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('${p.id}')">Hier einfügen</button>` : ''}
                                 <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')" title="Favorit hinzufügen"><i class="fa-solid fa-plus" style="font-size:0.7rem;"></i></button>
                                 <button class="btn-text" onclick="event.stopPropagation(); deleteProject('${p.id}')" title="Gruppe löschen"><i class="fa-solid fa-trash-can" style="font-size:0.7rem;"></i></button>
                             </div>` : ''}
@@ -248,9 +249,14 @@ function renderBoard() {
                     const body = col.querySelector(".column-body");
                     p.items.forEach(it => {
                         const match = isSearching && (it.title.toLowerCase().includes(term) || it.url.toLowerCase().includes(term));
+                        const isMoving = state.moveMode.active;
+                        const isDeleting = state.deleteMode.active;
+                        const isSelected = (isMoving && state.moveMode.selectedIds.includes(it.id)) || (isDeleting && state.deleteMode.selectedIds.includes(it.id));
+
                         const itemEl = document.createElement("div");
-                        itemEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''}`;
-                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
+                        itemEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''} ${isMoving && isSelected ? 'selected-for-move' : ''} ${isDeleting && isSelected ? 'selected-for-delete' : ''}`;
+
+                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" onclick="if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
                         body.appendChild(itemEl);
                     });
                     slotEl.appendChild(col);
@@ -260,6 +266,8 @@ function renderBoard() {
         });
         board.appendChild(rowEl);
     });
+    document.body.classList.toggle('move-mode-active', state.moveMode.active);
+    document.body.classList.toggle('delete-mode-active', state.deleteMode.active);
 }
 
 function cleanTitle(str) {
@@ -466,8 +474,66 @@ window.toggleActionsDrawer = () => {
     const isOpen = !drawer.classList.contains('hidden');
     btn.classList.toggle('btn-primary', isOpen);
     btn.classList.toggle('btn-secondary', !isOpen);
-    // Explicitly remove drawer persistence to satisfy "no appearance after F5"
     localStorage.removeItem('actions_drawer_open');
 };
+
+window.toggleMoveMode = () => {
+    state.moveMode.active = !state.moveMode.active;
+    state.moveMode.selectedIds = [];
+    if (state.moveMode.active) state.deleteMode.active = false;
+    renderBoard(); updateToolbars();
+};
+
+window.toggleDeleteMode = () => {
+    state.deleteMode.active = !state.deleteMode.active;
+    state.deleteMode.selectedIds = [];
+    if (state.deleteMode.active) state.moveMode.active = false;
+    renderBoard(); updateToolbars();
+};
+
+window.toggleSelection = (id) => {
+    const list = state.moveMode.active ? state.moveMode.selectedIds : state.deleteMode.selectedIds;
+    const idx = list.indexOf(id);
+    if (idx === -1) list.push(id); else list.splice(idx, 1);
+    renderBoard(); updateToolbars();
+};
+
+function updateToolbars() {
+    const mt = document.getElementById('move-toolbar'), dt = document.getElementById('delete-toolbar');
+    if (mt) mt.classList.toggle('hidden', !state.moveMode.active);
+    if (dt) dt.classList.toggle('hidden', !state.deleteMode.active);
+    const mc = document.getElementById('move-count'), dc = document.getElementById('delete-count');
+    if (mc) mc.textContent = `${state.moveMode.selectedIds.length} Favoriten ausgewählt`;
+    if (dc) dc.textContent = `${state.deleteMode.selectedIds.length} Favoriten zum Löschen`;
+}
+
+window.applyDelete = async () => {
+    if (state.deleteMode.selectedIds.length === 0) return;
+    if (await showConfirm(`${state.deleteMode.selectedIds.length} Favoriten wirklich löschen?`)) {
+        state.deleteMode.selectedIds.forEach(id => findItemAndClear(id));
+        state.deleteMode.active = false; state.deleteMode.selectedIds = [];
+        renderBoard(); updateToolbars(); saveData();
+    }
+};
+
+window.applyMove = (targetProjectId) => {
+    if (state.moveMode.selectedIds.length === 0) return;
+    const targetProj = findProject(targetProjectId);
+    if (!targetProj) return;
+    state.moveMode.selectedIds.forEach(id => {
+        const item = findItemAndClear(id);
+        if (item) targetProj.items.push(item);
+    });
+    state.moveMode.active = false; state.moveMode.selectedIds = [];
+    renderBoard(); updateToolbars(); saveData();
+};
+
+function findItemAndClear(id) {
+    for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) {
+        const idx = p.items.findIndex(it => it.id === id);
+        if (idx !== -1) return p.items.splice(idx, 1)[0];
+    }
+    return null;
+}
 
 init();

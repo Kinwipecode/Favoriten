@@ -1699,18 +1699,18 @@
       "collapsed": false
     },
     {
-      "id": "kt8v1fsaj",
-      "title": "20",
-      "projects": [],
-      "order": 31,
-      "collapsed": true
-    },
-    {
       "id": "wfjj6igdt",
       "title": "30",
       "projects": [],
-      "order": 21,
+      "order": 20,
       "collapsed": false
+    },
+    {
+      "id": "kt8v1fsaj",
+      "title": "20",
+      "projects": [],
+      "order": 30,
+      "collapsed": true
     }
   ],
   "config": {

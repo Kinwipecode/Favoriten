@@ -1733,28 +1733,14 @@
           "projects": []
         },
         {
-          "id": "s6hlcntw9",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "e3whnicpw",
-              "title": "fthsthf",
-              "items": [],
-              "collapsed": false
-            }
-          ]
+          "id": "qn5toid94",
+          "isSpacer": true,
+          "projects": []
         },
         {
-          "id": "9uoeocavq",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "xy384s63i",
-              "title": "680670889",
-              "items": [],
-              "collapsed": false
-            }
-          ]
+          "id": "t8i5bx9fx",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 30,

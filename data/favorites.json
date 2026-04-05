@@ -1799,121 +1799,9 @@
           ]
         },
         {
-          "id": "paruxx0qb",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "eqaw1b4b9",
-              "title": "Musik",
-              "items": [
-                {
-                  "id": "60258pi5i",
-                  "title": "Riffusion",
-                  "url": "https://www.riffusion.com/?filter=staff-picks"
-                },
-                {
-                  "id": "x3ngi4h7e",
-                  "title": "Suno.wiki",
-                  "url": "https://suno.wiki/"
-                },
-                {
-                  "id": "awcoz0soj",
-                  "title": "Udio",
-                  "url": "https://udio.com/"
-                },
-                {
-                  "id": "qy9w95tod",
-                  "title": "Slooply",
-                  "url": "https://www.slooply.com/"
-                },
-                {
-                  "id": "97j5nciqu",
-                  "title": "Geld verdienen mit KI-Musik (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
-                },
-                {
-                  "id": "qajb0tbn8",
-                  "title": "Udio AI",
-                  "url": "https://www.udio.com/home"
-                },
-                {
-                  "id": "fidmi23p2",
-                  "title": "≻ Mubert Music",
-                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
-                },
-                {
-                  "id": "nklnepyq3",
-                  "title": "Revid AI - video zu musik",
-                  "url": "https://www.revid.ai/projects"
-                },
-                {
-                  "id": "86i0haf34",
-                  "title": "Plazmapunk | AI Music Video Generator - Create",
-                  "url": "https://app.plazmapunk.com/"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "o1dwufinq",
-              "title": "Video",
-              "items": [
-                {
-                  "id": "zip6obkiw",
-                  "title": "InVideo AI",
-                  "url": "https://ai.invideo.io/"
-                },
-                {
-                  "id": "ignrrwgah",
-                  "title": "Kaiber",
-                  "url": "https://kaiber.ai/"
-                },
-                {
-                  "id": "0lqp0doxb",
-                  "title": "ChatGPT - Video GPT by VEED",
-                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "u21db9mjt",
-              "title": "Suno",
-              "items": [
-                {
-                  "id": "1qj53p5u3",
-                  "title": "Suno Musik kompo",
-                  "url": "https://suno.com/"
-                },
-                {
-                  "id": "b1b9t1vql",
-                  "title": "Suno AI Komplettkurs (YouTube)",
-                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
-                },
-                {
-                  "id": "e6c87s3ok",
-                  "title": "Song Structure Tags – Suno.wiki",
-                  "url": "https://www.suno.wiki/faq/metatags/song-structure/"
-                },
-                {
-                  "id": "4nfpjlcxy",
-                  "title": "video  Suno AI Komplettkurs",
-                  "url": "https://www.youtube.com/watch?v=btRebZvL37Q&t=134s"
-                },
-                {
-                  "id": "nlh34czmk",
-                  "title": "(2) Suno AI Tutorial: Vom Anfänger zum Profi + Prompt Tipps aus der Praxis! - YouTube",
-                  "url": "https://www.youtube.com/watch?v=O08B-vvBPKI"
-                },
-                {
-                  "id": "bddpral1o",
-                  "title": "Download Techno Sample Packs - Slooply",
-                  "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "c06pql96e",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "cyvzk59xs",
@@ -2221,6 +2109,117 @@
                   "id": "uwiz1qj49",
                   "title": "WORKFLOW.CH @ Work",
                   "url": "https://www.workflow.ch/atwork/"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "eqaw1b4b9",
+              "title": "Musik",
+              "items": [
+                {
+                  "id": "60258pi5i",
+                  "title": "Riffusion",
+                  "url": "https://www.riffusion.com/?filter=staff-picks"
+                },
+                {
+                  "id": "x3ngi4h7e",
+                  "title": "Suno.wiki",
+                  "url": "https://suno.wiki/"
+                },
+                {
+                  "id": "awcoz0soj",
+                  "title": "Udio",
+                  "url": "https://udio.com/"
+                },
+                {
+                  "id": "qy9w95tod",
+                  "title": "Slooply",
+                  "url": "https://www.slooply.com/"
+                },
+                {
+                  "id": "97j5nciqu",
+                  "title": "Geld verdienen mit KI-Musik (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=TYE8y631E2s"
+                },
+                {
+                  "id": "qajb0tbn8",
+                  "title": "Udio AI",
+                  "url": "https://www.udio.com/home"
+                },
+                {
+                  "id": "fidmi23p2",
+                  "title": "≻ Mubert Music",
+                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+                },
+                {
+                  "id": "nklnepyq3",
+                  "title": "Revid AI - video zu musik",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
+                  "id": "86i0haf34",
+                  "title": "Plazmapunk | AI Music Video Generator - Create",
+                  "url": "https://app.plazmapunk.com/"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "o1dwufinq",
+              "title": "Video",
+              "items": [
+                {
+                  "id": "zip6obkiw",
+                  "title": "InVideo AI",
+                  "url": "https://ai.invideo.io/"
+                },
+                {
+                  "id": "ignrrwgah",
+                  "title": "Kaiber",
+                  "url": "https://kaiber.ai/"
+                },
+                {
+                  "id": "0lqp0doxb",
+                  "title": "ChatGPT - Video GPT by VEED",
+                  "url": "https://chatgpt.com/g/g-Hkqnd7mFT-video-gpt-by-veed"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "u21db9mjt",
+              "title": "Suno",
+              "items": [
+                {
+                  "id": "1qj53p5u3",
+                  "title": "Suno Musik kompo",
+                  "url": "https://suno.com/"
+                },
+                {
+                  "id": "b1b9t1vql",
+                  "title": "Suno AI Komplettkurs (YouTube)",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4"
+                },
+                {
+                  "id": "e6c87s3ok",
+                  "title": "Song Structure Tags – Suno.wiki",
+                  "url": "https://www.suno.wiki/faq/metatags/song-structure/"
+                },
+                {
+                  "id": "4nfpjlcxy",
+                  "title": "video  Suno AI Komplettkurs",
+                  "url": "https://www.youtube.com/watch?v=btRebZvL37Q&t=134s"
+                },
+                {
+                  "id": "nlh34czmk",
+                  "title": "(2) Suno AI Tutorial: Vom Anfänger zum Profi + Prompt Tipps aus der Praxis! - YouTube",
+                  "url": "https://www.youtube.com/watch?v=O08B-vvBPKI"
+                },
+                {
+                  "id": "bddpral1o",
+                  "title": "Download Techno Sample Packs - Slooply",
+                  "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
                 }
               ],
               "collapsed": true

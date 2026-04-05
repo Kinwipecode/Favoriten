@@ -233,7 +233,9 @@ function renderBoard() {
                     const col = document.createElement("div");
                     col.className = `column ${p.collapsed ? "collapsed" : ""}`;
                     col.innerHTML = `
-                        <div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')">
+                            <div class="column-header" 
+                                 onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')"
+                                 oncontextmenu="if(!isRead) { showContextMenu(event, 'project', '${p.id}'); return false; }">
                             <div class="header-left">
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
                                 ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
@@ -535,5 +537,49 @@ function findItemAndClear(id) {
     }
     return null;
 }
+
+window.showContextMenu = (e, type, id) => {
+    e.preventDefault();
+    const menu = document.getElementById('context-menu');
+    if (!menu) return;
+    menu.style.left = e.clientX + 'px'; menu.style.top = e.clientY + 'px';
+    menu.classList.remove('hidden');
+    let html = '';
+    if (type === 'row') {
+        const r = state.rows.find(x => x.id === id);
+        html = `
+            <div class="context-menu-title">Zeile: ${r ? r.title : 'Unbekannt'}</div>
+            <div class="context-menu-item" onclick="addSlotToRow('${id}')"><i class="fa-solid fa-plus"></i> Gruppe hinzufügen</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item danger" onclick="deleteRow('${id}')"><i class="fa-solid fa-trash"></i> Zeile löschen</div>
+        `;
+    } else if (type === 'project') {
+        const p = findProject(id);
+        html = `
+            <div class="context-menu-title">Gruppe: ${p ? p.title : 'Unbekannt'}</div>
+            <div class="context-menu-item" onclick="addItem('${id}')"><i class="fa-solid fa-link"></i> Favorit hinzufügen</div>
+            <div class="context-menu-item" onclick="pasteFromClipboard('${id}')"><i class="fa-solid fa-paste"></i> Link aus Ablage einfügen</div>
+            <div class="context-menu-item" onclick="toggleCollapse('${id}')"><i class="fa-solid fa-compress"></i> Ein-/Ausklappen</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item danger" onclick="deleteProject('${id}')"><i class="fa-solid fa-trash"></i> Gruppe löschen</div>
+        `;
+    }
+    menu.innerHTML = html;
+    const close = () => { menu.classList.add('hidden'); document.removeEventListener('click', close); };
+    setTimeout(() => document.addEventListener('click', close), 10);
+};
+
+window.pasteFromClipboard = async (projectId) => {
+    try {
+        const text = await navigator.clipboard.readText();
+        if (text && (text.includes('http') || text.includes('www'))) addItem(projectId, text);
+        else showToast('Keine Link-URL in der Ablage gefunden.', 'error');
+    } catch (e) { showToast('Zugriff auf Ablage verweigert.', 'error'); }
+};
+
+window.addSlotToRow = (rowId) => {
+    const r = state.rows.find(x => x.id === rowId);
+    if (r) { r.projects.push({ id: generateId(), isSpacer: true, projects: [] }); renderBoard(); saveData(); }
+};
 
 init();

@@ -2659,6 +2659,52 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "um6co87za",
+              "title": "Trimble",
+              "items": [
+                {
+                  "id": "bsyytur6h",
+                  "title": "Trimbleenterprisecommunity.com",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "wqjpim94o",
+              "title": "CAD IFC mit nova",
+              "items": [
+                {
+                  "id": "tm3to8ecb",
+                  "title": "Youtube.com",
+                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
+                },
+                {
+                  "id": "mkz1lsg22",
+                  "title": "Novauser.xobor.de",
+                  "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "3beo9kqv8",
+              "title": "CAD BIM",
+              "items": [
+                {
+                  "id": "8m8i6xr0r",
+                  "title": "Mepcontent.com",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                },
+                {
+                  "id": "u9ovxz793",
+                  "title": "Graphisoft.com",
+                  "url": "https://graphisoft.com/at/downloads/parametric_objects"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -2691,68 +2737,19 @@
           ]
         },
         {
-          "id": "9m3lqtkm9",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "wqjpim94o",
-              "title": "CAD IFC mit nova",
-              "items": [
-                {
-                  "id": "tm3to8ecb",
-                  "title": "Youtube.com",
-                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
-                },
-                {
-                  "id": "mkz1lsg22",
-                  "title": "Novauser.xobor.de",
-                  "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "y4vno8sz9",
+          "isSpacer": true,
+          "projects": []
         },
         {
-          "id": "wzdvg2crj",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "um6co87za",
-              "title": "Trimble",
-              "items": [
-                {
-                  "id": "bsyytur6h",
-                  "title": "Trimbleenterprisecommunity.com",
-                  "url": "https://www.trimbleenterprisecommunity.com/s/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "yak20yqz3",
+          "isSpacer": true,
+          "projects": []
         },
         {
-          "id": "uytbz3a78",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "3beo9kqv8",
-              "title": "CAD BIM",
-              "items": [
-                {
-                  "id": "8m8i6xr0r",
-                  "title": "Mepcontent.com",
-                  "url": "https://www.mepcontent.com/de/bim-files/"
-                },
-                {
-                  "id": "u9ovxz793",
-                  "title": "Graphisoft.com",
-                  "url": "https://graphisoft.com/at/downloads/parametric_objects"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "z6bqmcw2d",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "dpqpnekje",

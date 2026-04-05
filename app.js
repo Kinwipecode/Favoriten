@@ -265,8 +265,12 @@ function renderBoard() {
 
             if (!slot.isSpacer) {
                 slot.projects.forEach(p => {
+                    const isMoving = state.moveMode.active;
+                    const isDeleting = state.deleteMode.active;
+                    const isSelected = (isMoving && state.moveMode.selectedIds.includes(p.id)) || (isDeleting && state.deleteMode.selectedIds.includes(p.id));
+
                     const col = document.createElement("div");
-                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${isRead ? "read-only" : ""}`;
+                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${isRead ? "read-only" : ""} ${isMoving && isSelected ? "selected-for-move" : ""} ${isDeleting && isSelected ? "selected-for-delete" : ""}`;
                     col.dataset.projectId = p.id;
                     col.setAttribute('data-id', p.id);
 
@@ -283,7 +287,7 @@ function renderBoard() {
 
                     col.innerHTML = `
                             <div class="column-header" 
-                                 onclick="if(Date.now() - state.lastContextMenuTime > 500 && !state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')">
+                                 onclick="if(Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button') && !event.target.closest('input')) { if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }">
                             <div class="header-left">
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
                                 ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
@@ -400,9 +404,21 @@ function renderBoard() {
                         const fromSlot = fromR.projects.find(s => s.id === e.from.dataset.slotId);
                         const toSlot = toR.projects.find(s => s.id === e.to.dataset.slotId);
                         if (fromSlot && toSlot) {
-                            const [col] = fromSlot.projects.splice(e.oldIndex, 1);
-                            toSlot.projects.splice(e.newIndex, 0, col);
-                            saveData(); renderBoard();
+                            if (state.moveMode.active && state.moveMode.selectedIds.length > 0) {
+                                if (!state.moveMode.selectedIds.includes(e.item.dataset.projectId)) {
+                                    state.moveMode.selectedIds.push(e.item.dataset.projectId);
+                                }
+                                let offset = 0;
+                                state.moveMode.selectedIds.forEach(id => {
+                                    const c = findProjectAndClear(id);
+                                    if (c) { toSlot.projects.splice(e.newIndex + offset, 0, c); offset++; }
+                                });
+                                state.moveMode.active = false; state.moveMode.selectedIds = [];
+                            } else {
+                                const [col] = fromSlot.projects.splice(e.oldIndex, 1);
+                                toSlot.projects.splice(e.newIndex, 0, col);
+                            }
+                            saveData(); renderBoard(); updateToolbars();
                         }
                     }
                 }
@@ -421,13 +437,31 @@ function renderBoard() {
                     if (!fCol || !tCol) { renderBoard(); return; }
                     const fId = fCol.dataset.projectId, tId = tCol.dataset.projectId;
                     const itId = e.item.dataset.id || e.item.getAttribute('data-id');
-                    const fP = findProject(fId), tP = findProject(tId);
-                    if (fP && tP) {
-                        const idx = fP.items.findIndex(it => it.id === itId);
-                        if (idx !== -1) {
-                            const [item] = fP.items.splice(idx, 1);
-                            tP.items.splice(e.newIndex, 0, item);
-                            saveData();
+
+                    const tP = findProject(tId);
+                    if (tP) {
+                        if (state.moveMode.active && state.moveMode.selectedIds.length > 0) {
+                            if (!state.moveMode.selectedIds.includes(itId)) {
+                                state.moveMode.selectedIds.push(itId);
+                            }
+                            let offset = 0;
+                            state.moveMode.selectedIds.forEach(id => {
+                                const itm = findItemAndClear(id);
+                                if (itm) { tP.items.splice(e.newIndex + offset, 0, itm); offset++; }
+                            });
+                            state.moveMode.active = false; state.moveMode.selectedIds = [];
+                            saveData(); renderBoard(); updateToolbars();
+                            return;
+                        }
+
+                        const fP = findProject(fId);
+                        if (fP) {
+                            const idx = fP.items.findIndex(it => it.id === itId);
+                            if (idx !== -1) {
+                                const [item] = fP.items.splice(idx, 1);
+                                tP.items.splice(e.newIndex, 0, item);
+                                saveData();
+                            }
                         }
                     }
                     renderBoard();

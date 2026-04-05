@@ -2930,7 +2930,7 @@
       "btn-clean-all",
       "btn-app-settings"
     ],
-    "itemFontSize": "25px",
+    "itemFontSize": "20px",
     "itemFontWeight": "bold",
     "itemFontStyle": "normal",
     "rowTitleColor": "#00FF00",

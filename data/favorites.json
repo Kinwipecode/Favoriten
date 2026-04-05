@@ -2038,13 +2038,7 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "hijs9rtpf",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "yn4gulvoc",
               "title": "Leki",
@@ -2063,6 +2057,11 @@
               "collapsed": false
             }
           ]
+        },
+        {
+          "id": "xwewvekp2",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "pjxz7x1o5",

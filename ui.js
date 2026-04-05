@@ -92,6 +92,10 @@ window.hideModal = (id) => {
     document.getElementById(id)?.classList.add('hidden');
 };
 
+// Aliases for compatibility
+window.openModal = window.showModal;
+window.closeModal = window.hideModal;
+
 
 window.openPicker = (varName) => {
     currentPickerVar = varName;

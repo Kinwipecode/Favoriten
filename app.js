@@ -335,7 +335,7 @@ function renderBoard() {
                         itemEl.addEventListener('touchstart', (e) => { itTimer = setTimeout(() => triggerItemContext(e), 600); }, { passive: true });
                         ['touchend', 'touchmove'].forEach(ev => itemEl.addEventListener(ev, () => clearTimeout(itTimer)));
 
-                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" draggable="false" onclick="if(Date.now() - state.lastContextMenuTime < 500) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
+                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" onclick="if(Date.now() - state.lastContextMenuTime < 500) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
                         body.appendChild(itemEl);
                     });
                     slotEl.appendChild(col);
@@ -396,7 +396,7 @@ function renderBoard() {
         // 2. GROUPS (Individual Columns)
         document.querySelectorAll('.slot:not(.spacer)').forEach(el => {
             new Sortable(el, {
-                group: 'columns', animation: 150, handle: '.column-header',
+                group: 'columns', animation: 150, handle: '.column-header', filter: 'button, input',
                 onEnd: (e) => {
                     const fromR = state.rows.find(r => r.id === e.from.closest('.board-row').dataset.id);
                     const toR = state.rows.find(r => r.id === e.to.closest('.board-row').dataset.id);
@@ -404,9 +404,10 @@ function renderBoard() {
                         const fromSlot = fromR.projects.find(s => s.id === e.from.dataset.slotId);
                         const toSlot = toR.projects.find(s => s.id === e.to.dataset.slotId);
                         if (fromSlot && toSlot) {
-                            if (state.moveMode.active && state.moveMode.selectedIds.length > 0) {
-                                if (!state.moveMode.selectedIds.includes(e.item.dataset.projectId)) {
-                                    state.moveMode.selectedIds.push(e.item.dataset.projectId);
+                            if (state.moveMode.active) {
+                                const projId = e.item.dataset.projectId;
+                                if (state.moveMode.selectedIds.length === 0 || !state.moveMode.selectedIds.includes(projId)) {
+                                    state.moveMode.selectedIds = [projId];
                                 }
                                 let offset = 0;
                                 state.moveMode.selectedIds.forEach(id => {
@@ -431,7 +432,7 @@ function renderBoard() {
         // 3. FAVORITES (Items)
         document.querySelectorAll('.column-body').forEach(el => {
             new Sortable(el, {
-                group: 'items', animation: 150,
+                group: 'items', animation: 150, filter: '.item-actions',
                 onEnd: (e) => {
                     const fCol = e.from.closest('.column'), tCol = e.to.closest('.column');
                     if (!fCol || !tCol) { renderBoard(); return; }
@@ -439,22 +440,29 @@ function renderBoard() {
                     const itId = e.item.dataset.id || e.item.getAttribute('data-id');
 
                     const tP = findProject(tId);
+                    const fP = findProject(fId);
+
                     if (tP) {
-                        if (state.moveMode.active && state.moveMode.selectedIds.length > 0) {
-                            if (!state.moveMode.selectedIds.includes(itId)) {
-                                state.moveMode.selectedIds.push(itId);
+                        // Multi-Drag or Single-Drag in Move Mode
+                        if (state.moveMode.active) {
+                            if (state.moveMode.selectedIds.length === 0 || !state.moveMode.selectedIds.includes(itId)) {
+                                // If nothing selected or dragging an unselected item, just move THIS item and reset
+                                state.moveMode.selectedIds = [itId];
                             }
+
                             let offset = 0;
                             state.moveMode.selectedIds.forEach(id => {
                                 const itm = findItemAndClear(id);
                                 if (itm) { tP.items.splice(e.newIndex + offset, 0, itm); offset++; }
                             });
-                            state.moveMode.active = false; state.moveMode.selectedIds = [];
+
+                            state.moveMode.active = false;
+                            state.moveMode.selectedIds = [];
                             saveData(); renderBoard(); updateToolbars();
                             return;
                         }
 
-                        const fP = findProject(fId);
+                        // Regular Drag (Normal Mode)
                         if (fP) {
                             const idx = fP.items.findIndex(it => it.id === itId);
                             if (idx !== -1) {

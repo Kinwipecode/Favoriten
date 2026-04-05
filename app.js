@@ -204,16 +204,16 @@ function renderBoard() {
 
         const triggerContext = (e) => {
             if (isRead) return;
+            if (e.preventDefault) e.preventDefault();
             showContextMenu({
                 clientX: e.clientX || (e.touches && e.touches[0].clientX),
                 clientY: e.clientY || (e.touches && e.touches[0].clientY),
-                preventDefault: () => e.preventDefault ? e.preventDefault() : null
+                preventDefault: () => { }
             }, 'row', row.id);
         };
 
         rowEl.innerHTML = `
-            <div class="row-header"
-                 oncontextmenu="if(!isRead) { triggerContext(event); return false; }">
+            <div class="row-header">
                 <div class="row-header-main" onclick="if(!event.target.closest('button') && !event.target.closest('input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="font-size:0.8rem; width:20px; opacity:0.5;"></i>
                     ${isRead ?
@@ -244,17 +244,17 @@ function renderBoard() {
 
                     const triggerProjContext = (e) => {
                         if (isRead) return;
+                        if (e.preventDefault) e.preventDefault();
                         showContextMenu({
                             clientX: e.clientX || (e.touches && e.touches[0].clientX),
                             clientY: e.clientY || (e.touches && e.touches[0].clientY),
-                            preventDefault: () => e.preventDefault ? e.preventDefault() : null
+                            preventDefault: () => { }
                         }, 'project', p.id);
                     };
 
                     col.innerHTML = `
                             <div class="column-header" 
-                                 onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')"
-                                 oncontextmenu="if(!isRead) { triggerProjContext(event); return false; }">
+                                 onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')">
                             <div class="header-left">
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
                                 ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
@@ -282,13 +282,14 @@ function renderBoard() {
                     });
                     slotEl.appendChild(col);
 
-                    // Touch long press support
-                    let tTimer;
+                    // Context Menu & Long press support (Mouse + Touch)
                     const h = col.querySelector('.column-header');
                     if (h && !isRead) {
+                        let tTimer;
+                        h.oncontextmenu = (e) => { triggerProjContext(e); return false; };
+                        h.addEventListener('mousedown', (e) => { if (e.button === 0) tTimer = setTimeout(() => triggerProjContext(e), 600); });
                         h.addEventListener('touchstart', (e) => { tTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
-                        h.addEventListener('touchend', () => clearTimeout(tTimer));
-                        h.addEventListener('touchmove', () => clearTimeout(tTimer));
+                        ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => h.addEventListener(ev, () => clearTimeout(tTimer)));
                     }
                 });
             } else if (!isRead) {
@@ -305,13 +306,14 @@ function renderBoard() {
         });
         board.appendChild(rowEl);
 
-        // Row touch long press support
-        let rTimer;
+        // Row Context Menu & Long press support (Mouse + Touch)
         const rh = rowEl.querySelector('.row-header');
         if (rh && !isRead) {
+            let rTimer;
+            rh.oncontextmenu = (e) => { triggerContext(e); return false; };
+            rh.addEventListener('mousedown', (e) => { if (e.button === 0) rTimer = setTimeout(() => triggerContext(e), 600); });
             rh.addEventListener('touchstart', (e) => { rTimer = setTimeout(() => triggerContext(e), 600); }, { passive: true });
-            rh.addEventListener('touchend', () => clearTimeout(rTimer));
-            rh.addEventListener('touchmove', () => clearTimeout(rTimer));
+            ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => rh.addEventListener(ev, () => clearTimeout(rTimer)));
         }
     });
     document.body.classList.toggle('move-mode-active', state.moveMode.active);

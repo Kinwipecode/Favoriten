@@ -2105,7 +2105,7 @@
                   "url": "https://huggingface.co/"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         },
@@ -2324,7 +2324,7 @@
                   "url": "https://armawin.com/"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         },

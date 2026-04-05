@@ -84,38 +84,6 @@
                 }
               ],
               "collapsed": true
-            },
-            {
-              "id": "arkc9qr3n",
-              "title": "Allgemein",
-              "items": [
-                {
-                  "id": "sv09p3rkd",
-                  "title": "Google Bard",
-                  "url": "https://bard.google.com/"
-                },
-                {
-                  "id": "u64jh4vw8",
-                  "title": "ChatGPT",
-                  "url": "https://chat.openai.com/"
-                },
-                {
-                  "id": "uregomvmf",
-                  "title": "Perplexity",
-                  "url": "https://www.perplexity.ai/"
-                },
-                {
-                  "id": "nwzvfg0j4",
-                  "title": "DeepSeek",
-                  "url": "https://chat.deepseek.com/"
-                },
-                {
-                  "id": "y6mldl8uv",
-                  "title": "Hugging Face",
-                  "url": "https://huggingface.co/"
-                }
-              ],
-              "collapsed": false
             }
           ]
         },

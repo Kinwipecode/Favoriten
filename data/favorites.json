@@ -1493,19 +1493,6 @@
       ],
       "order": 20,
       "collapsed": true
-    },
-    {
-      "id": "65ks90ncx",
-      "title": "Neue Zeile",
-      "projects": [
-        {
-          "id": "wdu3k1kkc",
-          "isSpacer": true,
-          "projects": []
-        }
-      ],
-      "order": 50,
-      "collapsed": false
     }
   ],
   "config": {

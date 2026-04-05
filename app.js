@@ -71,7 +71,7 @@ async function loadData() {
             state.rows = migrate(data);
             if (window.applyTheme) applyTheme();
             renderBoard();
-            if (disp) { disp.textContent = '🏠 Server: ' + (data.savePath || 'Lokal'); disp.style.color = '#00b894'; }
+            if (disp) { disp.textContent = 'Vollversion'; disp.style.color = '#00b894'; }
             return;
         }
     } catch (e) {
@@ -114,7 +114,7 @@ async function loadFromGitHub() {
                 state.isReadOnly = false;
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                if (disp) { disp.textContent = '☁️ GitHub Sync'; disp.style.color = '#0984e3'; }
+                if (disp) { disp.textContent = 'Vollversion'; disp.style.color = '#00b894'; }
                 return;
             }
         } catch (e) { console.error("GitHub API Fehler:", e); }
@@ -133,7 +133,7 @@ async function loadFromGitHub() {
                 state.isReadOnly = true;
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                if (disp) { disp.textContent = ''; }
+                if (disp) { disp.textContent = 'Leseberechtigt'; disp.style.color = '#e17055'; }
                 return;
             } else {
                 console.warn(`Fetch für ${branch} ergab Status ${res.status}`);

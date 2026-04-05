@@ -246,6 +246,7 @@ function renderBoard() {
         row.projects.forEach(slot => {
             const slotEl = document.createElement("div");
             slotEl.className = `slot ${slot.isSpacer ? "spacer" : ""} ${isRead ? "read-only" : ""}`;
+            slotEl.dataset.slotId = slot.id || generateId();
 
             if (!slot.isSpacer) {
                 slot.projects.forEach(p => {
@@ -373,21 +374,28 @@ function renderBoard() {
             }
         });
 
-        // 2. GROUPS (Slots)
-        document.querySelectorAll('.row-projects').forEach(el => {
+        // 2. GROUPS (Individual Columns)
+        document.querySelectorAll('.slot:not(.spacer)').forEach(el => {
             new Sortable(el, {
-                group: 'row-slots', animation: 150, handle: '.column-header',
+                group: 'columns', animation: 150, handle: '.column-header',
                 onEnd: (e) => {
                     const fromR = state.rows.find(r => r.id === e.from.closest('.board-row').dataset.id);
                     const toR = state.rows.find(r => r.id === e.to.closest('.board-row').dataset.id);
                     if (fromR && toR) {
-                        const [slot] = fromR.projects.splice(e.oldIndex, 1);
-                        toR.projects.splice(e.newIndex, 0, slot);
-                        saveData(); renderBoard();
+                        const fromSlot = fromR.projects.find(s => s.id === e.from.dataset.slotId || s === fromR.projects[0]);
+                        const toSlot = toR.projects.find(s => s.id === e.to.dataset.slotId || s === toR.projects[0]);
+                        if (fromSlot && toSlot) {
+                            const [col] = fromSlot.projects.splice(e.oldIndex, 1);
+                            toSlot.projects.splice(e.newIndex, 0, col);
+                            saveData(); renderBoard();
+                        }
                     }
                 }
             });
         });
+
+        // 2b. SLOTS (Horizontal Reordering) - Optional if they want to move entire towers by empty space, 
+        // but disabled for now to ensure we only drag individual groups via header.
 
         // 3. FAVORITES (Items)
         document.querySelectorAll('.column-body').forEach(el => {

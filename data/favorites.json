@@ -808,11 +808,6 @@
               "title": "EDV",
               "items": [
                 {
-                  "id": "4wtfs7n5l",
-                  "title": "neu Citrix Gateway",
-                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
-                },
-                {
                   "id": "veynar1l3",
                   "title": "Office 2016 Professional Lizenz und Aktivierung | Lizenzguru",
                   "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
@@ -826,6 +821,11 @@
                   "id": "arhi0gsd9",
                   "title": "Duck DNS",
                   "url": "https://www.duckdns.org/"
+                },
+                {
+                  "id": "4wtfs7n5l",
+                  "title": "neu Citrix Gateway",
+                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
                 },
                 {
                   "id": "pd54bjvms",

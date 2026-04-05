@@ -1742,8 +1742,25 @@
         },
         {
           "id": "9mg74so2t",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "uf922g6cc",
           "isSpacer": false,
           "projects": [
+            {
+              "id": "agxu2nj81",
+              "title": "für Suno",
+              "items": [
+                {
+                  "id": "pt8b41xec",
+                  "title": "Meinhomestudio.de",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
+            },
             {
               "id": "z7afl1127",
               "title": "Lesezeichenleiste",
@@ -1817,24 +1834,6 @@
                   "id": "vyn5rcq73",
                   "title": "Dash.cloudflare.com",
                   "url": "https://dash.cloudflare.com/23e8d19ed8337818e554e2ac87b3029a/pages/new/upload"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "uf922g6cc",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "agxu2nj81",
-              "title": "für Suno",
-              "items": [
-                {
-                  "id": "pt8b41xec",
-                  "title": "Meinhomestudio.de",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
                 }
               ],
               "collapsed": true

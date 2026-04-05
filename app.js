@@ -182,8 +182,22 @@ function renderBoard() {
     const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
 
     sortedRows.forEach(row => {
+        if (row.projects) row.projects.sort((a, b) => a.order - b.order);
+    });
+
+    // Cleanup any corrupted data (nulls in projects)
+    state.rows.forEach(r => {
+        if (r.projects) {
+            r.projects.forEach(s => {
+                if (s.projects) s.projects = s.projects.filter(p => p != null);
+            });
+        }
+    });
+
+    sortedRows.forEach(row => {
         const isHiddenGlobally = localSettings.hiddenRowIds && localSettings.hiddenRowIds.includes(row.id);
         let forceShowBySearch = false;
+        let isSearchEmpty = true;
 
         if (isSearching) {
             row.projects.forEach(slot => {
@@ -244,9 +258,10 @@ function renderBoard() {
 
         const container = rowEl.querySelector(".row-projects");
         row.projects.forEach(slot => {
+            if (!slot.id) slot.id = generateId(); // Backfill legacy data
             const slotEl = document.createElement("div");
             slotEl.className = `slot ${slot.isSpacer ? "spacer" : ""} ${isRead ? "read-only" : ""}`;
-            slotEl.dataset.slotId = slot.id || generateId();
+            slotEl.dataset.slotId = slot.id;
 
             if (!slot.isSpacer) {
                 slot.projects.forEach(p => {
@@ -382,8 +397,8 @@ function renderBoard() {
                     const fromR = state.rows.find(r => r.id === e.from.closest('.board-row').dataset.id);
                     const toR = state.rows.find(r => r.id === e.to.closest('.board-row').dataset.id);
                     if (fromR && toR) {
-                        const fromSlot = fromR.projects.find(s => s.id === e.from.dataset.slotId || s === fromR.projects[0]);
-                        const toSlot = toR.projects.find(s => s.id === e.to.dataset.slotId || s === toR.projects[0]);
+                        const fromSlot = fromR.projects.find(s => s.id === e.from.dataset.slotId);
+                        const toSlot = toR.projects.find(s => s.id === e.to.dataset.slotId);
                         if (fromSlot && toSlot) {
                             const [col] = fromSlot.projects.splice(e.oldIndex, 1);
                             toSlot.projects.splice(e.newIndex, 0, col);

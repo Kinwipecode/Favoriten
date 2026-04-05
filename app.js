@@ -868,10 +868,24 @@ window.importFromHTML = (html, targetRowId) => {
         const mainDl = doc.querySelector('dl');
         if (!mainDl) { showToast('Keine Lesezeichen gefunden.', 'error'); return; }
 
-        let target = targetRowId === 'all' ? null : state.rows.find(r => r.id === targetRowId);
+        let target = null;
+        if (targetRowId === 'new') {
+            let defaultName = 'Importierte Favoriten';
+            const firstH3 = mainDl.querySelector('dt > h3');
+            if (firstH3) defaultName = firstH3.textContent.trim();
+
+            const rowName = prompt('Bitte Namen für die neue Import-Zeile eingeben:', defaultName);
+            if (rowName === null) return; // Cancelled
+            target = { id: generateId(), title: rowName || 'Neue Zeile', projects: [], order: (state.rows.length + 1) * 10 };
+            state.rows.push(target);
+        } else {
+            target = state.rows.find(r => r.id === targetRowId);
+            if (!target) { showToast('Ziel-Reihe nicht gefunden.', 'error'); return; }
+        }
+
         let addedCount = 0;
 
-        const parseDL = (dl, parentRow) => {
+        const parseDL = (dl) => {
             Array.from(dl.children).forEach(dt => {
                 if (dt.tagName !== 'DT') return;
                 const h3 = dt.querySelector('h3');
@@ -879,57 +893,33 @@ window.importFromHTML = (html, targetRowId) => {
                     const title = h3.textContent.trim();
                     const subDl = dt.querySelector('dl');
 
-                    if (targetRowId === 'all' && !parentRow) {
-                        // Create a NEW ROW for top-level folders
-                        const newRow = { id: generateId(), title: title, projects: [], order: (state.rows.length + 1) * 10 };
-                        state.rows.push(newRow);
-                        if (subDl) parseDL(subDl, newRow);
-                    } else {
-                        // Create a NEW GROUP (Slot) within the parent row
-                        const r = parentRow || target;
-                        if (!r) return;
+                    const newProj = { id: generateId(), title: title, items: [], collapsed: false };
+                    const newSlot = { id: generateId(), isSpacer: false, projects: [newProj] };
+                    target.projects.push(newSlot);
 
-                        const newProj = { id: generateId(), title: title, items: [], collapsed: false };
-                        const newSlot = { id: generateId(), isSpacer: false, projects: [newProj] };
-                        r.projects.push(newSlot);
-
-                        if (subDl) {
-                            // Extract links into this newProj
-                            Array.from(subDl.children).forEach(subDt => {
-                                if (subDt.tagName !== 'DT') return;
-                                const a = subDt.querySelector('a');
-                                if (a) {
-                                    newProj.items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
-                                    addedCount++;
-                                }
-                            });
-                        }
+                    if (subDl) {
+                        // Extract all nested links safely into this root group
+                        Array.from(subDl.querySelectorAll('dt > a')).forEach(a => {
+                            newProj.items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
+                            addedCount++;
+                        });
                     }
                 } else {
                     const a = dt.querySelector('a');
                     if (a) {
-                        const r = parentRow || target;
-                        if (r) {
-                            // Link without a folder? Add to a generic group
-                            let genericSlot = r.projects.find(s => !s.isSpacer && s.projects[0].title === 'Importiert');
-                            if (!genericSlot) {
-                                genericSlot = { id: generateId(), isSpacer: false, projects: [{ id: generateId(), title: 'Importiert', items: [], collapsed: false }] };
-                                r.projects.push(genericSlot);
-                            }
-                            genericSlot.projects[0].items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
-                            addedCount++;
+                        let genericSlot = target.projects.find(s => !s.isSpacer && s.projects[0].title === 'Lose Favoriten');
+                        if (!genericSlot) {
+                            genericSlot = { id: generateId(), isSpacer: false, projects: [{ id: generateId(), title: 'Lose Favoriten', items: [], collapsed: false }] };
+                            target.projects.push(genericSlot);
                         }
+                        genericSlot.projects[0].items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
+                        addedCount++;
                     }
                 }
             });
         };
 
-        if (targetRowId === 'all') {
-            parseDL(mainDl, null);
-        } else {
-            if (!target) { showToast('Ziel-Reihe nicht gefunden.', 'error'); return; }
-            parseDL(mainDl, target);
-        }
+        parseDL(mainDl);
 
         saveData(); renderBoard();
         showToast(`Import abgeschlossen: ${addedCount} Favoriten!`, 'success');

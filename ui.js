@@ -284,6 +284,8 @@ const btnHandlers = {
         renderBoard(); saveData();
     },
     'btn-sort-rows': () => sortRows(),
+    'btn-settings': () => showModal('settings-modal'),
+    'btn-app-settings': () => showModal('app-settings-modal'),
     'btn-clean-all': () => cleanAllLinkTitles(),
     'btn-add-spacer': () => {
         if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [] });

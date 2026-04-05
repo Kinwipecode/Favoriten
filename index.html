@@ -208,6 +208,59 @@
         </div>
     </div>
 
+    <!-- App Einstellungen (Local Cache) -->
+    <div id="app-settings-modal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-desktop"></i> Lokale Einstellungen</h2>
+                <div class="header-actions">
+                    <button class="btn-text" onclick="closeModal('app-settings-modal')">×</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">
+                    Diese Einstellungen werden nur in deinem Browser gespeichert und beeinflussen nicht das Design für
+                    andere.
+                </p>
+
+                <div class="settings-grid">
+                    <div class="setting-item"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+                        <label><i class="fa-solid fa-moon"></i> Dark Mode:</label>
+                        <select id="local-dark-mode" onchange="updateLocalSettings()"
+                            style="padding: 4px; border-radius: 4px;">
+                            <option value="system">System (Standard)</option>
+                            <option value="light">Immer Hell</option>
+                            <option value="dark">Immer Dunkel</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0,0,0,0.03); border-radius: 8px; margin-top: 10px;">
+                        <label><i class="fa-solid fa-compress"></i> Kompakt-Modus:</label>
+                        <input type="checkbox" id="local-compact-mode" onchange="updateLocalSettings()">
+                    </div>
+
+                    <div class="setting-item"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0,0,0,0.03); border-radius: 8px; margin-top: 10px;">
+                        <label><i class="fa-solid fa-gauge-high"></i> Animationen:</label>
+                        <input type="checkbox" id="local-animations" onchange="updateLocalSettings()" checked>
+                    </div>
+
+                    <div class="setting-item"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0,0,0,0.03); border-radius: 8px; margin-top: 10px;">
+                        <label><i class="fa-solid fa-thumbtack"></i> Header fixieren:</label>
+                        <input type="checkbox" id="local-fixed-header" onchange="updateLocalSettings()">
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; text-align: right;">
+                    <button class="btn-primary" onclick="closeModal('app-settings-modal')">Schließen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Info Modal -->
     <div id="info-modal" class="modal hidden">
         <div class="modal-content glass-effect" style="max-width: 550px;">

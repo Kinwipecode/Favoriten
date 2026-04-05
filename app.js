@@ -201,10 +201,19 @@ function renderBoard() {
 
         const rowEl = document.createElement("div");
         rowEl.className = `board-row ${row.collapsed ? "collapsed" : ""}`;
-        if (!isRead) rowEl.oncontextmenu = (e) => showContextMenu(e, 'row', row.id);
+
+        const triggerContext = (e) => {
+            if (isRead) return;
+            showContextMenu({
+                clientX: e.clientX || (e.touches && e.touches[0].clientX),
+                clientY: e.clientY || (e.touches && e.touches[0].clientY),
+                preventDefault: () => e.preventDefault ? e.preventDefault() : null
+            }, 'row', row.id);
+        };
 
         rowEl.innerHTML = `
-            <div class="row-header">
+            <div class="row-header"
+                 oncontextmenu="if(!isRead) { triggerContext(event); return false; }">
                 <div class="row-header-main" onclick="if(!event.target.closest('button') && !event.target.closest('input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="font-size:0.8rem; width:20px; opacity:0.5;"></i>
                     ${isRead ?
@@ -232,10 +241,20 @@ function renderBoard() {
                 slot.projects.forEach(p => {
                     const col = document.createElement("div");
                     col.className = `column ${p.collapsed ? "collapsed" : ""}`;
+
+                    const triggerProjContext = (e) => {
+                        if (isRead) return;
+                        showContextMenu({
+                            clientX: e.clientX || (e.touches && e.touches[0].clientX),
+                            clientY: e.clientY || (e.touches && e.touches[0].clientY),
+                            preventDefault: () => e.preventDefault ? e.preventDefault() : null
+                        }, 'project', p.id);
+                    };
+
                     col.innerHTML = `
                             <div class="column-header" 
                                  onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')"
-                                 oncontextmenu="if(!isRead) { showContextMenu(event, 'project', '${p.id}'); return false; }">
+                                 oncontextmenu="if(!isRead) { triggerProjContext(event); return false; }">
                             <div class="header-left">
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
                                 ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
@@ -262,6 +281,15 @@ function renderBoard() {
                         body.appendChild(itemEl);
                     });
                     slotEl.appendChild(col);
+
+                    // Touch long press support
+                    let tTimer;
+                    const h = col.querySelector('.column-header');
+                    if (h && !isRead) {
+                        h.addEventListener('touchstart', (e) => { tTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
+                        h.addEventListener('touchend', () => clearTimeout(tTimer));
+                        h.addEventListener('touchmove', () => clearTimeout(tTimer));
+                    }
                 });
             } else if (!isRead) {
                 slotEl.innerHTML = `
@@ -276,6 +304,15 @@ function renderBoard() {
             container.appendChild(slotEl);
         });
         board.appendChild(rowEl);
+
+        // Row touch long press support
+        let rTimer;
+        const rh = rowEl.querySelector('.row-header');
+        if (rh && !isRead) {
+            rh.addEventListener('touchstart', (e) => { rTimer = setTimeout(() => triggerContext(e), 600); }, { passive: true });
+            rh.addEventListener('touchend', () => clearTimeout(rTimer));
+            rh.addEventListener('touchmove', () => clearTimeout(rTimer));
+        }
     });
     document.body.classList.toggle('move-mode-active', state.moveMode.active);
     document.body.classList.toggle('delete-mode-active', state.deleteMode.active);

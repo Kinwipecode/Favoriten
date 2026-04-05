@@ -1926,7 +1926,7 @@
               "items": [
                 {
                   "id": "ni7d4xv60",
-                  "title": "IMI Hydronic Engineering ohne kein Webinare",
+                  "title": "IMI Hydronic Engineering Ohne Kein Webinare",
                   "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
                 }
               ],
@@ -3052,7 +3052,8 @@
       "btn-move-mode",
       "btn-pull-cloud",
       "btn-sort-rows",
-      "btn-multi-delete"
+      "btn-multi-delete",
+      "btn-clean-all"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

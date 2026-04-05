@@ -25,69 +25,66 @@ window.initSortable = () => {
     const isRead = state.isReadOnly;
     if (typeof Sortable === 'undefined') return;
 
-    // 1. TOP-LEVEL: Sort ROWS in the BOARD
+    // 1. Rows (Horizontal)
     const board = document.querySelector('.board');
     if (board && !board.sortable) {
         board.sortable = new Sortable(board, {
-            animation: 150,
+            animation: 180,
             handle: '.row-header-main',
             disabled: isRead,
             onEnd: (evt) => {
-                const [movedRow] = state.rows.splice(evt.oldIndex, 1);
-                state.rows.splice(evt.newIndex, 0, movedRow);
+                const [moved] = state.rows.splice(evt.oldIndex, 1);
+                state.rows.splice(evt.newIndex, 0, moved);
                 saveData(); renderBoard();
             }
         });
-    } else if (board && board.sortable) { board.sortable.option('disabled', isRead); }
+    } else if (board && board.sortable) board.sortable.option('disabled', isRead);
 
-    // 2. MID-LEVEL: Sort SLOTS in each ROW
+    // 2. Groups/Slots (Horizontal within a row)
     document.querySelectorAll('.row-projects').forEach(el => {
         if (el.sortable) { el.sortable.option('disabled', isRead); return; }
         el.sortable = new Sortable(el, {
             group: 'row-slots',
-            animation: 150,
+            animation: 180,
             disabled: isRead,
             onEnd: (evt) => {
-                const fromRowId = evt.from.closest('.board-row').dataset.id;
-                const toRowId = evt.to.closest('.board-row').dataset.id;
-                const rFrom = state.rows.find(r => r.id === fromRowId);
-                const rTo = state.rows.find(r => r.id === toRowId);
-                if (rFrom && rTo) {
-                    const [slot] = rFrom.projects.splice(evt.oldIndex, 1);
-                    rTo.projects.splice(evt.newIndex, 0, slot);
+                const fromRid = evt.from.closest('.board-row').dataset.id;
+                const toRid = evt.to.closest('.board-row').dataset.id;
+                const rF = state.rows.find(r => r.id === fromRid);
+                const rT = state.rows.find(r => r.id === toRid);
+                if (rF && rT) {
+                    const [slot] = rF.projects.splice(evt.oldIndex, 1);
+                    rT.projects.splice(evt.newIndex, 0, slot);
                     saveData(); renderBoard();
                 }
             }
         });
     });
 
-    // 3. BOTTOM-LEVEL: Sort ITEMS in each GROUP BODY
+    // 3. Items (Individual links)
     document.querySelectorAll('.column-body').forEach(el => {
         if (el.sortable) { el.sortable.option('disabled', isRead); return; }
         el.sortable = new Sortable(el, {
-            group: 'shared-items',
-            animation: 150,
+            group: { name: 'shared', pull: true, put: true },
+            animation: 180,
             disabled: isRead,
-            onStart: () => { document.body.classList.add('is-dragging-item'); },
+            onStart: () => document.body.classList.add('is-dragging-item'),
             onEnd: (evt) => {
                 document.body.classList.remove('is-dragging-item');
-                try {
-                    const fromCol = evt.from.closest('.column'), toCol = evt.to.closest('.column');
-                    if (!fromCol || !toCol) { renderBoard(); return; }
-                    const itemId = evt.item.querySelector('a')?.getAttribute('href') ? evt.item.querySelector('span').innerText : ""; // Need stable ID
-                    // Use data attributes for stable mapping
-                    const itId = evt.item.dataset.id;
-                    const fProj = findProject(fromCol.dataset.projectId), tProj = findProject(toCol.dataset.projectId);
-                    if (fProj && tProj) {
-                        const itemIdx = fProj.items.findIndex(it => it.id === itId || (it.title === itemId));
-                        if (itemIdx !== -1) {
-                            const [item] = fProj.items.splice(itemIdx, 1);
-                            tProj.items.splice(evt.newIndex, 0, item);
-                            saveData();
-                        }
+                const fromCol = evt.from.closest('.column'), toCol = evt.to.closest('.column');
+                if (!fromCol || !toCol) { renderBoard(); return; }
+                const fId = fromCol.dataset.projectId, tId = toCol.dataset.projectId;
+                const itId = evt.item.getAttribute('data-id');
+                const fP = findProject(fId), tP = findProject(tId);
+                if (fP && tP) {
+                    const idx = fP.items.findIndex(it => it.id === itId);
+                    if (idx !== -1) {
+                        const [item] = fP.items.splice(idx, 1);
+                        tP.items.splice(evt.newIndex, 0, item);
+                        saveData();
                     }
-                    renderBoard();
-                } catch (err) { console.error("Sortable error:", err); renderBoard(); }
+                }
+                renderBoard();
             }
         });
     });

@@ -1734,8 +1734,15 @@
         },
         {
           "id": "s6hlcntw9",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "e3whnicpw",
+              "title": "fthsthf",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         }
       ],
       "order": 30,

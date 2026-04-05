@@ -361,6 +361,7 @@ function renderBoard() {
     });
     document.body.classList.toggle('move-mode-active', state.moveMode.active);
     document.body.classList.toggle('delete-mode-active', state.deleteMode.active);
+    if (window.initSortable) initSortable();
 }
 
 function cleanTitle(str) {

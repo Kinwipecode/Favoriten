@@ -430,6 +430,7 @@ body {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+    font-size: var(--group-font-size, 0.95rem) !important;
 }
 
 .group-title-input {
@@ -447,7 +448,7 @@ body {
 
 .column-header span {
     font-weight: 700;
-    font-size: var(--group-font-size, 0.95rem);
+    font-size: inherit;
 }
 
 .column-body {

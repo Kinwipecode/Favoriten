@@ -879,41 +879,41 @@ window.importFromHTML = (html, targetRowId, newRowName) => {
 
         let addedCount = 0;
 
-        const parseDL = (dl) => {
+        // Recursive traversal to keep folders as separate groups
+        const processDL = (dl, currentFolderName) => {
+            // Find all direct children links at this level
+            const immediateLinks = Array.from(dl.children)
+                .filter(dt => dt.tagName === 'DT')
+                .map(dt => dt.querySelector(':scope > a'))
+                .filter(a => a !== null);
+
+            if (immediateLinks.length > 0) {
+                const groupTitle = currentFolderName || 'Lose Favoriten';
+                // Find existing group with this name or create new
+                let proj = target.projects.find(s => !s.isSpacer && s.projects[0].title === groupTitle)?.projects[0];
+                if (!proj) {
+                    proj = { id: generateId(), title: groupTitle, items: [], collapsed: false };
+                    target.projects.push({ id: generateId(), isSpacer: false, projects: [proj] });
+                }
+
+                immediateLinks.forEach(a => {
+                    proj.items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
+                    addedCount++;
+                });
+            }
+
+            // Find subfolders at this level and recurse
             Array.from(dl.children).forEach(dt => {
                 if (dt.tagName !== 'DT') return;
-                const h3 = dt.querySelector('h3');
-                if (h3) {
-                    const title = h3.textContent.trim();
-                    const subDl = dt.querySelector('dl');
-
-                    const newProj = { id: generateId(), title: title, items: [], collapsed: false };
-                    const newSlot = { id: generateId(), isSpacer: false, projects: [newProj] };
-                    target.projects.push(newSlot);
-
-                    if (subDl) {
-                        // Extract all nested links safely into this root group
-                        Array.from(subDl.querySelectorAll('dt > a')).forEach(a => {
-                            newProj.items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
-                            addedCount++;
-                        });
-                    }
-                } else {
-                    const a = dt.querySelector('a');
-                    if (a) {
-                        let genericSlot = target.projects.find(s => !s.isSpacer && s.projects[0].title === 'Lose Favoriten');
-                        if (!genericSlot) {
-                            genericSlot = { id: generateId(), isSpacer: false, projects: [{ id: generateId(), title: 'Lose Favoriten', items: [], collapsed: false }] };
-                            target.projects.push(genericSlot);
-                        }
-                        genericSlot.projects[0].items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
-                        addedCount++;
-                    }
+                const h3 = dt.querySelector(':scope > h3');
+                const subDl = dt.querySelector(':scope > dl');
+                if (h3 && subDl) {
+                    processDL(subDl, h3.textContent.trim());
                 }
             });
         };
 
-        parseDL(mainDl);
+        processDL(mainDl, null);
 
         saveData(); renderBoard();
         showToast(`Import abgeschlossen: ${addedCount} Favoriten!`, 'success');

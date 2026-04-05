@@ -2847,13 +2847,14 @@
         }
       ],
       "order": 20,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "65ks90ncx",
       "title": "Neue Zeile",
       "projects": [],
-      "order": 50
+      "order": 50,
+      "collapsed": false
     }
   ],
   "config": {

@@ -1622,20 +1622,7 @@
         {
           "id": "zw0oxqu6g",
           "isSpacer": false,
-          "projects": [
-            {
-              "id": "q8vpaaf7t",
-              "title": "für Suno",
-              "items": [
-                {
-                  "id": "b47ylxzc1",
-                  "title": "Suno Prompt Generator -  M6UU628n",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
+          "projects": []
         },
         {
           "id": "rd8qf0svz",
@@ -1824,6 +1811,18 @@
                   "id": "wj77dlxnh",
                   "title": "Dreamina",
                   "url": "https://dreamina.capcut.com/ai-tool/generate"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "q8vpaaf7t",
+              "title": "für Suno",
+              "items": [
+                {
+                  "id": "b47ylxzc1",
+                  "title": "Suno Prompt Generator -  M6UU628n",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
                 }
               ],
               "collapsed": true

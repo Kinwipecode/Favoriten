@@ -1385,7 +1385,7 @@
         }
       ],
       "order": 40,
-      "collapsed": false
+      "collapsed": true
     },
     {
       "id": "wf2ec3g0j",
@@ -2903,7 +2903,7 @@
         }
       ],
       "order": 20,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "yawanswyh",

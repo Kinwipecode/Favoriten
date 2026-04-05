@@ -1545,14 +1545,14 @@
               "title": "Lesezeichenleiste",
               "items": [
                 {
-                  "id": "t98qko172",
-                  "title": "FRITZ!Box",
-                  "url": "http://192.168.178.1/"
-                },
-                {
                   "id": "ahsqjatou",
                   "title": "Netflix",
                   "url": "https://www.netflix.com/YourAccount"
+                },
+                {
+                  "id": "t98qko172",
+                  "title": "FRITZ!Box",
+                  "url": "http://192.168.178.1/"
                 },
                 {
                   "id": "169bwdjby",

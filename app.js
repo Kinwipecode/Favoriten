@@ -280,7 +280,24 @@ function renderBoard() {
                         const itemEl = document.createElement("div");
                         itemEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''} ${isMoving && isSelected ? 'selected-for-move' : ''} ${isDeleting && isSelected ? 'selected-for-delete' : ''}`;
 
-                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" onclick="if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
+                        const triggerItemContext = (e) => {
+                            if (isRead) return;
+                            if (e.preventDefault) e.preventDefault();
+                            state.lastContextMenuTime = Date.now();
+                            showContextMenu({
+                                clientX: e.clientX !== undefined ? e.clientX : (e.touches?.[0]?.clientX || 0),
+                                clientY: e.clientY !== undefined ? e.clientY : (e.touches?.[0]?.clientY || 0),
+                                preventDefault: () => { }
+                            }, 'item', it.id);
+                        };
+
+                        itemEl.oncontextmenu = (e) => { triggerItemContext(e); return false; };
+                        let itTimer;
+                        itemEl.addEventListener('mousedown', (e) => { if (e.button === 0) itTimer = setTimeout(() => triggerItemContext(e), 600); });
+                        itemEl.addEventListener('touchstart', (e) => { itTimer = setTimeout(() => triggerItemContext(e), 600); }, { passive: true });
+                        ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => itemEl.addEventListener(ev, () => clearTimeout(itTimer)));
+
+                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" onclick="if(Date.now() - state.lastContextMenuTime < 500) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
                         body.appendChild(itemEl);
                     });
                     slotEl.appendChild(col);
@@ -615,6 +632,14 @@ window.showContextMenu = (e, type, id) => {
             <div class="context-menu-divider"></div>
             <div class="context-menu-item danger" onclick="deleteProject('${id}')"><i class="fa-solid fa-trash-can"></i> Gruppe löschen</div>
         `;
+    } else if (type === 'item') {
+        const item = findItem(id);
+        html = `
+            <div class="context-menu-title">Favorit: ${item ? item.title : 'Unbekannt'}</div>
+            <div class="context-menu-item" onclick="editItem('${id}')"><i class="fa-solid fa-pen"></i> Bearbeiten</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item danger" onclick="deleteItem('${id}')"><i class="fa-solid fa-trash"></i> Löschen</div>
+        `;
     }
     menu.innerHTML = html;
 
@@ -628,10 +653,14 @@ window.showContextMenu = (e, type, id) => {
         if (Date.now() - state.lastContextMenuTime < 300) return;
         if (!menu.contains(evt.target)) {
             menu.classList.add('hidden');
-            document.removeEventListener('click', close);
+            document.removeEventListener('mousedown', close);
+            document.removeEventListener('touchstart', close);
         }
     };
-    setTimeout(() => document.addEventListener('click', close), 10);
+    setTimeout(() => {
+        document.addEventListener('mousedown', close);
+        document.addEventListener('touchstart', close, { passive: true });
+    }, 10);
 };
 
 window.pasteFromClipboard = async (projectId) => {

@@ -1783,6 +1783,18 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "grtzv27bl",
+              "title": "für Suno",
+              "items": [
+                {
+                  "id": "zvqylvsxk",
+                  "title": "Suno Prompt Generator -  M6UU628n",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -1974,18 +1986,6 @@
                   "id": "o4b9ccla2",
                   "title": "Refusion AI",
                   "url": "https://refusion.ai/lander"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "grtzv27bl",
-              "title": "für Suno",
-              "items": [
-                {
-                  "id": "zvqylvsxk",
-                  "title": "Suno Prompt Generator -  M6UU628n",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
                 }
               ],
               "collapsed": true

@@ -870,7 +870,8 @@ window.importFromHTML = (html, targetRowId, newRowName) => {
 
         let target = null;
         if (targetRowId === 'new') {
-            target = { id: generateId(), title: newRowName || 'Neue Zeile', projects: [], order: (state.rows.length + 1) * 10 };
+            const maxOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) : 0;
+            target = { id: generateId(), title: newRowName || 'Neue Zeile', projects: [], order: maxOrder + 10 };
             state.rows.push(target);
         } else {
             target = state.rows.find(r => r.id === targetRowId);
@@ -892,7 +893,7 @@ window.importFromHTML = (html, targetRowId, newRowName) => {
                 // Find existing group with this name or create new
                 let proj = target.projects.find(s => !s.isSpacer && s.projects[0].title === groupTitle)?.projects[0];
                 if (!proj) {
-                    proj = { id: generateId(), title: groupTitle, items: [], collapsed: false };
+                    proj = { id: generateId(), title: groupTitle, items: [], collapsed: true };
                     target.projects.push({ id: generateId(), isSpacer: false, projects: [proj] });
                 }
 

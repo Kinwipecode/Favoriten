@@ -1277,14 +1277,14 @@
                   "url": "https://kinwipecode.github.io/Miro_plus/"
                 },
                 {
-                  "id": "ob0qofmbl",
-                  "title": "KinPDF",
-                  "url": "https://kinwipecode.github.io/Kinpdf/"
-                },
-                {
                   "id": "y2cct43kh",
                   "title": "Favoriten Manager ⭐️ | Favoriten",
                   "url": "https://kinwipecode.github.io/Favoriten/"
+                },
+                {
+                  "id": "ob0qofmbl",
+                  "title": "KinPDF",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
                 }
               ],
               "collapsed": false

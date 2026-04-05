@@ -191,6 +191,7 @@ const buttonMetadata = {
     'btn-import': { icon: 'fa-solid fa-file-import', text: 'Importieren', class: 'btn btn-secondary', title: 'HTML Bookmarks Datei importieren' },
     'btn-export': { icon: 'fa-solid fa-file-export', text: 'Exportieren', class: 'btn btn-secondary' },
     'btn-github': { icon: 'fa-brands fa-github', text: 'Sync-Token', class: 'btn btn-secondary', style: 'background:#24292e; color:white;' },
+    'btn-app-settings': { icon: 'fa-desktop', text: 'App Settings', class: 'btn btn-secondary', title: 'App Ansicht' },
     'btn-info': { icon: 'fa-solid fa-circle-info', text: '', class: 'btn btn-secondary', title: 'Info & Shortcuts' },
     'btn-collapse-gaps': { icon: 'fa-solid fa-compress-arrows-alt', text: 'Lücken schließen', class: 'btn btn-secondary', title: 'Alle Lücken in allen Zeilen gleichzeitig entfernen' },
     'btn-add-row': { icon: 'fa-solid fa-layer-group', text: 'Neue Zeile', class: 'btn btn-secondary', title: 'Eine neue horizontale Zeile hinzufügen' },

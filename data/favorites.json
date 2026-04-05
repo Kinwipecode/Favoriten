@@ -720,6 +720,11 @@
         {
           "id": "wjl2i0y43",
           "isSpacer": false,
+          "projects": []
+        },
+        {
+          "id": "okdxcyvhl",
+          "isSpacer": false,
           "projects": [
             {
               "id": "s1ccoz3pm",
@@ -754,11 +759,6 @@
               "collapsed": true
             }
           ]
-        },
-        {
-          "id": "okdxcyvhl",
-          "isSpacer": false,
-          "projects": []
         },
         {
           "id": "mzwaedvvr",

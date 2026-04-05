@@ -55,77 +55,82 @@ async function init() {
 }
 
 async function loadData() {
+    const disp = document.getElementById('save-path-display');
+
+    // 1. Probier den lokalen Server (mit Timeout)
     try {
-        const res = await fetch(API_URL).catch(() => null);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2500); // Max 2.5s warten
+        const res = await fetch(API_URL, { signal: controller.signal }).catch(() => null);
+        clearTimeout(timeoutId);
+
         if (res && res.ok) {
             const data = await res.json();
             state.rows = migrate(data);
             if (window.applyTheme) applyTheme();
             renderBoard();
-            const disp = document.getElementById('save-path-display');
             if (disp) { disp.textContent = '🏠 Server: ' + (data.savePath || 'Lokal'); disp.style.color = '#00b894'; }
-            return; // Local success
+            return;
         }
     } catch (e) {
-        console.warn("Local server offline, trying GitHub...");
+        console.warn("Lokal nicht erreichbar, wechsle zu GitHub...");
     }
 
-    // Always try GitHub (loadFromGitHub handles the public/private logic internally)
+    // 2. Fallback zu GitHub
     await loadFromGitHub();
 
-    // Last resort: browser backup
+    // 3. Letzte Rettung: Browser-Backup
     if (state.rows.length === 0 || (state.rows.length === 1 && state.rows[0].projects.length === 0)) {
         const l = localStorage.getItem('favoriten_backup');
         if (l) {
             state.rows = migrate(JSON.parse(l));
             renderBoard();
-            showToast('Lokales Backup geladen.', 'info');
-        } else {
-            const disp = document.getElementById('save-path-display');
-            if (disp) { disp.textContent = '❌ Keine Daten gefunden'; disp.style.color = '#d63031'; }
+            showToast('Browser-Backup geladen.', 'info');
+        } else if (disp) {
+            disp.textContent = '❌ Keine Daten (Server offline)';
+            disp.style.color = '#d63031';
         }
     }
 }
 
 async function loadFromGitHub() {
-    // If we have a token, we use the API to get SHA and full content
+    const disp = document.getElementById('save-path-display');
+
+    // API Abruf mit Token (wenn vorhanden)
     if (ghToken) {
-        const url = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}?t=${Date.now()}`;
         try {
+            const url = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}?t=${Date.now()}`;
             const res = await fetch(url, { headers: { 'Authorization': `token ${ghToken}` } });
             if (res.ok) {
-                const data = await res.json(); ghSha = data.sha;
+                const data = await res.json();
+                ghSha = data.sha;
                 const content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
                 state.rows = migrate(content);
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                const disp = document.getElementById('save-path-display');
                 if (disp) { disp.textContent = '☁️ GitHub Sync'; disp.style.color = '#0984e3'; }
                 return;
             }
-        } catch (e) { console.error("API Fetch failed", e); }
+        } catch (e) { console.error("GitHub API Fehler:", e); }
     }
 
-    // FALLBACK: Try Public Read-Only (no token required if repo/file is public)
+    // Öffentlicher Abruf (RAW) ohne Token
     const branches = ['main', 'master'];
     for (const branch of branches) {
-        const publicUrl = `https://raw.githubusercontent.com/${ghOwner}/${ghRepo}/${branch}/${ghPath}?t=${Date.now()}`;
         try {
+            const publicUrl = `https://raw.githubusercontent.com/${ghOwner}/${ghRepo}/${branch}/${ghPath}?t=${Date.now()}`;
             const res = await fetch(publicUrl);
             if (res.ok) {
                 const content = await res.json();
                 state.rows = migrate(content);
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                const disp = document.getElementById('save-path-display');
                 if (disp) { disp.textContent = '📖 GitHub (Nur Lesen)'; disp.style.color = '#e17055'; }
-                showToast('Nur Lese-Modus (Geringere Rechte)', 'info');
-                return; // Success
+                showToast('Nur Lese-Modus aktiviert.', 'info');
+                return;
             }
-        } catch (e) { console.warn(`Public Fetch for ${branch} failed`, e); }
+        } catch (e) { console.warn(`Versuch über ${branch} fehlgeschlagen.`); }
     }
-
-    showToast('Daten konnten weder lokal noch von GitHub geladen werden.', 'error');
 }
 
 async function saveData() {

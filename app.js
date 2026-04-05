@@ -345,12 +345,25 @@ function renderBoard() {
                         i.onmousemove = (e) => startTooltip(it.title, e);
                         i.onmouseleave = hideTooltip;
                         i.className = `favorite-item ${mSel ? 'selected-for-move' : ''} ${dSel ? 'selected-for-delete' : ''} ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''}`;
+
+                        // Use a real anchor for better mobile compatibility
+                        const linkContent = `<span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')" title="Bearbeiten"><i class="fa-solid fa-pen" style="font-size:0.7rem;"></i></button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')" title="Löschen">×</button></div>` : ''}`;
+
+                        i.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper">${linkContent}</a>`;
+
                         i.onclick = (e) => {
-                            if (state.moveMode.active) { e.stopPropagation(); toggleMoveSelect('link', it.id); }
-                            else if (state.deleteMode.active) { e.stopPropagation(); toggleDeleteSelect('link', it.id); }
-                            else { window.open(it.url); }
+                            if (state.moveMode.active) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                toggleMoveSelect('link', it.id);
+                            }
+                            else if (state.deleteMode.active) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                toggleDeleteSelect('link', it.id);
+                            }
+                            // Normaler Klick: Der <a> Tag übernimmt das Öffnen automatisch
                         };
-                        i.innerHTML = `<span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); editItem('${it.id}')" title="Bearbeiten"><i class="fa-solid fa-pen" style="font-size:0.7rem;"></i></button><button class="btn-text" onclick="event.stopPropagation(); deleteItem('${it.id}')" title="Löschen">×</button></div>` : ''}`;
                         b.appendChild(i);
                     });
                     slotEl.appendChild(col);

@@ -10,6 +10,7 @@ let ghPath = 'data/favorites.json';
 let ghSha = null;
 
 const state = {
+    isReadOnly: false,
     rows: [],
     searchTerm: "",
     moveMode: { active: false, type: null, selectedIds: [] },
@@ -110,6 +111,7 @@ async function loadFromGitHub() {
                 ghSha = data.sha;
                 const content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
                 state.rows = migrate(content);
+                state.isReadOnly = false;
                 if (window.applyTheme) applyTheme();
                 renderBoard();
                 if (disp) { disp.textContent = '☁️ GitHub Sync'; disp.style.color = '#0984e3'; }
@@ -128,6 +130,7 @@ async function loadFromGitHub() {
             if (res.ok) {
                 const content = await res.json();
                 state.rows = migrate(content);
+                state.isReadOnly = true;
                 if (window.applyTheme) applyTheme();
                 renderBoard();
                 if (disp) { disp.textContent = '📖 GitHub (Nur Lesen)'; disp.style.color = '#e17055'; }
@@ -226,8 +229,7 @@ function renderBoard() {
             }));
             if (!hasMatch) return;
         }
-        const dispVal = document.getElementById('save-path-display');
-        const isRead = dispVal && dispVal.textContent.includes('Nur Lesen') && !ghToken;
+        const isRead = state.isReadOnly && !ghToken;
 
         const rowEl = document.createElement("div");
         rowEl.className = `board-row ${row.collapsed ? "collapsed" : ""}`;
@@ -236,8 +238,12 @@ function renderBoard() {
         rowEl.innerHTML = `<div class="row-header">
                 <div class="row-header-main" onclick="if(!event.target.closest('button') && (!event.target.closest('input') || event.target.type === 'checkbox')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <input type="checkbox" ${row.collapsed ? "checked" : ""} readonly>
-                    <input type="number" class="row-order-input" value="${row.order || 0}" ${isRead ? 'readonly' : ''} onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
-                    <input type="text" class="row-title-input" value="${row.title}" ${isRead ? 'readonly' : ''} oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">
+                    ${isRead ?
+                `<div class="row-order-input text-only">${row.order || 0}</div>
+                         <div class="row-title-input text-only">${row.title}</div>` :
+                `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
+                         <input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`
+            }
                 </div>
                 <div class="row-actions">
                     ${!isRead ? `

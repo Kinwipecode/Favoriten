@@ -2872,7 +2872,7 @@
                   "url": "https://www.holidaycheck.ch/hi/hyatt-regency-taghazout/39f66d35-f720-4f97-b8bd-17495aad965c"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         },
@@ -2898,6 +2898,11 @@
               "collapsed": false
             }
           ]
+        },
+        {
+          "id": "6m05fcn1x",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 60,

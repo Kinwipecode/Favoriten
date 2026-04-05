@@ -2861,7 +2861,7 @@
                   "url": "https://149.hosttech.eu:8443/smb/file-manager/list"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         },

@@ -551,7 +551,6 @@ window.showContextMenu = (e, type, id) => {
     e.preventDefault();
     const menu = document.getElementById('context-menu');
     if (!menu) return;
-    menu.style.left = e.clientX + 'px'; menu.style.top = e.clientY + 'px';
     menu.classList.remove('hidden');
     let html = '';
     if (type === 'row') {
@@ -576,6 +575,13 @@ window.showContextMenu = (e, type, id) => {
         `;
     }
     menu.innerHTML = html;
+
+    let x = e.clientX, y = e.clientY;
+    const rect = menu.getBoundingClientRect();
+    if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width - 10;
+    if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - 10;
+    menu.style.left = Math.max(10, x) + 'px'; menu.style.top = Math.max(10, y) + 'px';
+
     const close = () => { menu.classList.add('hidden'); document.removeEventListener('click', close); };
     setTimeout(() => document.addEventListener('click', close), 10);
 };

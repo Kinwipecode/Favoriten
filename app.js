@@ -861,4 +861,81 @@ document.getElementById('btn-save-group')?.addEventListener('click', () => {
     renderBoard(); saveData();
 });
 
+window.importFromHTML = (html, targetRowId) => {
+    try {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const mainDl = doc.querySelector('dl');
+        if (!mainDl) { showToast('Keine Lesezeichen gefunden.', 'error'); return; }
+
+        let target = targetRowId === 'all' ? null : state.rows.find(r => r.id === targetRowId);
+        let addedCount = 0;
+
+        const parseDL = (dl, parentRow) => {
+            Array.from(dl.children).forEach(dt => {
+                if (dt.tagName !== 'DT') return;
+                const h3 = dt.querySelector('h3');
+                if (h3) {
+                    const title = h3.textContent.trim();
+                    const subDl = dt.querySelector('dl');
+
+                    if (targetRowId === 'all' && !parentRow) {
+                        // Create a NEW ROW for top-level folders
+                        const newRow = { id: generateId(), title: title, projects: [], order: (state.rows.length + 1) * 10 };
+                        state.rows.push(newRow);
+                        if (subDl) parseDL(subDl, newRow);
+                    } else {
+                        // Create a NEW GROUP (Slot) within the parent row
+                        const r = parentRow || target;
+                        if (!r) return;
+
+                        const newProj = { id: generateId(), title: title, items: [], collapsed: false };
+                        const newSlot = { id: generateId(), isSpacer: false, projects: [newProj] };
+                        r.projects.push(newSlot);
+
+                        if (subDl) {
+                            // Extract links into this newProj
+                            Array.from(subDl.children).forEach(subDt => {
+                                if (subDt.tagName !== 'DT') return;
+                                const a = subDt.querySelector('a');
+                                if (a) {
+                                    newProj.items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
+                                    addedCount++;
+                                }
+                            });
+                        }
+                    }
+                } else {
+                    const a = dt.querySelector('a');
+                    if (a) {
+                        const r = parentRow || target;
+                        if (r) {
+                            // Link without a folder? Add to a generic group
+                            let genericSlot = r.projects.find(s => !s.isSpacer && s.projects[0].title === 'Importiert');
+                            if (!genericSlot) {
+                                genericSlot = { id: generateId(), isSpacer: false, projects: [{ id: generateId(), title: 'Importiert', items: [], collapsed: false }] };
+                                r.projects.push(genericSlot);
+                            }
+                            genericSlot.projects[0].items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
+                            addedCount++;
+                        }
+                    }
+                }
+            });
+        };
+
+        if (targetRowId === 'all') {
+            parseDL(mainDl, null);
+        } else {
+            if (!target) { showToast('Ziel-Reihe nicht gefunden.', 'error'); return; }
+            parseDL(mainDl, target);
+        }
+
+        saveData(); renderBoard();
+        showToast(`Import abgeschlossen: ${addedCount} Favoriten!`, 'success');
+    } catch (e) {
+        showToast('Fehler beim Importieren der Datei.', 'error');
+    }
+};
+
 init();

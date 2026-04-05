@@ -59,8 +59,9 @@ async function loadData() {
 
     // 1. Probier den lokalen Server (mit Timeout)
     try {
+        if (disp) { disp.textContent = '🔍 Prüfe lokalen Server...'; disp.style.color = '#636e72'; }
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 2500); // Max 2.5s warten
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
         const res = await fetch(API_URL, { signal: controller.signal }).catch(() => null);
         clearTimeout(timeoutId);
 
@@ -73,21 +74,24 @@ async function loadData() {
             return;
         }
     } catch (e) {
-        console.warn("Lokal nicht erreichbar, wechsle zu GitHub...");
+        console.warn("Lokal nicht erreichbar.");
     }
 
     // 2. Fallback zu GitHub
+    if (disp) { disp.textContent = '🌩️ Lade von GitHub...'; disp.style.color = '#0984e3'; }
     await loadFromGitHub();
 
     // 3. Letzte Rettung: Browser-Backup
     if (state.rows.length === 0 || (state.rows.length === 1 && state.rows[0].projects.length === 0)) {
+        if (disp) { disp.textContent = '⚠️ GitHub fehlgeschlagen, prüfe Cache...'; }
         const l = localStorage.getItem('favoriten_backup');
         if (l) {
             state.rows = migrate(JSON.parse(l));
             renderBoard();
             showToast('Browser-Backup geladen.', 'info');
+            if (disp) { disp.textContent = '📦 Browser-Cache (Backup)'; disp.style.color = '#fdcb6e'; }
         } else if (disp) {
-            disp.textContent = '❌ Keine Daten (Server offline)';
+            disp.textContent = '❌ Keine Daten gefunden (Offline)';
             disp.style.color = '#d63031';
         }
     }
@@ -118,6 +122,7 @@ async function loadFromGitHub() {
     const branches = ['main', 'master'];
     for (const branch of branches) {
         try {
+            if (disp) disp.textContent = `🌨️ GitHub (Branch: ${branch})...`;
             const publicUrl = `https://raw.githubusercontent.com/${ghOwner}/${ghRepo}/${branch}/${ghPath}?t=${Date.now()}`;
             const res = await fetch(publicUrl);
             if (res.ok) {
@@ -128,8 +133,10 @@ async function loadFromGitHub() {
                 if (disp) { disp.textContent = '📖 GitHub (Nur Lesen)'; disp.style.color = '#e17055'; }
                 showToast('Nur Lese-Modus aktiviert.', 'info');
                 return;
+            } else {
+                console.warn(`Fetch für ${branch} ergab Status ${res.status}`);
             }
-        } catch (e) { console.warn(`Versuch über ${branch} fehlgeschlagen.`); }
+        } catch (e) { console.warn(`Versuch über ${branch} fehlgeschlagen.`, e); }
     }
 }
 

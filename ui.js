@@ -182,6 +182,7 @@ window.setTheme = (type) => {
 const buttonMetadata = {
     'btn-pull-cloud': { icon: 'fa-solid fa-cloud-arrow-down', text: 'Cloud Download', class: 'btn btn-secondary', title: 'Daten von GitHub auf diesen PC laden (überschreibt lokal)' },
     'btn-save': { icon: 'fa-solid fa-floppy-disk', text: 'Speichern', class: 'btn btn-secondary' },
+    'btn-check-links': { icon: 'fa-solid fa-heart-circle-check', text: 'Link-Check', class: 'btn btn-secondary', title: 'Alle Links auf Erreichbarkeit prüfen', style: 'color:#ff7675' },
     'btn-import': { icon: 'fa-solid fa-file-import', text: 'Importieren', class: 'btn btn-secondary', title: 'HTML Bookmarks Datei importieren' },
     'btn-export': { icon: 'fa-solid fa-file-export', text: 'Exportieren', class: 'btn btn-secondary' },
     'btn-github': { icon: 'fa-brands fa-github', text: 'Sync-Token', class: 'btn btn-secondary', style: 'background:#24292e; color:white;' },
@@ -192,12 +193,14 @@ const buttonMetadata = {
     'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Verschieben', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
     'btn-multi-delete': { icon: 'fa-solid fa-eraser', text: 'Mehrere Löschen', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links gleichzeitig löschen' },
     'btn-settings': { icon: 'fa-solid fa-palette', text: 'Design', class: 'btn btn-secondary', title: 'Farben & Design', iconStyle: 'color:var(--primary-color)' },
-    'btn-sort-rows': { icon: 'fa-solid fa-sort-numeric-down', text: 'Zeilen sortieren', class: 'btn btn-secondary', title: 'Zeilen nach Nummern sortieren' }
+    'btn-sort-rows': { icon: 'fa-solid fa-sort-numeric-down', text: 'Zeilen sortieren', class: 'btn btn-secondary', title: 'Zeilen nach Nummern sortieren' },
+    'btn-clean-all': { icon: 'fa-solid fa-magic', text: 'Namen bereinigen', class: 'btn btn-secondary', title: 'Alle Namen auf dem Board automatisch bereinigen' }
 };
 
 const btnHandlers = {
-    'btn-load': () => { if (confirm('Lokal laden?')) init(); },
-    'btn-pull-cloud': async () => { if (confirm('Daten von GitHub laden? Lokale Änderungen auf diesem PC werden überschrieben!')) await pullFromCloud(); },
+    'btn-load': async () => { if (await showConfirm('Lokal laden?')) init(); },
+    'btn-check-links': () => checkAllLinks(),
+    'btn-pull-cloud': async () => { if (await showConfirm('Daten von GitHub laden? Lokale Änderungen auf diesem PC werden überschrieben!')) await pullFromCloud(); },
     'btn-save': () => saveData(),
     'btn-import': () => {
         const select = document.getElementById('import-row-select');
@@ -254,12 +257,16 @@ const btnHandlers = {
     'btn-cancel-move': () => toggleMoveMode(),
     'btn-cancel-delete': () => toggleDeleteMode(),
     'btn-confirm-delete': () => applyDelete(),
-    'btn-github': async () => {
-        const token = prompt('GitHub Token:', ghToken);
-        if (token !== null) { localStorage.setItem('gh_token', token); ghToken = token; await loadFromGitHub(); }
+    'btn-github': () => {
+        const inp = document.getElementById('gh-token-input');
+        if (inp) {
+            inp.value = ghToken;
+            showModal('github-modal');
+            inp.focus();
+        }
     },
     'btn-info': () => showModal('info-modal'),
-    'btn-reset': () => { if (confirm('Alles löschen?')) { state.rows = [{ id: generateId(), title: 'Hauptzeile', projects: [], order: 10 }]; renderBoard(); saveData(); } },
+    'btn-reset': async () => { if (await showConfirm('Alles löschen?')) { state.rows = [{ id: generateId(), title: 'Hauptzeile', projects: [], order: 10 }]; renderBoard(); saveData(); } },
     'btn-collapse-gaps': () => { state.rows.forEach(r => r.projects = r.projects.filter(s => !s.isSpacer)); renderBoard(); saveData(); },
     'btn-add-row': () => {
         const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
@@ -267,18 +274,22 @@ const btnHandlers = {
         renderBoard(); saveData();
     },
     'btn-sort-rows': () => sortRows(),
+    'btn-clean-all': () => cleanAllLinkTitles(),
     'btn-add-spacer': () => {
         if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [] });
         state.rows[state.rows.length - 1].projects.push({ id: generateId(), isSpacer: true, projects: [] });
         renderBoard(); saveData();
     },
     'btn-add-project': () => {
-        const t = prompt('Projekt Name:');
-        if (t) {
-            if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [] });
-            const p = { id: generateId(), title: t, items: [], collapsed: true };
-            state.rows[state.rows.length - 1].projects.push({ id: generateId(), isSpacer: false, projects: [p] });
-            renderBoard(); saveData();
+        const nameInp = document.getElementById('edit-group-name');
+        const title = document.getElementById('edit-group-title');
+        if (nameInp && title) {
+            nameInp.value = "";
+            title.innerHTML = '<i class="fa-solid fa-folder-plus"></i> Neue Gruppe erstellen';
+            state.activeRowId = null;
+            state.activeSlotId = null;
+            showModal('edit-group-modal');
+            nameInp.focus();
         }
     },
     'btn-close-settings': () => hideModal('settings-modal'),
@@ -370,6 +381,16 @@ window.setupUI = () => {
         'btn-confirm-delete': btnHandlers['btn-confirm-delete']
     };
 
+    document.getElementById('btn-save-github-token').onclick = async () => {
+        const val = document.getElementById('gh-token-input').value.trim();
+        if (val !== null) {
+            localStorage.setItem('gh_token', val);
+            ghToken = val;
+            hideModal('github-modal');
+            await loadFromGitHub();
+        }
+    };
+
     Object.keys(btnMapSettings).forEach(id => {
         const btn = document.getElementById(id);
         if (btn) btn.onclick = btnMapSettings[id];
@@ -420,11 +441,11 @@ async function pullFromCloud() {
             state.rows = data.rows;
             state.config = data.config || state.config;
             renderBoard();
-            alert('Geladen! Die Daten von GitHub wurden auf diesen PC übertragen und lokal gespeichert.');
+            showToast('Daten erfolgreich von GitHub geladen!', 'success');
         } else {
-            alert('Fehler beim Laden von GitHub: ' + data.error);
+            showToast('Fehler beim Laden von GitHub: ' + data.error, 'error');
         }
     } catch (e) {
-        alert('Verbindungsfehler zum lokalen Server.');
+        showToast('Verbindungsfehler zum lokalen Server.', 'error');
     }
 }

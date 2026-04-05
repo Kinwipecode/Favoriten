@@ -155,7 +155,7 @@
                   "url": "https://refusion.ai/lander"
                 }
               ],
-              "collapsed": true
+              "collapsed": false
             }
           ]
         },
@@ -1385,7 +1385,7 @@
         }
       ],
       "order": 40,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "wf2ec3g0j",
@@ -3031,7 +3031,8 @@
       "btn-pull-cloud",
       "btn-sort-rows",
       "btn-multi-delete",
-      "btn-clean-all"
+      "btn-clean-all",
+      "btn-check-links"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

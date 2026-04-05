@@ -1612,11 +1612,6 @@
         {
           "id": "zw0oxqu6g",
           "isSpacer": false,
-          "projects": []
-        },
-        {
-          "id": "rd8qf0svz",
-          "isSpacer": false,
           "projects": [
             {
               "id": "sfqaiu3s5",
@@ -1804,7 +1799,13 @@
                 }
               ],
               "collapsed": true
-            },
+            }
+          ]
+        },
+        {
+          "id": "rd8qf0svz",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "q8vpaaf7t",
               "title": "für Suno",

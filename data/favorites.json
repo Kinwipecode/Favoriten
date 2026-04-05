@@ -2944,16 +2944,9 @@
           ]
         },
         {
-          "id": "bpevnarst",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "j3nknfyqt",
-              "title": "test link",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "inm4h55si",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 60,

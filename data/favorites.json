@@ -2085,14 +2085,14 @@
               "title": "Suno",
               "items": [
                 {
-                  "id": "lpanazqh5",
-                  "title": "Suno.com",
-                  "url": "https://suno.com/"
-                },
-                {
                   "id": "w0fgbnep6",
                   "title": "Suno.wiki",
                   "url": "https://www.suno.wiki/faq/metatags/song-structure/"
+                },
+                {
+                  "id": "lpanazqh5",
+                  "title": "Suno.com",
+                  "url": "https://suno.com/"
                 },
                 {
                   "id": "w34cctsmu",

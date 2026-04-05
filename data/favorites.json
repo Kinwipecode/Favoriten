@@ -1710,14 +1710,14 @@
               "title": "Lose Favoriten",
               "items": [
                 {
-                  "id": "h7srr96vt",
-                  "title": "Hslu.ch",
-                  "url": "https://www.hslu.ch/de-ch/wirtschaft/institute/ifz/news-und-ueber-uns/mediencorner/wir-gratulieren/"
-                },
-                {
                   "id": "0j5yximua",
                   "title": "Bigfm.de",
                   "url": "https://www.bigfm.de/webradio/one-world-radio?utm_source=Google&utm_medium=Max&utm_campaign=OneWorld&utm_id=Max&gad_source=1&gclid=Cj0KCQjw7ZO0BhDYARIsAFttkCgX1EryhpXksD2msdql1m6tox9stIf6zP_WxeWHCt2COYghO_e-wykaAixvEALw_wcB"
+                },
+                {
+                  "id": "h7srr96vt",
+                  "title": "Hslu.ch",
+                  "url": "https://www.hslu.ch/de-ch/wirtschaft/institute/ifz/news-und-ueber-uns/mediencorner/wir-gratulieren/"
                 },
                 {
                   "id": "e0pkkmqv0",

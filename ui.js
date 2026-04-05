@@ -22,73 +22,7 @@ window.makeDraggable = (content, header) => {
 };
 
 window.initSortable = () => {
-    const isRead = state.isReadOnly;
-    if (typeof Sortable === 'undefined') return;
-
-    // 1. Rows (Board Sorting)
-    const board = document.querySelector('.board');
-    if (board && !board.sortable) {
-        board.sortable = new Sortable(board, {
-            animation: 180,
-            handle: '.row-header-main',
-            disabled: isRead,
-            onEnd: (evt) => {
-                const [moved] = state.rows.splice(evt.oldIndex, 1);
-                state.rows.splice(evt.newIndex, 0, moved);
-                saveData(); renderBoard();
-            }
-        });
-    } else if (board && board.sortable) board.sortable.option('disabled', isRead);
-
-    // 2. Groups (Row Project Sorting)
-    document.querySelectorAll('.row-projects').forEach(el => {
-        if (el.sortable) { el.sortable.option('disabled', isRead); return; }
-        el.sortable = new Sortable(el, {
-            group: 'row-slots',
-            handle: '.column-header', // CRITICAL: Only drag by header!
-            animation: 180,
-            disabled: isRead,
-            onEnd: (evt) => {
-                const fromRid = evt.from.closest('.board-row').dataset.id;
-                const toRid = evt.to.closest('.board-row').dataset.id;
-                const rF = state.rows.find(r => r.id === fromRid);
-                const rT = state.rows.find(r => r.id === toRid);
-                if (rF && rT) {
-                    const [slot] = rF.projects.splice(evt.oldIndex, 1);
-                    rT.projects.splice(evt.newIndex, 0, slot);
-                    saveData(); renderBoard();
-                }
-            }
-        });
-    });
-
-    // 3. Items (Column Body Sorting)
-    document.querySelectorAll('.column-body').forEach(el => {
-        if (el.sortable) { el.sortable.option('disabled', isRead); return; }
-        el.sortable = new Sortable(el, {
-            group: 'shared',
-            animation: 180,
-            disabled: isRead,
-            onStart: () => document.body.classList.add('is-dragging-item'),
-            onEnd: (evt) => {
-                document.body.classList.remove('is-dragging-item');
-                const fromCol = evt.from.closest('.column'), toCol = evt.to.closest('.column');
-                if (!fromCol || !toCol) { renderBoard(); return; }
-                const fId = fromCol.dataset.projectId, tId = toCol.dataset.projectId;
-                const itId = evt.item.getAttribute('data-id');
-                const fP = findProject(fId), tP = findProject(tId);
-                if (fP && tP) {
-                    const idx = fP.items.findIndex(it => it.id === itId);
-                    if (idx !== -1) {
-                        const [item] = fP.items.splice(idx, 1);
-                        tP.items.splice(evt.newIndex, 0, item);
-                        saveData();
-                    }
-                }
-                renderBoard();
-            }
-        });
-    });
+    // Handling is now integrated directly into app.js renderBoard for maximum reliability
 };
 
 window.showModal = (id) => {

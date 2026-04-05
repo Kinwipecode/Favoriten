@@ -1550,14 +1550,14 @@
                   "url": "http://192.168.178.1/"
                 },
                 {
-                  "id": "ahsqjatou",
-                  "title": "Netflix",
-                  "url": "https://www.netflix.com/YourAccount"
-                },
-                {
                   "id": "8e6tgw9g3",
                   "title": "d.kinal@bluewin.ch - Bluewin Webmail",
                   "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
+                },
+                {
+                  "id": "ahsqjatou",
+                  "title": "Netflix",
+                  "url": "https://www.netflix.com/YourAccount"
                 },
                 {
                   "id": "d0o3y9js5",

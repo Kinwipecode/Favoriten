@@ -507,6 +507,20 @@ function findProjectAndClear(id) {
     }
 }
 
+function findItemAndClear(id) {
+    for (const r of state.rows) {
+        for (const s of r.projects) {
+            if (!s.isSpacer) {
+                for (const p of s.projects) {
+                    const idx = p.items.findIndex(it => it.id === id);
+                    if (idx !== -1) return p.items.splice(idx, 1)[0];
+                }
+            }
+        }
+    }
+    return null;
+}
+
 function findProject(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) { const p = s.projects.find(x => x.id === id); if (p) return p; } }
 function findItem(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const item = p.items.find(x => x.id === id); if (item) return item; } }
 

@@ -271,6 +271,14 @@ function renderBoard() {
                         <div class="column-body"></div>
                     `;
                     const body = col.querySelector(".column-body");
+
+                    // Add menu to column body too
+                    body.oncontextmenu = (e) => { triggerProjContext(e); return false; };
+                    let bTimer;
+                    body.addEventListener('mousedown', (e) => { if (e.button === 0 && e.target === body) bTimer = setTimeout(() => triggerProjContext(e), 600); });
+                    body.addEventListener('touchstart', (e) => { if (e.target === body) bTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
+                    ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => body.addEventListener(ev, () => clearTimeout(bTimer)));
+
                     p.items.forEach(it => {
                         const match = isSearching && (it.title.toLowerCase().includes(term) || it.url.toLowerCase().includes(term));
                         const isMoving = state.moveMode.active;
@@ -306,13 +314,20 @@ function renderBoard() {
                     const h = col.querySelector('.column-header');
                     if (h && !isRead) {
                         let tTimer;
-                        h.oncontextmenu = (e) => { triggerProjContext(e); return false; };
+                        h.oncontextmenu = (e) => { if (!state.moveMode.active && !state.deleteMode.active) { triggerProjContext(e); return false; } };
                         h.addEventListener('mousedown', (e) => { if (e.button === 0) tTimer = setTimeout(() => triggerProjContext(e), 600); });
                         h.addEventListener('touchstart', (e) => { tTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
                         ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => h.addEventListener(ev, () => clearTimeout(tTimer)));
                     }
                 });
             } else if (!isRead) {
+                // Add context menu to empty spacer too
+                slotEl.oncontextmenu = (e) => { triggerContext(e); return false; };
+                let sTimer;
+                slotEl.addEventListener('mousedown', (e) => { if (e.button === 0 && e.target === slotEl) sTimer = setTimeout(() => triggerContext(e), 600); });
+                slotEl.addEventListener('touchstart', (e) => { if (e.target === slotEl) sTimer = setTimeout(() => triggerContext(e), 600); }, { passive: true });
+                ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => slotEl.addEventListener(ev, () => clearTimeout(sTimer)));
+
                 slotEl.innerHTML = `
                     <div class="spacer-actions" style="display:flex; flex-direction:column; align-items:center; opacity:0.3; transition:opacity 0.2s;">
                         <button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')" title="Hier eine Gruppe erstellen" style="margin-bottom:8px;"><i class="fa-solid fa-plus"></i></button>

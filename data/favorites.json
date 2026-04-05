@@ -1826,6 +1826,18 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "5w22g4dsc",
+              "title": "KI",
+              "items": [
+                {
+                  "id": "flyfos0af",
+                  "title": "bild genratoren  AI",
+                  "url": "https://modelplayground.ai/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -1931,20 +1943,7 @@
         {
           "id": "mzwaedvvr",
           "isSpacer": false,
-          "projects": [
-            {
-              "id": "5w22g4dsc",
-              "title": "KI",
-              "items": [
-                {
-                  "id": "flyfos0af",
-                  "title": "bild genratoren  AI",
-                  "url": "https://modelplayground.ai/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "projects": []
         },
         {
           "id": "k393dlpx1",

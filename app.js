@@ -61,14 +61,28 @@ async function loadData() {
             const data = await res.json();
             state.rows = migrate(data);
             if (window.applyTheme) applyTheme();
+            renderBoard();
             const disp = document.getElementById('save-path-display');
             if (disp) { disp.textContent = '🏠 Server: ' + (data.savePath || 'Lokal'); disp.style.color = '#00b894'; }
-        } else throw new Error("Offline");
+            return; // Local success
+        }
     } catch (e) {
-        if (ghToken) await loadFromGitHub();
-        else {
-            const l = localStorage.getItem('favoriten_backup');
-            if (l) state.rows = migrate(JSON.parse(l));
+        console.warn("Local server offline, trying GitHub...");
+    }
+
+    // Always try GitHub (loadFromGitHub handles the public/private logic internally)
+    await loadFromGitHub();
+
+    // Last resort: browser backup
+    if (state.rows.length === 0 || (state.rows.length === 1 && state.rows[0].projects.length === 0)) {
+        const l = localStorage.getItem('favoriten_backup');
+        if (l) {
+            state.rows = migrate(JSON.parse(l));
+            renderBoard();
+            showToast('Lokales Backup geladen.', 'info');
+        } else {
+            const disp = document.getElementById('save-path-display');
+            if (disp) { disp.textContent = '❌ Keine Daten gefunden'; disp.style.color = '#d63031'; }
         }
     }
 }
@@ -93,24 +107,25 @@ async function loadFromGitHub() {
     }
 
     // FALLBACK: Try Public Read-Only (no token required if repo/file is public)
-    const publicUrl = `https://raw.githubusercontent.com/${ghOwner}/${ghRepo}/main/${ghPath}?t=${Date.now()}`;
-    try {
-        const res = await fetch(publicUrl);
-        if (res.ok) {
-            const content = await res.json();
-            state.rows = migrate(content);
-            if (window.applyTheme) applyTheme();
-            renderBoard();
-            const disp = document.getElementById('save-path-display');
-            if (disp) { disp.textContent = '📖 GitHub (Nur Lesen)'; disp.style.color = '#e17055'; }
-            showToast('Nur Lese-Modus (Geringere Rechte)', 'info');
-        } else {
-            showToast('Daten konnten weder lokal noch von GitHub geladen werden.', 'error');
-        }
-    } catch (e) {
-        console.error("Public Fetch failed", e);
-        showToast('Keine Verbindung zum Speicherort möglich.', 'error');
+    const branches = ['main', 'master'];
+    for (const branch of branches) {
+        const publicUrl = `https://raw.githubusercontent.com/${ghOwner}/${ghRepo}/${branch}/${ghPath}?t=${Date.now()}`;
+        try {
+            const res = await fetch(publicUrl);
+            if (res.ok) {
+                const content = await res.json();
+                state.rows = migrate(content);
+                if (window.applyTheme) applyTheme();
+                renderBoard();
+                const disp = document.getElementById('save-path-display');
+                if (disp) { disp.textContent = '📖 GitHub (Nur Lesen)'; disp.style.color = '#e17055'; }
+                showToast('Nur Lese-Modus (Geringere Rechte)', 'info');
+                return; // Success
+            }
+        } catch (e) { console.warn(`Public Fetch for ${branch} failed`, e); }
     }
+
+    showToast('Daten konnten weder lokal noch von GitHub geladen werden.', 'error');
 }
 
 async function saveData() {

@@ -228,6 +228,24 @@ body {
     flex-shrink: 0;
 }
 
+.row-title-input.text-only,
+.row-order-input.text-only {
+    pointer-events: none;
+    user-select: none;
+    border-color: transparent;
+    background: rgba(255, 255, 255, 0.05);
+    /* Very subtle to show it's a fixed value */
+    padding: 2px 10px;
+    height: auto;
+    line-height: 1.5;
+    cursor: default;
+}
+
+.row-order-input.text-only {
+    min-width: 40px;
+    text-align: center;
+}
+
 .row-order-input {
     width: 70px !important;
     background: rgba(255, 255, 255, 0.3) !important;

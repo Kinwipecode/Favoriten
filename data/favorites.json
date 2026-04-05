@@ -3250,8 +3250,15 @@
         },
         {
           "id": "al1hkkzol",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "uhc1dzvot",
+              "title": "sdfgsdgfdfg",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         }
       ],
       "order": 30,

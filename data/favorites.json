@@ -3234,7 +3234,8 @@
           ]
         }
       ],
-      "order": 30
+      "order": 30,
+      "collapsed": true
     }
   ],
   "config": {

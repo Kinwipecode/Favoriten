@@ -71,7 +71,7 @@ async function loadData() {
             state.rows = migrate(data);
             if (window.applyTheme) applyTheme();
             renderBoard();
-            if (disp) { disp.textContent = 'Vollversion'; }
+            if (disp) { disp.innerHTML = '<i class="fa-solid fa-door-open"></i> Vollversion'; }
             return;
         }
     } catch (e) {
@@ -114,7 +114,7 @@ async function loadFromGitHub() {
                 state.isReadOnly = false;
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                if (disp) { disp.textContent = 'Vollversion'; }
+                if (disp) { disp.innerHTML = '<i class="fa-solid fa-door-open"></i> Vollversion'; }
                 return;
             }
         } catch (e) { console.error("GitHub API Fehler:", e); }
@@ -133,7 +133,7 @@ async function loadFromGitHub() {
                 state.isReadOnly = true;
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                if (disp) { disp.textContent = 'Leseberechtigt'; }
+                if (disp) { disp.innerHTML = '<i class="fa-solid fa-book-open"></i> Leseberechtigt'; }
                 return;
             } else {
                 console.warn(`Fetch für ${branch} ergab Status ${res.status}`);

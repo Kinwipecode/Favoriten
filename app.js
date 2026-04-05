@@ -237,7 +237,10 @@ function renderBoard() {
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
                                 ${isRead ? `<span>${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" onchange="updateGroupTitle('${p.id}', this.value)">`}
                             </div>
-                            ${!isRead ? `<div class="column-actions"><button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')">+</button><button class="btn-text" onclick="event.stopPropagation(); deleteProject('${p.id}')">×</button></div>` : ''}
+                            ${!isRead ? `<div class="column-actions">
+                                <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')" title="Favorit hinzufügen"><i class="fa-solid fa-plus" style="font-size:0.7rem;"></i></button>
+                                <button class="btn-text" onclick="event.stopPropagation(); deleteProject('${p.id}')" title="Gruppe löschen"><i class="fa-solid fa-trash-can" style="font-size:0.7rem;"></i></button>
+                            </div>` : ''}
                         </div>
                         <div class="column-body"></div>
                     `;

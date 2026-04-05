@@ -1709,7 +1709,8 @@
       "id": "wfjj6igdt",
       "title": "Neue Zeile",
       "projects": [],
-      "order": 55
+      "order": 55,
+      "collapsed": false
     }
   ],
   "config": {

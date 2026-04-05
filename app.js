@@ -30,7 +30,8 @@ const state = {
     activeProjectId: null,
     activeSlotId: null,
     activeRowId: null,
-    activeEditingGroupId: null
+    activeEditingGroupId: null,
+    lastContextMenuTime: 0
 };
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -205,16 +206,17 @@ function renderBoard() {
         const triggerContext = (e) => {
             if (isRead) return;
             if (e.preventDefault) e.preventDefault();
+            state.lastContextMenuTime = Date.now();
             showContextMenu({
-                clientX: e.clientX || (e.touches && e.touches[0].clientX),
-                clientY: e.clientY || (e.touches && e.touches[0].clientY),
+                clientX: e.clientX !== undefined ? e.clientX : (e.touches?.[0]?.clientX || 0),
+                clientY: e.clientY !== undefined ? e.clientY : (e.touches?.[0]?.clientY || 0),
                 preventDefault: () => { }
             }, 'row', row.id);
         };
 
         rowEl.innerHTML = `
             <div class="row-header">
-                <div class="row-header-main" onclick="if(!event.target.closest('button') && !event.target.closest('input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                <div class="row-header-main" onclick="if(Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button') && !event.target.closest('input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="font-size:0.8rem; width:20px; opacity:0.5;"></i>
                     ${isRead ?
                 `<span class="row-order-display">${row.order || 0}</span>
@@ -245,16 +247,17 @@ function renderBoard() {
                     const triggerProjContext = (e) => {
                         if (isRead) return;
                         if (e.preventDefault) e.preventDefault();
+                        state.lastContextMenuTime = Date.now();
                         showContextMenu({
-                            clientX: e.clientX || (e.touches && e.touches[0].clientX),
-                            clientY: e.clientY || (e.touches && e.touches[0].clientY),
+                            clientX: e.clientX !== undefined ? e.clientX : (e.touches?.[0]?.clientX || 0),
+                            clientY: e.clientY !== undefined ? e.clientY : (e.touches?.[0]?.clientY || 0),
                             preventDefault: () => { }
                         }, 'project', p.id);
                     };
 
                     col.innerHTML = `
                             <div class="column-header" 
-                                 onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')">
+                                 onclick="if(Date.now() - state.lastContextMenuTime > 500 && !state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')">
                             <div class="header-left">
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
                                 ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
@@ -621,7 +624,13 @@ window.showContextMenu = (e, type, id) => {
     if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - 10;
     menu.style.left = Math.max(10, x) + 'px'; menu.style.top = Math.max(10, y) + 'px';
 
-    const close = () => { menu.classList.add('hidden'); document.removeEventListener('click', close); };
+    const close = (evt) => {
+        if (Date.now() - state.lastContextMenuTime < 300) return;
+        if (!menu.contains(evt.target)) {
+            menu.classList.add('hidden');
+            document.removeEventListener('click', close);
+        }
+    };
     setTimeout(() => document.addEventListener('click', close), 10);
 };
 

@@ -1695,21 +1695,21 @@
           "projects": []
         }
       ],
-      "order": 30,
+      "order": 10,
       "collapsed": false
     },
     {
       "id": "kt8v1fsaj",
       "title": "Neue Zeile",
       "projects": [],
-      "order": 45,
+      "order": 20,
       "collapsed": true
     },
     {
       "id": "wfjj6igdt",
       "title": "Neue Zeile",
       "projects": [],
-      "order": 55,
+      "order": 30,
       "collapsed": false
     }
   ],

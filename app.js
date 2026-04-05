@@ -38,6 +38,7 @@ const generateId = () => Math.random().toString(36).substr(2, 9);
 
 async function init() {
     if (window.setupUI) setupUI();
+    loadLocalSettings();
     await loadData();
     if (window.renderHeaderButtons) renderHeaderButtons();
     renderBoard();
@@ -1247,5 +1248,70 @@ window.addEventListener('DOMContentLoaded', () => {
         setTimeout(toggleActionsDrawer, 100);
     }
 });
+
+const localSettings = {
+    darkMode: 'system',
+    compactMode: false,
+    animations: true,
+    fixedHeader: false
+};
+
+window.loadLocalSettings = () => {
+    const saved = localStorage.getItem('favoriten_app_settings');
+    if (saved) {
+        try {
+            Object.assign(localSettings, JSON.parse(saved));
+            applyLocalSettings();
+        } catch (e) {
+            console.warn("Konnte lokale Einstellungen nicht laden", e);
+        }
+    }
+};
+
+window.updateLocalSettings = () => {
+    const dm = document.getElementById('local-dark-mode');
+    const cm = document.getElementById('local-compact-mode');
+    const an = document.getElementById('local-animations');
+    const fh = document.getElementById('local-fixed-header');
+
+    if (dm) localSettings.darkMode = dm.value;
+    if (cm) localSettings.compactMode = cm.checked;
+    if (an) localSettings.animations = an.checked;
+    if (fh) localSettings.fixedHeader = fh.checked;
+
+    localStorage.setItem('favoriten_app_settings', JSON.stringify(localSettings));
+    applyLocalSettings();
+};
+
+window.applyLocalSettings = () => {
+    const root = document.documentElement;
+
+    // Dark Mode
+    if (localSettings.darkMode === 'dark') root.setAttribute('data-theme', 'dark');
+    else if (localSettings.darkMode === 'light') root.setAttribute('data-theme', 'light');
+    else root.removeAttribute('data-theme');
+
+    // Compact Mode
+    if (localSettings.compactMode) document.body.classList.add('compact-view');
+    else document.body.classList.remove('compact-view');
+
+    // Animations
+    if (localSettings.animations) document.body.classList.remove('no-animations');
+    else document.body.classList.add('no-animations');
+
+    // Fixed Header
+    if (localSettings.fixedHeader) document.body.classList.add('fixed-header');
+    else document.body.classList.remove('fixed-header');
+
+    // Sync checkboxes in modal if visible
+    const dm = document.getElementById('local-dark-mode');
+    if (dm) dm.value = localSettings.darkMode;
+    const cm = document.getElementById('local-compact-mode');
+    if (cm) cm.checked = localSettings.compactMode;
+    const an = document.getElementById('local-animations');
+    if (an) an.checked = localSettings.animations;
+    const fh = document.getElementById('local-fixed-header');
+    if (fh) fh.checked = localSettings.fixedHeader;
+};
 
 init();

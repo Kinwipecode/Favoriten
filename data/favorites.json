@@ -2961,7 +2961,13 @@
             {
               "id": "n4yvy1zyi",
               "title": "antos",
-              "items": [],
+              "items": [
+                {
+                  "id": "olnjh6kwd",
+                  "title": "chatgpt.com",
+                  "url": "https://chatgpt.com"
+                }
+              ],
               "collapsed": false
             }
           ]

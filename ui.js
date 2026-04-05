@@ -210,9 +210,16 @@ const btnHandlers = {
     'btn-confirm-import': () => {
         const file = document.getElementById('file-input').files[0];
         const rowId = document.getElementById('import-row-select').value;
+
+        let newRowName = null;
+        if (rowId === 'new') {
+            newRowName = window.prompt("Bitte Namen für die neue Import-Zeile eingeben:", "Importierte Favoriten");
+            if (newRowName === null) return; // User cancelled
+        }
+
         if (file) {
             const reader = new FileReader();
-            reader.onload = (e) => { importFromHTML(e.target.result, rowId); hideModal('import-modal'); };
+            reader.onload = (e) => { importFromHTML(e.target.result, rowId, newRowName); hideModal('import-modal'); };
             reader.readAsText(file);
         }
     },

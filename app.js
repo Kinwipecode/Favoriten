@@ -861,7 +861,7 @@ document.getElementById('btn-save-group')?.addEventListener('click', () => {
     renderBoard(); saveData();
 });
 
-window.importFromHTML = (html, targetRowId) => {
+window.importFromHTML = (html, targetRowId, newRowName) => {
     try {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
@@ -870,13 +870,7 @@ window.importFromHTML = (html, targetRowId) => {
 
         let target = null;
         if (targetRowId === 'new') {
-            let defaultName = 'Importierte Favoriten';
-            const firstH3 = mainDl.querySelector('dt > h3');
-            if (firstH3) defaultName = firstH3.textContent.trim();
-
-            const rowName = prompt('Bitte Namen für die neue Import-Zeile eingeben:', defaultName);
-            if (rowName === null) return; // Cancelled
-            target = { id: generateId(), title: rowName || 'Neue Zeile', projects: [], order: (state.rows.length + 1) * 10 };
+            target = { id: generateId(), title: newRowName || 'Neue Zeile', projects: [], order: (state.rows.length + 1) * 10 };
             state.rows.push(target);
         } else {
             target = state.rows.find(r => r.id === targetRowId);

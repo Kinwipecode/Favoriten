@@ -445,17 +445,28 @@ body {
 }
 
 .favorite-item {
-    background: var(--item-bg, #fff);
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--item-bg, #ffffff);
+    border-radius: 8px;
+    margin-bottom: 8px;
     display: flex;
-    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    /* Ensure <a> covers corners */
+}
+
+.item-link-wrapper {
+    display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    flex: 1;
+    padding: 10px 14px;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s;
+    color: var(--link-text-color, #2d3436);
+    font-size: var(--item-font-size, 0.9rem);
+    font-weight: var(--item-font-weight, 500);
 }
 
 .item-actions {

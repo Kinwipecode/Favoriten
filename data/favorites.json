@@ -1920,18 +1920,6 @@
           "isSpacer": false,
           "projects": [
             {
-              "id": "qdrttd4m1",
-              "title": "schneiden",
-              "items": [
-                {
-                  "id": "jm8luv6te",
-                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-                }
-              ],
-              "collapsed": true
-            },
-            {
               "id": "109xjhnc0",
               "title": "Bild",
               "items": [
@@ -1949,43 +1937,6 @@
                   "id": "o4b9ccla2",
                   "title": "Refusion AI",
                   "url": "https://refusion.ai/lander"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "p1enkawv1",
-              "title": "Musik KI",
-              "items": [
-                {
-                  "id": "8k58h0t10",
-                  "title": "Udio | AI Music Generator - Official Website",
-                  "url": "https://www.udio.com/my-creations"
-                },
-                {
-                  "id": "66somuw4a",
-                  "title": "Vocal remover",
-                  "url": "https://vocalremover.org/de/"
-                },
-                {
-                  "id": "3pkgq4mkd",
-                  "title": "RVC Models: AI Voices - 388 Model Downloads & Examples - AI Models",
-                  "url": "https://aimodels.org/ai-models/rvc-models-ai-voice/"
-                },
-                {
-                  "id": "5kxjcsx53",
-                  "title": "AI-Musikgenerator Online Kostenloser",
-                  "url": "https://aimusic.so/de/app"
-                },
-                {
-                  "id": "8lquh0ron",
-                  "title": "Visla video aus text",
-                  "url": "https://app.visla.us/project/1320538910622818304"
-                },
-                {
-                  "id": "0kecg6vec",
-                  "title": "(1) Gesang mit Künstlicher Intelligenz erstellen: Die besten KI Tools für AI-Vocals 2025 - YouTube",
-                  "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
                 }
               ],
               "collapsed": true
@@ -2281,6 +2232,18 @@
           "isSpacer": false,
           "projects": [
             {
+              "id": "qdrttd4m1",
+              "title": "schneiden",
+              "items": [
+                {
+                  "id": "jm8luv6te",
+                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ],
+              "collapsed": true
+            },
+            {
               "id": "3gohh324l",
               "title": "Ticket",
               "items": [
@@ -2291,6 +2254,43 @@
                 }
               ],
               "collapsed": false
+            },
+            {
+              "id": "p1enkawv1",
+              "title": "Musik KI",
+              "items": [
+                {
+                  "id": "8k58h0t10",
+                  "title": "Udio | AI Music Generator - Official Website",
+                  "url": "https://www.udio.com/my-creations"
+                },
+                {
+                  "id": "66somuw4a",
+                  "title": "Vocal remover",
+                  "url": "https://vocalremover.org/de/"
+                },
+                {
+                  "id": "3pkgq4mkd",
+                  "title": "RVC Models: AI Voices - 388 Model Downloads & Examples - AI Models",
+                  "url": "https://aimodels.org/ai-models/rvc-models-ai-voice/"
+                },
+                {
+                  "id": "5kxjcsx53",
+                  "title": "AI-Musikgenerator Online Kostenloser",
+                  "url": "https://aimusic.so/de/app"
+                },
+                {
+                  "id": "8lquh0ron",
+                  "title": "Visla video aus text",
+                  "url": "https://app.visla.us/project/1320538910622818304"
+                },
+                {
+                  "id": "0kecg6vec",
+                  "title": "(1) Gesang mit Künstlicher Intelligenz erstellen: Die besten KI Tools für AI-Vocals 2025 - YouTube",
+                  "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },

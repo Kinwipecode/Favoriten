@@ -1493,6 +1493,31 @@
       ],
       "order": 20,
       "collapsed": true
+    },
+    {
+      "id": "epm91ngqb",
+      "title": "Test Row",
+      "projects": [
+        {
+          "id": "5na29ydre",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "96ph039qg",
+              "title": "Test Folder",
+              "items": [
+                {
+                  "id": "0yknt990v",
+                  "title": "Example",
+                  "url": "http://example.com/"
+                }
+              ],
+              "collapsed": false
+            }
+          ]
+        }
+      ],
+      "order": 20
     }
   ],
   "config": {

@@ -2879,7 +2879,7 @@
         }
       ],
       "order": 20,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "yawanswyh",
@@ -3042,7 +3042,9 @@
       "btn-settings",
       "btn-pull-cloud",
       "btn-sort-rows",
-      "btn-multi-delete"
+      "btn-multi-delete",
+      "btn-check-links",
+      "btn-clean-all"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

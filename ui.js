@@ -22,11 +22,16 @@ window.makeDraggable = (content, header) => {
 };
 
 window.initSortable = () => {
+    const isRead = state.isReadOnly;
     document.querySelectorAll('.column-body').forEach(el => {
-        if (el.sortable) return;
+        if (el.sortable) {
+            el.sortable.option('disabled', isRead);
+            return;
+        }
         el.sortable = new Sortable(el, {
             group: 'shared',
             animation: 150,
+            disabled: isRead,
             onStart: () => { document.body.classList.add('is-dragging-item'); },
             onEnd: (evt) => {
                 document.body.classList.remove('is-dragging-item');
@@ -426,6 +431,7 @@ window.setupUI = () => {
         new Sortable(actionsContainer, {
             animation: 150,
             ghostClass: 'btn-ghost',
+            disabled: state.isReadOnly,
             onEnd: () => {
                 const newOrder = Array.from(actionsContainer.querySelectorAll('button')).map(b => b.id);
                 state.config.buttonOrder = newOrder;

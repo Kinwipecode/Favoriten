@@ -1221,14 +1221,14 @@
               "title": "CAD IFC mit nova",
               "items": [
                 {
-                  "id": "1t27uqa9j",
-                  "title": "Youtube.com",
-                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
-                },
-                {
                   "id": "hrnpq3uq7",
                   "title": "Novauser.xobor.de",
                   "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                },
+                {
+                  "id": "1t27uqa9j",
+                  "title": "Youtube.com",
+                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
                 }
               ],
               "collapsed": false

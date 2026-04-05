@@ -347,7 +347,12 @@ window.renderHeaderButtons = () => {
 
     if (!order.includes('btn-save')) order = ['btn-save', ...order];
 
+    const isRead = state.isReadOnly;
+    const writeIds = ['btn-save', 'btn-add-row', 'btn-add-group', 'btn-import', 'btn-move', 'btn-delete', 'btn-clean-names'];
+
     order.forEach(id => {
+        if (isRead && writeIds.includes(id)) return;
+
         const meta = buttonMetadata[id];
         if (!meta) return;
         const btn = document.createElement('button');

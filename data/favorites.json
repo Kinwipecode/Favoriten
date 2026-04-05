@@ -2852,7 +2852,13 @@
     {
       "id": "65ks90ncx",
       "title": "Neue Zeile",
-      "projects": [],
+      "projects": [
+        {
+          "id": "wdu3k1kkc",
+          "isSpacer": true,
+          "projects": []
+        }
+      ],
       "order": 50,
       "collapsed": false
     }

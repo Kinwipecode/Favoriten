@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoriten Manager</title>
-    <link rel="stylesheet" href="style.css?v=4.8">
+    <link rel="stylesheet" href="style.css?v=4.9">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;800&display=swap"
@@ -22,12 +22,12 @@
             <div class="logo"
                 style="display:flex; flex-direction:column; align-items:flex-start; line-height:1; min-width:180px;">
                 <span
-                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v4.8</span>
+                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v4.9</span>
                 <div style="display:flex; align-items:center; gap:8px;">
                     <i class="fa-solid fa-star"></i>
                     <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem;">Favoriten</span>
                     <span id="save-path-display"
-                        style="font-size: 0.85rem; color: #000000; font-weight: 600; margin-left: 12px; white-space: nowrap; display: flex; align-items: center; gap: 6px;">...</span>
+                        style="font-size: 0.85rem; color: #000; font-weight: 600; margin-left: 12px; white-space: nowrap; display: flex; align-items: center; gap: 6px;">...</span>
                 </div>
             </div>
 
@@ -42,11 +42,34 @@
                     style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#636e72; cursor:pointer; font-size:1.1rem;"></i>
             </div>
 
-            <div class="header-controls">
+            <div class="header-controls" style="display:flex; align-items:center; gap:12px;">
                 <button id="toggle-actions-btn" class="btn btn-secondary" onclick="toggleActionsDrawer()"
                     title="Aktionen öffnen/schließen">
-                    <i class="fa-solid fa-screwdriver-wrench"></i> <span class="hide-on-mobile">Menü</span>
+                    <i class="fa-solid fa-bars"></i>
                 </button>
+
+                <!-- Ansicht Pulldown -->
+                <div class="view-dropdown" style="position:relative;">
+                    <button class="btn btn-secondary" onclick="toggleViewDropdown(event)"
+                        style="display:flex; align-items:center; gap:8px; padding: 10px 18px; border-radius: 12px; font-weight: 600;">
+                        <i class="fa-solid fa-eye"></i> Ansicht <i class="fa-solid fa-chevron-down"
+                            style="font-size:0.7rem; opacity:0.6;"></i>
+                    </button>
+                    <div id="view-dropdown-content" class="dropdown-content hidden">
+                        <div class="dropdown-item" onclick="openModal('app-settings-modal')">
+                            <i class="fa-solid fa-gear"></i> App-Einstellungen
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header">Zeilen Sichtbarkeit:</div>
+                        <div id="row-visibility-list" class="row-visibility-list">
+                            <!-- Dynamisch generiert -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="auth-buttons">
+                    <!-- Wird durch ui.js befüllt -->
+                </div>
             </div>
         </div>
 
@@ -209,7 +232,7 @@
     </div>
 
     <!-- App Einstellungen (Local Cache) -->
-    <div id="app-settings-modal" class="modal">
+    <div id="app-settings-modal" class="modal hidden">
         <div class="modal-content" style="max-width: 400px;">
             <div class="modal-header">
                 <h2><i class="fa-solid fa-desktop"></i> Lokale Einstellungen</h2>
@@ -504,8 +527,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script src="ui.js?v=4.8"></script>
-    <script src="app.js?v=4.8"></script>
+    <script src="ui.js?v=4.9"></script>
+    <script src="app.js?v=4.9"></script>
 </body>
 
 </html>

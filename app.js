@@ -209,8 +209,8 @@ function renderBoard() {
             if (e.preventDefault) e.preventDefault();
             state.lastContextMenuTime = Date.now();
             showContextMenu({
-                clientX: e.clientX !== undefined ? e.clientX : (e.touches?.[0]?.clientX || 0),
-                clientY: e.clientY !== undefined ? e.clientY : (e.touches?.[0]?.clientY || 0),
+                clientX: typeof e.clientX === 'number' ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0),
+                clientY: typeof e.clientY === 'number' ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0),
                 preventDefault: () => { }
             }, 'row', row.id);
         };
@@ -218,9 +218,9 @@ function renderBoard() {
         // Long press & Context menu for entire row (fallback)
         rowEl.oncontextmenu = (e) => { triggerContext(e); return false; };
         let rTimerRow;
-        rowEl.addEventListener('mousedown', (e) => { if (e.button === 0 && e.target === rowEl) rTimerRow = setTimeout(() => triggerContext(e), 600); });
+        rowEl.addEventListener('mousedown', (e) => { if (e.button === 0 && (e.target === rowEl || e.target.classList.contains('row-projects'))) rTimerRow = setTimeout(() => triggerContext(e), 600); });
         rowEl.addEventListener('touchstart', (e) => { if (e.target === rowEl) rTimerRow = setTimeout(() => triggerContext(e), 600); }, { passive: true });
-        ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => rowEl.addEventListener(ev, () => clearTimeout(rTimerRow)));
+        ['mouseup', 'mouseleave', 'mousemove', 'touchend', 'touchmove'].forEach(ev => rowEl.addEventListener(ev, () => clearTimeout(rTimerRow)));
 
         rowEl.innerHTML = `
             <div class="row-header">
@@ -257,8 +257,8 @@ function renderBoard() {
                         if (e.preventDefault) e.preventDefault();
                         state.lastContextMenuTime = Date.now();
                         showContextMenu({
-                            clientX: e.clientX !== undefined ? e.clientX : (e.touches?.[0]?.clientX || 0),
-                            clientY: e.clientY !== undefined ? e.clientY : (e.touches?.[0]?.clientY || 0),
+                            clientX: typeof e.clientX === 'number' ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0),
+                            clientY: typeof e.clientY === 'number' ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0),
                             preventDefault: () => { }
                         }, 'project', p.id);
                     };
@@ -285,7 +285,7 @@ function renderBoard() {
                     let bTimer;
                     body.addEventListener('mousedown', (e) => { if (e.button === 0 && e.target === body) bTimer = setTimeout(() => triggerProjContext(e), 600); });
                     body.addEventListener('touchstart', (e) => { if (e.target === body) bTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
-                    ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => body.addEventListener(ev, () => clearTimeout(bTimer)));
+                    ['mouseup', 'mouseleave', 'mousemove', 'touchend', 'touchmove'].forEach(ev => body.addEventListener(ev, () => clearTimeout(bTimer)));
 
                     p.items.forEach(it => {
                         const match = isSearching && (it.title.toLowerCase().includes(term) || it.url.toLowerCase().includes(term));
@@ -301,8 +301,8 @@ function renderBoard() {
                             if (e.preventDefault) e.preventDefault();
                             state.lastContextMenuTime = Date.now();
                             showContextMenu({
-                                clientX: e.clientX !== undefined ? e.clientX : (e.touches?.[0]?.clientX || 0),
-                                clientY: e.clientY !== undefined ? e.clientY : (e.touches?.[0]?.clientY || 0),
+                                clientX: typeof e.clientX === 'number' ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0),
+                                clientY: typeof e.clientY === 'number' ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0),
                                 preventDefault: () => { }
                             }, 'item', it.id);
                         };
@@ -311,7 +311,7 @@ function renderBoard() {
                         let itTimer;
                         itemEl.addEventListener('mousedown', (e) => { if (e.button === 0) itTimer = setTimeout(() => triggerItemContext(e), 600); });
                         itemEl.addEventListener('touchstart', (e) => { itTimer = setTimeout(() => triggerItemContext(e), 600); }, { passive: true });
-                        ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => itemEl.addEventListener(ev, () => clearTimeout(itTimer)));
+                        ['mouseup', 'mouseleave', 'mousemove', 'touchend', 'touchmove'].forEach(ev => itemEl.addEventListener(ev, () => clearTimeout(itTimer)));
 
                         itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" onclick="if(Date.now() - state.lastContextMenuTime < 500) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
                         body.appendChild(itemEl);
@@ -325,7 +325,7 @@ function renderBoard() {
                         h.oncontextmenu = (e) => { if (!state.moveMode.active && !state.deleteMode.active) { triggerProjContext(e); return false; } };
                         h.addEventListener('mousedown', (e) => { if (e.button === 0) tTimer = setTimeout(() => triggerProjContext(e), 600); });
                         h.addEventListener('touchstart', (e) => { tTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
-                        ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => h.addEventListener(ev, () => clearTimeout(tTimer)));
+                        ['mouseup', 'mouseleave', 'mousemove', 'touchend', 'touchmove'].forEach(ev => h.addEventListener(ev, () => clearTimeout(tTimer)));
                     }
                 });
             } else if (!isRead) {
@@ -334,7 +334,7 @@ function renderBoard() {
                 let sTimer;
                 slotEl.addEventListener('mousedown', (e) => { if (e.button === 0 && e.target === slotEl) sTimer = setTimeout(() => triggerContext(e), 600); });
                 slotEl.addEventListener('touchstart', (e) => { if (e.target === slotEl) sTimer = setTimeout(() => triggerContext(e), 600); }, { passive: true });
-                ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => slotEl.addEventListener(ev, () => clearTimeout(sTimer)));
+                ['mouseup', 'mouseleave', 'mousemove', 'touchend', 'touchmove'].forEach(ev => slotEl.addEventListener(ev, () => clearTimeout(sTimer)));
 
                 slotEl.innerHTML = `
                     <div class="spacer-actions" style="display:flex; flex-direction:column; align-items:center; opacity:0.3; transition:opacity 0.2s;">
@@ -356,7 +356,7 @@ function renderBoard() {
             rh.oncontextmenu = (e) => { triggerContext(e); return false; };
             rh.addEventListener('mousedown', (e) => { if (e.button === 0) rTimer = setTimeout(() => triggerContext(e), 600); });
             rh.addEventListener('touchstart', (e) => { rTimer = setTimeout(() => triggerContext(e), 600); }, { passive: true });
-            ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => rh.addEventListener(ev, () => clearTimeout(rTimer)));
+            ['mouseup', 'mouseleave', 'mousemove', 'touchend', 'touchmove'].forEach(ev => rh.addEventListener(ev, () => clearTimeout(rTimer)));
         }
     });
     document.body.classList.toggle('move-mode-active', state.moveMode.active);

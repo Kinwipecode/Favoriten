@@ -2866,16 +2866,9 @@
           ]
         },
         {
-          "id": "9x347z3dj",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "ci4z4wky0",
-              "title": "sync Test",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "5vevrq0f5",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "zrthrwto7",

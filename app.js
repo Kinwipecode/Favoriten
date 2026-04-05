@@ -202,6 +202,7 @@ function renderBoard() {
 
         const rowEl = document.createElement("div");
         rowEl.className = `board-row ${row.collapsed ? "collapsed" : ""}`;
+        rowEl.dataset.id = row.id;
 
         const triggerContext = (e) => {
             if (isRead) return;
@@ -251,6 +252,7 @@ function renderBoard() {
                     const col = document.createElement("div");
                     col.className = `column ${p.collapsed ? "collapsed" : ""} ${isRead ? "read-only" : ""}`;
                     col.dataset.projectId = p.id;
+                    col.setAttribute('data-id', p.id);
 
                     const triggerProjContext = (e) => {
                         if (isRead) return;
@@ -295,6 +297,7 @@ function renderBoard() {
                         const itemEl = document.createElement("div");
                         itemEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''} ${isMoving && isSelected ? 'selected-for-move' : ''} ${isDeleting && isSelected ? 'selected-for-delete' : ''}`;
                         itemEl.setAttribute('data-id', it.id);
+                        itemEl.dataset.id = it.id;
 
                         const triggerItemContext = (e) => {
                             if (isRead) return;
@@ -391,14 +394,16 @@ function renderBoard() {
             new Sortable(el, {
                 group: 'items', animation: 150,
                 onEnd: (e) => {
-                    const fromP = findProject(e.from.closest('.column').dataset.projectId);
-                    const toP = findProject(e.to.closest('.column').dataset.projectId);
-                    const itId = e.item.getAttribute('data-id');
-                    if (fromP && toP) {
-                        const idx = fromP.items.findIndex(it => it.id === itId);
+                    const fCol = e.from.closest('.column'), tCol = e.to.closest('.column');
+                    if (!fCol || !tCol) { renderBoard(); return; }
+                    const fId = fCol.dataset.projectId, tId = tCol.dataset.projectId;
+                    const itId = e.item.dataset.id || e.item.getAttribute('data-id');
+                    const fP = findProject(fId), tP = findProject(tId);
+                    if (fP && tP) {
+                        const idx = fP.items.findIndex(it => it.id === itId);
                         if (idx !== -1) {
-                            const [item] = fromP.items.splice(idx, 1);
-                            toP.items.splice(e.newIndex, 0, item);
+                            const [item] = fP.items.splice(idx, 1);
+                            tP.items.splice(e.newIndex, 0, item);
                             saveData();
                         }
                     }

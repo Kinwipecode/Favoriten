@@ -2960,16 +2960,9 @@
           "projects": []
         },
         {
-          "id": "sc2sfqv0d",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "2smy6soli",
-              "title": "xfgasdf",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "id": "921hbb2bh",
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 50,

@@ -2907,7 +2907,7 @@
   "config": {
     "primary": "#101010",
     "bg": "#008080",
-    "headerBg": "#008040",
+    "headerBg": "#0080ff",
     "headerText": "#202020",
     "link": "#050505",
     "rowBg": "#2d3436",

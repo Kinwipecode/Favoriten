@@ -1799,24 +1799,6 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "rd8qf0svz",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "q8vpaaf7t",
-              "title": "für Suno",
-              "items": [
-                {
-                  "id": "b47ylxzc1",
-                  "title": "Suno Prompt Generator -  M6UU628n",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
-                }
-              ],
-              "collapsed": true
             },
             {
               "id": "5w22g4dsc",
@@ -1839,6 +1821,24 @@
                 }
               ],
               "collapsed": false
+            }
+          ]
+        },
+        {
+          "id": "rd8qf0svz",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "q8vpaaf7t",
+              "title": "für Suno",
+              "items": [
+                {
+                  "id": "b47ylxzc1",
+                  "title": "Suno Prompt Generator -  M6UU628n",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
             },
             {
               "id": "txy2n97zt",

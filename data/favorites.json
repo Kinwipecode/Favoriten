@@ -1935,22 +1935,9 @@
           ]
         },
         {
-          "id": "nnd54zo1k",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "b63yl8nri",
-              "title": "Produkte",
-              "items": [
-                {
-                  "id": "2sje92oa0",
-                  "title": "ArmaWin",
-                  "url": "https://armawin.com/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "id": "15i3ucrik",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "ho79eab22",
@@ -1974,6 +1961,18 @@
                   "id": "efja394hj",
                   "title": "2021_05_MB_Technische_Daemmung_DE_editierbar.pdf",
                   "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "b63yl8nri",
+              "title": "Produkte",
+              "items": [
+                {
+                  "id": "2sje92oa0",
+                  "title": "ArmaWin",
+                  "url": "https://armawin.com/"
                 }
               ],
               "collapsed": true

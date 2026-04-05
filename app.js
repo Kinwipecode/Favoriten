@@ -65,6 +65,7 @@ async function loadData() {
         if (res && res.ok) {
             const data = await res.json();
             state.rows = migrate(data);
+            state.isReadOnly = false;
             if (window.applyTheme) applyTheme();
             renderBoard();
             if (disp) { disp.innerHTML = '<i class="fa-solid fa-door-open"></i> Vollversion (Lokal)'; }
@@ -204,7 +205,7 @@ function renderBoard() {
 
         rowEl.innerHTML = `
             <div class="row-header">
-                <div class="row-header-main" onclick="if(!event.target.closest('button')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                <div class="row-header-main" onclick="if(!event.target.closest('button') && !event.target.closest('input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="font-size:0.8rem; width:20px; opacity:0.5;"></i>
                     ${isRead ?
                 `<span class="row-order-display">${row.order || 0}</span>
@@ -232,7 +233,7 @@ function renderBoard() {
                     const col = document.createElement("div");
                     col.className = `column ${p.collapsed ? "collapsed" : ""}`;
                     col.innerHTML = `
-                        <div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button')) toggleCollapse('${p.id}')">
+                        <div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')">
                             <div class="header-left">
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
                                 ${isRead ? `<span>${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" onchange="updateGroupTitle('${p.id}', this.value)">`}

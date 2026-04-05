@@ -1326,3 +1326,46 @@ body.delete-mode-active .favorite-item {
         justify-content: center;
     }
 }
+
+/* UI Polishing for Action Buttons */
+.btn-text {
+    background: transparent !important;
+    border: none !important;
+    color: inherit !important;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.4;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.btn-text:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.1);
+}
+
+.btn-text:active {
+    transform: scale(0.95);
+}
+
+.column-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+}
+
+.column-header:hover .column-actions {
+    opacity: 1;
+}
+
+.column-actions .btn-text {
+    width: 28px;
+    height: 28px;
+}

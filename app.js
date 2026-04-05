@@ -236,7 +236,7 @@ function renderBoard() {
                         <div class="column-header" onclick="if(!state.moveMode.active && !state.deleteMode.active && !event.target.closest('button') && !event.target.closest('input')) toggleCollapse('${p.id}')">
                             <div class="header-left">
                                 <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
-                                ${isRead ? `<span>${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" onchange="updateGroupTitle('${p.id}', this.value)">`}
+                                ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
                             </div>
                             ${!isRead ? `<div class="column-actions">
                                 <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')" title="Favorit hinzufügen"><i class="fa-solid fa-plus" style="font-size:0.7rem;"></i></button>

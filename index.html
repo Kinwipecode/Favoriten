@@ -16,29 +16,45 @@
 
 <body>
 
-    <!-- Header -->
     <header class="app-header">
-        <div class="logo" style="display:flex; flex-direction:column; align-items:flex-start; line-height:1;">
-            <span
-                style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v4.6</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-                <i class="fa-solid fa-star"></i>
-                <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem;">Favoriten</span>
+        <div class="header-main-content"
+            style="display:flex; width:100%; align-items:center; justify-content:space-between;">
+            <div class="logo"
+                style="display:flex; flex-direction:column; align-items:flex-start; line-height:1; min-width:180px;">
+                <span
+                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v4.6</span>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-star"></i>
+                    <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem;">Favoriten</span>
+                </div>
+                <span id="save-path-display"
+                    style="font-size: 0.7rem; color: #636e72; margin-top: 4px; font-weight: normal; word-break: break-all;">Verbindung
+                    wird geprüft...</span>
             </div>
-            <span id="save-path-display"
-                style="font-size: 0.75rem; color: #636e72; margin-top: 4px; font-weight: normal; word-break: break-all;">Serververbindung
-                wird geprüft...</span>
+
+            <div class="search-bar"
+                style="flex:1; max-width:500px; position:relative; margin:0 30px; min-width: 250px;">
+                <i class="fa-solid fa-magnifying-glass"
+                    style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#636e72;"></i>
+                <input type="text" id="board-search" placeholder="Favoriten suchen..."
+                    oninput="handleSearch(this.value)"
+                    style="width:100%; padding:10px 40px 10px 35px; border-radius:12px; border:2px solid #edeff2; background:#f5f6f7; font-family:'Inter',sans-serif; font-size:0.95rem; outline:none; transition:all 0.2s ease;">
+                <i id="search-clear" class="fa-solid fa-circle-xmark hidden" onclick="clearSearch()"
+                    style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#636e72; cursor:pointer; font-size:1.1rem;"></i>
+            </div>
+
+            <div class="header-controls">
+                <button id="toggle-actions-btn" class="btn btn-secondary" onclick="toggleActionsDrawer()"
+                    title="Aktionen öffnen/schließen">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> <span class="hide-on-mobile">Menü</span>
+                </button>
+            </div>
         </div>
-        <div class="search-bar" style="flex:1; max-width:400px; position:relative; margin:0 30px; min-width: 250px;">
-            <i class="fa-solid fa-magnifying-glass"
-                style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#636e72;"></i>
-            <input type="text" id="board-search" placeholder="Favoriten suchen..." oninput="handleSearch(this.value)"
-                style="width:100%; padding:10px 40px 10px 35px; border-radius:12px; border:2px solid #edeff2; background:#f1f2f6; font-family:'Inter',sans-serif; font-size:0.9rem; outline:none; transition:all 0.2s ease;">
-            <i id="search-clear" class="fa-solid fa-circle-xmark hidden" onclick="clearSearch()"
-                style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#636e72; cursor:pointer; font-size:1.1rem; transition:all 0.2s ease;"></i>
-        </div>
-        <div class="actions">
-            <!-- Buttons will be dynamically rendered here for reordering support -->
+
+        <div id="actions-drawer" class="actions-drawer hidden">
+            <div class="actions">
+                <!-- Buttons will be dynamically rendered here -->
+            </div>
         </div>
     </header>
 

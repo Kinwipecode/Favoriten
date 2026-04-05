@@ -205,6 +205,7 @@ function renderBoard() {
 
         const triggerContext = (e) => {
             if (isRead) return;
+            if (e.defaultPrevented) return; // Already handled by group/item
             if (e.preventDefault) e.preventDefault();
             state.lastContextMenuTime = Date.now();
             showContextMenu({
@@ -213,6 +214,13 @@ function renderBoard() {
                 preventDefault: () => { }
             }, 'row', row.id);
         };
+
+        // Long press & Context menu for entire row (fallback)
+        rowEl.oncontextmenu = (e) => { triggerContext(e); return false; };
+        let rTimerRow;
+        rowEl.addEventListener('mousedown', (e) => { if (e.button === 0 && e.target === rowEl) rTimerRow = setTimeout(() => triggerContext(e), 600); });
+        rowEl.addEventListener('touchstart', (e) => { if (e.target === rowEl) rTimerRow = setTimeout(() => triggerContext(e), 600); }, { passive: true });
+        ['mouseup', 'mouseleave', 'touchend', 'touchmove'].forEach(ev => rowEl.addEventListener(ev, () => clearTimeout(rTimerRow)));
 
         rowEl.innerHTML = `
             <div class="row-header">

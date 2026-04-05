@@ -2879,7 +2879,7 @@
         }
       ],
       "order": 20,
-      "collapsed": false
+      "collapsed": true
     },
     {
       "id": "yawanswyh",
@@ -3011,7 +3011,13 @@
             {
               "id": "2smy6soli",
               "title": "xfgasdf",
-              "items": [],
+              "items": [
+                {
+                  "id": "hoe3vsoqq",
+                  "title": "Hotelbewertungen: Hotel Riu Palace Tikida Taghazout (Taghazout) • HolidayCheck",
+                  "url": "https://www.holidaycheck.ch/hr/bewertungen-hotel-riu-palace-tikida-taghazout/0e233e4e-ece4-4790-b844-56982f2aa8d5?sort=entrydate"
+                }
+              ],
               "collapsed": true
             }
           ]

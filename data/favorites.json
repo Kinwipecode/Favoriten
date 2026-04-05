@@ -133,7 +133,7 @@
                   "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             },
             {
               "id": "109xjhnc0",
@@ -1385,7 +1385,7 @@
         }
       ],
       "order": 40,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "wf2ec3g0j",

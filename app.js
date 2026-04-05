@@ -559,6 +559,8 @@ window.showContextMenu = (e, type, id) => {
         html = `
             <div class="context-menu-title">Zeile: ${r ? r.title : 'Unbekannt'}</div>
             <div class="context-menu-item" onclick="addSlotToRow('${id}')"><i class="fa-solid fa-plus"></i> Gruppe hinzufügen</div>
+            <div class="context-menu-item" onclick="addSpacerToRow('${id}')"><i class="fa-solid fa-square-plus"></i> Leere Lücke einfügen</div>
+            <div class="context-menu-item" onclick="addNewRow()"><i class="fa-solid fa-layer-group"></i> Neue Zeile erstellen</div>
             <div class="context-menu-divider"></div>
             <div class="context-menu-item danger" onclick="deleteRow('${id}')"><i class="fa-solid fa-trash"></i> Zeile löschen</div>
         `;
@@ -570,7 +572,7 @@ window.showContextMenu = (e, type, id) => {
             <div class="context-menu-item" onclick="pasteFromClipboard('${id}')"><i class="fa-solid fa-paste"></i> Link aus Ablage einfügen</div>
             <div class="context-menu-item" onclick="toggleCollapse('${id}')"><i class="fa-solid fa-compress"></i> Ein-/Ausklappen</div>
             <div class="context-menu-divider"></div>
-            <div class="context-menu-item danger" onclick="deleteProject('${id}')"><i class="fa-solid fa-trash"></i> Gruppe löschen</div>
+            <div class="context-menu-item danger" onclick="deleteProject('${id}')"><i class="fa-solid fa-trash-can"></i> Gruppe löschen</div>
         `;
     }
     menu.innerHTML = html;
@@ -595,6 +597,17 @@ window.addSlotToRow = (rowId) => {
         addItemToSpacer(slotId);
         saveData();
     }
+};
+
+window.addSpacerToRow = (rowId) => {
+    const r = state.rows.find(x => x.id === rowId);
+    if (r) { r.projects.push({ id: generateId(), isSpacer: true, projects: [] }); renderBoard(); saveData(); }
+};
+
+window.addNewRow = () => {
+    const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(x => x.order || 0)) + 10 : 10;
+    state.rows.push({ id: generateId(), title: 'Neue Zeile', projects: [], order: nextOrder });
+    renderBoard(); saveData();
 };
 
 window.deleteSlot = (id) => {

@@ -588,7 +588,13 @@ window.pasteFromClipboard = async (projectId) => {
 
 window.addSlotToRow = (rowId) => {
     const r = state.rows.find(x => x.id === rowId);
-    if (r) { r.projects.push({ id: generateId(), isSpacer: true, projects: [] }); renderBoard(); saveData(); }
+    if (r) {
+        const slotId = generateId();
+        r.projects.push({ id: slotId, isSpacer: true, projects: [] });
+        renderBoard();
+        addItemToSpacer(slotId);
+        saveData();
+    }
 };
 
 window.deleteSlot = (id) => {

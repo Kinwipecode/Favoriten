@@ -1188,4 +1188,25 @@ window.checkAuth = () => {
     return true;
 };
 
+window.toggleActionsDrawer = () => {
+    const drawer = document.getElementById('actions-drawer');
+    const btn = document.getElementById('toggle-actions-btn');
+    if (!drawer || !btn) return;
+
+    drawer.classList.toggle('hidden');
+    const isOpen = !drawer.classList.contains('hidden');
+    btn.classList.toggle('btn-primary', isOpen);
+    btn.classList.toggle('btn-secondary', !isOpen);
+
+    // Remember state
+    localStorage.setItem('actions_drawer_open', isOpen);
+};
+
+// Auto-open if it was open last time
+window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('actions_drawer_open') === 'true') {
+        setTimeout(toggleActionsDrawer, 100);
+    }
+});
+
 init();

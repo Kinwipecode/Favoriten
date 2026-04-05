@@ -1698,6 +1698,11 @@
       "projects": [
         {
           "id": "urssd9hbs",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "9mg74so2t",
           "isSpacer": false,
           "projects": [
             {
@@ -1733,11 +1738,6 @@
               "collapsed": false
             }
           ]
-        },
-        {
-          "id": "9mg74so2t",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "uf922g6cc",

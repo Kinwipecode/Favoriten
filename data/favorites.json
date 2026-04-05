@@ -1612,7 +1612,58 @@
         {
           "id": "zw0oxqu6g",
           "isSpacer": false,
+          "projects": []
+        },
+        {
+          "id": "rd8qf0svz",
+          "isSpacer": false,
           "projects": [
+            {
+              "id": "q8vpaaf7t",
+              "title": "für Suno",
+              "items": [
+                {
+                  "id": "b47ylxzc1",
+                  "title": "Suno Prompt Generator -  M6UU628n",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "txy2n97zt",
+              "title": "schneiden",
+              "items": [
+                {
+                  "id": "9lforvgz2",
+                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ],
+              "collapsed": false
+            },
+            {
+              "id": "5w22g4dsc",
+              "title": "KI",
+              "items": [
+                {
+                  "id": "d0o3y9js5",
+                  "title": "Miro Board lokal",
+                  "url": "file:///G:/Miro%20copy/index.html"
+                },
+                {
+                  "id": "169bwdjby",
+                  "title": "Google",
+                  "url": "https://www.google.com/"
+                },
+                {
+                  "id": "flyfos0af",
+                  "title": "bild genratoren  AI",
+                  "url": "https://modelplayground.ai/"
+                }
+              ],
+              "collapsed": false
+            },
             {
               "id": "sfqaiu3s5",
               "title": "AI",
@@ -1799,58 +1850,6 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "rd8qf0svz",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "q8vpaaf7t",
-              "title": "für Suno",
-              "items": [
-                {
-                  "id": "b47ylxzc1",
-                  "title": "Suno Prompt Generator -  M6UU628n",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "txy2n97zt",
-              "title": "schneiden",
-              "items": [
-                {
-                  "id": "9lforvgz2",
-                  "title": "MP3 Cutter - Online & kostenlos - MyEdit",
-                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-                }
-              ],
-              "collapsed": false
-            },
-            {
-              "id": "5w22g4dsc",
-              "title": "KI",
-              "items": [
-                {
-                  "id": "d0o3y9js5",
-                  "title": "Miro Board lokal",
-                  "url": "file:///G:/Miro%20copy/index.html"
-                },
-                {
-                  "id": "169bwdjby",
-                  "title": "Google",
-                  "url": "https://www.google.com/"
-                },
-                {
-                  "id": "flyfos0af",
-                  "title": "bild genratoren  AI",
-                  "url": "https://modelplayground.ai/"
-                }
-              ],
-              "collapsed": false
             }
           ]
         },

@@ -431,6 +431,8 @@ body {
     justify-content: space-between !important;
     align-items: center !important;
     font-size: var(--group-font-size, 0.95rem) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
 }
 
 .group-title-input {

@@ -1545,11 +1545,6 @@
               "title": "Lesezeichenleiste",
               "items": [
                 {
-                  "id": "169bwdjby",
-                  "title": "Google",
-                  "url": "https://www.google.com/"
-                },
-                {
                   "id": "t98qko172",
                   "title": "FRITZ!Box",
                   "url": "http://192.168.178.1/"
@@ -1558,6 +1553,11 @@
                   "id": "ahsqjatou",
                   "title": "Netflix",
                   "url": "https://www.netflix.com/YourAccount"
+                },
+                {
+                  "id": "169bwdjby",
+                  "title": "Google",
+                  "url": "https://www.google.com/"
                 },
                 {
                   "id": "8e6tgw9g3",

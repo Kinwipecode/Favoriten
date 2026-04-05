@@ -1669,6 +1669,12 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "uhc1dzvot",
+              "title": "sdfgsdgfdfg",
+              "items": [],
+              "collapsed": true
             }
           ]
         },
@@ -1736,14 +1742,7 @@
         {
           "id": "al1hkkzol",
           "isSpacer": false,
-          "projects": [
-            {
-              "id": "uhc1dzvot",
-              "title": "sdfgsdgfdfg",
-              "items": [],
-              "collapsed": true
-            }
-          ]
+          "projects": []
         }
       ],
       "order": 30,

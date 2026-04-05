@@ -263,6 +263,15 @@ function renderBoard() {
                     });
                     slotEl.appendChild(col);
                 });
+            } else if (!isRead) {
+                slotEl.innerHTML = `
+                    <div class="spacer-actions" style="display:flex; flex-direction:column; align-items:center; opacity:0.3; transition:opacity 0.2s;">
+                        <button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')" title="Hier eine Gruppe erstellen" style="margin-bottom:8px;"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')" title="Lücke entfernen" style="background:transparent; border:none; color:#ff7675; cursor:pointer;">×</button>
+                    </div>
+                `;
+                slotEl.onmouseenter = () => slotEl.querySelector('.spacer-actions').style.opacity = '1';
+                slotEl.onmouseleave = () => slotEl.querySelector('.spacer-actions').style.opacity = '0.3';
             }
             container.appendChild(slotEl);
         });
@@ -581,5 +590,42 @@ window.addSlotToRow = (rowId) => {
     const r = state.rows.find(x => x.id === rowId);
     if (r) { r.projects.push({ id: generateId(), isSpacer: true, projects: [] }); renderBoard(); saveData(); }
 };
+
+window.deleteSlot = (id) => {
+    state.rows.forEach(r => { r.projects = r.projects.filter(s => s.id !== id); });
+    renderBoard(); saveData();
+};
+
+window.addItemToSpacer = (slotId) => {
+    state.activeSlotId = slotId;
+    const modal = document.getElementById('edit-group-modal');
+    if (modal) {
+        document.getElementById('edit-group-name').value = "";
+        document.getElementById('edit-group-title').innerHTML = '<i class="fa-solid fa-folder-plus"></i> Neue Gruppe in Lücke erstellen';
+        showModal('edit-group-modal');
+        document.getElementById('edit-group-name').focus();
+    }
+};
+
+document.getElementById('btn-save-group')?.addEventListener('click', () => {
+    const val = document.getElementById('edit-group-name').value.trim();
+    if (!val) return;
+    const newProj = { id: generateId(), title: val, items: [], collapsed: false };
+
+    if (state.activeSlotId) {
+        // Find existing spacer slot and put project in it
+        for (const r of state.rows) {
+            const slot = r.projects.find(s => s.id === state.activeSlotId);
+            if (slot) { slot.isSpacer = false; slot.projects = [newProj]; break; }
+        }
+    } else {
+        // Add to last row as new slot
+        if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [], order: 10 });
+        state.rows[state.rows.length - 1].projects.push({ id: generateId(), isSpacer: false, projects: [newProj] });
+    }
+
+    hideModal('edit-group-modal'); state.activeSlotId = null;
+    renderBoard(); saveData();
+});
 
 init();

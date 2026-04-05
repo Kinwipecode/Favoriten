@@ -168,11 +168,16 @@ const btnHandlers = {
     'btn-save': () => saveData(),
     'btn-import': () => {
         const select = document.getElementById('import-row-select');
+        const nameContainer = document.getElementById('import-new-row-name-container');
         if (select) {
             select.innerHTML = '<option value="new">-- Neue Zeile erstellen --</option>';
             state.rows.forEach(r => {
                 select.innerHTML += `<option value="${r.id}">${r.title}</option>`;
             });
+            select.onchange = () => {
+                if (nameContainer) nameContainer.style.display = select.value === 'new' ? 'block' : 'none';
+            };
+            if (nameContainer) nameContainer.style.display = 'block';
         }
         showModal('import-modal');
     },
@@ -213,8 +218,9 @@ const btnHandlers = {
 
         let newRowName = null;
         if (rowId === 'new') {
-            newRowName = window.prompt("Bitte Namen für die neue Import-Zeile eingeben:", "Importierte Favoriten");
-            if (newRowName === null) return; // User cancelled
+            const inputEl = document.getElementById('import-new-row-name');
+            newRowName = inputEl ? inputEl.value : 'Importierte Favoriten';
+            if (!newRowName.trim()) newRowName = 'Importierte Favoriten';
         }
 
         if (file) {

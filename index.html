@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoriten Manager</title>
-    <link rel="stylesheet" href="style.css?v=5.2">
+    <link rel="stylesheet" href="style.css?v=5.3">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;800&display=swap"
@@ -22,7 +22,7 @@
             <div class="logo"
                 style="display:flex; flex-direction:column; align-items:flex-start; line-height:1; min-width:180px;">
                 <span
-                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v5.2</span>
+                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v5.3</span>
                 <div style="display:flex; align-items:center; gap:8px;">
                     <i class="fa-solid fa-star"></i>
                     <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem;">Favoriten</span>
@@ -307,7 +307,7 @@
             <div class="modal-body" style="padding: 20px;">
                 <div
                     style="background: rgba(var(--primary-color-rgb), 0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h4 style="margin-top:0; color:var(--primary-color);">Version 5.2</h4>
+                    <h4 style="margin-top:0; color:var(--primary-color);">Version 5.3</h4>
                     <p style="font-size:0.9rem; color:#555;">Dein persönlicher Favoriten Manager mit
                         Cloud-Synchronisation und Name-Cleaning.</p>
                 </div>
@@ -519,6 +519,41 @@
         </div>
     </div>
 
+    <div id="input-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 460px;">
+            <div class="modal-header">
+                <h3 id="input-modal-title" style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;">Eingabe</h3>
+                <button id="btn-input-close" onclick="hideModal('input-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <label id="input-modal-label" style="display:block; font-size:0.85rem; color:#666; margin-bottom:8px; font-weight:bold;">Wert</label>
+                <input type="text" id="input-modal-field" style="width:100%; padding:12px; border-radius:10px; border:2px solid #edeff2; font-family:inherit; outline:none;">
+                <div class="modal-actions" style="justify-content:flex-end; gap:12px; margin-top: 16px;">
+                    <button id="btn-input-cancel" class="btn btn-secondary">Abbrechen</button>
+                    <button id="btn-input-ok" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="select-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 560px;">
+            <div class="modal-header">
+                <h3 id="select-modal-title" style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;">Auswahl</h3>
+                <button id="btn-select-close" onclick="hideModal('select-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <p id="select-modal-label" style="font-size:0.9rem; color:#666; margin-top:0; margin-bottom:10px;">Bitte auswaehlen</p>
+                <input type="text" id="select-modal-filter" placeholder="Suchen..." style="width:100%; padding:10px; border-radius:8px; border:2px solid #edeff2; margin-bottom:10px; font-family:inherit; outline:none;">
+                <select id="select-modal-list" size="12" style="width:100%; padding:10px; border-radius:10px; border:2px solid #edeff2; font-family:inherit; outline:none; background:white;"></select>
+                <div class="modal-actions" style="justify-content:flex-end; gap:12px; margin-top: 16px;">
+                    <button id="btn-select-cancel" class="btn btn-secondary">Abbrechen</button>
+                    <button id="btn-select-ok" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="custom-tooltip" class="custom-tooltip hidden"></div>
     <div id="context-menu" class="context-menu hidden">
         <!-- Dynamic content -->
@@ -545,8 +580,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script src="ui.js?v=5.2"></script>
-    <script src="app.js?v=5.2"></script>
+    <script src="ui.js?v=5.3"></script>
+    <script src="app.js?v=5.3"></script>
 </body>
 
 </html>

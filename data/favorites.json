@@ -1690,15 +1690,8 @@
         },
         {
           "id": "j0zhd66hc",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "hxrw8y1wm",
-              "title": "sssss",
-              "items": [],
-              "collapsed": false
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 10,

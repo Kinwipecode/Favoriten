@@ -348,11 +348,6 @@
               "title": "Musik",
               "items": [
                 {
-                  "id": "sur8i1eqg",
-                  "title": "Riffusion",
-                  "url": "https://www.riffusion.com/?filter=staff-picks"
-                },
-                {
                   "id": "4ld7ijta9",
                   "title": "Suno",
                   "url": "https://suno.wiki/"

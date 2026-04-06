@@ -132,6 +132,33 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "2boqwuybb",
+              "title": "GitHub",
+              "items": [
+                {
+                  "id": "ri0adlylt",
+                  "title": "Github",
+                  "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
+                },
+                {
+                  "id": "fsfumuzuv",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Miro_plus/"
+                },
+                {
+                  "id": "l0b3qhnbz",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
+                },
+                {
+                  "id": "v4dzu2s0l",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Favoriten/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -640,33 +667,6 @@
                   "id": "gstp6j47a",
                   "title": "Euro-millions",
                   "url": "https://www.euro-millions.com/de-ch/swiss-lotto"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "2boqwuybb",
-              "title": "GitHub",
-              "items": [
-                {
-                  "id": "ri0adlylt",
-                  "title": "Github",
-                  "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
-                },
-                {
-                  "id": "fsfumuzuv",
-                  "title": "Kinwipecode.github",
-                  "url": "https://kinwipecode.github.io/Miro_plus/"
-                },
-                {
-                  "id": "l0b3qhnbz",
-                  "title": "Kinwipecode.github",
-                  "url": "https://kinwipecode.github.io/Kinpdf/"
-                },
-                {
-                  "id": "v4dzu2s0l",
-                  "title": "Kinwipecode.github",
-                  "url": "https://kinwipecode.github.io/Favoriten/"
                 }
               ],
               "collapsed": true

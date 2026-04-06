@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoriten Manager</title>
-    <link rel="stylesheet" href="style.css?v=6.4">
+    <link rel="stylesheet" href="style.css?v=6.5">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;800&display=swap"
@@ -22,7 +22,7 @@
             <div class="logo"
                 style="display:flex; flex-direction:column; align-items:flex-start; line-height:1; min-width:180px;">
                 <span
-                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v6.4</span>
+                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v6.5</span>
                 <div style="display:flex; align-items:center; gap:8px;">
                     <i class="fa-solid fa-star"></i>
                     <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem;">Favoriten</span>
@@ -307,7 +307,7 @@
             <div class="modal-body" style="padding: 20px;">
                 <div
                     style="background: rgba(var(--primary-color-rgb), 0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h4 style="margin-top:0; color:var(--primary-color);">Version 6.4</h4>
+                    <h4 style="margin-top:0; color:var(--primary-color);">Version 6.5</h4>
                     <p style="font-size:0.9rem; color:#555;">Dein persönlicher Favoriten Manager mit
                         Cloud-Synchronisation und Name-Cleaning.</p>
                 </div>
@@ -562,6 +562,29 @@
             </div>
             <div class="modal-body" style="padding: 20px;">
                 <p style="font-size:0.85rem; color:#666; margin-top:0;">E-Mail-Text einfuegen oder direkt aus dem Mailprogramm hierher ziehen. Format: <code>TITLE|URL|GROUP</code>.</p>
+                <div style="display:grid; grid-template-columns:1fr; gap:10px; margin-bottom:10px; background:rgba(255,255,255,0.45); border-radius:10px; padding:10px; border:1px solid rgba(0,0,0,0.08);">
+                    <div>
+                        <label style="display:block; font-size:0.8rem; color:#666; margin-bottom:4px;">Import-Ziel</label>
+                        <select id="mail-import-target-mode" onchange="toggleMailImportTargetMode()" style="width:100%; padding:8px; border-radius:8px; border:1px solid #d9dde3;">
+                            <option value="auto">Auto (wie bisher)</option>
+                            <option value="new_row">Neue Zeile erstellen</option>
+                            <option value="row">In bestehende Zeile importieren</option>
+                            <option value="group">In bestehende Gruppe importieren</option>
+                        </select>
+                    </div>
+                    <div id="mail-import-row-new-wrap" style="display:none;">
+                        <label style="display:block; font-size:0.8rem; color:#666; margin-bottom:4px;">Name neue Zeile</label>
+                        <input id="mail-import-new-row-name" type="text" value="Mail Import" style="width:100%; padding:8px; border-radius:8px; border:1px solid #d9dde3;" />
+                    </div>
+                    <div id="mail-import-row-select-wrap" style="display:none;">
+                        <label style="display:block; font-size:0.8rem; color:#666; margin-bottom:4px;">Ziel-Zeile</label>
+                        <select id="mail-import-target-row" style="width:100%; padding:8px; border-radius:8px; border:1px solid #d9dde3;"></select>
+                    </div>
+                    <div id="mail-import-group-select-wrap" style="display:none;">
+                        <label style="display:block; font-size:0.8rem; color:#666; margin-bottom:4px;">Ziel-Gruppe</label>
+                        <select id="mail-import-target-group" style="width:100%; padding:8px; border-radius:8px; border:1px solid #d9dde3;"></select>
+                    </div>
+                </div>
                 <div ondragover="event.preventDefault()" ondrop="handleMailImportDrop(event)" style="border:2px dashed rgba(0,0,0,0.15); border-radius:10px; padding:10px; margin-bottom:10px; background:rgba(255,255,255,0.45);">
                     <textarea id="mail-import-input" placeholder="Hier E-Mail-Inhalt einfuegen..." style="width:100%; min-height:180px; resize:vertical; border:none; outline:none; background:transparent; font-family:monospace; font-size:0.86rem;"></textarea>
                 </div>
@@ -600,8 +623,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script src="ui.js?v=6.4"></script>
-    <script src="app.js?v=6.4"></script>
+    <script src="ui.js?v=6.5"></script>
+    <script src="app.js?v=6.5"></script>
 </body>
 
 </html>

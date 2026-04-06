@@ -507,6 +507,10 @@ body.is-dragging-group * {
     gap: 6px;
 }
 
+.column-body:empty {
+    padding: 0;
+}
+
 .favorite-item {
     background: var(--item-bg, #ffffff);
     border-radius: 8px;

@@ -623,21 +623,6 @@
         },
         {
           "id": "eqor6amps",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "dbjcj2qnu",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "xiyd3h9bf",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "vhk1uk6w0",
           "isSpacer": false,
           "projects": [
             {
@@ -653,6 +638,21 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "dbjcj2qnu",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "xiyd3h9bf",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "vhk1uk6w0",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "njhjfjhxg",

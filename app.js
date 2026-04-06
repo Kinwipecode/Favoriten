@@ -52,7 +52,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-pull-cloud', 'btn-save', 'btn-send-cache-mail', 'btn-send-cache-mail-only', 'btn-clear-browser-cache', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
+            'btn-pull-cloud', 'btn-save', 'btn-import-mail', 'btn-send-cache-mail', 'btn-send-cache-mail-only', 'btn-clear-browser-cache', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
         ]
     },
     activeLinkId: null,
@@ -600,6 +600,192 @@ window.sendCachedFavoritesMailOnly = () => {
 
     if (truncated) showToast(`E-Mail erstellt (${maxItems}/${items.length} Eintraege wegen Mail-Limit).`, 'info');
     else showToast('E-Mail erstellt (ohne Datei-Export).', 'success');
+};
+
+function normalizeUrlForCompare(url) {
+    if (!url) return '';
+    let u = String(url).trim();
+    if (!/^https?:\/\//i.test(u)) u = `https://${u}`;
+    try {
+        const parsed = new URL(u);
+        const host = parsed.hostname.toLowerCase();
+        const path = parsed.pathname.replace(/\/+$/, '') || '/';
+        return `${host}${path}${parsed.search}`;
+    } catch (_) {
+        return u.toLowerCase().replace(/\/+$/, '');
+    }
+}
+
+function collectLocalFavoriteLocations() {
+    const map = new Map();
+    state.rows.forEach(r => {
+        (r.projects || []).forEach(s => {
+            if (s.isSpacer || !s.projects) return;
+            s.projects.forEach(p => {
+                (p.items || []).forEach(it => {
+                    const key = normalizeUrlForCompare(it.url);
+                    if (!key) return;
+                    if (!map.has(key)) map.set(key, []);
+                    map.get(key).push({ row: r.title, group: p.title, title: it.title, url: it.url });
+                });
+            });
+        });
+    });
+    return map;
+}
+
+function parseMailExportText(rawText) {
+    if (!rawText) return [];
+    const marker = 'FORMAT|TITLE|URL|GROUP';
+    const raw = String(rawText).replace(/\r/g, '\n');
+    const markerIndex = raw.indexOf(marker);
+    let section = markerIndex >= 0 ? raw.slice(markerIndex + marker.length) : raw;
+
+    let lines = section.split('\n').map(l => l.trim()).filter(Boolean);
+    if (lines.length <= 1) {
+        section = section.replace(/\s+(?=[^|\s]+\|(?:https?:\/\/|www\.))/g, '\n');
+        lines = section.split('\n').map(l => l.trim()).filter(Boolean);
+    }
+
+    const items = [];
+    lines.forEach(line => {
+        if (!line.includes('|')) return;
+        if (/^(DATE|FORMAT|TRUNCATED)\|/i.test(line)) return;
+        const parts = line.split('|');
+        if (parts.length < 3) return;
+        const title = (parts[0] || '').trim();
+        let url = (parts[1] || '').trim();
+        const group = parts.slice(2).join('|').trim() || 'Import';
+        if (!url) return;
+        if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
+        items.push({ title: title || cleanTitle(url), url, group });
+    });
+
+    const unique = [];
+    const seen = new Set();
+    items.forEach(it => {
+        const k = normalizeUrlForCompare(it.url);
+        if (!k || seen.has(k)) return;
+        seen.add(k);
+        unique.push(it);
+    });
+    return unique;
+}
+
+function findProjectByTitle(title) {
+    const target = (title || '').trim().toLowerCase();
+    if (!target) return null;
+    for (const r of state.rows) {
+        for (const s of (r.projects || [])) {
+            if (s.isSpacer || !s.projects) continue;
+            for (const p of s.projects) {
+                if ((p.title || '').trim().toLowerCase() === target) return p;
+            }
+        }
+    }
+    return null;
+}
+
+function ensureProjectForImport(groupTitle) {
+    const existing = findProjectByTitle(groupTitle);
+    if (existing) return existing;
+
+    let targetRow = state.rows.find(r => (r.title || '').trim().toLowerCase() === 'mail import');
+    if (!targetRow) {
+        const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
+        targetRow = { id: generateId(), title: 'Mail Import', projects: [], order: nextOrder, collapsed: false };
+        state.rows.push(targetRow);
+    }
+
+    const newProject = { id: generateId(), title: groupTitle || 'Import', items: [], collapsed: false };
+    targetRow.projects.push({ id: generateId(), isSpacer: false, projects: [newProject] });
+    return newProject;
+}
+
+window.openMailImportModal = () => {
+    const ta = document.getElementById('mail-import-input');
+    const report = document.getElementById('mail-import-report');
+    if (ta) ta.value = '';
+    if (report) report.textContent = '';
+    showModal('mail-import-modal');
+};
+
+window.handleMailImportDrop = async (event) => {
+    event.preventDefault();
+    const ta = document.getElementById('mail-import-input');
+    if (!ta) return;
+
+    const dt = event.dataTransfer;
+    if (!dt) return;
+
+    if (dt.files && dt.files.length > 0) {
+        const file = dt.files[0];
+        try {
+            const text = await file.text();
+            ta.value = text;
+            showToast('E-Mail-Inhalt aus Datei uebernommen.', 'success');
+            return;
+        } catch (_) { }
+    }
+
+    const txt = dt.getData('text/plain') || dt.getData('text');
+    if (txt) {
+        ta.value = txt;
+        showToast('E-Mail-Inhalt eingefuegt.', 'success');
+    }
+};
+
+window.importFromEmailText = async () => {
+    const ta = document.getElementById('mail-import-input');
+    const report = document.getElementById('mail-import-report');
+    if (!ta) return;
+
+    const imported = parseMailExportText(ta.value || '');
+    if (!imported.length) {
+        if (report) report.textContent = 'Keine gueltigen Eintraege im Format TITLE|URL|GROUP gefunden.';
+        showToast('Keine gueltigen Daten gefunden.', 'error');
+        return;
+    }
+
+    const localMap = collectLocalFavoriteLocations();
+    const duplicates = [];
+    const toImport = [];
+
+    imported.forEach(it => {
+        const key = normalizeUrlForCompare(it.url);
+        const hits = key ? (localMap.get(key) || []) : [];
+        if (hits.length) duplicates.push({ item: it, hits });
+        else toImport.push(it);
+    });
+
+    toImport.forEach(it => {
+        const p = ensureProjectForImport(it.group);
+        if (!p.items) p.items = [];
+        p.items.push({ id: generateId(), title: it.title || cleanTitle(it.url), url: it.url });
+    });
+
+    if (toImport.length > 0) {
+        renderBoard();
+        saveData();
+    }
+
+    const dupLines = duplicates.slice(0, 20).map(d => {
+        const where = d.hits.map(h => `${h.row} / ${h.group}`).join('; ');
+        return `- ${d.item.title} -> bereits vorhanden in: ${where}`;
+    }).join('\n');
+
+    if (report) {
+        report.textContent = [
+            `Importiert: ${toImport.length}`,
+            `Duplikate uebersprungen: ${duplicates.length}`,
+            duplicates.length ? '' : '',
+            duplicates.length ? 'Duplikat-Details (max 20):' : '',
+            duplicates.length ? dupLines : ''
+        ].filter(Boolean).join('\n');
+    }
+
+    if (duplicates.length) showToast(`Import: ${toImport.length} neu, ${duplicates.length} Duplikate uebersprungen.`, 'info');
+    else showToast(`Import erfolgreich: ${toImport.length} Favoriten.`, 'success');
 };
 
 window.clearBrowserCacheData = async () => {

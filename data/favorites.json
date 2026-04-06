@@ -55,11 +55,6 @@
                   "url": "file:///G:/Miro%20copy/index.html"
                 },
                 {
-                  "id": "z33bl680i",
-                  "title": "Notube",
-                  "url": "https://notube.net/en/youtube-app-155"
-                },
-                {
                   "id": "i7c500dqx",
                   "title": "Videezy",
                   "url": "https://www.videezy.com/"
@@ -120,7 +115,13 @@
             {
               "id": "qnpjk9txq",
               "title": "Tools",
-              "items": [],
+              "items": [
+                {
+                  "id": "z33bl680i",
+                  "title": "Notube",
+                  "url": "https://notube.net/en/youtube-app-155"
+                }
+              ],
               "collapsed": false
             }
           ]

@@ -576,22 +576,26 @@ window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id)
 window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
 window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
 
-window.addItem = (projectId, preUrl = "", preTitle = "") => {
+window.addItem = async (projectId, preUrl = "", preTitle = "") => {
     if (!checkAuth()) return;
-    const nt = preTitle || prompt("Titel:", preUrl ? cleanTitle(preUrl) : ""); if (nt === null) return;
-    const nu = preUrl || prompt("URL:"); if (!nu) return;
+    const nt = preTitle || await showInputDialog({ title: 'Favorit hinzufuegen', label: 'Titel', value: preUrl ? cleanTitle(preUrl) : '', placeholder: 'Titel eingeben', confirmText: 'Weiter' });
+    if (nt === null) return;
+    const nu = preUrl || await showInputDialog({ title: 'Favorit hinzufuegen', label: 'URL', value: '', placeholder: 'https://beispiel.de', confirmText: 'Speichern' });
+    if (!nu) return;
     const p = findProject(projectId); if (p) p.items.push({ id: generateId(), title: nt, url: nu });
     renderBoard(); saveData();
 }
 
-window.editItem = (id) => {
+window.editItem = async (id) => {
     const item = findItem(id); if (!item) return;
-    const nt = prompt("Titel:", item.title); if (nt === null) return;
-    const nu = prompt("URL:", item.url); if (!nu) return;
+    const nt = await showInputDialog({ title: 'Favorit bearbeiten', label: 'Titel', value: item.title, placeholder: 'Titel eingeben', confirmText: 'Weiter' });
+    if (nt === null) return;
+    const nu = await showInputDialog({ title: 'Favorit bearbeiten', label: 'URL', value: item.url, placeholder: 'https://beispiel.de', confirmText: 'Speichern' });
+    if (!nu) return;
     item.title = nt; item.url = nu; renderBoard(); saveData();
 }
 
-window.moveItemViaMenu = (itemId) => {
+window.moveItemViaMenu = async (itemId) => {
     const item = findItem(itemId);
     if (!item) {
         showToast('Favorit nicht gefunden.', 'error');
@@ -607,17 +611,15 @@ window.moveItemViaMenu = (itemId) => {
         return;
     }
 
-    const text = options.map((o, i) => `${i + 1}: ${o.rowTitle} / ${o.projectTitle}`).join('\n');
-    const input = prompt(`In welche Gruppe verschieben?\n\n${text}`, '1');
-    if (input === null) return;
+    const selection = await showSelectDialog({
+        title: 'Favorit verschieben',
+        label: 'In welche Gruppe verschieben?',
+        options: options.map(o => ({ value: o.projectId, label: `${o.rowTitle} / ${o.projectTitle}` })),
+        confirmText: 'Verschieben'
+    });
+    if (!selection) return;
 
-    const idx = parseInt(input, 10) - 1;
-    if (Number.isNaN(idx) || idx < 0 || idx >= options.length) {
-        showToast('Ungueltige Auswahl.', 'error');
-        return;
-    }
-
-    const target = findProject(options[idx].projectId);
+    const target = findProject(selection);
     if (!target) {
         showToast('Zielgruppe nicht gefunden.', 'error');
         return;
@@ -734,6 +736,104 @@ window.showConfirm = (msg) => new Promise(res => {
     document.getElementById('btn-confirm-cancel').onclick = () => { m.classList.add('hidden'); res(false); };
 });
 
+window.showInputDialog = ({ title = 'Eingabe', label = 'Wert', value = '', placeholder = '', confirmText = 'OK' } = {}) => new Promise(res => {
+    const m = document.getElementById('input-modal');
+    if (!m) return res(prompt(`${label}:`, value));
+
+    const t = document.getElementById('input-modal-title');
+    const l = document.getElementById('input-modal-label');
+    const i = document.getElementById('input-modal-field');
+    const ok = document.getElementById('btn-input-ok');
+    const cancel = document.getElementById('btn-input-cancel');
+    const closeBtn = document.getElementById('btn-input-close');
+
+    if (t) t.textContent = title;
+    if (l) l.textContent = label;
+    if (i) {
+        i.value = value || '';
+        i.placeholder = placeholder || '';
+    }
+    if (ok) ok.textContent = confirmText;
+
+    const close = (val) => {
+        m.classList.add('hidden');
+        if (ok) ok.onclick = null;
+        if (cancel) cancel.onclick = null;
+        if (closeBtn) closeBtn.onclick = null;
+        if (i) i.onkeydown = null;
+        res(val);
+    };
+
+    if (ok) ok.onclick = () => close(i ? i.value : '');
+    if (cancel) cancel.onclick = () => close(null);
+    if (closeBtn) closeBtn.onclick = () => close(null);
+    if (i) i.onkeydown = (e) => { if (e.key === 'Enter') close(i.value); if (e.key === 'Escape') close(null); };
+
+    m.classList.remove('hidden');
+    if (i) setTimeout(() => i.focus(), 10);
+});
+
+window.showSelectDialog = ({ title = 'Auswahl', label = 'Bitte waehlen', options = [], confirmText = 'OK' } = {}) => new Promise(res => {
+    const m = document.getElementById('select-modal');
+    if (!m) {
+        const txt = options.map((o, i) => `${i + 1}: ${o.label}`).join('\n');
+        const input = prompt(`${label}\n\n${txt}`, '1');
+        if (input === null) return res(null);
+        const idx = parseInt(input, 10) - 1;
+        return res((idx >= 0 && idx < options.length) ? options[idx].value : null);
+    }
+
+    const t = document.getElementById('select-modal-title');
+    const l = document.getElementById('select-modal-label');
+    const s = document.getElementById('select-modal-list');
+    const f = document.getElementById('select-modal-filter');
+    const ok = document.getElementById('btn-select-ok');
+    const cancel = document.getElementById('btn-select-cancel');
+    const closeBtn = document.getElementById('btn-select-close');
+
+    if (t) t.textContent = title;
+    if (l) l.textContent = label;
+    if (ok) ok.textContent = confirmText;
+
+    let filtered = [...options];
+    const renderOptions = () => {
+        if (!s) return;
+        s.innerHTML = filtered.map(o => `<option value="${o.value}">${o.label}</option>`).join('');
+        if (s.options.length > 0) s.selectedIndex = 0;
+    };
+
+    const close = (val) => {
+        m.classList.add('hidden');
+        if (ok) ok.onclick = null;
+        if (cancel) cancel.onclick = null;
+        if (closeBtn) closeBtn.onclick = null;
+        if (f) f.oninput = null;
+        if (s) s.ondblclick = null;
+        if (s) s.onkeydown = null;
+        res(val);
+    };
+
+    if (f) {
+        f.value = '';
+        f.oninput = () => {
+            const q = f.value.toLowerCase().trim();
+            filtered = q ? options.filter(o => o.label.toLowerCase().includes(q)) : [...options];
+            renderOptions();
+        };
+    }
+
+    renderOptions();
+
+    if (ok) ok.onclick = () => close((s && s.value) ? s.value : null);
+    if (cancel) cancel.onclick = () => close(null);
+    if (closeBtn) closeBtn.onclick = () => close(null);
+    if (s) s.ondblclick = () => close(s.value || null);
+    if (s) s.onkeydown = (e) => { if (e.key === 'Enter') close(s.value || null); if (e.key === 'Escape') close(null); };
+
+    m.classList.remove('hidden');
+    if (f) setTimeout(() => f.focus(), 10);
+});
+
 window.showContextMenu = (e, type, id) => {
     e.preventDefault(); const menu = document.getElementById('context-menu'); if (!menu) return;
     menu.classList.remove('hidden'); let html = '';
@@ -787,7 +887,20 @@ window.addRowSpacer = (rowId) => {
     renderBoard();
     saveData();
 };
-window.addItemToSpacer = (slotId) => { const t = prompt("Name:"); if (!t) return; for (const r of state.rows) { const s = r.projects.find(x => x.id === slotId); if (s) { s.isSpacer = false; s.projects = [{ id: generateId(), title: t, items: [], collapsed: false }]; break; } } renderBoard(); saveData(); };
+window.addItemToSpacer = async (slotId) => {
+    const t = await showInputDialog({ title: 'Gruppe erstellen', label: 'Name', value: '', placeholder: 'Gruppenname', confirmText: 'Erstellen' });
+    if (!t) return;
+    for (const r of state.rows) {
+        const s = r.projects.find(x => x.id === slotId);
+        if (s) {
+            s.isSpacer = false;
+            s.projects = [{ id: generateId(), title: t, items: [], collapsed: false }];
+            break;
+        }
+    }
+    renderBoard();
+    saveData();
+};
 
 window.handleSearch = (val) => { state.searchTerm = val; renderBoard(); };
 window.clearSearch = () => { const i = document.getElementById('board-search'); if (i) { i.value = ''; handleSearch(''); } };

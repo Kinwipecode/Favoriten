@@ -366,11 +366,6 @@
               "title": "Allgemein",
               "items": [
                 {
-                  "id": "agjy10n5j",
-                  "title": "Bard.google",
-                  "url": "https://bard.google.com/"
-                },
-                {
                   "id": "km03ee5z7",
                   "title": "Chat.openai",
                   "url": "https://chat.openai.com/"

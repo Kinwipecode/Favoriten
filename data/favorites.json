@@ -1370,11 +1370,11 @@
     "buttonOrder": [
       "btn-save",
       "btn-info",
+      "btn-add-row",
       "btn-add-project",
       "btn-import",
       "btn-export",
       "btn-github",
-      "btn-add-row",
       "btn-collapse-gaps",
       "btn-settings",
       "btn-pull-cloud",

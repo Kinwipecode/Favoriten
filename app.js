@@ -253,6 +253,7 @@ function renderBoard() {
         rowEl.innerHTML = `
             <div class="row-header">
                 <div class="row-header-main" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                    ${isRead ? `<span class="row-order-display">${row.order || 0}</span>` : `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">`}
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="width:20px; opacity:0.5;"></i>
                     ${isRead ? `<span>${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
                 </div>
@@ -264,6 +265,7 @@ function renderBoard() {
         `;
 
         const container = rowEl.querySelector(".row-projects");
+        let spacerNo = 0;
         row.projects.forEach(slot => {
             if (!slot.id) slot.id = generateId();
             const slotEl = document.createElement("div");
@@ -325,7 +327,8 @@ function renderBoard() {
                     if (h && !isRead) { h.oncontextmenu = (e) => { triggerProjContext(e); return false; }; }
                 });
             } else if (!isRead) {
-                slotEl.innerHTML = `<div class="spacer-actions" style="opacity:0.2;"><button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')">+</button><button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')">×</button></div>`;
+                spacerNo += 1;
+                slotEl.innerHTML = `<div class="spacer-index">#${spacerNo}</div><div class="spacer-actions" style="opacity:0.2;"><button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')">+</button><button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')">×</button></div>`;
                 slotEl.onmouseenter = () => slotEl.querySelector('.spacer-actions').style.opacity = '1';
                 slotEl.onmouseleave = () => slotEl.querySelector('.spacer-actions').style.opacity = '0.2';
             }
@@ -437,6 +440,18 @@ function cleanTitle(str) {
     return clean.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ').substring(0, 80);
 }
 
+function extractUrlFromText(text) {
+    if (!text) return '';
+    const raw = String(text).trim();
+    if (!raw) return '';
+
+    const direct = raw.match(/https?:\/\/[^\s"'<>]+/i);
+    if (direct) return direct[0];
+
+    const token = raw.split(/\s+/).find(t => /^(www\.)?[a-z0-9-]+(\.[a-z0-9-]+)+(\/[^\s"'<>]*)?$/i.test(t));
+    return token || '';
+}
+
 function findProjectAndClear(id) {
     for (const r of state.rows) {
         const sIdx = r.projects.findIndex(s => s.isSpacer ? s.id === id : s.projects.some(p => p.id === id));
@@ -482,6 +497,18 @@ function findProject(id) {
     return null;
 }
 function findItem(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const item = p.items.find(x => x.id === id); if (item) return item; } }
+
+function findProjectLocation(projectId) {
+    for (const r of state.rows) {
+        for (const s of (r.projects || [])) {
+            if (s.isSpacer || !s.projects) continue;
+            if (s.projects.some(p => p.id === projectId)) {
+                return { row: r, slot: s };
+            }
+        }
+    }
+    return null;
+}
 
 function findProjectByItemId(itemId) {
     if (!itemId) return null;
@@ -565,7 +592,11 @@ function moveSelectedItemsToProject(targetProjectId, insertIndex = null, fallbac
 window.updateGroupTitle = (id, val) => { const p = findProject(id); if (p) p.title = val; saveData(); };
 window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.title = val; saveData(); };
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
-window.sortRows = () => { state.rows.sort((a, b) => (a.order || 0) - (b.order || 0)); state.rows.forEach((r, i) => r.order = (i + 1) * 10); renderBoard(); saveData(); };
+window.sortRows = () => {
+    state.rows.sort((a, b) => (a.order || 0) - (b.order || 0));
+    renderBoard();
+    saveData();
+};
 
 window.deleteRow = async (id) => { if (await showConfirm('Reihe löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
 window.deleteProject = async (id) => { if (await showConfirm('Ordner löschen?')) { findProjectAndClear(id); renderBoard(); saveData(); } };
@@ -586,13 +617,70 @@ window.addItem = async (projectId, preUrl = "", preTitle = "") => {
     renderBoard(); saveData();
 }
 
+window.addItemFromClipboard = async (projectId) => {
+    if (!checkAuth()) return;
+    const p = findProject(projectId);
+    if (!p) return;
+
+    let clip = '';
+    try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+            clip = await navigator.clipboard.readText();
+        }
+    } catch (_) { }
+
+    let url = extractUrlFromText(clip);
+    if (!url) {
+        url = await showInputDialog({
+            title: 'Favorit aus Zwischenablage',
+            label: 'URL',
+            value: clip || '',
+            placeholder: 'https://beispiel.de',
+            confirmText: 'Weiter'
+        });
+        if (!url) return;
+    }
+
+    url = String(url).trim();
+    if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
+
+    const suggestedTitle = cleanTitle(url);
+    const title = await showInputDialog({
+        title: 'Favorit aus Zwischenablage',
+        label: 'Titel',
+        value: suggestedTitle,
+        placeholder: 'Titel eingeben',
+        confirmText: 'Speichern'
+    });
+    if (title === null) return;
+
+    p.items.push({
+        id: generateId(),
+        title: (title || '').trim() || suggestedTitle,
+        url
+    });
+
+    renderBoard();
+    saveData();
+    showToast('Favorit aus Zwischenablage hinzugefuegt.', 'success');
+}
+
 window.editItem = async (id) => {
-    const item = findItem(id); if (!item) return;
-    const nt = await showInputDialog({ title: 'Favorit bearbeiten', label: 'Titel', value: item.title, placeholder: 'Titel eingeben', confirmText: 'Weiter' });
-    if (nt === null) return;
-    const nu = await showInputDialog({ title: 'Favorit bearbeiten', label: 'URL', value: item.url, placeholder: 'https://beispiel.de', confirmText: 'Speichern' });
-    if (!nu) return;
-    item.title = nt; item.url = nu; renderBoard(); saveData();
+    const item = findItem(id);
+    if (!item) return;
+
+    const result = await showEditLinkDialog({
+        modalTitle: 'Link bearbeiten',
+        title: item.title,
+        url: item.url,
+        confirmText: 'Speichern'
+    });
+    if (!result) return;
+
+    item.title = result.title;
+    item.url = result.url;
+    renderBoard();
+    saveData();
 }
 
 window.moveItemViaMenu = async (itemId) => {
@@ -636,6 +724,63 @@ window.moveItemViaMenu = async (itemId) => {
     renderBoard();
     saveData();
     showToast(`Verschoben nach: ${target.title}`, 'success');
+}
+
+window.moveProjectViaMenu = async (projectId) => {
+    const project = findProject(projectId);
+    if (!project) {
+        showToast('Gruppe nicht gefunden.', 'error');
+        return;
+    }
+
+    const source = findProjectLocation(projectId);
+    const rowsSorted = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
+    const options = [];
+
+    rowsSorted.forEach(r => {
+        let spacerNo = 0;
+        (r.projects || []).forEach(s => {
+            if (!s.isSpacer) return;
+            spacerNo += 1;
+            if (source && source.slot && source.slot.id === s.id) return;
+            options.push({ value: s.id, label: `${r.title} / Luecke ${spacerNo}` });
+        });
+    });
+
+    if (options.length === 0) {
+        showToast('Keine Ziel-Luecke verfuegbar.', 'error');
+        return;
+    }
+
+    const targetSlotId = await showSelectDialog({
+        title: 'Gruppe verschieben',
+        label: 'Ziel (Zeile / Luecken-Nummer) waehlen',
+        options,
+        confirmText: 'Verschieben'
+    });
+    if (!targetSlotId) return;
+
+    let targetSlot = null;
+    for (const r of state.rows) {
+        targetSlot = (r.projects || []).find(s => s.id === targetSlotId);
+        if (targetSlot) break;
+    }
+    if (!targetSlot || !targetSlot.isSpacer) {
+        showToast('Ziel-Luecke nicht gefunden.', 'error');
+        return;
+    }
+
+    const movedProject = findProjectAndClear(projectId);
+    if (!movedProject) {
+        showToast('Gruppe konnte nicht verschoben werden.', 'error');
+        return;
+    }
+
+    targetSlot.isSpacer = false;
+    targetSlot.projects = [movedProject];
+    renderBoard();
+    saveData();
+    showToast(`Gruppe verschoben: ${movedProject.title}`, 'success');
 }
 
 window.importFromHTML = (html, targetRowId, newRowName) => {
@@ -734,6 +879,61 @@ window.showConfirm = (msg) => new Promise(res => {
     document.getElementById('confirm-message').textContent = msg; m.classList.remove('hidden');
     document.getElementById('btn-confirm-ok').onclick = () => { m.classList.add('hidden'); res(true); };
     document.getElementById('btn-confirm-cancel').onclick = () => { m.classList.add('hidden'); res(false); };
+});
+
+window.showEditLinkDialog = ({ modalTitle = 'Link bearbeiten', title = '', url = '', confirmText = 'Speichern' } = {}) => new Promise(res => {
+    const m = document.getElementById('edit-link-modal');
+    if (!m) return res(null);
+
+    const modalTitleEl = document.getElementById('edit-link-title');
+    const titleInput = document.getElementById('edit-link-name');
+    const urlInput = document.getElementById('edit-link-url');
+    const targetGroupWrap = document.getElementById('target-group-wrapper');
+    const saveBtn = document.getElementById('btn-save-link');
+    const cancelBtn = m.querySelector('.modal-actions .btn.btn-secondary');
+    const closeBtn = m.querySelector('.modal-header .btn-text');
+
+    if (!titleInput || !urlInput || !saveBtn) return res(null);
+
+    if (modalTitleEl) modalTitleEl.innerHTML = `<i class="fa-solid fa-pen-to-square"></i> ${modalTitle}`;
+    titleInput.value = title || '';
+    urlInput.value = url || '';
+    if (targetGroupWrap) targetGroupWrap.style.display = 'none';
+    saveBtn.textContent = confirmText;
+
+    const cleanup = () => {
+        saveBtn.onclick = null;
+        if (cancelBtn) cancelBtn.onclick = null;
+        if (closeBtn) closeBtn.onclick = null;
+        titleInput.onkeydown = null;
+        urlInput.onkeydown = null;
+        m.classList.add('hidden');
+    };
+
+    const close = (value) => {
+        cleanup();
+        res(value);
+    };
+
+    const submit = () => {
+        const nextTitle = (titleInput.value || '').trim();
+        const nextUrl = (urlInput.value || '').trim();
+        if (!nextUrl) {
+            showToast('URL darf nicht leer sein.', 'error');
+            urlInput.focus();
+            return;
+        }
+        close({ title: nextTitle || cleanTitle(nextUrl), url: nextUrl });
+    };
+
+    saveBtn.onclick = submit;
+    if (cancelBtn) cancelBtn.onclick = () => close(null);
+    if (closeBtn) closeBtn.onclick = () => close(null);
+    titleInput.onkeydown = (e) => { if (e.key === 'Enter') submit(); if (e.key === 'Escape') close(null); };
+    urlInput.onkeydown = (e) => { if (e.key === 'Enter') submit(); if (e.key === 'Escape') close(null); };
+
+    m.classList.remove('hidden');
+    setTimeout(() => titleInput.focus(), 10);
 });
 
 window.showInputDialog = ({ title = 'Eingabe', label = 'Wert', value = '', placeholder = '', confirmText = 'OK' } = {}) => new Promise(res => {
@@ -852,6 +1052,8 @@ window.showContextMenu = (e, type, id) => {
         const selectDelete = state.deleteMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Zum Loeschen markieren</div>` : '';
         html = `<div class="context-menu-title">Gruppe: ${p ? p.title : ''}</div>
         <div class="context-menu-item" onclick="addItem('${id}')">Favorit hinzufuegen</div>
+        <div class="context-menu-item" onclick="addItemFromClipboard('${id}')">Favorit aus Arbeitspeicher</div>
+        <div class="context-menu-item" onclick="moveProjectViaMenu('${id}')">Gruppe verschieben...</div>
         ${moveEntry}
         ${selectMove}
         ${selectDelete}
@@ -871,6 +1073,12 @@ window.showContextMenu = (e, type, id) => {
         <div class="context-menu-item danger" onclick="deleteItem('${id}')">Loeschen</div>`;
     }
     menu.innerHTML = html;
+    menu.onclick = (evt) => {
+        if (evt.target.closest('.context-menu-item')) {
+            menu.classList.add('hidden');
+            document.removeEventListener('mousedown', close);
+        }
+    };
     let x = e.clientX, y = e.clientY; const rect = menu.getBoundingClientRect();
     if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width - 10;
     if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - 10;

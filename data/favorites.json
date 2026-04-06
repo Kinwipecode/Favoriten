@@ -686,6 +686,23 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "rev9ppm59",
+              "title": "CAD IFC mit nova",
+              "items": [
+                {
+                  "id": "9yzmo7u99",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
+                },
+                {
+                  "id": "yae2qg8ns",
+                  "title": "Novauser.xobor",
+                  "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -742,26 +759,8 @@
         },
         {
           "id": "b2rcnnyxa",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "rev9ppm59",
-              "title": "CAD IFC mit nova",
-              "items": [
-                {
-                  "id": "9yzmo7u99",
-                  "title": "Youtube",
-                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
-                },
-                {
-                  "id": "yae2qg8ns",
-                  "title": "Novauser.xobor",
-                  "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "anlns8g9z",

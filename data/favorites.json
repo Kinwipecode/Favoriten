@@ -606,13 +606,7 @@
                 }
               ],
               "collapsed": true
-            }
-          ]
-        },
-        {
-          "id": "eqor6amps",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "ulgn6k05m",
               "title": "Wissen",
@@ -626,6 +620,11 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "eqor6amps",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "dbjcj2qnu",

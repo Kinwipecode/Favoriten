@@ -1176,7 +1176,38 @@ window.sortRows = () => {
 };
 
 window.deleteRow = async (id) => { if (await showConfirm('Reihe löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
-window.deleteProject = async (id) => { if (await showConfirm('Ordner löschen?')) { findProjectAndClear(id); renderBoard(); saveData(); } };
+window.deleteProject = async (id) => {
+    if (!await showConfirm('Ordner löschen?')) return;
+
+    let targetRow = null;
+    let targetSlot = null;
+    for (const r of state.rows) {
+        for (const s of (r.projects || [])) {
+            if (s.isSpacer || !s.projects) continue;
+            if (s.projects.some(p => p.id === id)) {
+                targetRow = r;
+                targetSlot = s;
+                break;
+            }
+        }
+        if (targetSlot) break;
+    }
+
+    const wasLastInSlot = !!(targetSlot && Array.isArray(targetSlot.projects) && targetSlot.projects.length === 1);
+    const slotId = targetSlot ? targetSlot.id : null;
+
+    findProjectAndClear(id);
+
+    if (wasLastInSlot && slotId) {
+        const deleteSpacer = await showConfirm('Letzte Gruppe in dieser Lücke gelöscht. Leere Lücke auch löschen?');
+        if (deleteSpacer && targetRow) {
+            targetRow.projects = (targetRow.projects || []).filter(s => s.id !== slotId);
+        }
+    }
+
+    renderBoard();
+    saveData();
+};
 window.deleteItem = async (id) => { if (await showConfirm('Favorit löschen?')) { findItemAndClear(id); renderBoard(); saveData(); } };
 window.deleteSlot = (id) => { state.rows.forEach(r => { r.projects = r.projects.filter(s => s.id !== id); }); renderBoard(); saveData(); };
 

@@ -187,7 +187,6 @@ async function saveData(isSilent = false) {
         else if (!isSilent) showToast('GitHub Speicherung fehlgeschlagen.', 'error');
     } else {
         localStorage.setItem('favoriten_backup', JSON.stringify(payload));
-        if (!isSilent) showToast('Nur lokal im Browser gespeichert (kein Token).', 'info');
     }
     if (btn) btn.disabled = false;
 }

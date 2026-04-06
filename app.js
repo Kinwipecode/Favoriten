@@ -163,6 +163,7 @@ async function saveData(isSilent = false) {
         else if (!isSilent) showToast('GitHub Speicherung fehlgeschlagen.', 'error');
     } else {
         localStorage.setItem('favoriten_backup', JSON.stringify(payload));
+        if (!isSilent) showToast('Nur lokal im Browser gespeichert (kein Token).', 'info');
     }
     if (btn) btn.disabled = false;
 }
@@ -617,17 +618,34 @@ window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (
 window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
 
 window.addItem = async (projectId, preUrl = "", preTitle = "") => {
-    if (!checkAuth()) return;
+    let targetProjectId = projectId;
+    if (!targetProjectId) {
+        const options = getProjectOptions().map(o => ({
+            value: o.projectId,
+            label: `${o.rowTitle} / ${o.projectTitle}`
+        }));
+        if (options.length === 0) {
+            showToast('Keine Zielgruppe vorhanden.', 'error');
+            return;
+        }
+        targetProjectId = await showSelectDialog({
+            title: 'Zielgruppe waehlen',
+            label: 'In welche Gruppe soll der Favorit?',
+            options,
+            confirmText: 'Weiter'
+        });
+        if (!targetProjectId) return;
+    }
+
     const nt = preTitle || await showInputDialog({ title: 'Favorit hinzufuegen', label: 'Titel', value: preUrl ? cleanTitle(preUrl) : '', placeholder: 'Titel eingeben', confirmText: 'Weiter' });
     if (nt === null) return;
     const nu = preUrl || await showInputDialog({ title: 'Favorit hinzufuegen', label: 'URL', value: '', placeholder: 'https://beispiel.de', confirmText: 'Speichern' });
     if (!nu) return;
-    const p = findProject(projectId); if (p) p.items.push({ id: generateId(), title: nt, url: nu });
+    const p = findProject(targetProjectId); if (p) p.items.push({ id: generateId(), title: nt, url: nu });
     renderBoard(); saveData();
 }
 
 window.addItemFromClipboard = async (projectId) => {
-    if (!checkAuth()) return;
     const p = findProject(projectId);
     if (!p) return;
 

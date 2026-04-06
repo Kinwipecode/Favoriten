@@ -46,6 +46,53 @@ window.hideModal = (id) => {
     document.getElementById(id)?.classList.add('hidden');
 };
 
+window.toggleActionsDrawer = () => {
+    const drawer = document.getElementById('actions-drawer');
+    if (!drawer) return;
+    drawer.classList.toggle('hidden');
+};
+
+window.toggleViewDropdown = (event) => {
+    if (event && event.stopPropagation) event.stopPropagation();
+    const dd = document.getElementById('view-dropdown-content');
+    if (!dd) return;
+    dd.classList.toggle('hidden');
+    if (!dd.classList.contains('hidden')) renderRowVisibilityList();
+
+    const close = (e) => {
+        if (!dd.contains(e.target)) {
+            dd.classList.add('hidden');
+            document.removeEventListener('click', close);
+        }
+    };
+    setTimeout(() => document.addEventListener('click', close), 10);
+};
+
+function renderRowVisibilityList() {
+    const list = document.getElementById('row-visibility-list');
+    if (!list || !window.state || !window.localSettings) return;
+
+    const rows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
+    list.innerHTML = rows.map(row => {
+        const hidden = window.localSettings.hiddenRowIds.includes(row.id);
+        return `<label class="row-visibility-item"><input type="checkbox" data-row-id="${row.id}" ${hidden ? '' : 'checked'}> ${row.title}</label>`;
+    }).join('');
+
+    list.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.onchange = () => {
+            const rowId = cb.dataset.rowId;
+            const hiddenIds = window.localSettings.hiddenRowIds;
+            const idx = hiddenIds.indexOf(rowId);
+
+            if (!cb.checked && idx === -1) hiddenIds.push(rowId);
+            if (cb.checked && idx !== -1) hiddenIds.splice(idx, 1);
+
+            localStorage.setItem('favoriten_app_settings', JSON.stringify(window.localSettings));
+            if (window.renderBoard) window.renderBoard();
+        };
+    });
+}
+
 // Aliases for compatibility
 window.openModal = window.showModal;
 window.closeModal = window.hideModal;
@@ -327,7 +374,7 @@ window.renderHeaderButtons = () => {
     if (!order.includes('btn-save')) order = ['btn-save', ...order];
 
     const isRead = state.isReadOnly;
-    const writeIds = ['btn-save', 'btn-add-row', 'btn-add-group', 'btn-import', 'btn-move', 'btn-delete', 'btn-clean-names'];
+    const writeIds = ['btn-save', 'btn-add-row', 'btn-add-project', 'btn-import', 'btn-move-mode', 'btn-multi-delete', 'btn-clean-all', 'btn-collapse-gaps', 'btn-sort-rows'];
 
     order.forEach(id => {
         if (isRead && writeIds.includes(id)) return;
@@ -379,6 +426,29 @@ window.setupUI = () => {
         const btn = document.getElementById(id);
         if (btn) btn.onclick = btnMapSettings[id];
     });
+
+    const saveGroupBtn = document.getElementById('btn-save-group');
+    if (saveGroupBtn) {
+        saveGroupBtn.onclick = () => {
+            const nameInp = document.getElementById('edit-group-name');
+            const title = nameInp ? nameInp.value.trim() : '';
+            if (!title) return;
+
+            if (state.rows.length === 0) {
+                state.rows.push({ id: window.generateId(), title: 'Hauptzeile', projects: [], order: 10, collapsed: false });
+            }
+            const targetRow = state.rows[0];
+            targetRow.projects.push({
+                id: window.generateId(),
+                isSpacer: false,
+                projects: [{ id: window.generateId(), title, items: [], collapsed: false }]
+            });
+
+            hideModal('edit-group-modal');
+            if (window.renderBoard) window.renderBoard();
+            if (window.saveData) window.saveData();
+        };
+    }
 
     const fIn = document.getElementById('file-input');
     const fLab = document.getElementById('file-label');

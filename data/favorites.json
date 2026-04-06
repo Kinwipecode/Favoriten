@@ -279,6 +279,18 @@
           "isSpacer": false,
           "projects": [
             {
+              "id": "ykk3i9243",
+              "title": "für Suno ",
+              "items": [
+                {
+                  "id": "6wqztss12",
+                  "title": "Meinhomestudio",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
+            },
+            {
               "id": "44yhpk15j",
               "title": "Suno",
               "items": [
@@ -291,18 +303,6 @@
                   "id": "t09yomq28",
                   "title": "Slooply Techno Sample",
                   "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
-                }
-              ],
-              "collapsed": true
-            },
-            {
-              "id": "ykk3i9243",
-              "title": "für Suno ",
-              "items": [
-                {
-                  "id": "6wqztss12",
-                  "title": "Meinhomestudio",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
                 }
               ],
               "collapsed": true

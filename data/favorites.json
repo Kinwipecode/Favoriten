@@ -5,6 +5,11 @@
       "title": "Hauptzeile",
       "projects": [
         {
+          "id": "r9fs8100v",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
           "id": "dc70ayeca",
           "isSpacer": false,
           "projects": [

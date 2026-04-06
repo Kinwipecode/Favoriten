@@ -68,6 +68,10 @@ const state = {
 
 const CACHE_MAIL_KEY = 'favoriten_cached_items_for_mail';
 
+function isStrictReadOnlyMode() {
+    return state.isReadOnly && !!ghToken;
+}
+
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
 async function init() {
@@ -137,9 +141,25 @@ async function loadFromGitHub() {
                 const content = await res.json();
                 state.rows = migrate(content);
                 state.isReadOnly = true;
+
+                if (!ghToken) {
+                    try {
+                        const cached = localStorage.getItem('favoriten_backup');
+                        if (cached) {
+                            const parsed = JSON.parse(cached);
+                            if (parsed && parsed.rows) {
+                                state.rows = migrate(parsed);
+                            }
+                        }
+                    } catch (_) { }
+                }
+
                 if (window.applyTheme) applyTheme();
                 renderBoard();
-                if (disp) { disp.innerHTML = '<i class="fa-solid fa-book-open"></i> Leseberechtigt'; }
+                if (disp) {
+                    if (ghToken) disp.innerHTML = '<i class="fa-solid fa-book-open"></i> Leseberechtigt';
+                    else disp.innerHTML = '<i class="fa-solid fa-hard-drive"></i> Browser-Cache Modus';
+                }
                 return;
             }
         } catch (e) { console.warn(`Versuch über ${branch} fehlgeschlagen.`, e); }
@@ -224,7 +244,7 @@ function migrate(data) {
 function renderBoard() {
     if (!board) return;
     board.innerHTML = "";
-    const isRead = state.isReadOnly;
+    const isRead = isStrictReadOnlyMode();
     const isSearching = !!state.searchTerm;
     const term = state.searchTerm.toLowerCase();
     const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
@@ -1338,7 +1358,8 @@ function updateSearchControls() {
     if (controls) controls.classList.remove('hidden');
 }
 
-window.checkAuth = () => !state.isReadOnly || !!ghToken;
+window.checkAuth = () => !isStrictReadOnlyMode();
+window.isUiReadOnly = () => isStrictReadOnlyMode();
 window.loadLocalSettings = () => {
     const s = localStorage.getItem('favoriten_app_settings');
     if (s) {

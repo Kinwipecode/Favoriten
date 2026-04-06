@@ -84,8 +84,15 @@
         },
         {
           "id": "sdos42yur",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "1pe5ippfn",
+              "title": "adf",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         },
         {
           "id": "b43s40cmr",

@@ -1509,8 +1509,36 @@ function rotateDot() { }
 window.showConfirm = (msg) => new Promise(res => {
     const m = document.getElementById('confirm-modal'); if (!m) return res(confirm(msg));
     document.getElementById('confirm-message').textContent = msg; m.classList.remove('hidden');
-    document.getElementById('btn-confirm-ok').onclick = () => { m.classList.add('hidden'); res(true); };
-    document.getElementById('btn-confirm-cancel').onclick = () => { m.classList.add('hidden'); res(false); };
+
+    const okBtn = document.getElementById('btn-confirm-ok');
+    const cancelBtn = document.getElementById('btn-confirm-cancel');
+
+    const cleanup = () => {
+        if (okBtn) okBtn.onclick = null;
+        if (cancelBtn) cancelBtn.onclick = null;
+        document.removeEventListener('keydown', onKeyDown);
+    };
+
+    const close = (value) => {
+        m.classList.add('hidden');
+        cleanup();
+        res(value);
+    };
+
+    const onKeyDown = (e) => {
+        if (m.classList.contains('hidden')) return;
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            close(true);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            close(false);
+        }
+    };
+
+    if (okBtn) okBtn.onclick = () => close(true);
+    if (cancelBtn) cancelBtn.onclick = () => close(false);
+    document.addEventListener('keydown', onKeyDown);
 });
 
 window.showEditLinkDialog = ({ modalTitle = 'Link bearbeiten', title = '', url = '', confirmText = 'Speichern' } = {}) => new Promise(res => {

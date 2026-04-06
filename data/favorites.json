@@ -366,11 +366,6 @@
               "title": "Allgemein",
               "items": [
                 {
-                  "id": "km03ee5z7",
-                  "title": "Chat.openai",
-                  "url": "https://chat.openai.com/"
-                },
-                {
                   "id": "zy94pbaqs",
                   "title": "Perplexity",
                   "url": "https://www.perplexity.ai/"

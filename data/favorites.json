@@ -5,29 +5,6 @@
       "title": "Importierte Favoriten",
       "projects": [
         {
-          "id": "s7s9mon5b",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "xqq4eastg",
-              "title": "Import",
-              "items": [
-                {
-                  "id": "8za5gfj9z",
-                  "title": "Hslu",
-                  "url": "https://www.hslu.ch/de-ch/wirtschaft/institute/ifz/news-und-ueber-uns/mediencorner/wir-gratulieren/"
-                },
-                {
-                  "id": "6ydrrx4c2",
-                  "title": "Google",
-                  "url": "http://www.google.ch/"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
-        },
-        {
           "id": "hsik2h3lz",
           "isSpacer": false,
           "projects": [

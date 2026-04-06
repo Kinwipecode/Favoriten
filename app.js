@@ -1,4 +1,3 @@
-
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
 
@@ -8,10 +7,40 @@ let ghRepo = 'Favoriten';
 let ghPath = 'data/favorites.json';
 let ghSha = null;
 
+function encodeBase64Utf8(text) {
+    try {
+        const bytes = new TextEncoder().encode(text);
+        let binary = '';
+        bytes.forEach((b) => { binary += String.fromCharCode(b); });
+        return btoa(binary);
+    } catch (_) {
+        return btoa(unescape(encodeURIComponent(text)));
+    }
+}
+
+function decodeBase64Utf8(base64Text) {
+    try {
+        const binary = atob(base64Text);
+        const bytes = Uint8Array.from(binary, (ch) => ch.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+    } catch (_) {
+        return decodeURIComponent(escape(atob(base64Text)));
+    }
+}
+
+async function fetchGitHubFileMeta() {
+    const url = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}?t=${Date.now()}`;
+    const res = await fetch(url, { headers: { 'Authorization': `token ${ghToken}` } });
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error(`GitHub metadata request failed (${res.status})`);
+    return await res.json();
+}
+
 const state = {
     isReadOnly: false,
     rows: [],
     searchTerm: "",
+    isDragging: false,
     moveMode: { active: false, type: null, selectedIds: [] },
     deleteMode: { active: false, type: null, selectedIds: [] },
     config: {
@@ -31,7 +60,9 @@ const state = {
     activeSlotId: null,
     activeRowId: null,
     activeEditingGroupId: null,
-    lastContextMenuTime: 0
+    lastContextMenuTime: 0,
+    searchMatches: [],
+    currentSearchIndex: -1
 };
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -43,7 +74,6 @@ async function init() {
     if (window.renderHeaderButtons) renderHeaderButtons();
     renderBoard();
 
-    // Check for Bookmarklet query params
     const params = new URLSearchParams(window.location.search);
     if (params.has('add_url')) {
         const u = params.get('add_url');
@@ -82,12 +112,10 @@ async function loadFromGitHub() {
     const disp = document.getElementById('save-path-display');
     if (ghToken) {
         try {
-            const url = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}?t=${Date.now()}`;
-            const res = await fetch(url, { headers: { 'Authorization': `token ${ghToken}` } });
-            if (res.ok) {
-                const data = await res.json();
+            const data = await fetchGitHubFileMeta();
+            if (data) {
                 ghSha = data.sha;
-                const content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+                const content = JSON.parse(decodeBase64Utf8(data.content));
                 state.rows = migrate(content);
                 state.isReadOnly = false;
                 if (window.applyTheme) applyTheme();
@@ -141,25 +169,42 @@ async function saveData(isSilent = false) {
 
 async function saveToGitHub() {
     const url = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}`;
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify({ rows: state.rows, config: state.config }, null, 2))));
+    const content = encodeBase64Utf8(JSON.stringify({ rows: state.rows, config: state.config }, null, 2));
+
+    const putWithSha = async (shaValue) => {
+        return await fetch(url, {
+            method: 'PUT',
+            headers: { 'Authorization': `token ${ghToken}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: 'Update', content, ...(shaValue ? { sha: shaValue } : {}) })
+        });
+    };
+
     try {
-        const res = await fetch(url, { method: 'PUT', headers: { 'Authorization': `token ${ghToken}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: 'Update v4.9', content, sha: ghSha }) });
+        if (!ghSha) {
+            const meta = await fetchGitHubFileMeta();
+            ghSha = meta ? meta.sha : null;
+        }
+
+        let res = await putWithSha(ghSha);
+
+        if (res.status === 409 || res.status === 422) {
+            const meta = await fetchGitHubFileMeta();
+            ghSha = meta ? meta.sha : null;
+            res = await putWithSha(ghSha);
+        }
+
         if (res.ok) {
-            const d = await res.json();
-            ghSha = d.content.sha;
+            const d = await res.json(); ghSha = d.content.sha;
             return true;
         }
+        const err = await res.text().catch(() => 'Unknown GitHub error');
+        console.error('GitHub save failed:', res.status, err);
         return false;
     } catch (e) { console.error(e); return false; }
 }
 
 function migrate(data) {
-    if (data.config) {
-        state.config = { ...state.config, ...data.config };
-        if (state.config.buttonOrder) {
-            state.config.buttonOrder = state.config.buttonOrder.filter(id => id !== 'btn-load' && id !== 'btn-add-spacer');
-        }
-    }
+    if (data.config) state.config = { ...state.config, ...data.config };
     if (data.rows && data.rows.length > 0) {
         data.rows.forEach((r, index) => {
             if (!r.projects) r.projects = [];
@@ -172,7 +217,6 @@ function migrate(data) {
     return [{ id: generateId(), title: 'Hauptzeile', projects: [], order: 10, collapsed: false }];
 }
 
-/* --- BOARD RENDERING --- */
 function renderBoard() {
     if (!board) return;
     board.innerHTML = "";
@@ -182,36 +226,16 @@ function renderBoard() {
     const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
 
     sortedRows.forEach(row => {
-        if (row.projects) row.projects.sort((a, b) => a.order - b.order);
-    });
-
-    // Cleanup any corrupted data (nulls in projects)
-    state.rows.forEach(r => {
-        if (r.projects) {
-            r.projects.forEach(s => {
-                if (s.projects) s.projects = s.projects.filter(p => p != null);
-            });
-        }
-    });
-
-    sortedRows.forEach(row => {
         const isHiddenGlobally = localSettings.hiddenRowIds && localSettings.hiddenRowIds.includes(row.id);
         let forceShowBySearch = false;
-        let isSearchEmpty = true;
-
         if (isSearching) {
             row.projects.forEach(slot => {
                 if (!slot.isSpacer) slot.projects.forEach(p => {
                     if (p.title.toLowerCase().includes(term)) forceShowBySearch = true;
-                    p.items.forEach(it => {
-                        if (it.title.toLowerCase().includes(term) || it.url.toLowerCase().includes(term)) {
-                            forceShowBySearch = true;
-                        }
-                    });
+                    p.items.forEach(it => { if (it.title.toLowerCase().includes(term) || it.url.toLowerCase().includes(term)) forceShowBySearch = true; });
                 });
             });
         }
-
         if (isHiddenGlobally && !forceShowBySearch) return;
 
         const rowEl = document.createElement("div");
@@ -219,38 +243,21 @@ function renderBoard() {
         rowEl.dataset.id = row.id;
 
         const triggerContext = (e) => {
-            if (isRead) return;
-            if (e.defaultPrevented) return; // Already handled by group/item
-            if (e.preventDefault) e.preventDefault();
+            if (isRead) return; if (e.preventDefault) e.preventDefault();
+            if (e.stopPropagation) e.stopPropagation();
             state.lastContextMenuTime = Date.now();
-            showContextMenu({
-                clientX: typeof e.clientX === 'number' ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0),
-                clientY: typeof e.clientY === 'number' ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0),
-                preventDefault: () => { }
-            }, 'row', row.id);
+            showContextMenu(e, 'row', row.id);
         };
-
-        // Long press & Context menu for entire row (fallback)
         rowEl.oncontextmenu = (e) => { triggerContext(e); return false; };
-        let rTimerRow;
-        rowEl.addEventListener('touchstart', (e) => { if (e.target === rowEl) rTimerRow = setTimeout(() => triggerContext(e), 600); }, { passive: true });
-        ['touchend', 'touchmove'].forEach(ev => rowEl.addEventListener(ev, () => clearTimeout(rTimerRow)));
 
         rowEl.innerHTML = `
             <div class="row-header">
-                <div class="row-header-main" onclick="if(Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button') && !event.target.closest('input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
-                    <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="font-size:0.8rem; width:20px; opacity:0.5;"></i>
-                    ${isRead ?
-                `<span class="row-order-display">${row.order || 0}</span>
-                         <span class="row-title-display">${row.title}</span>` :
-                `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" title="Sortier-Nummer">
-                         <input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`
-            }
+                <div class="row-header-main" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                    <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="width:20px; opacity:0.5;"></i>
+                    ${isRead ? `<span>${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
                 </div>
                 <div class="row-actions">
-                    ${!isRead ? `
-                    <button class="btn-icon" onclick="collapseRow('${row.id}')" title="Lücken in dieser Zeile schließen"><i class="fa-solid fa-compress"></i></button>
-                    <button class="btn-icon delete" onclick="deleteRow('${row.id}')" title="Zeile löschen"><i class="fa-solid fa-trash-can"></i></button>` : ''}
+                    ${!isRead ? `<button class="btn-icon" onclick="collapseRow('${row.id}')"><i class="fa-solid fa-compress"></i></button><button class="btn-icon delete" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash-can"></i></button>` : ''}
                 </div>
             </div>
             <div class="row-projects"></div>
@@ -258,231 +265,138 @@ function renderBoard() {
 
         const container = rowEl.querySelector(".row-projects");
         row.projects.forEach(slot => {
-            if (!slot.id) slot.id = generateId(); // Backfill legacy data
+            if (!slot.id) slot.id = generateId();
             const slotEl = document.createElement("div");
             slotEl.className = `slot ${slot.isSpacer ? "spacer" : ""} ${isRead ? "read-only" : ""}`;
             slotEl.dataset.slotId = slot.id;
 
             if (!slot.isSpacer) {
                 slot.projects.forEach(p => {
-                    const isMoving = state.moveMode.active;
-                    const isDeleting = state.deleteMode.active;
-                    const isSelected = (isMoving && state.moveMode.selectedIds.includes(p.id)) || (isDeleting && state.deleteMode.selectedIds.includes(p.id));
-
+                    const isSelected = state.moveMode.selectedIds.includes(p.id) || state.deleteMode.selectedIds.includes(p.id);
                     const col = document.createElement("div");
-                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${isRead ? "read-only" : ""} ${isMoving && isSelected ? "selected-for-move" : ""} ${isDeleting && isSelected ? "selected-for-delete" : ""}`;
+                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${isSelected ? "selected-for-move" : ""}`;
                     col.dataset.projectId = p.id;
-                    col.setAttribute('data-id', p.id);
 
                     const triggerProjContext = (e) => {
-                        if (isRead) return;
-                        if (e.preventDefault) e.preventDefault();
+                        if (isRead) return; if (e.preventDefault) e.preventDefault();
+                        if (e.stopPropagation) e.stopPropagation();
                         state.lastContextMenuTime = Date.now();
-                        showContextMenu({
-                            clientX: typeof e.clientX === 'number' ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0),
-                            clientY: typeof e.clientY === 'number' ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0),
-                            preventDefault: () => { }
-                        }, 'project', p.id);
+                        showContextMenu(e, 'project', p.id);
                     };
 
                     col.innerHTML = `
-                            <div class="column-header" 
-                                 onclick="if(Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button') && !event.target.closest('input')) { if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }">
-                            <div class="header-left">
-                                <i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}" style="font-size:0.8rem; margin-right:8px; opacity:0.5;"></i>
-                                ${isRead ? `<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</span>` : `<input type="text" class="group-title-input" value="${p.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(p.title.length + 2)}ch" onchange="updateGroupTitle('${p.id}', this.value)">`}
+                        <div class="column-header" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) { if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }">
+                            <div class="header-left"><i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}"></i> <span>${p.title}</span></div>
+                            <div class="column-actions">
+                                <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button>
+                                <button class="btn-text" onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
-                            ${!isRead ? `<div class="column-actions">
-                                ${state.moveMode.active ? `<button class="move-target-btn" onclick="event.stopPropagation(); applyMove('${p.id}')">Hier einfügen</button>` : ''}
-                                <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')" title="Favorit hinzufügen"><i class="fa-solid fa-plus" style="font-size:0.7rem;"></i></button>
-                                <button class="btn-text" onclick="event.stopPropagation(); deleteProject('${p.id}')" title="Gruppe löschen"><i class="fa-solid fa-trash-can" style="font-size:0.7rem;"></i></button>
-                            </div>` : ''}
                         </div>
                         <div class="column-body"></div>
                     `;
                     const body = col.querySelector(".column-body");
-
-                    // Add menu to column body too
                     body.oncontextmenu = (e) => { triggerProjContext(e); return false; };
-                    let bTimer;
-                    body.addEventListener('touchstart', (e) => { if (e.target === body) bTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
-                    ['touchend', 'touchmove'].forEach(ev => body.addEventListener(ev, () => clearTimeout(bTimer)));
 
                     p.items.forEach(it => {
                         const match = isSearching && (it.title.toLowerCase().includes(term) || it.url.toLowerCase().includes(term));
-                        const isMoving = state.moveMode.active;
-                        const isDeleting = state.deleteMode.active;
-                        const isSelected = (isMoving && state.moveMode.selectedIds.includes(it.id)) || (isDeleting && state.deleteMode.selectedIds.includes(it.id));
-
-                        const itemEl = document.createElement("div");
-                        itemEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''} ${isMoving && isSelected ? 'selected-for-move' : ''} ${isDeleting && isSelected ? 'selected-for-delete' : ''}`;
-                        itemEl.setAttribute('data-id', it.id);
-                        itemEl.dataset.id = it.id;
+                        const itSelected = state.moveMode.selectedIds.includes(it.id) || state.deleteMode.selectedIds.includes(it.id);
+                        const itEl = document.createElement("div");
+                        itEl.className = `favorite-item ${match ? 'search-highlight' : ''} ${isSearching && !match ? 'search-dim' : ''} ${itSelected ? "selected-for-move" : ""}`;
+                        itEl.setAttribute('data-id', it.id);
+                        itEl.dataset.id = it.id;
+                        itEl.setAttribute('ondragstart', 'return false;');
 
                         const triggerItemContext = (e) => {
-                            if (isRead) return;
-                            if (e.preventDefault) e.preventDefault();
+                            if (isRead) return; if (e.preventDefault) e.preventDefault();
+                            if (e.stopPropagation) e.stopPropagation();
                             state.lastContextMenuTime = Date.now();
-                            showContextMenu({
-                                clientX: typeof e.clientX === 'number' ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0),
-                                clientY: typeof e.clientY === 'number' ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0),
-                                preventDefault: () => { }
-                            }, 'item', it.id);
+                            showContextMenu(e, 'item', it.id);
                         };
+                        itEl.oncontextmenu = (e) => { triggerItemContext(e); return false; };
 
-                        itemEl.oncontextmenu = (e) => { triggerItemContext(e); return false; };
-                        let itTimer;
-                        itemEl.addEventListener('touchstart', (e) => { itTimer = setTimeout(() => triggerItemContext(e), 600); }, { passive: true });
-                        ['touchend', 'touchmove'].forEach(ev => itemEl.addEventListener(ev, () => clearTimeout(itTimer)));
-
-                        itemEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" draggable="false" onclick="if(Date.now() - state.lastContextMenuTime < 500) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}</a>`;
-                        body.appendChild(itemEl);
+                        itEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" draggable="false" ondragstart="return false;" data-id="${it.id}" onclick="if(state.isDragging) { event.preventDefault(); return false; } if(Date.now() - state.lastContextMenuTime < 300) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>
+                        ${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}
+                        </a>`;
+                        body.appendChild(itEl);
                     });
                     slotEl.appendChild(col);
 
-                    // Context Menu & Long press support (Mouse + Touch)
                     const h = col.querySelector('.column-header');
-                    if (h && !isRead) {
-                        let tTimer;
-                        h.oncontextmenu = (e) => { if (!state.moveMode.active && !state.deleteMode.active) { triggerProjContext(e); return false; } };
-                        h.addEventListener('touchstart', (e) => { tTimer = setTimeout(() => triggerProjContext(e), 600); }, { passive: true });
-                        ['touchend', 'touchmove'].forEach(ev => h.addEventListener(ev, () => clearTimeout(tTimer)));
-                    }
+                    if (h && !isRead) { h.oncontextmenu = (e) => { if (!state.moveMode.active) { triggerProjContext(e); return false; } }; }
                 });
             } else if (!isRead) {
-                // Add context menu to empty spacer too
-                slotEl.oncontextmenu = (e) => { triggerContext(e); return false; };
-                let sTimer;
-                slotEl.addEventListener('touchstart', (e) => { if (e.target === slotEl) sTimer = setTimeout(() => triggerContext(e), 600); }, { passive: true });
-                ['touchend', 'touchmove'].forEach(ev => slotEl.addEventListener(ev, () => clearTimeout(sTimer)));
-
-                slotEl.innerHTML = `
-                    <div class="spacer-actions" style="display:flex; flex-direction:column; align-items:center; opacity:0.3; transition:opacity 0.2s;">
-                        <button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')" title="Hier eine Gruppe erstellen" style="margin-bottom:8px;"><i class="fa-solid fa-plus"></i></button>
-                        <button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')" title="Lücke entfernen" style="background:transparent; border:none; color:#ff7675; cursor:pointer;">×</button>
-                    </div>
-                `;
+                slotEl.innerHTML = `<div class="spacer-actions" style="opacity:0.2;"><button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')">+</button><button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')">×</button></div>`;
                 slotEl.onmouseenter = () => slotEl.querySelector('.spacer-actions').style.opacity = '1';
-                slotEl.onmouseleave = () => slotEl.querySelector('.spacer-actions').style.opacity = '0.3';
+                slotEl.onmouseleave = () => slotEl.querySelector('.spacer-actions').style.opacity = '0.2';
             }
             container.appendChild(slotEl);
         });
         board.appendChild(rowEl);
-
-        // Row Context Menu & Long press support (Mouse + Touch)
-        const rh = rowEl.querySelector('.row-header');
-        if (rh && !isRead) {
-            let rTimer;
-            rh.oncontextmenu = (e) => { triggerContext(e); return false; };
-            rh.addEventListener('touchstart', (e) => { rTimer = setTimeout(() => triggerContext(e), 600); }, { passive: true });
-            ['touchend', 'touchmove'].forEach(ev => rh.addEventListener(ev, () => clearTimeout(rTimer)));
-        }
     });
-    document.body.classList.toggle('move-mode-active', state.moveMode.active);
-    document.body.classList.toggle('delete-mode-active', state.deleteMode.active);
 
-    // REWRITE SORTABLE SYSTEM
     if (typeof Sortable !== 'undefined' && !isRead) {
-        // 1. ROWS
-        new Sortable(document.querySelector('.board'), {
-            animation: 150, handle: '.row-header-main',
+        new Sortable(board, {
+            animation: 150, handle: '.row-header', forceFallback: true, fallbackOnBody: true,
+            onStart: () => state.isDragging = true,
             onEnd: (e) => {
-                const [moved] = state.rows.splice(e.oldIndex, 1);
-                state.rows.splice(e.newIndex, 0, moved);
-                saveData(); renderBoard();
+                const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
+                const [movedRow] = sortedRows.splice(e.oldIndex, 1);
+                sortedRows.splice(e.newIndex, 0, movedRow);
+                sortedRows.forEach((r, i) => r.order = (i + 1) * 10);
+                state.rows = sortedRows; saveData();
+                setTimeout(() => { state.isDragging = false; renderBoard(); }, 10);
             }
         });
 
-        // 2. GROUPS (Individual Columns)
-        document.querySelectorAll('.slot:not(.spacer)').forEach(el => {
+        document.querySelectorAll('.slot').forEach(el => {
             new Sortable(el, {
                 group: 'columns', animation: 150, handle: '.column-header', filter: 'button, input',
+                forceFallback: true, fallbackOnBody: true, fallbackClass: "sortable-fallback",
+                onStart: () => state.isDragging = true,
                 onEnd: (e) => {
                     const fromR = state.rows.find(r => r.id === e.from.closest('.board-row').dataset.id);
                     const toR = state.rows.find(r => r.id === e.to.closest('.board-row').dataset.id);
                     if (fromR && toR) {
                         const fromSlot = fromR.projects.find(s => s.id === e.from.dataset.slotId);
                         const toSlot = toR.projects.find(s => s.id === e.to.dataset.slotId);
-                        if (fromSlot && toSlot) {
-                            if (state.moveMode.active) {
-                                const projId = e.item.dataset.projectId;
-                                if (state.moveMode.selectedIds.length === 0 || !state.moveMode.selectedIds.includes(projId)) {
-                                    state.moveMode.selectedIds = [projId];
-                                }
-                                let offset = 0;
-                                state.moveMode.selectedIds.forEach(id => {
-                                    const c = findProjectAndClear(id);
-                                    if (c) { toSlot.projects.splice(e.newIndex + offset, 0, c); offset++; }
-                                });
-                                state.moveMode.active = false; state.moveMode.selectedIds = [];
-                            } else {
-                                const [col] = fromSlot.projects.splice(e.oldIndex, 1);
-                                toSlot.projects.splice(e.newIndex, 0, col);
-                            }
-                            saveData(); renderBoard(); updateToolbars();
-                        }
+                        const projId = e.item.dataset.projectId;
+                        const proj = findProjectAndClear(projId);
+                        if (proj && toSlot) { toSlot.isSpacer = false; toSlot.projects.splice(e.newIndex, 0, proj); }
+                        saveData(); setTimeout(() => { state.isDragging = false; renderBoard(); }, 10);
                     }
                 }
             });
         });
 
-        // 2b. SLOTS (Horizontal Reordering) - Optional if they want to move entire towers by empty space, 
-        // but disabled for now to ensure we only drag individual groups via header.
-
-        // 3. FAVORITES (Items)
         document.querySelectorAll('.column-body').forEach(el => {
             new Sortable(el, {
-                group: 'items',
-                animation: 150,
-                filter: '.item-actions',
-                forceFallback: true,
-                fallbackClass: "sortable-fallback",
-                fallbackOnBody: true,
-                fallbackTolerance: 3,
+                group: 'items', animation: 150, filter: '.item-actions',
+                forceFallback: true, fallbackClass: "sortable-fallback", fallbackOnBody: true, fallbackTolerance: 3,
+                onStart: () => { state.isDragging = true; document.body.classList.add('is-dragging-item'); },
                 onEnd: (e) => {
-                    const fCol = e.from.closest('.column'), tCol = e.to.closest('.column');
-                    if (!fCol || !tCol) { renderBoard(); return; }
-                    const fId = fCol.dataset.projectId, tId = tCol.dataset.projectId;
-                    const itId = e.item.dataset.id || e.item.getAttribute('data-id');
+                    document.body.classList.remove('is-dragging-item');
+                    const tCol = e.to.closest('.column');
+                    if (!tCol) { state.isDragging = false; renderBoard(); return; }
+                    const tId = tCol.getAttribute('data-project-id') || tCol.dataset.projectId;
+                    const itId = e.item.getAttribute('data-id') || e.item.dataset.id;
 
+                    const item = findItemAndClear(itId);
                     const tP = findProject(tId);
-                    const fP = findProject(fId);
-
-                    if (tP) {
-                        // Multi-Drag or Single-Drag in Move Mode
-                        if (state.moveMode.active) {
-                            if (state.moveMode.selectedIds.length === 0 || !state.moveMode.selectedIds.includes(itId)) {
-                                // If nothing selected or dragging an unselected item, just move THIS item and reset
-                                state.moveMode.selectedIds = [itId];
-                            }
-
-                            let offset = 0;
-                            state.moveMode.selectedIds.forEach(id => {
-                                const itm = findItemAndClear(id);
-                                if (itm) { tP.items.splice(e.newIndex + offset, 0, itm); offset++; }
-                            });
-
-                            state.moveMode.active = false;
-                            state.moveMode.selectedIds = [];
-                            saveData(); renderBoard(); updateToolbars();
-                            return;
-                        }
-
-                        // Regular Drag (Normal Mode)
-                        if (fP) {
-                            const idx = fP.items.findIndex(it => it.id === itId);
-                            if (idx !== -1) {
-                                const [item] = fP.items.splice(idx, 1);
-                                tP.items.splice(e.newIndex, 0, item);
-                                saveData();
-                            }
-                        }
+                    if (item && tP) {
+                        if (!tP.items) tP.items = [];
+                        tP.items.splice(e.newIndex, 0, item);
                     }
-                    renderBoard();
+                    saveData();
+                    setTimeout(() => {
+                        state.isDragging = false;
+                        renderBoard();
+                    }, 80);
                 }
             });
         });
     }
+    updateToolbars();
+    updateSearchControls();
 }
 
 function cleanTitle(str) {
@@ -493,9 +407,6 @@ function cleanTitle(str) {
         const splitIndex = clean.search(/\/|\?|#/);
         if (splitIndex !== -1) clean = clean.substring(0, splitIndex);
     }
-    const suffixes = [/ - Google Search$/i, / - YouTube$/i, / \| YouTube$/i, / - Wikipedia$/i, /\.(html|php|asp|aspx|jsp)$/i];
-    suffixes.forEach(regex => { clean = clean.replace(regex, ''); });
-    clean = clean.replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim();
     return clean.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ').substring(0, 80);
 }
 
@@ -507,17 +418,20 @@ function findProjectAndClear(id) {
             if (s.isSpacer) return r.projects.splice(sIdx, 1)[0];
             const pIdx = s.projects.findIndex(p => p.id === id);
             const p = s.projects.splice(pIdx, 1)[0];
-            if (s.projects.length === 0) r.projects[sIdx] = { id: generateId(), isSpacer: true, projects: [] };
+            if (s.projects.length === 0) s.isSpacer = true;
             return p;
         }
     }
 }
 
 function findItemAndClear(id) {
+    if (!id) return null;
     for (const r of state.rows) {
+        if (!r.projects) continue;
         for (const s of r.projects) {
-            if (!s.isSpacer) {
+            if (!s.isSpacer && s.projects) {
                 for (const p of s.projects) {
+                    if (!p.items) continue;
                     const idx = p.items.findIndex(it => it.id === id);
                     if (idx !== -1) return p.items.splice(idx, 1)[0];
                 }
@@ -527,428 +441,280 @@ function findItemAndClear(id) {
     return null;
 }
 
-function findProject(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) { const p = s.projects.find(x => x.id === id); if (p) return p; } }
+function findProject(id) {
+    if (!id) return null;
+    for (const r of state.rows) {
+        if (!r.projects) continue;
+        for (const s of r.projects) {
+            if (!s.isSpacer && s.projects) {
+                const p = s.projects.find(x => x.id === id);
+                if (p) return p;
+            }
+        }
+    }
+    return null;
+}
 function findItem(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const item = p.items.find(x => x.id === id); if (item) return item; } }
 
 window.updateGroupTitle = (id, val) => { const p = findProject(id); if (p) p.title = val; saveData(); };
 window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.title = val; saveData(); };
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
-window.deleteRow = async (id) => { if (await showConfirm('Reihe wirklich löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
-window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(null, true); } };
-window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(null, true); } };
-window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(null, true); } };
-window.deleteProject = (id) => { findProjectAndClear(id); renderBoard(); saveData(); };
+window.sortRows = () => { state.rows.sort((a, b) => (a.order || 0) - (b.order || 0)); state.rows.forEach((r, i) => r.order = (i + 1) * 10); renderBoard(); saveData(); };
+
+window.deleteRow = async (id) => { if (await showConfirm('Reihe löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
+window.deleteProject = async (id) => { if (await showConfirm('Ordner löschen?')) { findProjectAndClear(id); renderBoard(); saveData(); } };
+window.deleteItem = async (id) => { if (await showConfirm('Favorit löschen?')) { findItemAndClear(id); renderBoard(); saveData(); } };
+window.deleteSlot = (id) => { state.rows.forEach(r => { r.projects = r.projects.filter(s => s.id !== id); }); renderBoard(); saveData(); };
+
+window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(); } };
+window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
+window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
 
 window.addItem = (projectId, preUrl = "", preTitle = "") => {
     if (!checkAuth()) return;
-    const nameInp = document.getElementById('edit-link-name');
-    const urlInp = document.getElementById('edit-link-url');
-    const groupSel = document.getElementById('edit-link-group');
-    if (nameInp && urlInp && groupSel) {
-        nameInp.value = preTitle || (preUrl ? cleanTitle(preUrl) : "");
-        urlInp.value = preUrl || "";
-        groupSel.innerHTML = '';
-        state.rows.forEach(row => row.projects.forEach(slot => {
-            if (!slot.isSpacer) slot.projects.forEach(proj => {
-                const opt = document.createElement('option');
-                opt.value = proj.id; opt.textContent = `${row.title} > ${proj.title}`;
-                if (proj.id === projectId) opt.selected = true;
-                groupSel.appendChild(opt);
-            });
-        }));
-        state.activeLinkId = null;
-        state.activeProjectId = projectId;
-        showModal('edit-link-modal');
-        if (preUrl) nameInp.focus(); else urlInp.focus();
-    }
-};
+    const nt = preTitle || prompt("Titel:", preUrl ? cleanTitle(preUrl) : ""); if (nt === null) return;
+    const nu = preUrl || prompt("URL:"); if (!nu) return;
+    const p = findProject(projectId); if (p) p.items.push({ id: generateId(), title: nt, url: nu });
+    renderBoard(); saveData();
+}
 
 window.editItem = (id) => {
-    if (!checkAuth()) return;
     const item = findItem(id); if (!item) return;
-    const nameInp = document.getElementById('edit-link-name'), urlInp = document.getElementById('edit-link-url');
-    if (nameInp && urlInp) {
-        nameInp.value = item.title; urlInp.value = item.url;
-        state.activeLinkId = id; state.activeProjectId = null;
-        showModal('edit-link-modal');
-    }
-};
-
-document.getElementById('btn-save-link')?.addEventListener('click', () => {
-    const nt = document.getElementById('edit-link-name').value.trim(), nuRaw = document.getElementById('edit-link-url').value.trim();
-    if (!nuRaw) return;
-    let nu = (nuRaw.startsWith('http') || nuRaw.startsWith('www')) ? (nuRaw.startsWith('www') ? 'https://' + nuRaw : nuRaw) : 'https://' + nuRaw;
-    if (state.activeLinkId) { const item = findItem(state.activeLinkId); if (item) { item.title = nt || cleanTitle(nu); item.url = nu; } }
-    else { const gid = document.getElementById('edit-link-group')?.value || state.activeProjectId; if (gid) { const p = findProject(gid); if (p) p.items.push({ id: generateId(), title: nt || cleanTitle(nu), url: nu }); } }
-    hideModal('edit-link-modal'); renderBoard(); saveData();
-});
-
-let tooltipTimer = null;
-function startTooltip(text, e) {
-    if (tooltipTimer) clearTimeout(tooltipTimer);
-    const x = e.clientX, y = e.clientY;
-    tooltipTimer = setTimeout(() => {
-        const el = document.getElementById('custom-tooltip');
-        if (!el) return;
-        el.textContent = text;
-        el.classList.remove('hidden'); el.style.left = (x + 15) + 'px'; el.style.top = (y + 15) + 'px';
-    }, 500);
-}
-function hideTooltip() { if (tooltipTimer) clearTimeout(tooltipTimer); document.getElementById('custom-tooltip')?.classList.add('hidden'); }
-
-function showSavedFeedback() {
-    const btn = document.getElementById('btn-save'); if (!btn) return;
-    const old = btn.innerHTML; btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-    setTimeout(() => { btn.innerHTML = old; }, 2000);
+    const nt = prompt("Titel:", item.title); if (nt === null) return;
+    const nu = prompt("URL:", item.url); if (!nu) return;
+    item.title = nt; item.url = nu; renderBoard(); saveData();
 }
 
-window.updateBookmarklet = () => {
-    const link = document.getElementById('bookmarklet-link'); if (!link) return;
-    link.href = `javascript:(function(){var u=window.location.href;var t=document.title;window.open('${window.location.origin}${window.location.pathname}?add_url='+encodeURIComponent(u)+'&add_title='+encodeURIComponent(t),'_blank');})();`;
-};
-
-window.checkAuth = () => (state.isReadOnly && !ghToken) ? false : true;
-
-window.handleSearch = (val) => {
-    state.searchTerm = val.toLowerCase();
-    const clearBtn = document.getElementById('search-clear');
-    if (clearBtn) { if (val) clearBtn.classList.remove('hidden'); else clearBtn.classList.add('hidden'); }
-    renderBoard();
-};
-
-window.clearSearch = () => { const inp = document.getElementById('board-search'); if (inp) { inp.value = ''; handleSearch(''); inp.focus(); } };
-
-window.showToast = (msg, type = 'info') => {
-    const container = document.getElementById('toast-container'); if (!container) return;
-    const toast = document.createElement('div'); toast.className = `toast toast-${type}`;
-    toast.innerHTML = `<span>${msg}</span>`;
-    container.appendChild(toast); setTimeout(() => toast.remove(), 3000);
-};
-
-window.showConfirm = (msg) => new Promise(res => {
-    const modal = document.getElementById('confirm-modal');
-    if (!modal) return res(false);
-    document.getElementById('confirm-message').textContent = msg;
-    modal.classList.remove('hidden');
-    document.getElementById('btn-confirm-ok').onclick = () => { modal.classList.add('hidden'); res(true); };
-    document.getElementById('btn-confirm-cancel').onclick = () => { modal.classList.add('hidden'); res(false); };
-});
-
-const localSettings = { darkMode: 'system', compactMode: false, animations: true, fixedHeader: false, hiddenRowIds: [] };
-
-window.toggleViewDropdown = (e) => {
-    if (e) e.stopPropagation();
-    const content = document.getElementById('view-dropdown-content');
-    if (!content) return;
-    const isHidden = content.classList.contains('hidden');
-    document.querySelectorAll('.dropdown-content').forEach(d => d.classList.add('hidden'));
-    if (isHidden) {
-        content.classList.remove('hidden');
-        renderRowVisibilityList();
-        setTimeout(() => {
-            document.addEventListener('click', () => content.classList.add('hidden'), { once: true });
-        }, 10);
-    }
-};
-
-window.renderRowVisibilityList = () => {
-    const list = document.getElementById('row-visibility-list'); if (!list) return;
-    list.innerHTML = state.rows.map(r => {
-        const isHidden = localSettings.hiddenRowIds.includes(r.id);
-        return `
-        <div class="visibility-item" onclick="event.stopPropagation(); toggleRowVisibility('${r.id}')">
-            <input type="checkbox" ${!isHidden ? 'checked' : ''} onclick="event.preventDefault();">
-            <span>${r.title || 'Reihe ohne Titel'}</span>
-        </div>
-    `;
-    }).join('') || 'Keine Reihen.';
-};
-
-window.toggleRowVisibility = (id) => {
-    const idx = localSettings.hiddenRowIds.indexOf(id);
-    if (idx === -1) localSettings.hiddenRowIds.push(id); else localSettings.hiddenRowIds.splice(idx, 1);
-    localStorage.setItem('favoriten_app_settings', JSON.stringify(localSettings));
-    renderRowVisibilityList(); renderBoard();
-};
-
-window.loadLocalSettings = () => {
-    const saved = localStorage.getItem('favoriten_app_settings');
-    if (saved) { try { Object.assign(localSettings, JSON.parse(saved)); applyLocalSettings(); } catch (e) { } }
-};
-
-window.updateLocalSettings = () => {
-    localSettings.darkMode = document.getElementById('local-dark-mode')?.value || 'system';
-    localSettings.compactMode = document.getElementById('local-compact-mode')?.checked || false;
-    localSettings.animations = document.getElementById('local-animations')?.checked || true;
-    localSettings.fixedHeader = document.getElementById('local-fixed-header')?.checked || false;
-    localStorage.setItem('favoriten_app_settings', JSON.stringify(localSettings));
-    applyLocalSettings();
-};
-
-window.applyLocalSettings = () => {
-    const root = document.documentElement;
-    if (localSettings.darkMode === 'dark') root.setAttribute('data-theme', 'dark');
-    else if (localSettings.darkMode === 'light') root.setAttribute('data-theme', 'light');
-    else root.removeAttribute('data-theme');
-    document.body.classList.toggle('compact-view', localSettings.compactMode);
-    document.body.classList.toggle('no-animations', !localSettings.animations);
-    document.body.classList.toggle('fixed-header', localSettings.fixedHeader);
-};
-
-window.toggleActionsDrawer = () => {
-    const drawer = document.getElementById('actions-drawer');
-    const btn = document.getElementById('toggle-actions-btn');
-    if (!drawer || !btn) return;
-    drawer.classList.toggle('hidden');
-    const isOpen = !drawer.classList.contains('hidden');
-    btn.classList.toggle('btn-primary', isOpen);
-    btn.classList.toggle('btn-secondary', !isOpen);
-    localStorage.removeItem('actions_drawer_open');
-};
-
-window.toggleMoveMode = () => {
-    state.moveMode.active = !state.moveMode.active;
-    state.moveMode.selectedIds = [];
-    if (state.moveMode.active) state.deleteMode.active = false;
-    renderBoard(); updateToolbars();
-};
-
-window.toggleDeleteMode = () => {
-    state.deleteMode.active = !state.deleteMode.active;
-    state.deleteMode.selectedIds = [];
-    if (state.deleteMode.active) state.moveMode.active = false;
-    renderBoard(); updateToolbars();
-};
-
-window.toggleSelection = (id) => {
-    const list = state.moveMode.active ? state.moveMode.selectedIds : state.deleteMode.selectedIds;
-    const idx = list.indexOf(id);
-    if (idx === -1) list.push(id); else list.splice(idx, 1);
-    renderBoard(); updateToolbars();
+window.importFromHTML = (html, targetRowId, newRowName) => {
+    const parser = new DOMParser(); const doc = parser.parseFromString(html, 'text/html'); const dl = doc.querySelector('dl');
+    if (!dl) { showToast('Keine Lesezeichen.', 'error'); return; }
+    let target = (targetRowId === 'new') ? { id: generateId(), title: newRowName || 'Import', projects: [], order: 999 } : state.rows.find(r => r.id === targetRowId);
+    if (!target) return; if (targetRowId === 'new') state.rows.push(target);
+    const process = (l, folder) => {
+        const links = Array.from(l.children).filter(dt => dt.tagName === 'DT').map(dt => dt.querySelector(':scope > a')).filter(a => a);
+        if (links.length > 0) {
+            let p = { id: generateId(), title: folder || 'Import', items: [], collapsed: true };
+            target.projects.push({ id: generateId(), isSpacer: false, projects: [p] });
+            links.forEach(a => p.items.push({ id: generateId(), title: a.textContent.trim(), url: a.href }));
+        }
+        Array.from(l.children).forEach(dt => { const h3 = dt.querySelector(':scope > h3'), sDl = dt.querySelector(':scope > dl'); if (h3 && sDl) process(sDl, h3.textContent); });
+    };
+    process(dl, null); renderBoard(); saveData(); showToast('Import fertig!');
 };
 
 function updateToolbars() {
     const mt = document.getElementById('move-toolbar'), dt = document.getElementById('delete-toolbar');
     if (mt) mt.classList.toggle('hidden', !state.moveMode.active);
     if (dt) dt.classList.toggle('hidden', !state.deleteMode.active);
-    const mc = document.getElementById('move-count'), dc = document.getElementById('delete-count');
-    if (mc) mc.textContent = `${state.moveMode.selectedIds.length} Favoriten ausgewählt`;
-    if (dc) dc.textContent = `${state.deleteMode.selectedIds.length} Favoriten zum Löschen`;
 }
 
-window.applyDelete = async () => {
-    if (state.deleteMode.selectedIds.length === 0) return;
-    if (await showConfirm(`${state.deleteMode.selectedIds.length} Favoriten wirklich löschen?`)) {
-        state.deleteMode.selectedIds.forEach(id => findItemAndClear(id));
-        state.deleteMode.active = false; state.deleteMode.selectedIds = [];
-        renderBoard(); updateToolbars(); saveData();
-    }
-};
+window.toggleMoveMode = () => { state.moveMode.active = !state.moveMode.active; state.moveMode.selectedIds = []; state.deleteMode.active = false; renderBoard(); };
+window.toggleDeleteMode = () => { state.deleteMode.active = !state.deleteMode.active; state.deleteMode.selectedIds = []; state.moveMode.active = false; renderBoard(); };
+window.toggleSelection = (id) => { const l = state.moveMode.active ? state.moveMode.selectedIds : state.deleteMode.selectedIds; const i = l.indexOf(id); if (i === -1) l.push(id); else l.splice(i, 1); renderBoard(); };
 
-window.applyMove = (targetProjectId) => {
-    if (state.moveMode.selectedIds.length === 0) return;
-    const targetProj = findProject(targetProjectId);
-    if (!targetProj) return;
-    state.moveMode.selectedIds.forEach(id => {
-        const item = findItemAndClear(id);
-        if (item) targetProj.items.push(item);
-    });
-    state.moveMode.active = false; state.moveMode.selectedIds = [];
-    renderBoard(); updateToolbars(); saveData();
-};
+window.applyDelete = async () => { if (state.deleteMode.selectedIds.length > 0 && await showConfirm('Löschen?')) { state.deleteMode.selectedIds.forEach(id => { if (!findItemAndClear(id)) findProjectAndClear(id); }); state.deleteMode.active = false; state.deleteMode.selectedIds = []; renderBoard(); saveData(); } };
 
-function findItemAndClear(id) {
-    for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) {
-        const idx = p.items.findIndex(it => it.id === id);
-        if (idx !== -1) return p.items.splice(idx, 1)[0];
-    }
-    return null;
-}
+window.showToast = (msg, type = 'info') => {
+    const c = document.getElementById('toast-container'); rotateDot(); if (!c) return;
+    const t = document.createElement('div'); t.className = `toast toast-${type}`; t.innerHTML = `<span>${msg}</span>`;
+    c.appendChild(t); setTimeout(() => t.remove(), 3000);
+};
+function rotateDot() { }
+
+window.showConfirm = (msg) => new Promise(res => {
+    const m = document.getElementById('confirm-modal'); if (!m) return res(confirm(msg));
+    document.getElementById('confirm-message').textContent = msg; m.classList.remove('hidden');
+    document.getElementById('btn-confirm-ok').onclick = () => { m.classList.add('hidden'); res(true); };
+    document.getElementById('btn-confirm-cancel').onclick = () => { m.classList.add('hidden'); res(false); };
+});
 
 window.showContextMenu = (e, type, id) => {
-    e.preventDefault();
-    const menu = document.getElementById('context-menu');
-    if (!menu) return;
-    menu.classList.remove('hidden');
-    let html = '';
-    if (type === 'row') {
-        const r = state.rows.find(x => x.id === id);
-        html = `
-            <div class="context-menu-title">Zeile: ${r ? r.title : 'Unbekannt'}</div>
-            <div class="context-menu-item" onclick="addSlotToRow('${id}')"><i class="fa-solid fa-plus"></i> Gruppe hinzufügen</div>
-            <div class="context-menu-item" onclick="addSpacerToRow('${id}')"><i class="fa-solid fa-square-plus"></i> Leere Lücke einfügen</div>
-            <div class="context-menu-item" onclick="addNewRow()"><i class="fa-solid fa-layer-group"></i> Neue Zeile erstellen</div>
-            <div class="context-menu-divider"></div>
-            <div class="context-menu-item danger" onclick="deleteRow('${id}')"><i class="fa-solid fa-trash"></i> Zeile löschen</div>
-        `;
-    } else if (type === 'project') {
-        const p = findProject(id);
-        html = `
-            <div class="context-menu-title">Gruppe: ${p ? p.title : 'Unbekannt'}</div>
-            <div class="context-menu-item" onclick="addItem('${id}')"><i class="fa-solid fa-link"></i> Favorit hinzufügen</div>
-            <div class="context-menu-item" onclick="pasteFromClipboard('${id}')"><i class="fa-solid fa-paste"></i> Link aus Ablage einfügen</div>
-            <div class="context-menu-item" onclick="toggleCollapse('${id}')"><i class="fa-solid fa-compress"></i> Ein-/Ausklappen</div>
-            <div class="context-menu-divider"></div>
-            <div class="context-menu-item danger" onclick="deleteProject('${id}')"><i class="fa-solid fa-trash-can"></i> Gruppe löschen</div>
-        `;
-    } else if (type === 'item') {
-        const item = findItem(id);
-        html = `
-            <div class="context-menu-title">Favorit: ${item ? item.title : 'Unbekannt'}</div>
-            <div class="context-menu-item" onclick="editItem('${id}')"><i class="fa-solid fa-pen"></i> Bearbeiten</div>
-            <div class="context-menu-divider"></div>
-            <div class="context-menu-item danger" onclick="deleteItem('${id}')"><i class="fa-solid fa-trash"></i> Löschen</div>
-        `;
-    }
+    e.preventDefault(); const menu = document.getElementById('context-menu'); if (!menu) return;
+    menu.classList.remove('hidden'); let html = '';
+    if (type === 'row') { const r = state.rows.find(x => x.id === id); html = `<div class="context-menu-title">Zeile: ${r ? r.title : ''}</div><div class="context-menu-item" onclick="addSlotToRow('${id}')">Gruppe hinzufügen</div><div class="context-menu-item danger" onclick="deleteRow('${id}')">Zeile löschen</div>`; }
+    else if (type === 'project') { const p = findProject(id); html = `<div class="context-menu-title">Gruppe: ${p ? p.title : ''}</div><div class="context-menu-item" onclick="addItem('${id}')">Favorit hinzufügen</div><div class="context-menu-item danger" onclick="deleteProject('${id}')">Gruppe löschen</div>`; }
+    else if (type === 'item') { const item = findItem(id); html = `<div class="context-menu-title">Favorit: ${item ? item.title : ''}</div><div class="context-menu-item" onclick="editItem('${id}')">Bearbeiten</div><div class="context-menu-divider"></div><div class="context-menu-item danger" onclick="deleteItem('${id}')">Löschen</div>`; }
     menu.innerHTML = html;
-
-    let x = e.clientX, y = e.clientY;
-    const rect = menu.getBoundingClientRect();
+    let x = e.clientX, y = e.clientY; const rect = menu.getBoundingClientRect();
     if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width - 10;
     if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - 10;
     menu.style.left = Math.max(10, x) + 'px'; menu.style.top = Math.max(10, y) + 'px';
+    const close = (evt) => { if (!menu.contains(evt.target)) { menu.classList.add('hidden'); document.removeEventListener('mousedown', close); } };
+    setTimeout(() => document.addEventListener('mousedown', close), 10);
+};
 
-    const close = (evt) => {
-        if (Date.now() - state.lastContextMenuTime < 300) return;
-        if (!menu.contains(evt.target)) {
-            menu.classList.add('hidden');
-            document.removeEventListener('mousedown', close);
-            document.removeEventListener('touchstart', close);
+window.addSlotToRow = (rowId) => { const r = state.rows.find(x => x.id === rowId); if (r) { const slotId = generateId(); r.projects.push({ id: slotId, isSpacer: true, projects: [] }); renderBoard(); addItemToSpacer(slotId); saveData(); } };
+window.addItemToSpacer = (slotId) => { const t = prompt("Name:"); if (!t) return; for (const r of state.rows) { const s = r.projects.find(x => x.id === slotId); if (s) { s.isSpacer = false; s.projects = [{ id: generateId(), title: t, items: [], collapsed: false }]; break; } } renderBoard(); saveData(); };
+
+window.handleSearch = (val) => { state.searchTerm = val; renderBoard(); };
+window.clearSearch = () => { const i = document.getElementById('board-search'); if (i) { i.value = ''; handleSearch(''); } };
+window.nextSearchMatch = (direction = 1) => {
+    if (!state.searchMatches.length) return;
+    const len = state.searchMatches.length;
+    state.currentSearchIndex = (state.currentSearchIndex + direction + len) % len;
+    const active = state.searchMatches[state.currentSearchIndex];
+    state.searchMatches.forEach(el => el.classList.remove('search-active'));
+    active.classList.add('search-active');
+    active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+
+function updateSearchControls() {
+    const controls = document.getElementById('search-controls');
+    const counter = document.getElementById('search-match-count');
+    const hasSearch = !!(state.searchTerm && state.searchTerm.trim());
+
+    state.searchMatches = hasSearch ? Array.from(document.querySelectorAll('.favorite-item.search-highlight')) : [];
+
+    if (!hasSearch || state.searchMatches.length === 0) {
+        state.currentSearchIndex = -1;
+        state.searchMatches.forEach(el => el.classList.remove('search-active'));
+        if (counter) counter.textContent = '0/0';
+        if (controls) controls.classList.add('hidden');
+        return;
+    }
+
+    if (state.currentSearchIndex < 0 || state.currentSearchIndex >= state.searchMatches.length) {
+        state.currentSearchIndex = 0;
+    }
+
+    state.searchMatches.forEach(el => el.classList.remove('search-active'));
+    const active = state.searchMatches[state.currentSearchIndex];
+    if (active) active.classList.add('search-active');
+
+    if (counter) counter.textContent = `${state.currentSearchIndex + 1}/${state.searchMatches.length}`;
+    if (controls) controls.classList.remove('hidden');
+}
+
+window.checkAuth = () => !state.isReadOnly || !!ghToken;
+window.loadLocalSettings = () => {
+    const s = localStorage.getItem('favoriten_app_settings');
+    if (s) {
+        try {
+            Object.assign(localSettings, JSON.parse(s));
+        } catch (e) { }
+    }
+    applyLocalSettings();
+    syncLocalSettingsUI();
+};
+
+window.applyLocalSettings = () => {
+    document.body.classList.toggle('compact-view', !!localSettings.compactMode);
+    document.body.classList.toggle('no-animations', !localSettings.animations);
+    document.body.classList.toggle('fixed-header', !!localSettings.fixedHeader);
+
+    const darkMode = localSettings.darkMode || 'system';
+    let themeValue = null;
+    if (darkMode === 'dark') themeValue = 'dark';
+    if (darkMode === 'light') themeValue = 'light';
+    if (darkMode === 'system') {
+        themeValue = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', themeValue);
+};
+
+window.updateLocalSettings = () => {
+    const dark = document.getElementById('local-dark-mode');
+    const compact = document.getElementById('local-compact-mode');
+    const animations = document.getElementById('local-animations');
+    const fixed = document.getElementById('local-fixed-header');
+
+    if (dark) localSettings.darkMode = dark.value;
+    if (compact) localSettings.compactMode = !!compact.checked;
+    if (animations) localSettings.animations = !!animations.checked;
+    if (fixed) localSettings.fixedHeader = !!fixed.checked;
+
+    localStorage.setItem('favoriten_app_settings', JSON.stringify(localSettings));
+    applyLocalSettings();
+    renderBoard();
+};
+
+function syncLocalSettingsUI() {
+    const dark = document.getElementById('local-dark-mode');
+    const compact = document.getElementById('local-compact-mode');
+    const animations = document.getElementById('local-animations');
+    const fixed = document.getElementById('local-fixed-header');
+
+    if (dark) dark.value = localSettings.darkMode || 'system';
+    if (compact) compact.checked = !!localSettings.compactMode;
+    if (animations) animations.checked = localSettings.animations !== false;
+    if (fixed) fixed.checked = !!localSettings.fixedHeader;
+}
+
+window.checkAllLinks = async () => {
+    const allItems = [];
+    state.rows.forEach(r => r.projects.forEach(s => {
+        if (!s.isSpacer) s.projects.forEach(p => p.items.forEach(it => allItems.push(it)));
+    }));
+
+    if (allItems.length === 0) {
+        showToast('Keine Links zum Pruefen gefunden.', 'info');
+        return;
+    }
+
+    showToast(`Link-Check gestartet (${allItems.length} Links)`, 'info');
+    let okCount = 0;
+    let failCount = 0;
+
+    const workers = 6;
+    let index = 0;
+    async function runWorker() {
+        while (index < allItems.length) {
+            const current = allItems[index++];
+            try {
+                const res = await fetch('/api/check-link', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: current.url })
+                });
+                const data = await res.json();
+                if (data.ok) okCount++;
+                else failCount++;
+            } catch (e) {
+                failCount++;
+            }
         }
-    };
-    setTimeout(() => {
-        document.addEventListener('mousedown', close);
-        document.addEventListener('touchstart', close, { passive: true });
-    }, 10);
+    }
+
+    await Promise.all(Array.from({ length: workers }, () => runWorker()));
+    showToast(`Link-Check fertig: ${okCount} OK, ${failCount} fehlerhaft`, failCount ? 'error' : 'success');
 };
 
-window.pasteFromClipboard = async (projectId) => {
-    try {
-        const text = await navigator.clipboard.readText();
-        if (text && (text.includes('http') || text.includes('www'))) addItem(projectId, text);
-        else showToast('Keine Link-URL in der Ablage gefunden.', 'error');
-    } catch (e) { showToast('Zugriff auf Ablage verweigert.', 'error'); }
-};
+window.cleanAllLinkTitles = () => {
+    let changed = 0;
+    state.rows.forEach(r => r.projects.forEach(s => {
+        if (!s.isSpacer) s.projects.forEach(p => p.items.forEach(it => {
+            const cleaned = cleanTitle(it.title || it.url || '');
+            if (cleaned && cleaned !== it.title) {
+                it.title = cleaned;
+                changed++;
+            }
+        }));
+    }));
 
-window.addSlotToRow = (rowId) => {
-    const r = state.rows.find(x => x.id === rowId);
-    if (r) {
-        const slotId = generateId();
-        r.projects.push({ id: slotId, isSpacer: true, projects: [] });
+    if (changed > 0) {
         renderBoard();
-        addItemToSpacer(slotId);
         saveData();
     }
+    showToast(`${changed} Titel bereinigt.`, 'success');
 };
 
-window.addSpacerToRow = (rowId) => {
-    const r = state.rows.find(x => x.id === rowId);
-    if (r) { r.projects.push({ id: generateId(), isSpacer: true, projects: [] }); renderBoard(); saveData(); }
+const localSettings = {
+    hiddenRowIds: [],
+    compactMode: false,
+    darkMode: 'system',
+    animations: true,
+    fixedHeader: false
+};
+window.localSettings = localSettings;
+window.state = state;
+window.generateId = generateId;
+window.saveData = saveData;
+window.renderBoard = renderBoard;
+
+window.updateBookmarklet = () => {
+    const l = document.getElementById('bookmarklet-link'); if (l) l.href = `javascript:(function(){window.open('${window.location.origin}${window.location.pathname}?add_url='+encodeURIComponent(window.location.href)+'&add_title='+encodeURIComponent(document.title),'_blank');})();`;
 };
 
-window.addNewRow = () => {
-    const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(x => x.order || 0)) + 10 : 10;
-    state.rows.push({ id: generateId(), title: 'Neue Zeile', projects: [], order: nextOrder });
-    renderBoard(); saveData();
-};
-
-window.deleteSlot = (id) => {
-    state.rows.forEach(r => { r.projects = r.projects.filter(s => s.id !== id); });
-    renderBoard(); saveData();
-};
-
-window.addItemToSpacer = (slotId) => {
-    state.activeSlotId = slotId;
-    const modal = document.getElementById('edit-group-modal');
-    if (modal) {
-        document.getElementById('edit-group-name').value = "";
-        document.getElementById('edit-group-title').innerHTML = '<i class="fa-solid fa-folder-plus"></i> Neue Gruppe in Lücke erstellen';
-        showModal('edit-group-modal');
-        document.getElementById('edit-group-name').focus();
-    }
-};
-
-document.getElementById('btn-save-group')?.addEventListener('click', () => {
-    const val = document.getElementById('edit-group-name').value.trim();
-    if (!val) return;
-    const newProj = { id: generateId(), title: val, items: [], collapsed: false };
-
-    if (state.activeSlotId) {
-        // Find existing spacer slot and put project in it
-        for (const r of state.rows) {
-            const slot = r.projects.find(s => s.id === state.activeSlotId);
-            if (slot) { slot.isSpacer = false; slot.projects = [newProj]; break; }
-        }
-    } else {
-        // Add to last row as new slot
-        if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [], order: 10 });
-        state.rows[state.rows.length - 1].projects.push({ id: generateId(), isSpacer: false, projects: [newProj] });
-    }
-
-    hideModal('edit-group-modal'); state.activeSlotId = null;
-    renderBoard(); saveData();
-});
-
-window.importFromHTML = (html, targetRowId, newRowName) => {
-    try {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const mainDl = doc.querySelector('dl');
-        if (!mainDl) { showToast('Keine Lesezeichen gefunden.', 'error'); return; }
-
-        let target = null;
-        if (targetRowId === 'new') {
-            const maxOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) : 0;
-            target = { id: generateId(), title: newRowName || 'Neue Zeile', projects: [], order: maxOrder + 10 };
-            state.rows.push(target);
-        } else {
-            target = state.rows.find(r => r.id === targetRowId);
-            if (!target) { showToast('Ziel-Reihe nicht gefunden.', 'error'); return; }
-        }
-
-        let addedCount = 0;
-
-        // Recursive traversal to keep folders as separate groups
-        const processDL = (dl, currentFolderName) => {
-            // Find all direct children links at this level
-            const immediateLinks = Array.from(dl.children)
-                .filter(dt => dt.tagName === 'DT')
-                .map(dt => dt.querySelector(':scope > a'))
-                .filter(a => a !== null);
-
-            if (immediateLinks.length > 0) {
-                const groupTitle = currentFolderName || 'Lose Favoriten';
-                // Find existing group with this name or create new
-                let proj = target.projects.find(s => !s.isSpacer && s.projects[0].title === groupTitle)?.projects[0];
-                if (!proj) {
-                    proj = { id: generateId(), title: groupTitle, items: [], collapsed: true };
-                    target.projects.push({ id: generateId(), isSpacer: false, projects: [proj] });
-                }
-
-                immediateLinks.forEach(a => {
-                    proj.items.push({ id: generateId(), title: a.textContent.trim() || cleanTitle(a.href), url: a.href });
-                    addedCount++;
-                });
-            }
-
-            // Find subfolders at this level and recurse
-            Array.from(dl.children).forEach(dt => {
-                if (dt.tagName !== 'DT') return;
-                const h3 = dt.querySelector(':scope > h3');
-                const subDl = dt.querySelector(':scope > dl');
-                if (h3 && subDl) {
-                    processDL(subDl, h3.textContent.trim());
-                }
-            });
-        };
-
-        processDL(mainDl, null);
-
-        saveData(); renderBoard();
-        showToast(`Import abgeschlossen: ${addedCount} Favoriten!`, 'success');
-    } catch (e) {
-        showToast('Fehler beim Importieren der Datei.', 'error');
-    }
-};
+window.showSavedFeedback = () => { const b = document.getElementById('btn-save'); if (b) { const old = b.innerHTML; b.innerHTML = '<i class="fa-solid fa-check"></i>'; setTimeout(() => b.innerHTML = old, 1500); } };
 
 init();

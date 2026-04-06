@@ -3418,9 +3418,19 @@
                   "id": "tfenk23qo",
                   "title": "Pixlr",
                   "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "o9xdmywj4",
+                  "title": "Artguru",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "v1dnpfcqo",
+                  "title": "Refusion",
+                  "url": "https://refusion.ai/lander"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         }
@@ -3453,8 +3463,7 @@
       "btn-multi-delete",
       "btn-check-links",
       "btn-clean-all",
-      "btn-app-settings",
-      "btn-send-cache-mail"
+      "btn-app-settings"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

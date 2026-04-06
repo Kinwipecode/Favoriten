@@ -138,6 +138,11 @@
                   "url": "https://notebooklm.google.com/"
                 },
                 {
+                  "id": "ihevw19hw",
+                  "title": "Openai",
+                  "url": "https://openai.com/index/sora/"
+                },
+                {
                   "id": "4is0z3zox",
                   "title": "Perplexity",
                   "url": "https://www.perplexity.ai/"
@@ -166,11 +171,6 @@
                   "id": "frd87qsjw",
                   "title": "Narakeet Text to Audio",
                   "url": "https://www.narakeet.com/app/text-to-audio/?projectId=6cb75bd9-8d7d-4814-986f-9ca0c71f8955"
-                },
-                {
-                  "id": "ihevw19hw",
-                  "title": "Openai",
-                  "url": "https://openai.com/index/sora/"
                 },
                 {
                   "id": "1mku1cosa",

@@ -52,7 +52,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-pull-cloud', 'btn-save', 'btn-send-cache-mail', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
+            'btn-pull-cloud', 'btn-save', 'btn-send-cache-mail', 'btn-clear-browser-cache', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
         ]
     },
     activeLinkId: null,
@@ -567,6 +567,20 @@ window.sendCachedFavoritesByEmail = async () => {
     if (await showConfirm('Cache-Liste nach dem Senden leeren?')) {
         setCachedMailItems([]);
         showToast('Cache-Liste geleert.', 'success');
+    }
+};
+
+window.clearBrowserCacheData = async () => {
+    const ok = await showConfirm('Lokalen Browser-Cache loeschen? (Cache-Favoriten + lokaler Board-Stand)');
+    if (!ok) return;
+
+    localStorage.removeItem('favoriten_backup');
+    localStorage.removeItem(CACHE_MAIL_KEY);
+    showToast('Browser-Cache wurde geloescht.', 'success');
+
+    if (state.isReadOnly && !ghToken) {
+        await loadFromGitHub();
+        renderBoard();
     }
 };
 

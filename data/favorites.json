@@ -1703,7 +1703,13 @@
             {
               "id": "y9jo33su9",
               "title": "cfvgyx",
-              "items": [],
+              "items": [
+                {
+                  "id": "0j5yximua",
+                  "title": "Bigfm.de",
+                  "url": "https://www.bigfm.de/webradio/one-world-radio?utm_source=Google&utm_medium=Max&utm_campaign=OneWorld&utm_id=Max&gad_source=1&gclid=Cj0KCQjw7ZO0BhDYARIsAFttkCgX1EryhpXksD2msdql1m6tox9stIf6zP_WxeWHCt2COYghO_e-wykaAixvEALw_wcB"
+                }
+              ],
               "collapsed": false
             }
           ]
@@ -1716,11 +1722,6 @@
               "id": "ghopzbrll",
               "title": "Lose Favoriten",
               "items": [
-                {
-                  "id": "0j5yximua",
-                  "title": "Bigfm.de",
-                  "url": "https://www.bigfm.de/webradio/one-world-radio?utm_source=Google&utm_medium=Max&utm_campaign=OneWorld&utm_id=Max&gad_source=1&gclid=Cj0KCQjw7ZO0BhDYARIsAFttkCgX1EryhpXksD2msdql1m6tox9stIf6zP_WxeWHCt2COYghO_e-wykaAixvEALw_wcB"
-                },
                 {
                   "id": "h7srr96vt",
                   "title": "Hslu.ch",

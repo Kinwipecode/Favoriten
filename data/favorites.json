@@ -643,7 +643,13 @@
             {
               "id": "4blfravbf",
               "title": "Div",
-              "items": [],
+              "items": [
+                {
+                  "id": "gstp6j47a",
+                  "title": "Euro-millions",
+                  "url": "https://www.euro-millions.com/de-ch/swiss-lotto"
+                }
+              ],
               "collapsed": false
             }
           ]
@@ -655,13 +661,7 @@
             {
               "id": "b9u335o02",
               "title": "div",
-              "items": [
-                {
-                  "id": "gstp6j47a",
-                  "title": "Euro-millions",
-                  "url": "https://www.euro-millions.com/de-ch/swiss-lotto"
-                }
-              ],
+              "items": [],
               "collapsed": false
             }
           ]

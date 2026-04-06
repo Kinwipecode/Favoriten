@@ -1685,15 +1685,8 @@
         },
         {
           "id": "hkjo5mr2h",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "gvq5i5fdt",
-              "title": "ddd",
-              "items": [],
-              "collapsed": false
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 10,

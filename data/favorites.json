@@ -138,6 +138,11 @@
                   "url": "https://www.bing.com/search?form=MW00X7&ef_id=_k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&OCID=AIDcmm3kkv2p4j_SEM__k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&gad_source=1&gclid=Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB&q=Bing+AI&showconv=1"
                 },
                 {
+                  "id": "zw4kajdfk",
+                  "title": "Grok",
+                  "url": "https://grok.com/"
+                },
+                {
                   "id": "idu3ht0xe",
                   "title": "Pixlr Foto Bearb mit KI",
                   "url": "https://pixlr.com/de/express/"
@@ -151,11 +156,6 @@
                   "id": "4is0z3zox",
                   "title": "Perplexity",
                   "url": "https://www.perplexity.ai/"
-                },
-                {
-                  "id": "zw4kajdfk",
-                  "title": "Grok",
-                  "url": "https://grok.com/"
                 },
                 {
                   "id": "dc17apn5z",

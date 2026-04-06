@@ -642,25 +642,42 @@ function parseMailExportText(rawText) {
     const markerIndex = raw.indexOf(marker);
     let section = markerIndex >= 0 ? raw.slice(markerIndex + marker.length) : raw;
 
-    let lines = section.split('\n').map(l => l.trim()).filter(Boolean);
-    if (lines.length <= 1) {
-        section = section.replace(/\s+(?=[^|\s]+\|(?:https?:\/\/|www\.))/g, '\n');
-        lines = section.split('\n').map(l => l.trim()).filter(Boolean);
-    }
-
     const items = [];
-    lines.forEach(line => {
-        if (!line.includes('|')) return;
-        if (/^(DATE|FORMAT|TRUNCATED)\|/i.test(line)) return;
-        const parts = line.split('|');
-        if (parts.length < 3) return;
-        const title = (parts[0] || '').trim();
-        let url = (parts[1] || '').trim();
-        const group = parts.slice(2).join('|').trim() || 'Import';
-        if (!url) return;
+
+    // Robust extraction for "single-line" mails where many entries are in one line.
+    const compact = section.replace(/\s+/g, ' ').trim();
+    const tupleRe = /([^|\n\r]+?)\s*\|\s*((?:https?:\/\/|www\.)[^\s|]+)\s*\|\s*([^\n\r]+?)(?=(?:\s+[^|\n\r]+?\s*\|\s*(?:https?:\/\/|www\.)[^\s|]+\s*\|)|$)/gi;
+    let match;
+    while ((match = tupleRe.exec(compact)) !== null) {
+        const title = (match[1] || '').trim();
+        let url = (match[2] || '').trim();
+        const group = (match[3] || '').trim() || 'Import';
+        if (!url) continue;
         if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
         items.push({ title: title || cleanTitle(url), url, group });
-    });
+    }
+
+    // Fallback for normal multi-line mails.
+    if (items.length === 0) {
+        let lines = section.split('\n').map(l => l.trim()).filter(Boolean);
+        if (lines.length <= 1) {
+            section = section.replace(/\s+(?=[^|\s]+\|(?:https?:\/\/|www\.))/g, '\n');
+            lines = section.split('\n').map(l => l.trim()).filter(Boolean);
+        }
+
+        lines.forEach(line => {
+            if (!line.includes('|')) return;
+            if (/^(FAVORITEN-CACHE-EXPORT|DATE|FORMAT|TRUNCATED)\|/i.test(line)) return;
+            const parts = line.split('|');
+            if (parts.length < 3) return;
+            const title = (parts[0] || '').trim();
+            let url = (parts[1] || '').trim();
+            const group = parts.slice(2).join('|').trim() || 'Import';
+            if (!url || !/(?:https?:\/\/|www\.)/i.test(url)) return;
+            if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
+            items.push({ title: title || cleanTitle(url), url, group });
+        });
+    }
 
     const unique = [];
     const seen = new Set();

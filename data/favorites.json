@@ -398,29 +398,6 @@
           ]
         },
         {
-          "id": "z9fof680f",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "sa8vjf6gi",
-              "title": "Video",
-              "items": [
-                {
-                  "id": "g6wd1v6u7",
-                  "title": "Ai.invideo",
-                  "url": "https://ai.invideo.io/"
-                },
-                {
-                  "id": "bzl40zpg4",
-                  "title": "Kaiber",
-                  "url": "https://kaiber.ai/"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
-        },
-        {
           "id": "dpbr0eg2b",
           "isSpacer": false,
           "projects": [

@@ -68,6 +68,11 @@
               "title": "Lesezeichenleiste",
               "items": [
                 {
+                  "id": "ahsqjatou",
+                  "title": "Netflix.com",
+                  "url": "https://www.netflix.com/YourAccount"
+                },
+                {
                   "id": "t98qko172",
                   "title": "192.168.178.1/",
                   "url": "http://192.168.178.1/"
@@ -76,11 +81,6 @@
                   "id": "8e6tgw9g3",
                   "title": "Email.bluewin.ch",
                   "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
-                },
-                {
-                  "id": "ahsqjatou",
-                  "title": "Netflix.com",
-                  "url": "https://www.netflix.com/YourAccount"
                 },
                 {
                   "id": "zh0w8gfe4",

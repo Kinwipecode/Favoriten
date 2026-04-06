@@ -420,6 +420,19 @@ function cleanTitle(str) {
     if (isUrl) {
         const splitIndex = clean.search(/\/|\?|#/);
         if (splitIndex !== -1) clean = clean.substring(0, splitIndex);
+
+        const parts = clean.split('.').filter(Boolean);
+        if (parts.length >= 2) {
+            const last = parts[parts.length - 1].toLowerCase();
+            if (/^[a-z]{2,}$/.test(last)) {
+                parts.pop();
+                const secondLast = parts[parts.length - 1] ? parts[parts.length - 1].toLowerCase() : '';
+                if (['co', 'com', 'org', 'net', 'gov', 'edu'].includes(secondLast) && parts.length > 1) {
+                    parts.pop();
+                }
+            }
+            clean = parts.join('.');
+        }
     }
     return clean.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ').substring(0, 80);
 }
@@ -840,7 +853,8 @@ window.cleanAllLinkTitles = () => {
     let changed = 0;
     state.rows.forEach(r => r.projects.forEach(s => {
         if (!s.isSpacer) s.projects.forEach(p => p.items.forEach(it => {
-            const cleaned = cleanTitle(it.title || it.url || '');
+            const source = (it.url && it.url.trim()) ? it.url : (it.title || '');
+            const cleaned = cleanTitle(source);
             if (cleaned && cleaned !== it.title) {
                 it.title = cleaned;
                 changed++;

@@ -84,8 +84,15 @@
         },
         {
           "id": "kqg4ynn3a",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "99s1e44z6",
+              "title": "dfghfghert",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         },
         {
           "id": "sdos42yur",

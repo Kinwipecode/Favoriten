@@ -366,11 +366,6 @@
               "title": "Allgemein",
               "items": [
                 {
-                  "id": "s94p3hu8f",
-                  "title": "Chat.deepseek",
-                  "url": "https://chat.deepseek.com/"
-                },
-                {
                   "id": "adce870nq",
                   "title": "Huggingface",
                   "url": "https://huggingface.co/"

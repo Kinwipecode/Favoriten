@@ -37,9 +37,21 @@
                     style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#636e72;"></i>
                 <input type="text" id="board-search" placeholder="Favoriten suchen..."
                     oninput="handleSearch(this.value)"
-                    style="width:100%; padding:10px 40px 10px 35px; border-radius:12px; border:2px solid #edeff2; background:#f5f6f7; font-family:'Inter',sans-serif; font-size:0.95rem; outline:none; transition:all 0.2s ease;">
-                <i id="search-clear" class="fa-solid fa-circle-xmark hidden" onclick="clearSearch()"
-                    style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#636e72; cursor:pointer; font-size:1.1rem;"></i>
+                    style="width:100%; padding:10px 100px 10px 35px; border-radius:12px; border:2px solid #edeff2; background:#f5f6f7; font-family:'Inter',sans-serif; font-size:0.95rem; outline:none; transition:all 0.2s ease;">
+
+                <div id="search-controls" class="hidden"
+                    style="position:absolute; right:12px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:8px;">
+                    <span id="search-match-count"
+                        style="font-size:0.8rem; color:#636e72; font-weight:600; min-width:25px; text-align:center;">0/0</span>
+                    <button class="btn-text" onclick="nextSearchMatch(-1)"
+                        style="color:#636e72; cursor:pointer; font-size:0.9rem; padding: 2px;"><i
+                            class="fa-solid fa-chevron-up"></i></button>
+                    <button class="btn-text" onclick="nextSearchMatch(1)"
+                        style="color:#636e72; cursor:pointer; font-size:0.9rem; padding: 2px;"><i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <i id="search-clear" class="fa-solid fa-circle-xmark" onclick="clearSearch()"
+                        style="color:#636e72; cursor:pointer; font-size:1.1rem; margin-left:4px;"></i>
+                </div>
             </div>
 
             <div class="header-controls" style="display:flex; align-items:center; gap:12px;">

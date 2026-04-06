@@ -31,32 +31,6 @@
       ],
       "order": 10,
       "collapsed": false
-    },
-    {
-      "id": "7uyflbh4d",
-      "title": "Mail Import",
-      "projects": [
-        {
-          "id": "y6d8k2vfv",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "mt3osvnuy",
-              "title": "555 --------=_MB5EF9F6EE-10F6-4F34-8201-279B00AE9A6D Content-Type: text/html; charset=utf-8 Content-Transfer-Encoding: quoted-printable <html><head> <style id=3D\"css_styles\">=20 blockquote.cite { margin-left: 5px; margin-right: 0px; padding-left: 10px;= padding-right:0px; border-left: 1px solid #cccccc } blockquote.cite2 {margin-left: 5px; margin-right: 0px; padding-left: 10px;= padding-right:0px; border-left: 1px solid #cccccc; margin-top: 3px; padding= -top: 0px; } a img { border: 0px; } li[style=3D'text-align: center;'], li[style=3D'text-align: center; '], li[s= tyle=3D'text-align: right;'], li[style=3D'text-align: right; '] { list-sty= le-position: inside;} body { font-family: 'Segoe UI'; font-size: 12pt; } .quote { margin-left: 1em; margin-right: 1em; border-left: 5px #ebebeb soli= d; padding-left: 0.3em; } a.em-mention[href] { text-decoration: none; color: inherit; border-radius:= 3px; padding-left: 2px; padding-right: 2px; background-color: #e2e2e2; } ._em_placeholder {color: gray; border-bottom: 1px dotted lightblue;} ._em_p= laceholder:before{color:gray; content: '{{ ';} ._em_placeholder:after{color= :gray; content: ' }}';} </style> </head> <body>FAVORITEN-CACHE-EXPORT|v1<br />DATE|2026-04-06T18:17:01.870Z<br />FOR= MAT|TITLE|URL|GROUP<br",
-              "items": [
-                {
-                  "id": "06hlq1zht",
-                  "title": "Notube",
-                  "url": "https://notube.net/en/youtube-app-328"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
-        }
-      ],
-      "order": 20,
-      "collapsed": false
     }
   ],
   "config": {

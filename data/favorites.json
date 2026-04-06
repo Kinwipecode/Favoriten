@@ -643,13 +643,7 @@
             {
               "id": "4blfravbf",
               "title": "Div",
-              "items": [
-                {
-                  "id": "046iglorf",
-                  "title": "Happycar",
-                  "url": "https://www.happycar.ch/mietwagen-luzern"
-                }
-              ],
+              "items": [],
               "collapsed": false
             }
           ]

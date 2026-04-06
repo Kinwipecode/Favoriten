@@ -1647,13 +1647,14 @@ window.applyCopy = async () => {
         return;
     }
 
+    const rowOptions = [...state.rows]
+        .sort((a, b) => (a.order || 0) - (b.order || 0))
+        .map(r => ({ value: `row:${r.id}`, label: `In bestehende Zeile: ${r.title} (#${r.order || 0})` }));
+
     const mode = await showSelectDialog({
         title: 'Kopie-Ziel',
         label: 'Wohin sollen die Gruppen kopiert werden?',
-        options: [
-            { value: 'new', label: 'Neue Zeile erstellen' },
-            { value: 'existing', label: 'In bestehende Zeile kopieren' }
-        ],
+        options: [{ value: 'new', label: 'Neue Zeile erstellen' }, ...rowOptions],
         confirmText: 'Weiter'
     });
     if (!mode) return;
@@ -1673,21 +1674,7 @@ window.applyCopy = async () => {
         targetRow = { id: generateId(), title: (rowName || '').trim() || 'Kopie', projects: [], order: nextOrder, collapsed: false };
         state.rows.push(targetRow);
     } else {
-        const rowOptions = [...state.rows]
-            .sort((a, b) => (a.order || 0) - (b.order || 0))
-            .map(r => ({ value: r.id, label: `${r.title} (#${r.order || 0})` }));
-        if (rowOptions.length === 0) {
-            showToast('Keine Zeile vorhanden.', 'error');
-            return;
-        }
-
-        const targetRowId = await showSelectDialog({
-            title: 'Zielzeile',
-            label: 'In welche Zeile kopieren?',
-            options: rowOptions,
-            confirmText: 'Kopieren'
-        });
-        if (!targetRowId) return;
+        const targetRowId = mode.startsWith('row:') ? mode.slice(4) : '';
         targetRow = state.rows.find(r => r.id === targetRowId) || null;
         if (!targetRow) {
             showToast('Zielzeile nicht gefunden.', 'error');

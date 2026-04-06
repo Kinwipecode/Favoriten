@@ -346,11 +346,6 @@
                   "id": "3f9slzesp",
                   "title": "App.plazmapunk",
                   "url": "https://app.plazmapunk.com/"
-                },
-                {
-                  "id": "jotdpur1l",
-                  "title": "Revid",
-                  "url": "https://www.revid.ai/projects"
                 }
               ],
               "collapsed": false
@@ -781,6 +776,11 @@
               "title": "CAD",
               "items": [
                 {
+                  "id": "jotdpur1l",
+                  "title": "Revid",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
                   "id": "67nyqd6j6",
                   "title": "Youtube",
                   "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
@@ -796,7 +796,7 @@
                   "url": "https://www.mepcontent.com/de/bim-files/"
                 }
               ],
-              "collapsed": true
+              "collapsed": false
             }
           ]
         },

@@ -6,6 +6,11 @@
       "projects": [
         {
           "id": "hsik2h3lz",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "dawi6y5oz",
           "isSpacer": false,
           "projects": [
             {
@@ -101,11 +106,6 @@
               "collapsed": true
             }
           ]
-        },
-        {
-          "id": "dawi6y5oz",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "aceszuf7v",

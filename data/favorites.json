@@ -1387,7 +1387,8 @@
       "btn-send-cache-mail",
       "btn-clear-browser-cache",
       "btn-send-cache-mail-only",
-      "btn-import-mail"
+      "btn-import-mail",
+      "btn-copy-mode"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

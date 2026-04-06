@@ -62,6 +62,7 @@ const state = {
     activeEditingGroupId: null,
     lastContextMenuTime: 0,
     lastContextMenuPos: { x: 0, y: 0 },
+    mailImportPreview: null,
     searchMatches: [],
     currentSearchIndex: -1
 };
@@ -756,6 +757,7 @@ window.openMailImportModal = () => {
     const report = document.getElementById('mail-import-report');
     if (ta) ta.value = '';
     if (report) report.textContent = '';
+    state.mailImportPreview = null;
     refreshMailImportTargets();
     toggleMailImportTargetMode();
     showModal('mail-import-modal');
@@ -803,8 +805,6 @@ window.importFromEmailText = async () => {
     }
 
     const localMap = collectLocalFavoriteLocations();
-    const duplicates = [];
-    const toImport = [];
 
     if (mode === 'row' && !targetRowId) {
         showToast('Bitte Zielzeile waehlen.', 'error');
@@ -815,18 +815,91 @@ window.importFromEmailText = async () => {
         return;
     }
 
-    imported.forEach(it => {
+    const entries = imported.map(it => {
         const key = normalizeUrlForCompare(it.url);
         const hits = key ? (localMap.get(key) || []) : [];
-        if (hits.length) duplicates.push({ item: it, hits });
-        else toImport.push(it);
+        return {
+            id: generateId(),
+            item: it,
+            duplicateHits: hits,
+            selected: hits.length === 0
+        };
     });
+
+    state.mailImportPreview = {
+        config: { mode, newRowName, targetRowId, targetGroupId },
+        entries
+    };
+
+    if (report) {
+        const dups = entries.filter(e => e.duplicateHits.length).length;
+        report.textContent = `Gefunden: ${entries.length} | Duplikate lokal: ${dups}\nWeiter: Auswahl im naechsten Schritt.`;
+    }
+
+    renderMailImportSelection();
+    showModal('mail-import-select-modal');
+};
+
+function updateMailImportSelectionSummary() {
+    const sum = document.getElementById('mail-import-select-summary');
+    if (!sum || !state.mailImportPreview) return;
+    const all = state.mailImportPreview.entries.length;
+    const selected = state.mailImportPreview.entries.filter(e => e.selected).length;
+    const dupAll = state.mailImportPreview.entries.filter(e => e.duplicateHits.length > 0).length;
+    const dupSelected = state.mailImportPreview.entries.filter(e => e.selected && e.duplicateHits.length > 0).length;
+    sum.textContent = `Gesamt: ${all} | Ausgewaehlt: ${selected} | Duplikate: ${dupAll} | Duplikate ausgewaehlt: ${dupSelected}`;
+}
+
+window.renderMailImportSelection = () => {
+    const list = document.getElementById('mail-import-select-list');
+    if (!list || !state.mailImportPreview) return;
+
+    list.innerHTML = state.mailImportPreview.entries.map(e => {
+        const it = e.item;
+        const duplicate = e.duplicateHits.length > 0;
+        const where = duplicate ? e.duplicateHits.map(h => `${h.row} / ${h.group}`).join('; ') : '';
+        return `<label style="display:block; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06); cursor:pointer;">
+            <input type="checkbox" ${e.selected ? 'checked' : ''} onchange="toggleMailImportItemSelection('${e.id}', this.checked)" style="margin-right:8px;">
+            <strong>${it.title}</strong> | ${it.url} | <em>${it.group}</em>
+            ${duplicate ? `<div style="font-size:0.78rem; color:#b33939; margin-top:4px;">Bereits vorhanden: ${where}</div>` : ''}
+        </label>`;
+    }).join('');
+
+    updateMailImportSelectionSummary();
+};
+
+window.toggleMailImportItemSelection = (id, checked) => {
+    if (!state.mailImportPreview) return;
+    const entry = state.mailImportPreview.entries.find(e => e.id === id);
+    if (!entry) return;
+    entry.selected = !!checked;
+    updateMailImportSelectionSummary();
+};
+
+window.toggleAllMailImportSelection = (checked) => {
+    if (!state.mailImportPreview) return;
+    state.mailImportPreview.entries.forEach(e => { e.selected = !!checked; });
+    renderMailImportSelection();
+};
+
+window.confirmMailImportSelection = () => {
+    const report = document.getElementById('mail-import-report');
+    if (!state.mailImportPreview) return;
+
+    const { mode, newRowName, targetRowId, targetGroupId } = state.mailImportPreview.config;
+    const selectedEntries = state.mailImportPreview.entries.filter(e => e.selected);
+    if (!selectedEntries.length) {
+        showToast('Keine Favoriten ausgewaehlt.', 'error');
+        return;
+    }
 
     const targetRow = targetRowId ? state.rows.find(r => r.id === targetRowId) : null;
     const fixedGroup = targetGroupId ? findProject(targetGroupId) : null;
     const importRow = mode === 'new_row' ? ensureRowForImport(newRowName) : (mode === 'row' ? targetRow : null);
 
-    toImport.forEach(it => {
+    let importedCount = 0;
+    selectedEntries.forEach(e => {
+        const it = e.item;
         let p = null;
         if (mode === 'group') p = fixedGroup;
         else if (importRow) p = ensureProjectInRow(importRow, it.group || 'Import');
@@ -835,30 +908,36 @@ window.importFromEmailText = async () => {
         if (!p) return;
         if (!p.items) p.items = [];
         p.items.push({ id: generateId(), title: it.title || cleanTitle(it.url), url: it.url });
+        importedCount++;
     });
 
-    if (toImport.length > 0) {
+    if (importedCount > 0) {
         renderBoard();
         saveData();
     }
 
-    const dupLines = duplicates.slice(0, 20).map(d => {
-        const where = d.hits.map(h => `${h.row} / ${h.group}`).join('; ');
-        return `- ${d.item.title} -> bereits vorhanden in: ${where}`;
-    }).join('\n');
+    const duplicatesTotal = state.mailImportPreview.entries.filter(e => e.duplicateHits.length > 0).length;
+    const duplicatesSelected = selectedEntries.filter(e => e.duplicateHits.length > 0).length;
+    const duplicateLines = selectedEntries
+        .filter(e => e.duplicateHits.length > 0)
+        .slice(0, 20)
+        .map(e => `- ${e.item.title}: ${e.duplicateHits.map(h => `${h.row} / ${h.group}`).join('; ')}`)
+        .join('\n');
 
     if (report) {
         report.textContent = [
-            `Importiert: ${toImport.length}`,
-            `Duplikate uebersprungen: ${duplicates.length}`,
-            duplicates.length ? '' : '',
-            duplicates.length ? 'Duplikat-Details (max 20):' : '',
-            duplicates.length ? dupLines : ''
+            `Importiert: ${importedCount}`,
+            `Duplikate gefunden: ${duplicatesTotal}`,
+            `Duplikate importiert (manuell ausgewaehlt): ${duplicatesSelected}`,
+            duplicatesSelected ? '' : '',
+            duplicatesSelected ? 'Duplikat-Fundorte (max 20):' : '',
+            duplicatesSelected ? duplicateLines : ''
         ].filter(Boolean).join('\n');
     }
 
-    if (duplicates.length) showToast(`Import: ${toImport.length} neu, ${duplicates.length} Duplikate uebersprungen.`, 'info');
-    else showToast(`Import erfolgreich: ${toImport.length} Favoriten.`, 'success');
+    hideModal('mail-import-select-modal');
+    showToast(`Import abgeschlossen: ${importedCount} Favoriten.`, 'success');
+    state.mailImportPreview = null;
 };
 
 window.clearBrowserCacheData = async () => {

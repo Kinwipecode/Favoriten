@@ -703,6 +703,18 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "fr0jnvyji",
+              "title": "Trimble",
+              "items": [
+                {
+                  "id": "jxind9sx6",
+                  "title": "Trimbleenterprisecommunity",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -764,21 +776,8 @@
         },
         {
           "id": "anlns8g9z",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "fr0jnvyji",
-              "title": "Trimble",
-              "items": [
-                {
-                  "id": "jxind9sx6",
-                  "title": "Trimbleenterprisecommunity",
-                  "url": "https://www.trimbleenterprisecommunity.com/s/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "94sdqnux5",

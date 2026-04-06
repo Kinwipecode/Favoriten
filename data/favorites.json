@@ -366,11 +366,6 @@
               "title": "Allgemein",
               "items": [
                 {
-                  "id": "zy94pbaqs",
-                  "title": "Perplexity",
-                  "url": "https://www.perplexity.ai/"
-                },
-                {
                   "id": "s94p3hu8f",
                   "title": "Chat.deepseek",
                   "url": "https://chat.deepseek.com/"

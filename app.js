@@ -483,6 +483,33 @@ function findProject(id) {
 }
 function findItem(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const item = p.items.find(x => x.id === id); if (item) return item; } }
 
+function findProjectByItemId(itemId) {
+    if (!itemId) return null;
+    for (const r of state.rows) {
+        for (const s of (r.projects || [])) {
+            if (s.isSpacer || !s.projects) continue;
+            for (const p of s.projects) {
+                if ((p.items || []).some(it => it.id === itemId)) {
+                    return p;
+                }
+            }
+        }
+    }
+    return null;
+}
+
+function getProjectOptions() {
+    const rowsSorted = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
+    const options = [];
+    rowsSorted.forEach(r => {
+        (r.projects || []).forEach(s => {
+            if (s.isSpacer || !s.projects) return;
+            s.projects.forEach(p => options.push({ rowTitle: r.title, projectId: p.id, projectTitle: p.title }));
+        });
+    });
+    return options;
+}
+
 function getOrderedItemIds() {
     const ids = [];
     state.rows.forEach(r => {
@@ -562,6 +589,51 @@ window.editItem = (id) => {
     const nt = prompt("Titel:", item.title); if (nt === null) return;
     const nu = prompt("URL:", item.url); if (!nu) return;
     item.title = nt; item.url = nu; renderBoard(); saveData();
+}
+
+window.moveItemViaMenu = (itemId) => {
+    const item = findItem(itemId);
+    if (!item) {
+        showToast('Favorit nicht gefunden.', 'error');
+        return;
+    }
+
+    const currentProject = findProjectByItemId(itemId);
+    let options = getProjectOptions();
+    if (currentProject) options = options.filter(o => o.projectId !== currentProject.id);
+
+    if (options.length === 0) {
+        showToast('Keine Zielgruppe verfuegbar.', 'error');
+        return;
+    }
+
+    const text = options.map((o, i) => `${i + 1}: ${o.rowTitle} / ${o.projectTitle}`).join('\n');
+    const input = prompt(`In welche Gruppe verschieben?\n\n${text}`, '1');
+    if (input === null) return;
+
+    const idx = parseInt(input, 10) - 1;
+    if (Number.isNaN(idx) || idx < 0 || idx >= options.length) {
+        showToast('Ungueltige Auswahl.', 'error');
+        return;
+    }
+
+    const target = findProject(options[idx].projectId);
+    if (!target) {
+        showToast('Zielgruppe nicht gefunden.', 'error');
+        return;
+    }
+
+    const moved = findItemAndClear(itemId);
+    if (!moved) {
+        showToast('Favorit konnte nicht verschoben werden.', 'error');
+        return;
+    }
+
+    if (!target.items) target.items = [];
+    target.items.push(moved);
+    renderBoard();
+    saveData();
+    showToast(`Verschoben nach: ${target.title}`, 'success');
 }
 
 window.importFromHTML = (html, targetRowId, newRowName) => {
@@ -692,6 +764,7 @@ window.showContextMenu = (e, type, id) => {
         const selectDelete = state.deleteMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Zum Loeschen markieren</div>` : '';
         html = `<div class="context-menu-title">Favorit: ${item ? item.title : ''}</div>
         <div class="context-menu-item" onclick="editItem('${id}')">Bearbeiten</div>
+        <div class="context-menu-item" onclick="moveItemViaMenu('${id}')">Verschieben in Gruppe...</div>
         ${selectMove}
         ${selectDelete}
         <div class="context-menu-divider"></div>

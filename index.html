@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoriten Manager</title>
-    <link rel="stylesheet" href="style.css?v=6.5">
+    <link rel="stylesheet" href="style.css?v=6.6">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;800&display=swap"
@@ -22,7 +22,7 @@
             <div class="logo"
                 style="display:flex; flex-direction:column; align-items:flex-start; line-height:1; min-width:180px;">
                 <span
-                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v6.5</span>
+                    style="font-size:0.6rem; font-weight:900; color:var(--primary-color); opacity:0.6; margin-bottom: 2px; letter-spacing:1px; text-transform:uppercase;">v6.6</span>
                 <div style="display:flex; align-items:center; gap:8px;">
                     <i class="fa-solid fa-star"></i>
                     <span style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.4rem;">Favoriten</span>
@@ -307,7 +307,7 @@
             <div class="modal-body" style="padding: 20px;">
                 <div
                     style="background: rgba(var(--primary-color-rgb), 0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
-                    <h4 style="margin-top:0; color:var(--primary-color);">Version 6.5</h4>
+                    <h4 style="margin-top:0; color:var(--primary-color);">Version 6.6</h4>
                     <p style="font-size:0.9rem; color:#555;">Dein persönlicher Favoriten Manager mit
                         Cloud-Synchronisation und Name-Cleaning.</p>
                 </div>
@@ -591,7 +591,28 @@
                 <pre id="mail-import-report" style="white-space:pre-wrap; background:rgba(0,0,0,0.04); border-radius:8px; padding:10px; min-height:80px; font-size:0.8rem; color:#444;"></pre>
                 <div class="modal-actions" style="justify-content:flex-end; gap:12px; margin-top: 12px;">
                     <button onclick="hideModal('mail-import-modal')" class="btn btn-secondary">Schließen</button>
-                    <button onclick="importFromEmailText()" class="btn btn-primary">Jetzt importieren</button>
+                    <button onclick="importFromEmailText()" class="btn btn-primary">Weiter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mail-import-select-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 860px;">
+            <div class="modal-header">
+                <h3 style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;"><i class="fa-solid fa-list-check"></i> Import-Auswahl</h3>
+                <button onclick="hideModal('mail-import-select-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div id="mail-import-select-summary" style="font-size:0.85rem; color:#555; margin-bottom:10px;"></div>
+                <div style="display:flex; gap:8px; margin-bottom:10px;">
+                    <button class="btn btn-secondary" onclick="toggleAllMailImportSelection(true)">Alle an</button>
+                    <button class="btn btn-secondary" onclick="toggleAllMailImportSelection(false)">Alle aus</button>
+                </div>
+                <div id="mail-import-select-list" style="max-height:360px; overflow:auto; border:1px solid rgba(0,0,0,0.08); border-radius:10px; background:rgba(255,255,255,0.6);"></div>
+                <div class="modal-actions" style="justify-content:flex-end; gap:12px; margin-top: 12px;">
+                    <button onclick="hideModal('mail-import-select-modal')" class="btn btn-secondary">Abbrechen</button>
+                    <button onclick="confirmMailImportSelection()" class="btn btn-primary">Ausgewählte importieren</button>
                 </div>
             </div>
         </div>
@@ -623,8 +644,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script src="ui.js?v=6.5"></script>
-    <script src="app.js?v=6.5"></script>
+    <script src="ui.js?v=6.6"></script>
+    <script src="app.js?v=6.6"></script>
 </body>
 
 </html>

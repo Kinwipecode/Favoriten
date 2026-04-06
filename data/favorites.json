@@ -42,18 +42,6 @@
           "isSpacer": false,
           "projects": [
             {
-              "id": "ykk3i9243",
-              "title": "für Suno ",
-              "items": [
-                {
-                  "id": "6wqztss12",
-                  "title": "Meinhomestudio",
-                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
-                }
-              ],
-              "collapsed": true
-            },
-            {
               "id": "qnpjk9txq",
               "title": "Tools",
               "items": [
@@ -321,6 +309,18 @@
                 }
               ],
               "collapsed": false
+            },
+            {
+              "id": "ykk3i9243",
+              "title": "für Suno ",
+              "items": [
+                {
+                  "id": "6wqztss12",
+                  "title": "Meinhomestudio",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },

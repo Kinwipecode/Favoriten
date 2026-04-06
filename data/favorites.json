@@ -6,8 +6,15 @@
       "projects": [
         {
           "id": "r9fs8100v",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "5xd1o03r6",
+              "title": "333",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         },
         {
           "id": "dc70ayeca",

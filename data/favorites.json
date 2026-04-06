@@ -175,6 +175,23 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "60uy3glqq",
+              "title": "Bild",
+              "items": [
+                {
+                  "id": "eqoncu2vc",
+                  "title": "Pixlr",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "f46n5yrgh",
+                  "title": "Artguru",
+                  "url": "https://www.artguru.ai/de/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -367,26 +384,8 @@
         },
         {
           "id": "dpbr0eg2b",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "60uy3glqq",
-              "title": "Bild",
-              "items": [
-                {
-                  "id": "eqoncu2vc",
-                  "title": "Pixlr",
-                  "url": "https://pixlr.com/de/express/"
-                },
-                {
-                  "id": "f46n5yrgh",
-                  "title": "Artguru",
-                  "url": "https://www.artguru.ai/de/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "qtt2u47n5",

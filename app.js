@@ -42,6 +42,7 @@ const state = {
     searchTerm: "",
     isDragging: false,
     moveMode: { active: false, type: null, selectedIds: [] },
+    copyMode: { active: false, selectedIds: [] },
     deleteMode: { active: false, type: null, selectedIds: [] },
     config: {
         primary: '#6c5ce7',
@@ -52,7 +53,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-pull-cloud', 'btn-save', 'btn-import-mail', 'btn-send-cache-mail', 'btn-send-cache-mail-only', 'btn-clear-browser-cache', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
+            'btn-pull-cloud', 'btn-save', 'btn-import-mail', 'btn-send-cache-mail', 'btn-send-cache-mail-only', 'btn-clear-browser-cache', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-copy-mode', 'btn-multi-delete', 'btn-settings'
         ]
     },
     activeLinkId: null,
@@ -304,9 +305,12 @@ function renderBoard() {
 
             if (!slot.isSpacer) {
                 slot.projects.forEach(p => {
-                    const isSelected = state.moveMode.selectedIds.includes(p.id) || state.deleteMode.selectedIds.includes(p.id);
+                    const isMoveSelected = state.moveMode.selectedIds.includes(p.id);
+                    const isCopySelected = state.copyMode.selectedIds.includes(p.id);
+                    const isDeleteSelected = state.deleteMode.selectedIds.includes(p.id);
                     const col = document.createElement("div");
-                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${isSelected ? "selected-for-move" : ""}`;
+                    const selectedClass = isCopySelected ? 'selected-for-copy' : (isDeleteSelected ? 'selected-for-delete' : (isMoveSelected ? 'selected-for-move' : ''));
+                    col.className = `column ${p.collapsed ? "collapsed" : ""} ${selectedClass}`;
                     col.dataset.projectId = p.id;
 
                     const triggerProjContext = (e) => {
@@ -317,7 +321,7 @@ function renderBoard() {
                     };
 
                     col.innerHTML = `
-                        <div class="column-header" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) { if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }">
+                        <div class="column-header" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) { if (state.copyMode.active) toggleCopySelectionProject('${p.id}'); else if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }">
                             <div class="header-left"><i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}"></i> <span>${p.title}</span></div>
                             <div class="column-actions">
                                 <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button>
@@ -1481,15 +1485,19 @@ window.importFromHTML = (html, targetRowId, newRowName) => {
 };
 
 function updateToolbars() {
-    const mt = document.getElementById('move-toolbar'), dt = document.getElementById('delete-toolbar');
+    const mt = document.getElementById('move-toolbar'), ct = document.getElementById('copy-toolbar'), dt = document.getElementById('delete-toolbar');
     if (mt) mt.classList.toggle('hidden', !state.moveMode.active);
+    if (ct) ct.classList.toggle('hidden', !state.copyMode.active);
     if (dt) dt.classList.toggle('hidden', !state.deleteMode.active);
 
     const moveCount = document.getElementById('move-count');
+    const copyCount = document.getElementById('copy-count');
     const delCount = document.getElementById('delete-count');
     const btnConfirmMove = document.getElementById('btn-confirm-move');
+    const btnConfirmCopy = document.getElementById('btn-confirm-copy');
 
     if (moveCount) moveCount.textContent = `${state.moveMode.selectedIds.length} Elemente ausgewaehlt`;
+    if (copyCount) copyCount.textContent = `${state.copyMode.selectedIds.length} Gruppen ausgewaehlt`;
     if (delCount) delCount.textContent = `${state.deleteMode.selectedIds.length} Elemente zum Loeschen ausgewaehlt`;
     if (btnConfirmMove) {
         const hasSelection = state.moveMode.selectedIds.length > 0;
@@ -1497,23 +1505,48 @@ function updateToolbars() {
         btnConfirmMove.disabled = !(hasSelection && hasTarget);
         btnConfirmMove.title = hasTarget ? 'Auswahl in die Zielgruppe verschieben' : 'Per Rechtsklick auf eine Gruppe zuerst Ziel setzen';
     }
+    if (btnConfirmCopy) {
+        btnConfirmCopy.disabled = state.copyMode.selectedIds.length === 0;
+    }
 }
 
 window.toggleMoveMode = () => {
     state.moveMode.active = !state.moveMode.active;
     state.moveMode.selectedIds = [];
     state.activeProjectId = null;
+    state.copyMode.active = false;
+    state.copyMode.selectedIds = [];
     state.deleteMode.active = false;
+    renderBoard();
+};
+window.toggleCopyMode = () => {
+    state.copyMode.active = !state.copyMode.active;
+    state.copyMode.selectedIds = [];
+    state.moveMode.active = false;
+    state.moveMode.selectedIds = [];
+    state.activeProjectId = null;
+    state.deleteMode.active = false;
+    state.deleteMode.selectedIds = [];
     renderBoard();
 };
 window.toggleDeleteMode = () => {
     state.deleteMode.active = !state.deleteMode.active;
     state.deleteMode.selectedIds = [];
     state.moveMode.active = false;
+    state.moveMode.selectedIds = [];
+    state.copyMode.active = false;
+    state.copyMode.selectedIds = [];
     state.activeProjectId = null;
     renderBoard();
 };
 window.toggleSelection = (id) => { const l = state.moveMode.active ? state.moveMode.selectedIds : state.deleteMode.selectedIds; const i = l.indexOf(id); if (i === -1) l.push(id); else l.splice(i, 1); renderBoard(); };
+window.toggleCopySelectionProject = (id) => {
+    if (!findProject(id)) return;
+    const l = state.copyMode.selectedIds;
+    const i = l.indexOf(id);
+    if (i === -1) l.push(id); else l.splice(i, 1);
+    renderBoard();
+};
 
 window.setMoveTarget = (projectId) => {
     const p = findProject(projectId);
@@ -1543,6 +1576,46 @@ window.applyMove = () => {
 
     if (result.ignored > 0) showToast(`${result.moved} Favoriten verschoben (${result.ignored} nicht kompatible Elemente ignoriert).`, 'info');
     else showToast(`${result.moved} Favoriten verschoben.`, 'success');
+};
+
+window.applyCopy = async () => {
+    if (!state.copyMode.active) return;
+    const ids = [...state.copyMode.selectedIds].filter(id => !!findProject(id));
+    if (ids.length === 0) {
+        showToast('Keine Gruppen ausgewaehlt.', 'error');
+        return;
+    }
+
+    const rowName = await showInputDialog({
+        title: 'Neue Zeile fuer Kopie',
+        label: 'Zeilenname',
+        value: `Kopie ${new Date().toLocaleDateString()}`,
+        placeholder: 'Name der neuen Zeile',
+        confirmText: 'Kopieren'
+    });
+    if (rowName === null) return;
+
+    const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
+    const newRow = { id: generateId(), title: (rowName || '').trim() || 'Kopie', projects: [], order: nextOrder, collapsed: false };
+
+    ids.forEach(id => {
+        const src = findProject(id);
+        if (!src) return;
+        const cloned = {
+            id: generateId(),
+            title: src.title,
+            collapsed: !!src.collapsed,
+            items: (src.items || []).map(it => ({ id: generateId(), title: it.title, url: it.url }))
+        };
+        newRow.projects.push({ id: generateId(), isSpacer: false, projects: [cloned] });
+    });
+
+    state.rows.push(newRow);
+    state.copyMode.active = false;
+    state.copyMode.selectedIds = [];
+    renderBoard();
+    saveData();
+    showToast(`${ids.length} Gruppen in neue Zeile kopiert.`, 'success');
 };
 
 window.applyDelete = async () => { if (state.deleteMode.selectedIds.length > 0 && await showConfirm('Löschen?')) { state.deleteMode.selectedIds.forEach(id => { if (!findItemAndClear(id)) findProjectAndClear(id); }); state.deleteMode.active = false; state.deleteMode.selectedIds = []; renderBoard(); saveData(); } };
@@ -1758,6 +1831,7 @@ window.showContextMenu = (e, type, id) => {
         const p = findProject(id);
         const moveEntry = state.moveMode.active ? `<div class="context-menu-item" onclick="setMoveTarget('${id}')">Als Verschiebe-Ziel setzen</div>` : '';
         const selectMove = state.moveMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Auswahl ein/aus</div>` : '';
+        const selectCopy = state.copyMode.active ? `<div class="context-menu-item" onclick="toggleCopySelectionProject('${id}')">Zur Kopie markieren</div>` : '';
         const selectDelete = state.deleteMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Zum Loeschen markieren</div>` : '';
         html = `<div class="context-menu-title">Gruppe: ${p ? p.title : ''}</div>
         <div class="context-menu-item" onclick="addItem('${id}')">Favorit hinzufuegen</div>
@@ -1765,6 +1839,7 @@ window.showContextMenu = (e, type, id) => {
         <div class="context-menu-item" onclick="moveProjectViaMenu('${id}')">Gruppe verschieben...</div>
         ${moveEntry}
         ${selectMove}
+        ${selectCopy}
         ${selectDelete}
         <div class="context-menu-divider"></div>
         <div class="context-menu-item danger" onclick="deleteProject('${id}')">Gruppe loeschen</div>`;

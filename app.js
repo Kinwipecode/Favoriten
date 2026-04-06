@@ -638,7 +638,21 @@ function collectLocalFavoriteLocations() {
 function parseMailExportText(rawText) {
     if (!rawText) return [];
     const marker = 'FORMAT|TITLE|URL|GROUP';
-    const raw = String(rawText).replace(/\r/g, '\n');
+    let raw = String(rawText).replace(/\r/g, '\n');
+
+    // Mail clients may deliver quoted-printable text (soft wraps + hex escapes).
+    raw = raw.replace(/=\n/g, '');
+    raw = raw.replace(/=([A-Fa-f0-9]{2})/g, (_, hex) => {
+        try { return String.fromCharCode(parseInt(hex, 16)); } catch (_) { return ''; }
+    });
+
+    const sanitizeGroup = (groupText) => {
+        let g = String(groupText || '').trim();
+        g = g.split(/\b(?:FAVORITEN-CACHE-EXPORT\||DATE\||FORMAT\||TRUNCATED\|)/i)[0].trim();
+        g = g.replace(/\s+[-_=]{2,}.*$/g, '').trim();
+        g = g.replace(/^[-_=]{2,}.*$/g, '').trim();
+        return g || 'Import';
+    };
     const markerIndex = raw.indexOf(marker);
     let section = markerIndex >= 0 ? raw.slice(markerIndex + marker.length) : raw;
 
@@ -651,7 +665,7 @@ function parseMailExportText(rawText) {
     while ((match = tupleRe.exec(compact)) !== null) {
         const title = (match[1] || '').trim();
         let url = (match[2] || '').trim();
-        const group = (match[3] || '').trim() || 'Import';
+        const group = sanitizeGroup(match[3]);
         if (!url) continue;
         if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
         items.push({ title: title || cleanTitle(url), url, group });
@@ -672,7 +686,7 @@ function parseMailExportText(rawText) {
             if (parts.length < 3) return;
             const title = (parts[0] || '').trim();
             let url = (parts[1] || '').trim();
-            const group = parts.slice(2).join('|').trim() || 'Import';
+            const group = sanitizeGroup(parts.slice(2).join('|'));
             if (!url || !/(?:https?:\/\/|www\.)/i.test(url)) return;
             if (!/^https?:\/\//i.test(url)) url = `https://${url}`;
             items.push({ title: title || cleanTitle(url), url, group });

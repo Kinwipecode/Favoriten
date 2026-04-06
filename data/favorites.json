@@ -26,11 +26,6 @@
                   "id": "2227161ja",
                   "title": "Email.bluewin",
                   "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
-                },
-                {
-                  "id": "48bti5l08",
-                  "title": "Erdsondenoptimierung",
-                  "url": "https://www.erdsondenoptimierung.ch/"
                 }
               ],
               "collapsed": false
@@ -422,6 +417,11 @@
               "id": "gpzgc0t1d",
               "title": "HLK",
               "items": [
+                {
+                  "id": "48bti5l08",
+                  "title": "Erdsondenoptimierung",
+                  "url": "https://www.erdsondenoptimierung.ch/"
+                },
                 {
                   "id": "kaj2vof2h",
                   "title": "Erdsondenoptimierung",

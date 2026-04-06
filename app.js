@@ -322,6 +322,7 @@ function renderBoard() {
                             <div class="header-left"><i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}"></i> <span>${p.title}</span></div>
                             <div class="column-actions">
                                 <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button>
+                                <button class="btn-text" onclick="event.stopPropagation(); renameProject('${p.id}')"><i class="fa-solid fa-pen"></i></button>
                                 <button class="btn-text" onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                         </div>
@@ -1210,6 +1211,27 @@ window.deleteProject = async (id) => {
 };
 window.deleteItem = async (id) => { if (await showConfirm('Favorit löschen?')) { findItemAndClear(id); renderBoard(); saveData(); } };
 window.deleteSlot = (id) => { state.rows.forEach(r => { r.projects = r.projects.filter(s => s.id !== id); }); renderBoard(); saveData(); };
+
+window.renameProject = async (id) => {
+    const p = findProject(id);
+    if (!p) return;
+    const nextTitle = await showInputDialog({
+        title: 'Gruppe umbenennen',
+        label: 'Gruppenname',
+        value: p.title || '',
+        placeholder: 'Name der Gruppe',
+        confirmText: 'Speichern'
+    });
+    if (nextTitle === null) return;
+    const clean = String(nextTitle).trim();
+    if (!clean) {
+        showToast('Gruppenname darf nicht leer sein.', 'error');
+        return;
+    }
+    p.title = clean;
+    renderBoard();
+    saveData();
+};
 
 window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(); } };
 window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };

@@ -326,31 +326,8 @@
         },
         {
           "id": "kweoi7e0a",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "8j57mwwri",
-              "title": "Musik",
-              "items": [
-                {
-                  "id": "02i2tflp0",
-                  "title": "Udio AI Musik",
-                  "url": "https://udio.com/"
-                },
-                {
-                  "id": "bh2lwwhoi",
-                  "title": "Mubert liz Free",
-                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
-                },
-                {
-                  "id": "3f9slzesp",
-                  "title": "App.plazmapunk Video zu Musik",
-                  "url": "https://app.plazmapunk.com/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "dpbr0eg2b",
@@ -595,6 +572,28 @@
                   "id": "m3wir6m4l",
                   "title": "Dataselect",
                   "url": "https://www.dataselect.ch/public/Catalogue.aspx"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "8j57mwwri",
+              "title": "Musik",
+              "items": [
+                {
+                  "id": "02i2tflp0",
+                  "title": "Udio AI Musik",
+                  "url": "https://udio.com/"
+                },
+                {
+                  "id": "bh2lwwhoi",
+                  "title": "Mubert liz Free",
+                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+                },
+                {
+                  "id": "3f9slzesp",
+                  "title": "App.plazmapunk Video zu Musik",
+                  "url": "https://app.plazmapunk.com/"
                 }
               ],
               "collapsed": true

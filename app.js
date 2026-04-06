@@ -283,7 +283,7 @@ function renderBoard() {
                     ${isRead ? `<span>${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
                 </div>
                 <div class="row-actions">
-                    ${!isRead ? `<button class="btn-icon" onclick="collapseRow('${row.id}')"><i class="fa-solid fa-compress"></i></button><button class="btn-icon delete" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash-can"></i></button>` : ''}
+                    ${!isRead ? `<button class="btn-icon" onclick="collapseRow('${row.id}')"><i class="fa-solid fa-compress"></i></button><button class="btn-icon" onclick="renameRow('${row.id}')"><i class="fa-solid fa-pen"></i></button><button class="btn-icon delete" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash-can"></i></button>` : ''}
                 </div>
             </div>
             <div class="row-projects"></div>
@@ -1199,6 +1199,26 @@ function moveSelectedItemsToProject(targetProjectId, insertIndex = null, fallbac
 
 window.updateGroupTitle = (id, val) => { const p = findProject(id); if (p) p.title = val; saveData(); };
 window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.title = val; saveData(); };
+window.renameRow = async (id) => {
+    const r = state.rows.find(x => x.id === id);
+    if (!r) return;
+    const next = await showInputDialog({
+        title: 'Zeile umbenennen',
+        label: 'Zeilenname',
+        value: r.title || '',
+        placeholder: 'Name der Zeile',
+        confirmText: 'Speichern'
+    });
+    if (next === null) return;
+    const clean = String(next).trim();
+    if (!clean) {
+        showToast('Zeilenname darf nicht leer sein.', 'error');
+        return;
+    }
+    r.title = clean;
+    renderBoard();
+    saveData();
+};
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
 window.sortRows = () => {
     state.rows.sort((a, b) => (a.order || 0) - (b.order || 0));

@@ -48,6 +48,11 @@
                   "id": "hrnpq3uq7",
                   "title": "Novauser.xobor.de",
                   "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                },
+                {
+                  "id": "ot9crbhqg",
+                  "title": "Hslu.ch",
+                  "url": "https://www.hslu.ch/de-ch/wirtschaft/institute/ifz/news-und-ueber-uns/mediencorner/wir-gratulieren/"
                 }
               ],
               "collapsed": false
@@ -62,11 +67,6 @@
               "id": "vxf4o8rfx",
               "title": "Lesezeichenleiste",
               "items": [
-                {
-                  "id": "ot9crbhqg",
-                  "title": "Hslu.ch",
-                  "url": "https://www.hslu.ch/de-ch/wirtschaft/institute/ifz/news-und-ueber-uns/mediencorner/wir-gratulieren/"
-                },
                 {
                   "id": "t98qko172",
                   "title": "192.168.178.1/",
@@ -1690,7 +1690,7 @@
         }
       ],
       "order": 10,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "xx8y6ockc",

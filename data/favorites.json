@@ -33,6 +33,11 @@
                   "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
                 },
                 {
+                  "id": "ahsqjatou",
+                  "title": "Netflix.com",
+                  "url": "https://www.netflix.com/YourAccount"
+                },
+                {
                   "id": "zh0w8gfe4",
                   "title": "Notube.net",
                   "url": "https://notube.net/en/youtube-app-155"
@@ -81,11 +86,6 @@
                   "id": "t98qko172",
                   "title": "192.168.178.1/",
                   "url": "http://192.168.178.1/"
-                },
-                {
-                  "id": "ahsqjatou",
-                  "title": "Netflix.com",
-                  "url": "https://www.netflix.com/YourAccount"
                 },
                 {
                   "id": "qf8shdn6a",

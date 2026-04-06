@@ -630,6 +630,23 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "hj88c8jq2",
+              "title": "AAA",
+              "items": [
+                {
+                  "id": "kgrt264c1",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
+                },
+                {
+                  "id": "n4tyuawj2",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -811,26 +828,8 @@
         },
         {
           "id": "igomu5zsf",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "hj88c8jq2",
-              "title": "AAA",
-              "items": [
-                {
-                  "id": "kgrt264c1",
-                  "title": "Igh",
-                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
-                },
-                {
-                  "id": "n4tyuawj2",
-                  "title": "Igh",
-                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "6gjmycgeg",

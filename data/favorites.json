@@ -1361,7 +1361,97 @@
     {
       "id": "nmi5895vt",
       "title": "Neue Zeile",
-      "projects": [],
+      "projects": [
+        {
+          "id": "u15jrbn5h",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "z5ntpal7a",
+              "title": "Coden",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "wk15qlbub",
+                  "title": "Bolt",
+                  "url": "https://bolt.new/"
+                },
+                {
+                  "id": "oy1w55n7s",
+                  "title": "Filedn",
+                  "url": "https://filedn.eu/l9B9c0qnIV5k2PVR8vdTK40/Todo/index_pro.html"
+                },
+                {
+                  "id": "nxgn70bsl",
+                  "title": "Dash.cloudflare",
+                  "url": "https://dash.cloudflare.com/23e8d19ed8337818e554e2ac87b3029a/pages/new/upload"
+                },
+                {
+                  "id": "gt3cd4tri",
+                  "title": "File:///G:/Miro%20copy/index.html",
+                  "url": "file:///G:/Miro%20copy/index.html"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ka8n2z3tk",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "hxitn52i7",
+              "title": "Suno",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "ifge7zwyp",
+                  "title": "Suno",
+                  "url": "https://www.suno.wiki/faq/metatags/song-structure/"
+                },
+                {
+                  "id": "obyo2tdl6",
+                  "title": "Slooply Techno Sample",
+                  "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "xut0n3agy",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "94drxlard",
+              "title": "GitHub",
+              "collapsed": true,
+              "items": [
+                {
+                  "id": "pzs0uiup2",
+                  "title": "Github",
+                  "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
+                },
+                {
+                  "id": "u04qsbusd",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Miro_plus/"
+                },
+                {
+                  "id": "tryys37z8",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
+                },
+                {
+                  "id": "epqnzxopw",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Favoriten/"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "order": 20,
       "collapsed": false
     },

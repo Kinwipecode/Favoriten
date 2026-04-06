@@ -641,8 +641,36 @@
         },
         {
           "id": "dbjcj2qnu",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "8inxsjay5",
+              "title": "CAD",
+              "items": [
+                {
+                  "id": "jotdpur1l",
+                  "title": "Revid",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
+                  "id": "67nyqd6j6",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
+                },
+                {
+                  "id": "td67r0yds",
+                  "title": "Ifcwiki",
+                  "url": "https://www.ifcwiki.org/index.php?title=KIT_IFC_Examples"
+                },
+                {
+                  "id": "jun16ecaq",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
         },
         {
           "id": "xiyd3h9bf",
@@ -692,36 +720,8 @@
         },
         {
           "id": "mmzwgqcg3",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "8inxsjay5",
-              "title": "CAD",
-              "items": [
-                {
-                  "id": "jotdpur1l",
-                  "title": "Revid",
-                  "url": "https://www.revid.ai/projects"
-                },
-                {
-                  "id": "67nyqd6j6",
-                  "title": "Youtube",
-                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
-                },
-                {
-                  "id": "td67r0yds",
-                  "title": "Ifcwiki",
-                  "url": "https://www.ifcwiki.org/index.php?title=KIT_IFC_Examples"
-                },
-                {
-                  "id": "jun16ecaq",
-                  "title": "Mepcontent",
-                  "url": "https://www.mepcontent.com/de/bim-files/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "b2rcnnyxa",

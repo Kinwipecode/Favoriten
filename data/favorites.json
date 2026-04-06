@@ -1,5 +1,26 @@
 {
-  "rows": [],
+  "rows": [
+    {
+      "id": "o6zkqz5rr",
+      "title": "Hauptzeile",
+      "projects": [
+        {
+          "id": "dc70ayeca",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "29u53parm",
+              "title": "aaa",
+              "items": [],
+              "collapsed": false
+            }
+          ]
+        }
+      ],
+      "order": 10,
+      "collapsed": false
+    }
+  ],
   "config": {
     "primary": "#101010",
     "bg": "#008080",

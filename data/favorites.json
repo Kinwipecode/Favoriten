@@ -50,11 +50,6 @@
                   "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
                 },
                 {
-                  "id": "ds4ysmjyc",
-                  "title": "Flexclip",
-                  "url": "https://www.flexclip.com/de/tools/compress-video/"
-                },
-                {
                   "id": "89n8jswzw",
                   "title": "Bolt",
                   "url": "https://bolt.new/"
@@ -115,6 +110,11 @@
                   "id": "z33bl680i",
                   "title": "Notube",
                   "url": "https://notube.net/en/youtube-app-155"
+                },
+                {
+                  "id": "ds4ysmjyc",
+                  "title": "Flexclip",
+                  "url": "https://www.flexclip.com/de/tools/compress-video/"
                 }
               ],
               "collapsed": false

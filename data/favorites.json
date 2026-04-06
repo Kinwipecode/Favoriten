@@ -40,21 +40,8 @@
         },
         {
           "id": "q31eq68mw",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "4bpqeftgr",
-              "title": "URL|GROUP<br />Notube|https://notube.net/en/youtube-app-328|555</=",
-              "items": [
-                {
-                  "id": "9zukytzr6",
-                  "title": "TITLE",
-                  "url": "https://TITLE"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 10,

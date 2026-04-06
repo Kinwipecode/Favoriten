@@ -1369,11 +1369,11 @@
     "itemBg": "#C0C0C0",
     "buttonOrder": [
       "btn-save",
+      "btn-info",
       "btn-add-project",
       "btn-import",
       "btn-export",
       "btn-github",
-      "btn-info",
       "btn-add-row",
       "btn-collapse-gaps",
       "btn-settings",

@@ -265,12 +265,18 @@ function renderBoard() {
         `;
 
         const container = rowEl.querySelector(".row-projects");
-        let spacerNo = 0;
+        let slotNo = 0;
         row.projects.forEach(slot => {
+            slotNo += 1;
             if (!slot.id) slot.id = generateId();
             const slotEl = document.createElement("div");
             slotEl.className = `slot ${slot.isSpacer ? "spacer" : ""} ${isRead ? "read-only" : ""}`;
             slotEl.dataset.slotId = slot.id;
+
+            const slotBadge = document.createElement("div");
+            slotBadge.className = "slot-index";
+            slotBadge.textContent = `#${slotNo}`;
+            slotEl.appendChild(slotBadge);
 
             if (!slot.isSpacer) {
                 slot.projects.forEach(p => {
@@ -327,10 +333,13 @@ function renderBoard() {
                     if (h && !isRead) { h.oncontextmenu = (e) => { triggerProjContext(e); return false; }; }
                 });
             } else if (!isRead) {
-                spacerNo += 1;
-                slotEl.innerHTML = `<div class="spacer-index">#${spacerNo}</div><div class="spacer-actions" style="opacity:0.2;"><button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')">+</button><button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')">×</button></div>`;
-                slotEl.onmouseenter = () => slotEl.querySelector('.spacer-actions').style.opacity = '1';
-                slotEl.onmouseleave = () => slotEl.querySelector('.spacer-actions').style.opacity = '0.2';
+                const actions = document.createElement('div');
+                actions.className = 'spacer-actions';
+                actions.style.opacity = '0.2';
+                actions.innerHTML = `<button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')">+</button><button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')">×</button>`;
+                slotEl.appendChild(actions);
+                slotEl.onmouseenter = () => { actions.style.opacity = '1'; };
+                slotEl.onmouseleave = () => { actions.style.opacity = '0.2'; };
             }
             container.appendChild(slotEl);
         });

@@ -111,6 +111,18 @@
                 }
               ],
               "collapsed": false
+            },
+            {
+              "id": "osebh6r6q",
+              "title": "schneiden",
+              "items": [
+                {
+                  "id": "t1h1ujgyt",
+                  "title": "Myedit Videoschnitt",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ],
+              "collapsed": false
             }
           ]
         },
@@ -336,21 +348,8 @@
         },
         {
           "id": "8xlz6no39",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "osebh6r6q",
-              "title": "schneiden",
-              "items": [
-                {
-                  "id": "t1h1ujgyt",
-                  "title": "Myedit Videoschnitt",
-                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "kweoi7e0a",

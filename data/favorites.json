@@ -584,6 +584,28 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "lry2vsb5u",
+              "title": "Dämmung",
+              "items": [
+                {
+                  "id": "mrl1o86zz",
+                  "title": "Jada",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "zm0hdyvtl",
+                  "title": "A3bau",
+                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
+                },
+                {
+                  "id": "rbrgiddt6",
+                  "title": "Suissetec",
+                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -612,31 +634,8 @@
         },
         {
           "id": "xiyd3h9bf",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "lry2vsb5u",
-              "title": "Dämmung",
-              "items": [
-                {
-                  "id": "mrl1o86zz",
-                  "title": "Jada",
-                  "url": "https://www.jada.ch/leitungen"
-                },
-                {
-                  "id": "zm0hdyvtl",
-                  "title": "A3bau",
-                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
-                },
-                {
-                  "id": "rbrgiddt6",
-                  "title": "Suissetec",
-                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "vhk1uk6w0",

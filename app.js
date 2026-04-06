@@ -322,7 +322,7 @@ function renderBoard() {
                     slotEl.appendChild(col);
 
                     const h = col.querySelector('.column-header');
-                    if (h && !isRead) { h.oncontextmenu = (e) => { if (!state.moveMode.active) { triggerProjContext(e); return false; } }; }
+                    if (h && !isRead) { h.oncontextmenu = (e) => { triggerProjContext(e); return false; }; }
                 });
             } else if (!isRead) {
                 slotEl.innerHTML = `<div class="spacer-actions" style="opacity:0.2;"><button class="btn-create-group" onclick="addItemToSpacer('${slot.id}')">+</button><button class="btn-delete-slot" onclick="deleteSlot('${slot.id}')">×</button></div>`;
@@ -379,6 +379,20 @@ function renderBoard() {
                     if (!tCol) { state.isDragging = false; renderBoard(); return; }
                     const tId = tCol.getAttribute('data-project-id') || tCol.dataset.projectId;
                     const itId = e.item.getAttribute('data-id') || e.item.dataset.id;
+
+                    if (state.moveMode.active) {
+                        const result = moveSelectedItemsToProject(tId, e.newIndex, itId);
+                        if (result.moved > 0) {
+                            state.moveMode.active = false;
+                            state.activeProjectId = null;
+                            saveData();
+                        }
+                        setTimeout(() => {
+                            state.isDragging = false;
+                            renderBoard();
+                        }, 80);
+                        return;
+                    }
 
                     const item = findItemAndClear(itId);
                     const tP = findProject(tId);
@@ -456,6 +470,58 @@ function findProject(id) {
 }
 function findItem(id) { for (const r of state.rows) for (const s of r.projects) if (!s.isSpacer) for (const p of s.projects) { const item = p.items.find(x => x.id === id); if (item) return item; } }
 
+function getOrderedItemIds() {
+    const ids = [];
+    state.rows.forEach(r => {
+        r.projects.forEach(s => {
+            if (s.isSpacer || !s.projects) return;
+            s.projects.forEach(p => {
+                (p.items || []).forEach(it => ids.push(it.id));
+            });
+        });
+    });
+    return ids;
+}
+
+function moveSelectedItemsToProject(targetProjectId, insertIndex = null, fallbackDraggedId = null) {
+    const targetProject = findProject(targetProjectId);
+    if (!targetProject) return { moved: 0, ignored: 0 };
+
+    let selectedIds = [...state.moveMode.selectedIds];
+    if (fallbackDraggedId) {
+        if (selectedIds.length === 0 || !selectedIds.includes(fallbackDraggedId)) {
+            selectedIds = [fallbackDraggedId];
+        }
+    }
+
+    const selectedSet = new Set(selectedIds);
+    const orderedAllItemIds = getOrderedItemIds();
+    const orderedItemIds = orderedAllItemIds.filter(id => selectedSet.has(id));
+    const ignored = selectedIds.length - orderedItemIds.length;
+
+    if (orderedItemIds.length === 0) return { moved: 0, ignored };
+
+    const targetIdsBefore = (targetProject.items || []).map(it => it.id);
+    const safeIndex = Number.isInteger(insertIndex) ? Math.max(0, insertIndex) : (targetProject.items || []).length;
+    const removedBeforeIndex = orderedItemIds.reduce((acc, id) => {
+        const idx = targetIdsBefore.indexOf(id);
+        return acc + ((idx !== -1 && idx < safeIndex) ? 1 : 0);
+    }, 0);
+    const finalInsertIndex = Math.max(0, safeIndex - removedBeforeIndex);
+
+    const movedItems = [];
+    orderedItemIds.forEach(id => {
+        const item = findItemAndClear(id);
+        if (item) movedItems.push(item);
+    });
+
+    if (!targetProject.items) targetProject.items = [];
+    targetProject.items.splice(finalInsertIndex, 0, ...movedItems);
+    state.moveMode.selectedIds = [];
+
+    return { moved: movedItems.length, ignored };
+}
+
 window.updateGroupTitle = (id, val) => { const p = findProject(id); if (p) p.title = val; saveData(); };
 window.updateRowTitle = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.title = val; saveData(); };
 window.updateRowOrder = (id, val) => { const r = state.rows.find(x => x.id === id); if (r) r.order = parseInt(val) || 0; saveData(); };
@@ -506,11 +572,66 @@ function updateToolbars() {
     const mt = document.getElementById('move-toolbar'), dt = document.getElementById('delete-toolbar');
     if (mt) mt.classList.toggle('hidden', !state.moveMode.active);
     if (dt) dt.classList.toggle('hidden', !state.deleteMode.active);
+
+    const moveCount = document.getElementById('move-count');
+    const delCount = document.getElementById('delete-count');
+    const btnConfirmMove = document.getElementById('btn-confirm-move');
+
+    if (moveCount) moveCount.textContent = `${state.moveMode.selectedIds.length} Elemente ausgewaehlt`;
+    if (delCount) delCount.textContent = `${state.deleteMode.selectedIds.length} Elemente zum Loeschen ausgewaehlt`;
+    if (btnConfirmMove) {
+        const hasSelection = state.moveMode.selectedIds.length > 0;
+        const hasTarget = !!state.activeProjectId;
+        btnConfirmMove.disabled = !(hasSelection && hasTarget);
+        btnConfirmMove.title = hasTarget ? 'Auswahl in die Zielgruppe verschieben' : 'Per Rechtsklick auf eine Gruppe zuerst Ziel setzen';
+    }
 }
 
-window.toggleMoveMode = () => { state.moveMode.active = !state.moveMode.active; state.moveMode.selectedIds = []; state.deleteMode.active = false; renderBoard(); };
-window.toggleDeleteMode = () => { state.deleteMode.active = !state.deleteMode.active; state.deleteMode.selectedIds = []; state.moveMode.active = false; renderBoard(); };
+window.toggleMoveMode = () => {
+    state.moveMode.active = !state.moveMode.active;
+    state.moveMode.selectedIds = [];
+    state.activeProjectId = null;
+    state.deleteMode.active = false;
+    renderBoard();
+};
+window.toggleDeleteMode = () => {
+    state.deleteMode.active = !state.deleteMode.active;
+    state.deleteMode.selectedIds = [];
+    state.moveMode.active = false;
+    state.activeProjectId = null;
+    renderBoard();
+};
 window.toggleSelection = (id) => { const l = state.moveMode.active ? state.moveMode.selectedIds : state.deleteMode.selectedIds; const i = l.indexOf(id); if (i === -1) l.push(id); else l.splice(i, 1); renderBoard(); };
+
+window.setMoveTarget = (projectId) => {
+    const p = findProject(projectId);
+    if (!p) return;
+    state.activeProjectId = projectId;
+    updateToolbars();
+    showToast(`Ziel gesetzt: ${p.title}`, 'info');
+};
+
+window.applyMove = () => {
+    if (!state.moveMode.active) return;
+    if (!state.activeProjectId) {
+        showToast('Bitte zuerst ein Ziel per Rechtsklick auf eine Gruppe waehlen.', 'error');
+        return;
+    }
+
+    const result = moveSelectedItemsToProject(state.activeProjectId);
+    if (result.moved === 0) {
+        showToast('Keine verschiebbaren Favoriten ausgewaehlt.', 'error');
+        return;
+    }
+
+    state.moveMode.active = false;
+    state.activeProjectId = null;
+    renderBoard();
+    saveData();
+
+    if (result.ignored > 0) showToast(`${result.moved} Favoriten verschoben (${result.ignored} nicht kompatible Elemente ignoriert).`, 'info');
+    else showToast(`${result.moved} Favoriten verschoben.`, 'success');
+};
 
 window.applyDelete = async () => { if (state.deleteMode.selectedIds.length > 0 && await showConfirm('Löschen?')) { state.deleteMode.selectedIds.forEach(id => { if (!findItemAndClear(id)) findProjectAndClear(id); }); state.deleteMode.active = false; state.deleteMode.selectedIds = []; renderBoard(); saveData(); } };
 
@@ -531,9 +652,38 @@ window.showConfirm = (msg) => new Promise(res => {
 window.showContextMenu = (e, type, id) => {
     e.preventDefault(); const menu = document.getElementById('context-menu'); if (!menu) return;
     menu.classList.remove('hidden'); let html = '';
-    if (type === 'row') { const r = state.rows.find(x => x.id === id); html = `<div class="context-menu-title">Zeile: ${r ? r.title : ''}</div><div class="context-menu-item" onclick="addSlotToRow('${id}')">Gruppe hinzufügen</div><div class="context-menu-item danger" onclick="deleteRow('${id}')">Zeile löschen</div>`; }
-    else if (type === 'project') { const p = findProject(id); html = `<div class="context-menu-title">Gruppe: ${p ? p.title : ''}</div><div class="context-menu-item" onclick="addItem('${id}')">Favorit hinzufügen</div><div class="context-menu-item danger" onclick="deleteProject('${id}')">Gruppe löschen</div>`; }
-    else if (type === 'item') { const item = findItem(id); html = `<div class="context-menu-title">Favorit: ${item ? item.title : ''}</div><div class="context-menu-item" onclick="editItem('${id}')">Bearbeiten</div><div class="context-menu-divider"></div><div class="context-menu-item danger" onclick="deleteItem('${id}')">Löschen</div>`; }
+    if (type === 'row') {
+        const r = state.rows.find(x => x.id === id);
+        html = `<div class="context-menu-title">Zeile: ${r ? r.title : ''}</div>
+        <div class="context-menu-item" onclick="addSlotToRow('${id}')">Gruppe hinzufuegen</div>
+        <div class="context-menu-item" onclick="addRowSpacer('${id}')">Luecke hinzufuegen</div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item danger" onclick="deleteRow('${id}')">Zeile loeschen</div>`;
+    }
+    else if (type === 'project') {
+        const p = findProject(id);
+        const moveEntry = state.moveMode.active ? `<div class="context-menu-item" onclick="setMoveTarget('${id}')">Als Verschiebe-Ziel setzen</div>` : '';
+        const selectMove = state.moveMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Auswahl ein/aus</div>` : '';
+        const selectDelete = state.deleteMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Zum Loeschen markieren</div>` : '';
+        html = `<div class="context-menu-title">Gruppe: ${p ? p.title : ''}</div>
+        <div class="context-menu-item" onclick="addItem('${id}')">Favorit hinzufuegen</div>
+        ${moveEntry}
+        ${selectMove}
+        ${selectDelete}
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item danger" onclick="deleteProject('${id}')">Gruppe loeschen</div>`;
+    }
+    else if (type === 'item') {
+        const item = findItem(id);
+        const selectMove = state.moveMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Auswahl ein/aus</div>` : '';
+        const selectDelete = state.deleteMode.active ? `<div class="context-menu-item" onclick="toggleSelection('${id}')">Zum Loeschen markieren</div>` : '';
+        html = `<div class="context-menu-title">Favorit: ${item ? item.title : ''}</div>
+        <div class="context-menu-item" onclick="editItem('${id}')">Bearbeiten</div>
+        ${selectMove}
+        ${selectDelete}
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item danger" onclick="deleteItem('${id}')">Loeschen</div>`;
+    }
     menu.innerHTML = html;
     let x = e.clientX, y = e.clientY; const rect = menu.getBoundingClientRect();
     if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width - 10;
@@ -544,6 +694,13 @@ window.showContextMenu = (e, type, id) => {
 };
 
 window.addSlotToRow = (rowId) => { const r = state.rows.find(x => x.id === rowId); if (r) { const slotId = generateId(); r.projects.push({ id: slotId, isSpacer: true, projects: [] }); renderBoard(); addItemToSpacer(slotId); saveData(); } };
+window.addRowSpacer = (rowId) => {
+    const r = state.rows.find(x => x.id === rowId);
+    if (!r) return;
+    r.projects.push({ id: generateId(), isSpacer: true, projects: [] });
+    renderBoard();
+    saveData();
+};
 window.addItemToSpacer = (slotId) => { const t = prompt("Name:"); if (!t) return; for (const r of state.rows) { const s = r.projects.find(x => x.id === slotId); if (s) { s.isSpacer = false; s.projects = [{ id: generateId(), title: t, items: [], collapsed: false }]; break; } } renderBoard(); saveData(); };
 
 window.handleSearch = (val) => { state.searchTerm = val; renderBoard(); };

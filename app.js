@@ -52,7 +52,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-pull-cloud', 'btn-save', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
+            'btn-pull-cloud', 'btn-save', 'btn-send-cache-mail', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
         ]
     },
     activeLinkId: null,
@@ -64,6 +64,8 @@ const state = {
     searchMatches: [],
     currentSearchIndex: -1
 };
+
+const CACHE_MAIL_KEY = 'favoriten_cached_items_for_mail';
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -462,6 +464,68 @@ function extractUrlFromText(text) {
     return token || '';
 }
 
+function getCachedMailItems() {
+    try {
+        const raw = localStorage.getItem(CACHE_MAIL_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (_) {
+        return [];
+    }
+}
+
+function setCachedMailItems(items) {
+    localStorage.setItem(CACHE_MAIL_KEY, JSON.stringify(items || []));
+}
+
+function queueFavoriteForMail(item, projectId) {
+    if (!item || !item.url) return;
+    const p = findProject(projectId);
+    const entry = {
+        id: item.id || generateId(),
+        title: item.title || cleanTitle(item.url),
+        url: item.url,
+        projectTitle: p ? p.title : 'Unbekannt',
+        createdAt: new Date().toISOString()
+    };
+    const list = getCachedMailItems();
+    list.unshift(entry);
+    setCachedMailItems(list.slice(0, 500));
+}
+
+window.sendCachedFavoritesByEmail = async () => {
+    const items = getCachedMailItems();
+    if (!items.length) {
+        showToast('Keine lokalen Favoriten im Cache.', 'info');
+        return;
+    }
+
+    const now = new Date();
+    const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const fileName = `favoriten_cache_${dateStr}.html`;
+
+    const listHtml = items.map(it => `<li><a href="${it.url}">${it.title}</a> <small style="color:#666;">(${it.projectTitle})</small></li>`).join('');
+    const html = `<!doctype html><html><head><meta charset="utf-8"><title>Favoriten Cache Export</title></head><body><h2>Favoriten Cache Export</h2><p>Erstellt: ${now.toLocaleString()}</p><ul>${listHtml}</ul></body></html>`;
+
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+    a.download = fileName;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+
+    const textLines = items.slice(0, 30).map((it, i) => `${i + 1}. ${it.title} - ${it.url}`).join('\n');
+    const subject = encodeURIComponent(`Favoriten Cache Export ${dateStr}`);
+    const body = encodeURIComponent(`HTML-Datei wurde lokal heruntergeladen: ${fileName}\nBitte als Anhang hinzufuegen.\n\nVorschau:\n${textLines}`);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+
+    showToast('HTML erstellt + E-Mail-Entwurf geoeffnet.', 'success');
+
+    if (await showConfirm('Cache-Liste nach dem Senden leeren?')) {
+        setCachedMailItems([]);
+        showToast('Cache-Liste geleert.', 'success');
+    }
+};
+
 function findProjectAndClear(id) {
     for (const r of state.rows) {
         const sIdx = r.projects.findIndex(s => s.isSpacer ? s.id === id : s.projects.some(p => p.id === id));
@@ -641,7 +705,12 @@ window.addItem = async (projectId, preUrl = "", preTitle = "") => {
     if (nt === null) return;
     const nu = preUrl || await showInputDialog({ title: 'Favorit hinzufuegen', label: 'URL', value: '', placeholder: 'https://beispiel.de', confirmText: 'Speichern' });
     if (!nu) return;
-    const p = findProject(targetProjectId); if (p) p.items.push({ id: generateId(), title: nt, url: nu });
+    const p = findProject(targetProjectId);
+    if (p) {
+        const newItem = { id: generateId(), title: nt, url: nu };
+        p.items.push(newItem);
+        if (state.isReadOnly && !ghToken) queueFavoriteForMail(newItem, targetProjectId);
+    }
     renderBoard(); saveData();
 }
 
@@ -681,11 +750,13 @@ window.addItemFromClipboard = async (projectId) => {
     });
     if (title === null) return;
 
-    p.items.push({
+    const newItem = {
         id: generateId(),
         title: (title || '').trim() || suggestedTitle,
         url
-    });
+    };
+    p.items.push(newItem);
+    if (state.isReadOnly && !ghToken) queueFavoriteForMail(newItem, projectId);
 
     renderBoard();
     saveData();

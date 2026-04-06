@@ -225,7 +225,7 @@
                   "url": "https://www.netflix.com/YourAccount"
                 }
               ],
-              "collapsed": true
+              "collapsed": false
             }
           ]
         },
@@ -338,11 +338,6 @@
               "collapsed": true
             }
           ]
-        },
-        {
-          "id": "8xlz6no39",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "kweoi7e0a",

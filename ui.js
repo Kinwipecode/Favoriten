@@ -205,6 +205,7 @@ const buttonMetadata = {
     'btn-multi-delete': { icon: 'fa-solid fa-eraser', text: 'Mehrere Löschen', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links gleichzeitig löschen' },
     'btn-send-cache-mail': { icon: 'fa-solid fa-envelope', text: 'Cache per E-Mail', class: 'btn btn-secondary', title: 'Lokale Cache-Favoriten als HTML fuer E-Mail exportieren' },
     'btn-send-cache-mail-only': { icon: 'fa-solid fa-paper-plane', text: 'Nur E-Mail', class: 'btn btn-secondary', title: 'Cache-Favoriten direkt in E-Mail-Text senden (ohne Datei)' },
+    'btn-import-mail': { icon: 'fa-solid fa-inbox', text: 'Import E-Mail', class: 'btn btn-secondary', title: 'Favoriten aus E-Mail-Text importieren (Paste oder Drag & Drop)' },
     'btn-clear-browser-cache': { icon: 'fa-solid fa-broom', text: 'Cache loeschen', class: 'btn btn-secondary', title: 'Lokalen Browser-Cache (Board + Cache-Favoriten) loeschen' },
     'btn-settings': { icon: 'fa-solid fa-palette', text: 'Design', class: 'btn btn-secondary', title: 'Farben & Design', iconStyle: 'color:var(--primary-color)' },
     'btn-sort-rows': { icon: 'fa-solid fa-sort-numeric-down', text: 'Zeilen sortieren', class: 'btn btn-secondary', title: 'Zeilen nach Nummern sortieren' },
@@ -305,6 +306,7 @@ const btnHandlers = {
     'btn-settings': () => showModal('settings-modal'),
     'btn-app-settings': () => showModal('app-settings-modal'),
     'btn-clean-all': () => cleanAllLinkTitles(),
+    'btn-import-mail': () => openMailImportModal(),
     'btn-send-cache-mail': () => sendCachedFavoritesByEmail(),
     'btn-send-cache-mail-only': () => sendCachedFavoritesMailOnly(),
     'btn-clear-browser-cache': () => clearBrowserCacheData(),
@@ -381,7 +383,7 @@ window.renderHeaderButtons = () => {
     if (!order.includes('btn-save')) order = ['btn-save', ...order];
 
     const isRead = (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly);
-    const writeIds = ['btn-save', 'btn-add-row', 'btn-add-project', 'btn-import', 'btn-move-mode', 'btn-multi-delete', 'btn-clean-all', 'btn-collapse-gaps', 'btn-sort-rows'];
+    const writeIds = ['btn-save', 'btn-add-row', 'btn-add-project', 'btn-import', 'btn-import-mail', 'btn-move-mode', 'btn-multi-delete', 'btn-clean-all', 'btn-collapse-gaps', 'btn-sort-rows'];
 
     order.forEach(id => {
         if (isRead && writeIds.includes(id)) return;

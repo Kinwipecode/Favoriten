@@ -452,6 +452,12 @@ body.is-dragging-item .slot.spacer {
     pointer-events: none !important;
 }
 
+body.is-dragging-group,
+body.is-dragging-group * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
 .column.spacer .btn-text {
     opacity: 0.2;
     position: absolute;

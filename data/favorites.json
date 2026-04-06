@@ -865,21 +865,6 @@
         },
         {
           "id": "igomu5zsf",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "6gjmycgeg",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "dmy8ig91n",
-          "isSpacer": true,
-          "projects": []
-        },
-        {
-          "id": "0muzzdvdr",
           "isSpacer": false,
           "projects": [
             {
@@ -1070,6 +1055,21 @@
               "collapsed": true
             }
           ]
+        },
+        {
+          "id": "6gjmycgeg",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "dmy8ig91n",
+          "isSpacer": true,
+          "projects": []
+        },
+        {
+          "id": "0muzzdvdr",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "jwwppjp96",

@@ -142,28 +142,6 @@
           "isSpacer": false,
           "projects": [
             {
-              "id": "e6azao2bo",
-              "title": "Bild",
-              "items": [
-                {
-                  "id": "tfenk23qo",
-                  "title": "Pixlr",
-                  "url": "https://pixlr.com/de/express/"
-                },
-                {
-                  "id": "o9xdmywj4",
-                  "title": "Artguru",
-                  "url": "https://www.artguru.ai/de/"
-                },
-                {
-                  "id": "v1dnpfcqo",
-                  "title": "Refusion",
-                  "url": "https://refusion.ai/lander"
-                }
-              ],
-              "collapsed": true
-            },
-            {
               "id": "jbd8m9k0q",
               "title": "Produkte",
               "items": [
@@ -3430,8 +3408,31 @@
         },
         {
           "id": "g36mvmd5f",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "e6azao2bo",
+              "title": "Bild",
+              "items": [
+                {
+                  "id": "tfenk23qo",
+                  "title": "Pixlr",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "o9xdmywj4",
+                  "title": "Artguru",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "v1dnpfcqo",
+                  "title": "Refusion",
+                  "url": "https://refusion.ai/lander"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
         }
       ],
       "order": 20,

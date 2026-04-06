@@ -742,8 +742,41 @@
         },
         {
           "id": "xiyd3h9bf",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "00ilinqj4",
+              "title": "EDV",
+              "items": [
+                {
+                  "id": "gtntdt780",
+                  "title": "Wgi-desktop.leuchter-cloud",
+                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
+                },
+                {
+                  "id": "k79ott5gg",
+                  "title": "Lizenzguru",
+                  "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
+                },
+                {
+                  "id": "c2ap9yakt",
+                  "title": "Netzwelt",
+                  "url": "https://www.netzwelt.de/anleitung/179687-linux-mint-neben-windows-10-installieren-so-gehts.html"
+                },
+                {
+                  "id": "od09btfny",
+                  "title": "Duckdns",
+                  "url": "https://www.duckdns.org/"
+                },
+                {
+                  "id": "nfhl9gp50",
+                  "title": "Kinweb.duckdns",
+                  "url": "http://www.kinweb.duckdns.org/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
         },
         {
           "id": "njhjfjhxg",
@@ -831,41 +864,8 @@
         },
         {
           "id": "6gjmycgeg",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "00ilinqj4",
-              "title": "EDV",
-              "items": [
-                {
-                  "id": "gtntdt780",
-                  "title": "Wgi-desktop.leuchter-cloud",
-                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
-                },
-                {
-                  "id": "k79ott5gg",
-                  "title": "Lizenzguru",
-                  "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
-                },
-                {
-                  "id": "c2ap9yakt",
-                  "title": "Netzwelt",
-                  "url": "https://www.netzwelt.de/anleitung/179687-linux-mint-neben-windows-10-installieren-so-gehts.html"
-                },
-                {
-                  "id": "od09btfny",
-                  "title": "Duckdns",
-                  "url": "https://www.duckdns.org/"
-                },
-                {
-                  "id": "nfhl9gp50",
-                  "title": "Kinweb.duckdns",
-                  "url": "http://www.kinweb.duckdns.org/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "dmy8ig91n",

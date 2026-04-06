@@ -55,7 +55,7 @@
                   "url": "https://www.erdsondenoptimierung.ch/"
                 }
               ],
-              "collapsed": true
+              "collapsed": false
             }
           ]
         },
@@ -311,6 +311,12 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "penjzamb5",
+              "title": "TV",
+              "items": [],
+              "collapsed": false
             }
           ]
         },

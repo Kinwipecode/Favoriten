@@ -669,6 +669,23 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "iip3d9jt9",
+              "title": "CAD BIM",
+              "items": [
+                {
+                  "id": "j1yz8v3nc",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                },
+                {
+                  "id": "q4217zqct",
+                  "title": "Graphisoft",
+                  "url": "https://graphisoft.com/at/downloads/parametric_objects"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -766,26 +783,8 @@
         },
         {
           "id": "94sdqnux5",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "iip3d9jt9",
-              "title": "CAD BIM",
-              "items": [
-                {
-                  "id": "j1yz8v3nc",
-                  "title": "Mepcontent",
-                  "url": "https://www.mepcontent.com/de/bim-files/"
-                },
-                {
-                  "id": "q4217zqct",
-                  "title": "Graphisoft",
-                  "url": "https://graphisoft.com/at/downloads/parametric_objects"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "igomu5zsf",

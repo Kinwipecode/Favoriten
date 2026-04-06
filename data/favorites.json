@@ -1362,7 +1362,8 @@
       "id": "8y2qudo4n",
       "title": "Neue Zeile",
       "projects": [],
-      "order": 20
+      "order": 20,
+      "collapsed": true
     }
   ],
   "config": {

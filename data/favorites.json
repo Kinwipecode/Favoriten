@@ -1355,8 +1355,15 @@
         },
         {
           "id": "n82hu0sil",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "6umh4uzuo",
+              "title": "Reisen Ferien",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         }
       ],
       "order": 999,

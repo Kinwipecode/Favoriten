@@ -148,6 +148,11 @@
                   "url": "https://chat.deepseek.com/"
                 },
                 {
+                  "id": "ow6q3m3aa",
+                  "title": "Chat.mistral",
+                  "url": "https://chat.mistral.ai/chat"
+                },
+                {
                   "id": "idu3ht0xe",
                   "title": "Pixlr Foto Bearb mit KI",
                   "url": "https://pixlr.com/de/express/"
@@ -186,11 +191,6 @@
                   "id": "j7k3zmdek",
                   "title": "Hedra Video AI",
                   "url": "https://www.hedra.com/app/characters"
-                },
-                {
-                  "id": "ow6q3m3aa",
-                  "title": "Chat.mistral",
-                  "url": "https://chat.mistral.ai/chat"
                 },
                 {
                   "id": "jd7npf586",

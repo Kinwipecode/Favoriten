@@ -61,6 +61,7 @@ const state = {
     activeRowId: null,
     activeEditingGroupId: null,
     lastContextMenuTime: 0,
+    lastContextMenuPos: { x: 0, y: 0 },
     searchMatches: [],
     currentSearchIndex: -1
 };
@@ -605,6 +606,27 @@ function findProjectLocation(projectId) {
         }
     }
     return null;
+}
+
+function getInsertIndexForRowByMouse(rowId) {
+    const rowEl = Array.from(document.querySelectorAll('.board-row')).find(el => el.dataset.id === rowId);
+    if (!rowEl) return null;
+
+    const container = rowEl.querySelector('.row-projects');
+    if (!container) return null;
+
+    const slots = Array.from(container.querySelectorAll(':scope > .slot'));
+    if (slots.length === 0) return 0;
+
+    const x = state.lastContextMenuPos && Number.isFinite(state.lastContextMenuPos.x) ? state.lastContextMenuPos.x : null;
+    if (x === null) return null;
+
+    for (let i = 0; i < slots.length; i++) {
+        const rect = slots[i].getBoundingClientRect();
+        const centerX = rect.left + (rect.width / 2);
+        if (x < centerX) return i;
+    }
+    return slots.length;
 }
 
 function findProjectByItemId(itemId) {
@@ -1157,6 +1179,7 @@ window.showSelectDialog = ({ title = 'Auswahl', label = 'Bitte waehlen', options
 
 window.showContextMenu = (e, type, id) => {
     e.preventDefault(); const menu = document.getElementById('context-menu'); if (!menu) return;
+    state.lastContextMenuPos = { x: e.clientX || 0, y: e.clientY || 0 };
     menu.classList.remove('hidden'); let html = '';
     if (type === 'row') {
         const r = state.rows.find(x => x.id === id);
@@ -1208,11 +1231,25 @@ window.showContextMenu = (e, type, id) => {
     setTimeout(() => document.addEventListener('mousedown', close), 10);
 };
 
-window.addSlotToRow = (rowId) => { const r = state.rows.find(x => x.id === rowId); if (r) { const slotId = generateId(); r.projects.push({ id: slotId, isSpacer: true, projects: [] }); renderBoard(); addItemToSpacer(slotId); saveData(); } };
+window.addSlotToRow = (rowId) => {
+    const r = state.rows.find(x => x.id === rowId);
+    if (!r) return;
+    const slotId = generateId();
+    const slot = { id: slotId, isSpacer: true, projects: [] };
+    const insertIndex = getInsertIndexForRowByMouse(rowId);
+    if (insertIndex === null || insertIndex < 0 || insertIndex > r.projects.length) r.projects.push(slot);
+    else r.projects.splice(insertIndex, 0, slot);
+    renderBoard();
+    addItemToSpacer(slotId);
+    saveData();
+};
 window.addRowSpacer = (rowId) => {
     const r = state.rows.find(x => x.id === rowId);
     if (!r) return;
-    r.projects.push({ id: generateId(), isSpacer: true, projects: [] });
+    const slot = { id: generateId(), isSpacer: true, projects: [] };
+    const insertIndex = getInsertIndexForRowByMouse(rowId);
+    if (insertIndex === null || insertIndex < 0 || insertIndex > r.projects.length) r.projects.push(slot);
+    else r.projects.splice(insertIndex, 0, slot);
     renderBoard();
     saveData();
 };

@@ -889,10 +889,10 @@ window.renderMailImportSelection = () => {
         const it = e.item;
         const duplicate = e.duplicateHits.length > 0;
         const where = duplicate ? e.duplicateHits.map(h => `${h.row} / ${h.group}`).join('; ') : '';
-        return `<label style="display:block; padding:8px; border-bottom:1px solid rgba(0,0,0,0.06); cursor:pointer;">
-            <input type="checkbox" ${e.selected ? 'checked' : ''} onchange="toggleMailImportItemSelection('${e.id}', this.checked)" style="margin-right:8px;">
+        return `<label style="display:block; padding:12px; border-bottom:1px solid rgba(0,0,0,0.06); cursor:pointer; font-size:1rem; line-height:1.45;">
+            <input type="checkbox" ${e.selected ? 'checked' : ''} onchange="toggleMailImportItemSelection('${e.id}', this.checked)" style="margin-right:10px; transform:scale(1.15);">
             <strong>${it.title}</strong> | ${it.url} | <em>${it.group}</em>
-            ${duplicate ? `<div style="font-size:0.78rem; color:#b33939; margin-top:4px;">Bereits vorhanden: ${where}</div>` : ''}
+            ${duplicate ? `<div style="font-size:0.9rem; color:#b33939; margin-top:6px;">Bereits vorhanden: ${where}</div>` : ''}
         </label>`;
     }).join('');
 

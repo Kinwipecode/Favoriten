@@ -1,26 +1,5 @@
 {
-  "rows": [
-    {
-      "id": "o6zkqz5rr",
-      "title": "Hauptzeile",
-      "projects": [
-        {
-          "id": "49xhoml0e",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "ayd5j56bk",
-              "title": "tiuoooui111",
-              "items": [],
-              "collapsed": false
-            }
-          ]
-        }
-      ],
-      "order": 10,
-      "collapsed": false
-    }
-  ],
+  "rows": [],
   "config": {
     "primary": "#101010",
     "bg": "#008080",

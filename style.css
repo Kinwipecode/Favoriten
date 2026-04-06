@@ -398,6 +398,12 @@ body.is-dragging-item .column-header {
     position: relative;
 }
 
+.slot:not(.spacer) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .slot.spacer {
     background: rgba(255, 255, 255, 0.1);
     border: 2px dashed rgba(255, 255, 255, 0.2);

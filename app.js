@@ -52,7 +52,7 @@ const state = {
         rowBg: 'rgba(255, 255, 255, 0.4)',
         itemBg: '#ffffff',
         buttonOrder: [
-            'btn-pull-cloud', 'btn-save', 'btn-send-cache-mail', 'btn-clear-browser-cache', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
+            'btn-pull-cloud', 'btn-save', 'btn-send-cache-mail', 'btn-send-cache-mail-only', 'btn-clear-browser-cache', 'btn-check-links', 'btn-import', 'btn-export', 'btn-github', 'btn-info', 'btn-collapse-gaps', 'btn-add-row', 'btn-sort-rows', 'btn-add-project', 'btn-move-mode', 'btn-multi-delete', 'btn-settings'
         ]
     },
     activeLinkId: null,
@@ -568,6 +568,38 @@ window.sendCachedFavoritesByEmail = async () => {
         setCachedMailItems([]);
         showToast('Cache-Liste geleert.', 'success');
     }
+};
+
+window.sendCachedFavoritesMailOnly = () => {
+    const items = getCachedMailItems();
+    if (!items.length) {
+        showToast('Keine lokalen Favoriten im Cache.', 'info');
+        return;
+    }
+
+    const now = new Date();
+    const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const maxItems = 120;
+    const usedItems = items.slice(0, maxItems);
+    const truncated = items.length > maxItems;
+
+    const lines = [
+        'FAVORITEN-CACHE-EXPORT|v1',
+        `DATE|${now.toISOString()}`,
+        'FORMAT|TITLE|URL|GROUP',
+        ...usedItems.map(it => `${(it.title || '').replace(/\|/g, ' ') || cleanTitle(it.url)}|${(it.url || '').replace(/\|/g, '')}|${(it.projectTitle || 'Unbekannt').replace(/\|/g, ' ')}`)
+    ];
+
+    if (truncated) {
+        lines.push(`TRUNCATED|${items.length - maxItems}`);
+    }
+
+    const subject = encodeURIComponent(`Favoriten Cache Export ${dateStr} (Mail Only)`);
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+
+    if (truncated) showToast(`E-Mail erstellt (${maxItems}/${items.length} Eintraege wegen Mail-Limit).`, 'info');
+    else showToast('E-Mail erstellt (ohne Datei-Export).', 'success');
 };
 
 window.clearBrowserCacheData = async () => {

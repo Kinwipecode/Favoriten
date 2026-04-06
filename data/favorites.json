@@ -31,6 +31,68 @@
       ],
       "order": 10,
       "collapsed": false
+    },
+    {
+      "id": "an45qc8k8",
+      "title": "Mail Import",
+      "projects": [
+        {
+          "id": "usd65pg5x",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "sbqs4ojau",
+              "title": "555",
+              "items": [
+                {
+                  "id": "pcvnb421k",
+                  "title": "Notube",
+                  "url": "https://notube.net/en/youtube-app-328"
+                }
+              ],
+              "collapsed": false
+            }
+          ]
+        },
+        {
+          "id": "7z92h07z0",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "4rka1a4qx",
+              "title": "2026-04-06T18:17:01.870Z<br />FOR=",
+              "items": [
+                {
+                  "id": "1j36pyt28",
+                  "title": "<body>FAVORITEN-CACHE-EXPORT",
+                  "url": "https://v1<br />DATE"
+                }
+              ],
+              "collapsed": false
+            }
+          ]
+        },
+        {
+          "id": "yplbjwpjr",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "ynl1yi6l2",
+              "title": "URL|GROUP<br />Notube|https://notube.net/en/youtube-app-328|555</=",
+              "items": [
+                {
+                  "id": "m018tfl28",
+                  "title": "MAT",
+                  "url": "https://TITLE"
+                }
+              ],
+              "collapsed": false
+            }
+          ]
+        }
+      ],
+      "order": 20,
+      "collapsed": false
     }
   ],
   "config": {
@@ -60,7 +122,8 @@
       "btn-app-settings",
       "btn-send-cache-mail",
       "btn-send-cache-mail-only",
-      "btn-clear-browser-cache"
+      "btn-clear-browser-cache",
+      "btn-import-mail"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

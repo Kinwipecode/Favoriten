@@ -35,7 +35,13 @@
             {
               "id": "29u53parm",
               "title": "aaa",
-              "items": [],
+              "items": [
+                {
+                  "id": "fpkw642sr",
+                  "title": "sdfgrt",
+                  "url": "www.google.pl"
+                }
+              ],
               "collapsed": false
             }
           ]
@@ -87,7 +93,8 @@
       "btn-check-links",
       "btn-clean-all",
       "btn-app-settings",
-      "btn-send-cache-mail"
+      "btn-send-cache-mail",
+      "btn-clear-browser-cache"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

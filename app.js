@@ -1059,14 +1059,36 @@ function getInsertIndexForRowByMouse(rowId) {
     if (slots.length === 0) return 0;
 
     const x = state.lastContextMenuPos && Number.isFinite(state.lastContextMenuPos.x) ? state.lastContextMenuPos.x : null;
-    if (x === null) return null;
+    const y = state.lastContextMenuPos && Number.isFinite(state.lastContextMenuPos.y) ? state.lastContextMenuPos.y : null;
+    if (x === null || y === null) return null;
 
-    for (let i = 0; i < slots.length; i++) {
-        const rect = slots[i].getBoundingClientRect();
-        const centerX = rect.left + (rect.width / 2);
-        if (x < centerX) return i;
+    const withRects = slots.map((slot, idx) => ({ slot, idx, rect: slot.getBoundingClientRect() }));
+
+    // Exact hit: insert before/after depending on horizontal half.
+    const hit = withRects.find(s => x >= s.rect.left && x <= s.rect.right && y >= s.rect.top && y <= s.rect.bottom);
+    if (hit) {
+        const centerX = hit.rect.left + (hit.rect.width / 2);
+        return x < centerX ? hit.idx : hit.idx + 1;
     }
-    return slots.length;
+
+    // Outside slots: choose closest visual row (vertical), then horizontal insertion.
+    const byVertical = withRects.map(s => {
+        let dist = 0;
+        if (y < s.rect.top) dist = s.rect.top - y;
+        else if (y > s.rect.bottom) dist = y - s.rect.bottom;
+        return { ...s, vdist: dist };
+    });
+
+    const minV = Math.min(...byVertical.map(s => s.vdist));
+    const lane = byVertical.filter(s => s.vdist === minV).sort((a, b) => a.rect.left - b.rect.left);
+    if (lane.length === 0) return slots.length;
+
+    for (let i = 0; i < lane.length; i++) {
+        const centerX = lane[i].rect.left + (lane[i].rect.width / 2);
+        if (x < centerX) return lane[i].idx;
+    }
+
+    return lane[lane.length - 1].idx + 1;
 }
 
 function getMouseSlotTarget(rowId) {
@@ -1080,11 +1102,12 @@ function getMouseSlotTarget(rowId) {
     if (!slots.length) return { slot: null, slotIndex: -1, insertIndex: 0 };
 
     const x = state.lastContextMenuPos && Number.isFinite(state.lastContextMenuPos.x) ? state.lastContextMenuPos.x : null;
-    if (x === null) return { slot: null, slotIndex: -1, insertIndex: null };
+    const y = state.lastContextMenuPos && Number.isFinite(state.lastContextMenuPos.y) ? state.lastContextMenuPos.y : null;
+    if (x === null || y === null) return { slot: null, slotIndex: -1, insertIndex: null };
 
     for (let i = 0; i < slots.length; i++) {
         const rect = slots[i].getBoundingClientRect();
-        if (x >= rect.left && x <= rect.right) {
+        if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
             return { slot: slots[i], slotIndex: i, insertIndex: i };
         }
     }

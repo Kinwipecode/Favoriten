@@ -19,6 +19,32 @@
       ],
       "order": 10,
       "collapsed": false
+    },
+    {
+      "id": "ncpt8stm6",
+      "title": "Mail Import",
+      "projects": [
+        {
+          "id": "gyf2hei6s",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "2fhkiejrq",
+              "title": "555",
+              "items": [
+                {
+                  "id": "guhp43l5x",
+                  "title": "Notube",
+                  "url": "https://notube.net/en/youtube-app-328"
+                }
+              ],
+              "collapsed": false
+            }
+          ]
+        }
+      ],
+      "order": 20,
+      "collapsed": false
     }
   ],
   "config": {

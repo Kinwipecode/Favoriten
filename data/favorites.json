@@ -30,15 +30,8 @@
         },
         {
           "id": "h5xiprfer",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "je9iuj44q",
-              "title": "fghszrtz",
-              "items": [],
-              "collapsed": false
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         }
       ],
       "order": 10,

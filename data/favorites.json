@@ -201,6 +201,11 @@
                   "id": "vrtkcvq8r",
                   "title": "Dreamina.capcut Bild Video",
                   "url": "https://dreamina.capcut.com/ai-tool/generate"
+                },
+                {
+                  "id": "pghs04sqr",
+                  "title": "Modelplayground Interessant",
+                  "url": "https://modelplayground.ai/"
                 }
               ],
               "collapsed": false
@@ -354,13 +359,7 @@
             {
               "id": "jecqebva7",
               "title": "KI",
-              "items": [
-                {
-                  "id": "pghs04sqr",
-                  "title": "Modelplayground Interessant",
-                  "url": "https://modelplayground.ai/"
-                }
-              ],
+              "items": [],
               "collapsed": false
             }
           ]

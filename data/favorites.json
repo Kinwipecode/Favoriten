@@ -1356,7 +1356,7 @@
         }
       ],
       "order": 10,
-      "collapsed": true
+      "collapsed": false
     }
   ],
   "config": {
@@ -1380,6 +1380,7 @@
       "btn-settings",
       "btn-pull-cloud",
       "btn-sort-rows",
+      "btn-copy-mode",
       "btn-multi-delete",
       "btn-check-links",
       "btn-clean-all",
@@ -1387,8 +1388,7 @@
       "btn-send-cache-mail",
       "btn-clear-browser-cache",
       "btn-send-cache-mail-only",
-      "btn-import-mail",
-      "btn-copy-mode"
+      "btn-import-mail"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

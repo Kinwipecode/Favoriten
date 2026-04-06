@@ -96,8 +96,15 @@
         },
         {
           "id": "kmavpfwnp",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "t9n301ccz",
+              "title": "fghfghghfghfghfg",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         },
         {
           "id": "b43s40cmr",

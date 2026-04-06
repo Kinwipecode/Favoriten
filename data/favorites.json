@@ -344,6 +344,18 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "dgjlyy9w1",
+              "title": "Musik Videos",
+              "items": [
+                {
+                  "id": "jop9w5bg6",
+                  "title": "Youtube Nonstop Eurodisco",
+                  "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -1308,21 +1320,8 @@
         },
         {
           "id": "8ie39x1is",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "dgjlyy9w1",
-              "title": "Musik Videos",
-              "items": [
-                {
-                  "id": "jop9w5bg6",
-                  "title": "Youtube Nonstop Eurodisco",
-                  "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "g44pwcus7",

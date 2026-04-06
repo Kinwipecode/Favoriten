@@ -1673,8 +1673,15 @@
         },
         {
           "id": "w4fzzm3l9",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "635227ckc",
+              "title": "Test Büro",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         }
       ],
       "order": 10,

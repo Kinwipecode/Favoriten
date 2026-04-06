@@ -23,26 +23,7 @@
     {
       "id": "eq8taoktb",
       "title": "Mail Import",
-      "projects": [
-        {
-          "id": "kbd2065hj",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "8ebu72zdg",
-              "title": "555",
-              "items": [
-                {
-                  "id": "4d8j7dads",
-                  "title": "Notube",
-                  "url": "https://notube.net/en/youtube-app-328"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
-        }
-      ],
+      "projects": [],
       "order": 20,
       "collapsed": false
     }

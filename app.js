@@ -390,8 +390,12 @@ function renderBoard() {
             new Sortable(el, {
                 group: 'columns', animation: 150, handle: '.column-header', filter: 'button, input',
                 forceFallback: true, fallbackOnBody: true, fallbackClass: "sortable-fallback",
-                onStart: () => state.isDragging = true,
+                onStart: () => {
+                    state.isDragging = true;
+                    document.body.classList.add('is-dragging-group');
+                },
                 onEnd: (e) => {
+                    document.body.classList.remove('is-dragging-group');
                     const fromR = state.rows.find(r => r.id === e.from.closest('.board-row').dataset.id);
                     const toR = state.rows.find(r => r.id === e.to.closest('.board-row').dataset.id);
                     if (fromR && toR) {

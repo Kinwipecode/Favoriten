@@ -735,7 +735,7 @@
                   "url": "https://www.trimbleenterprisecommunity.com/s/"
                 }
               ],
-              "collapsed": true
+              "collapsed": false
             }
           ]
         },
@@ -1304,11 +1304,6 @@
               "collapsed": true
             }
           ]
-        },
-        {
-          "id": "av9kjpqum",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "d3bbk1eks",

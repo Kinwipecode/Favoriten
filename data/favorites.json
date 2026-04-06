@@ -50,11 +50,6 @@
                   "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
                 },
                 {
-                  "id": "89n8jswzw",
-                  "title": "Bolt",
-                  "url": "https://bolt.new/"
-                },
-                {
                   "id": "48bti5l08",
                   "title": "Erdsondenoptimierung",
                   "url": "https://www.erdsondenoptimierung.ch/"
@@ -84,6 +79,11 @@
               "id": "1hkwihfft",
               "title": "Coden",
               "items": [
+                {
+                  "id": "89n8jswzw",
+                  "title": "Bolt",
+                  "url": "https://bolt.new/"
+                },
                 {
                   "id": "dw3prqsio",
                   "title": "Filedn",

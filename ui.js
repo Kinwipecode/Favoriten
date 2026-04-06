@@ -204,6 +204,7 @@ const buttonMetadata = {
     'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Verschieben', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
     'btn-multi-delete': { icon: 'fa-solid fa-eraser', text: 'Mehrere Löschen', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links gleichzeitig löschen' },
     'btn-send-cache-mail': { icon: 'fa-solid fa-envelope', text: 'Cache per E-Mail', class: 'btn btn-secondary', title: 'Lokale Cache-Favoriten als HTML fuer E-Mail exportieren' },
+    'btn-send-cache-mail-only': { icon: 'fa-solid fa-paper-plane', text: 'Nur E-Mail', class: 'btn btn-secondary', title: 'Cache-Favoriten direkt in E-Mail-Text senden (ohne Datei)' },
     'btn-clear-browser-cache': { icon: 'fa-solid fa-broom', text: 'Cache loeschen', class: 'btn btn-secondary', title: 'Lokalen Browser-Cache (Board + Cache-Favoriten) loeschen' },
     'btn-settings': { icon: 'fa-solid fa-palette', text: 'Design', class: 'btn btn-secondary', title: 'Farben & Design', iconStyle: 'color:var(--primary-color)' },
     'btn-sort-rows': { icon: 'fa-solid fa-sort-numeric-down', text: 'Zeilen sortieren', class: 'btn btn-secondary', title: 'Zeilen nach Nummern sortieren' },
@@ -305,6 +306,7 @@ const btnHandlers = {
     'btn-app-settings': () => showModal('app-settings-modal'),
     'btn-clean-all': () => cleanAllLinkTitles(),
     'btn-send-cache-mail': () => sendCachedFavoritesByEmail(),
+    'btn-send-cache-mail-only': () => sendCachedFavoritesMailOnly(),
     'btn-clear-browser-cache': () => clearBrowserCacheData(),
     'btn-add-spacer': () => {
         if (state.rows.length === 0) state.rows.push({ id: generateId(), title: 'Hauptzeile', projects: [] });

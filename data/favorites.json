@@ -3413,18 +3413,7 @@
             {
               "id": "e6azao2bo",
               "title": "Bild",
-              "items": [
-                {
-                  "id": "o9xdmywj4",
-                  "title": "Artguru",
-                  "url": "https://www.artguru.ai/de/"
-                },
-                {
-                  "id": "v1dnpfcqo",
-                  "title": "Refusion",
-                  "url": "https://refusion.ai/lander"
-                }
-              ],
+              "items": [],
               "collapsed": false
             }
           ]

@@ -3430,7 +3430,7 @@
                   "url": "https://refusion.ai/lander"
                 }
               ],
-              "collapsed": true
+              "collapsed": false
             }
           ]
         }
@@ -3463,7 +3463,8 @@
       "btn-multi-delete",
       "btn-check-links",
       "btn-clean-all",
-      "btn-app-settings"
+      "btn-app-settings",
+      "btn-send-cache-mail"
     ],
     "itemFontSize": "20px",
     "itemFontWeight": "bold",

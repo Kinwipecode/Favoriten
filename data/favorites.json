@@ -364,13 +364,7 @@
             {
               "id": "cwskorrsm",
               "title": "Allgemein",
-              "items": [
-                {
-                  "id": "adce870nq",
-                  "title": "Huggingface",
-                  "url": "https://huggingface.co/"
-                }
-              ],
+              "items": [],
               "collapsed": false
             }
           ]

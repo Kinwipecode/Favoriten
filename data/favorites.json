@@ -6,26 +6,8 @@
       "projects": [
         {
           "id": "hsik2h3lz",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "7yvl3r8f8",
-              "title": "Diverse",
-              "items": [
-                {
-                  "id": "dbcnlisyk",
-                  "title": "192.168.178.1/",
-                  "url": "http://192.168.178.1/"
-                },
-                {
-                  "id": "2227161ja",
-                  "title": "Email.bluewin",
-                  "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "aceszuf7v",
@@ -849,6 +831,23 @@
                   "id": "jdggr8vy6",
                   "title": "American-supps",
                   "url": "https://www.american-supps.com/Rich-Piana-5-Nutrition-Keto-Asalt-252g"
+                }
+              ],
+              "collapsed": true
+            },
+            {
+              "id": "7yvl3r8f8",
+              "title": "Diverse",
+              "items": [
+                {
+                  "id": "dbcnlisyk",
+                  "title": "192.168.178.1/",
+                  "url": "http://192.168.178.1/"
+                },
+                {
+                  "id": "2227161ja",
+                  "title": "Email.bluewin",
+                  "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
                 }
               ],
               "collapsed": true

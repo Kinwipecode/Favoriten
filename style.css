@@ -1439,6 +1439,13 @@ body.delete-mode-active .favorite-item {
     height: 28px;
 }
 
+.column.selected-for-copy {
+    outline: 3px solid #00b894 !important;
+    outline-offset: 4px;
+    box-shadow: 0 0 30px rgba(0, 184, 148, 0.35) !important;
+    transform: scale(1.01) !important;
+}
+
 .slot-index {
     position: absolute;
     top: -15px;

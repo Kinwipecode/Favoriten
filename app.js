@@ -277,7 +277,7 @@ function renderBoard() {
 
         rowEl.innerHTML = `
             <div class="row-header">
-                <div class="row-header-main" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                <div class="row-header-main" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button,input,textarea,select,label,.row-title-input,.row-order-input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
                     ${isRead ? `<span class="row-order-display">${row.order || 0}</span>` : `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">`}
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="width:20px; opacity:0.5;"></i>
                     ${isRead ? `<span>${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
@@ -377,7 +377,7 @@ function renderBoard() {
 
     if (typeof Sortable !== 'undefined' && !isRead) {
         new Sortable(board, {
-            animation: 150, handle: '.row-header', forceFallback: true, fallbackOnBody: true,
+            animation: 150, handle: '.row-header', filter: 'input,textarea,select,button', forceFallback: true, fallbackOnBody: true,
             onStart: () => state.isDragging = true,
             onEnd: (e) => {
                 const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));

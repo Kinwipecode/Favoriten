@@ -202,6 +202,7 @@ const buttonMetadata = {
     'btn-add-row': { icon: 'fa-solid fa-layer-group', text: 'Neue Zeile', class: 'btn btn-secondary', title: 'Eine neue horizontale Zeile hinzufügen' },
     'btn-add-project': { icon: 'fa-solid fa-plus', text: 'Neue Fav. Gruppe', class: 'btn btn-accent' },
     'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Multi Vesch.', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
+    'btn-copy-mode': { icon: 'fa-solid fa-copy', text: 'Multi Copy', class: 'btn btn-secondary', title: 'Mehrere Gruppen markieren und in neue Zeile kopieren' },
     'btn-multi-delete': { icon: 'fa-solid fa-eraser', text: 'Multi Del', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links gleichzeitig löschen' },
     'btn-send-cache-mail': { icon: 'fa-solid fa-envelope', text: 'Cache per E-Mail', class: 'btn btn-secondary', title: 'Lokale Cache-Favoriten als HTML fuer E-Mail exportieren' },
     'btn-send-cache-mail-only': { icon: 'fa-solid fa-paper-plane', text: 'Export to txt', class: 'btn btn-secondary', title: 'Cache-Favoriten direkt in E-Mail-Text senden (ohne Datei)' },
@@ -281,9 +282,12 @@ const btnHandlers = {
         }
     },
     'btn-move-mode': () => toggleMoveMode(),
+    'btn-copy-mode': () => toggleCopyMode(),
     'btn-multi-delete': () => toggleDeleteMode(),
     'btn-cancel-move': () => toggleMoveMode(),
     'btn-confirm-move': () => applyMove(),
+    'btn-cancel-copy': () => toggleCopyMode(),
+    'btn-confirm-copy': () => applyCopy(),
     'btn-cancel-delete': () => toggleDeleteMode(),
     'btn-confirm-delete': () => applyDelete(),
     'btn-github': () => {
@@ -383,7 +387,7 @@ window.renderHeaderButtons = () => {
     if (!order.includes('btn-save')) order = ['btn-save', ...order];
 
     const isRead = (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly);
-    const writeIds = ['btn-save', 'btn-add-row', 'btn-add-project', 'btn-import', 'btn-import-mail', 'btn-move-mode', 'btn-multi-delete', 'btn-clean-all', 'btn-collapse-gaps', 'btn-sort-rows'];
+    const writeIds = ['btn-save', 'btn-add-row', 'btn-add-project', 'btn-import', 'btn-import-mail', 'btn-move-mode', 'btn-copy-mode', 'btn-multi-delete', 'btn-clean-all', 'btn-collapse-gaps', 'btn-sort-rows'];
 
     order.forEach(id => {
         if (isRead && writeIds.includes(id)) return;
@@ -418,6 +422,8 @@ window.setupUI = () => {
         'btn-confirm-export': btnHandlers['btn-confirm-export'],
         'btn-cancel-move': btnHandlers['btn-cancel-move'],
         'btn-confirm-move': btnHandlers['btn-confirm-move'],
+        'btn-cancel-copy': btnHandlers['btn-cancel-copy'],
+        'btn-confirm-copy': btnHandlers['btn-confirm-copy'],
         'btn-cancel-delete': btnHandlers['btn-cancel-delete'],
         'btn-confirm-delete': btnHandlers['btn-confirm-delete']
     };

@@ -394,6 +394,10 @@ body.is-dragging-item .column-header {
     transition: max-height 0.4s ease-in;
 }
 
+.slot {
+    position: relative;
+}
+
 .slot.spacer {
     background: rgba(255, 255, 255, 0.1);
     border: 2px dashed rgba(255, 255, 255, 0.2);
@@ -1419,7 +1423,7 @@ body.delete-mode-active .favorite-item {
     height: 28px;
 }
 
-.spacer-index {
+.slot-index {
     position: absolute;
     top: 8px;
     left: 10px;

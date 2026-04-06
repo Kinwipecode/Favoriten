@@ -78,7 +78,7 @@
                   "url": "sdfsdfg"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         },
@@ -725,40 +725,7 @@
         {
           "id": "mzwaedvvr",
           "isSpacer": false,
-          "projects": [
-            {
-              "id": "hkk8ozzx7",
-              "title": "Allgemein",
-              "items": [
-                {
-                  "id": "0chzrxrwj",
-                  "title": "Bard.google",
-                  "url": "https://bard.google.com/"
-                },
-                {
-                  "id": "l6o8i2ka0",
-                  "title": "Chat.openai",
-                  "url": "https://chat.openai.com/"
-                },
-                {
-                  "id": "eat3q017t",
-                  "title": "Perplexity",
-                  "url": "https://www.perplexity.ai/"
-                },
-                {
-                  "id": "d5t6grdsa",
-                  "title": "Chat.deepseek",
-                  "url": "https://chat.deepseek.com/"
-                },
-                {
-                  "id": "khsv5c0sa",
-                  "title": "Huggingface",
-                  "url": "https://huggingface.co/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "projects": []
         },
         {
           "id": "k393dlpx1",
@@ -863,8 +830,41 @@
         },
         {
           "id": "0qv993nei",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "hkk8ozzx7",
+              "title": "Allgemein",
+              "items": [
+                {
+                  "id": "0chzrxrwj",
+                  "title": "Bard.google",
+                  "url": "https://bard.google.com/"
+                },
+                {
+                  "id": "l6o8i2ka0",
+                  "title": "Chat.openai",
+                  "url": "https://chat.openai.com/"
+                },
+                {
+                  "id": "eat3q017t",
+                  "title": "Perplexity",
+                  "url": "https://www.perplexity.ai/"
+                },
+                {
+                  "id": "d5t6grdsa",
+                  "title": "Chat.deepseek",
+                  "url": "https://chat.deepseek.com/"
+                },
+                {
+                  "id": "khsv5c0sa",
+                  "title": "Huggingface",
+                  "url": "https://huggingface.co/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
         },
         {
           "id": "txjxuh0ka",
@@ -1673,7 +1673,7 @@
         }
       ],
       "order": 10,
-      "collapsed": true
+      "collapsed": false
     },
     {
       "id": "xx8y6ockc",
@@ -3413,20 +3413,14 @@
             {
               "id": "e6azao2bo",
               "title": "Bild",
-              "items": [
-                {
-                  "id": "oqtj7fvhj",
-                  "title": "Public AI",
-                  "url": "https://chat.publicai.co/"
-                }
-              ],
+              "items": [],
               "collapsed": false
             }
           ]
         }
       ],
       "order": 20,
-      "collapsed": true
+      "collapsed": false
     }
   ],
   "config": {

@@ -132,7 +132,13 @@
                 }
               ],
               "collapsed": true
-            },
+            }
+          ]
+        },
+        {
+          "id": "n2trrb920",
+          "isSpacer": false,
+          "projects": [
             {
               "id": "qnpjk9txq",
               "title": "Tools",
@@ -171,11 +177,6 @@
               "collapsed": true
             }
           ]
-        },
-        {
-          "id": "n2trrb920",
-          "isSpacer": true,
-          "projects": []
         },
         {
           "id": "7id937bqs",

@@ -349,6 +349,28 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "m1dt0mzm5",
+              "title": "VST",
+              "items": [
+                {
+                  "id": "ima5o4cy1",
+                  "title": "Hiphopmakers",
+                  "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
+                },
+                {
+                  "id": "78ubfrm0d",
+                  "title": "Hiphopmakers",
+                  "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
+                },
+                {
+                  "id": "31s5yq21y",
+                  "title": "Hermannseib",
+                  "url": "https://www.hermannseib.com/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -1329,31 +1351,8 @@
         },
         {
           "id": "mk4qksfxo",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "m1dt0mzm5",
-              "title": "VST",
-              "items": [
-                {
-                  "id": "ima5o4cy1",
-                  "title": "Hiphopmakers",
-                  "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
-                },
-                {
-                  "id": "78ubfrm0d",
-                  "title": "Hiphopmakers",
-                  "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
-                },
-                {
-                  "id": "31s5yq21y",
-                  "title": "Hermannseib",
-                  "url": "https://www.hermannseib.com/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "8ie39x1is",

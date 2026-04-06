@@ -1698,8 +1698,15 @@
       "projects": [
         {
           "id": "urssd9hbs",
-          "isSpacer": true,
-          "projects": []
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "y9jo33su9",
+              "title": "cfvgyx",
+              "items": [],
+              "collapsed": false
+            }
+          ]
         },
         {
           "id": "9mg74so2t",

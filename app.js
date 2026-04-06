@@ -686,27 +686,78 @@ function findProjectByTitle(title) {
     return null;
 }
 
-function ensureProjectForImport(groupTitle) {
-    const existing = findProjectByTitle(groupTitle);
-    if (existing) return existing;
-
-    let targetRow = state.rows.find(r => (r.title || '').trim().toLowerCase() === 'mail import');
-    if (!targetRow) {
+function ensureRowForImport(rowTitle = 'Mail Import') {
+    const title = (rowTitle || 'Mail Import').trim() || 'Mail Import';
+    let row = state.rows.find(r => (r.title || '').trim().toLowerCase() === title.toLowerCase());
+    if (!row) {
         const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
-        targetRow = { id: generateId(), title: 'Mail Import', projects: [], order: nextOrder, collapsed: false };
-        state.rows.push(targetRow);
+        row = { id: generateId(), title, projects: [], order: nextOrder, collapsed: false };
+        state.rows.push(row);
     }
+    return row;
+}
 
+function findProjectByTitleInRow(row, groupTitle) {
+    const target = (groupTitle || '').trim().toLowerCase();
+    if (!row || !target) return null;
+    for (const s of (row.projects || [])) {
+        if (s.isSpacer || !s.projects) continue;
+        for (const p of s.projects) {
+            if ((p.title || '').trim().toLowerCase() === target) return p;
+        }
+    }
+    return null;
+}
+
+function ensureProjectInRow(row, groupTitle) {
+    const existing = findProjectByTitleInRow(row, groupTitle);
+    if (existing) return existing;
     const newProject = { id: generateId(), title: groupTitle || 'Import', items: [], collapsed: false };
-    targetRow.projects.push({ id: generateId(), isSpacer: false, projects: [newProject] });
+    row.projects.push({ id: generateId(), isSpacer: false, projects: [newProject] });
     return newProject;
 }
+
+function ensureProjectForImport(groupTitle) {
+    const globalExisting = findProjectByTitle(groupTitle);
+    if (globalExisting) return globalExisting;
+    const row = ensureRowForImport('Mail Import');
+    return ensureProjectInRow(row, groupTitle || 'Import');
+}
+
+window.refreshMailImportTargets = () => {
+    const rowSelect = document.getElementById('mail-import-target-row');
+    const groupSelect = document.getElementById('mail-import-target-group');
+    if (rowSelect) {
+        rowSelect.innerHTML = '';
+        [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0)).forEach(r => {
+            rowSelect.innerHTML += `<option value="${r.id}">${r.title}</option>`;
+        });
+    }
+    if (groupSelect) {
+        groupSelect.innerHTML = '';
+        getProjectOptions().forEach(o => {
+            groupSelect.innerHTML += `<option value="${o.projectId}">${o.rowTitle} / ${o.projectTitle}</option>`;
+        });
+    }
+};
+
+window.toggleMailImportTargetMode = () => {
+    const mode = document.getElementById('mail-import-target-mode')?.value || 'auto';
+    const rowNew = document.getElementById('mail-import-row-new-wrap');
+    const rowSel = document.getElementById('mail-import-row-select-wrap');
+    const grpSel = document.getElementById('mail-import-group-select-wrap');
+    if (rowNew) rowNew.style.display = mode === 'new_row' ? 'block' : 'none';
+    if (rowSel) rowSel.style.display = mode === 'row' ? 'block' : 'none';
+    if (grpSel) grpSel.style.display = mode === 'group' ? 'block' : 'none';
+};
 
 window.openMailImportModal = () => {
     const ta = document.getElementById('mail-import-input');
     const report = document.getElementById('mail-import-report');
     if (ta) ta.value = '';
     if (report) report.textContent = '';
+    refreshMailImportTargets();
+    toggleMailImportTargetMode();
     showModal('mail-import-modal');
 };
 
@@ -738,6 +789,10 @@ window.handleMailImportDrop = async (event) => {
 window.importFromEmailText = async () => {
     const ta = document.getElementById('mail-import-input');
     const report = document.getElementById('mail-import-report');
+    const mode = document.getElementById('mail-import-target-mode')?.value || 'auto';
+    const newRowName = document.getElementById('mail-import-new-row-name')?.value || 'Mail Import';
+    const targetRowId = document.getElementById('mail-import-target-row')?.value || '';
+    const targetGroupId = document.getElementById('mail-import-target-group')?.value || '';
     if (!ta) return;
 
     const imported = parseMailExportText(ta.value || '');
@@ -751,6 +806,15 @@ window.importFromEmailText = async () => {
     const duplicates = [];
     const toImport = [];
 
+    if (mode === 'row' && !targetRowId) {
+        showToast('Bitte Zielzeile waehlen.', 'error');
+        return;
+    }
+    if (mode === 'group' && !targetGroupId) {
+        showToast('Bitte Zielgruppe waehlen.', 'error');
+        return;
+    }
+
     imported.forEach(it => {
         const key = normalizeUrlForCompare(it.url);
         const hits = key ? (localMap.get(key) || []) : [];
@@ -758,8 +822,17 @@ window.importFromEmailText = async () => {
         else toImport.push(it);
     });
 
+    const targetRow = targetRowId ? state.rows.find(r => r.id === targetRowId) : null;
+    const fixedGroup = targetGroupId ? findProject(targetGroupId) : null;
+    const importRow = mode === 'new_row' ? ensureRowForImport(newRowName) : (mode === 'row' ? targetRow : null);
+
     toImport.forEach(it => {
-        const p = ensureProjectForImport(it.group);
+        let p = null;
+        if (mode === 'group') p = fixedGroup;
+        else if (importRow) p = ensureProjectInRow(importRow, it.group || 'Import');
+        else p = ensureProjectForImport(it.group);
+
+        if (!p) return;
         if (!p.items) p.items = [];
         p.items.push({ id: generateId(), title: it.title || cleanTitle(it.url), url: it.url });
     });

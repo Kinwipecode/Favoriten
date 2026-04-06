@@ -59,8 +59,8 @@
       "btn-clean-all",
       "btn-app-settings",
       "btn-send-cache-mail",
-      "btn-send-cache-mail-only",
       "btn-clear-browser-cache",
+      "btn-send-cache-mail-only",
       "btn-import-mail"
     ],
     "itemFontSize": "20px",

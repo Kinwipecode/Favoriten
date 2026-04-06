@@ -1647,17 +1647,53 @@ window.applyCopy = async () => {
         return;
     }
 
-    const rowName = await showInputDialog({
-        title: 'Neue Zeile fuer Kopie',
-        label: 'Zeilenname',
-        value: `Kopie ${new Date().toLocaleDateString()}`,
-        placeholder: 'Name der neuen Zeile',
-        confirmText: 'Kopieren'
+    const mode = await showSelectDialog({
+        title: 'Kopie-Ziel',
+        label: 'Wohin sollen die Gruppen kopiert werden?',
+        options: [
+            { value: 'new', label: 'Neue Zeile erstellen' },
+            { value: 'existing', label: 'In bestehende Zeile kopieren' }
+        ],
+        confirmText: 'Weiter'
     });
-    if (rowName === null) return;
+    if (!mode) return;
 
-    const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
-    const newRow = { id: generateId(), title: (rowName || '').trim() || 'Kopie', projects: [], order: nextOrder, collapsed: false };
+    let targetRow = null;
+    if (mode === 'new') {
+        const rowName = await showInputDialog({
+            title: 'Neue Zeile fuer Kopie',
+            label: 'Zeilenname',
+            value: `Kopie ${new Date().toLocaleDateString()}`,
+            placeholder: 'Name der neuen Zeile',
+            confirmText: 'Kopieren'
+        });
+        if (rowName === null) return;
+
+        const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
+        targetRow = { id: generateId(), title: (rowName || '').trim() || 'Kopie', projects: [], order: nextOrder, collapsed: false };
+        state.rows.push(targetRow);
+    } else {
+        const rowOptions = [...state.rows]
+            .sort((a, b) => (a.order || 0) - (b.order || 0))
+            .map(r => ({ value: r.id, label: `${r.title} (#${r.order || 0})` }));
+        if (rowOptions.length === 0) {
+            showToast('Keine Zeile vorhanden.', 'error');
+            return;
+        }
+
+        const targetRowId = await showSelectDialog({
+            title: 'Zielzeile',
+            label: 'In welche Zeile kopieren?',
+            options: rowOptions,
+            confirmText: 'Kopieren'
+        });
+        if (!targetRowId) return;
+        targetRow = state.rows.find(r => r.id === targetRowId) || null;
+        if (!targetRow) {
+            showToast('Zielzeile nicht gefunden.', 'error');
+            return;
+        }
+    }
 
     ids.forEach(id => {
         const src = findProject(id);
@@ -1668,15 +1704,15 @@ window.applyCopy = async () => {
             collapsed: !!src.collapsed,
             items: (src.items || []).map(it => ({ id: generateId(), title: it.title, url: it.url }))
         };
-        newRow.projects.push({ id: generateId(), isSpacer: false, projects: [cloned] });
+        targetRow.projects.push({ id: generateId(), isSpacer: false, projects: [cloned] });
     });
 
-    state.rows.push(newRow);
     state.copyMode.active = false;
     state.copyMode.selectedIds = [];
     renderBoard();
     saveData();
-    showToast(`${ids.length} Gruppen in neue Zeile kopiert.`, 'success');
+    if (mode === 'new') showToast(`${ids.length} Gruppen in neue Zeile kopiert.`, 'success');
+    else showToast(`${ids.length} Gruppen in bestehende Zeile kopiert.`, 'success');
 };
 
 window.applyDelete = async () => { if (state.deleteMode.selectedIds.length > 0 && await showConfirm('Löschen?')) { state.deleteMode.selectedIds.forEach(id => { if (!findItemAndClear(id)) findProjectAndClear(id); }); state.deleteMode.active = false; state.deleteMode.selectedIds = []; renderBoard(); saveData(); } };

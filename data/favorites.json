@@ -572,6 +572,18 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "qcwcdwtda",
+              "title": "Produkte",
+              "items": [
+                {
+                  "id": "58skv7jku",
+                  "title": "Armawin",
+                  "url": "https://armawin.com/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -595,21 +607,8 @@
         },
         {
           "id": "dbjcj2qnu",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "qcwcdwtda",
-              "title": "Produkte",
-              "items": [
-                {
-                  "id": "58skv7jku",
-                  "title": "Armawin",
-                  "url": "https://armawin.com/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "xiyd3h9bf",

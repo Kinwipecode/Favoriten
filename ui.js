@@ -376,7 +376,7 @@ window.renderHeaderButtons = () => {
 
     if (!order.includes('btn-save')) order = ['btn-save', ...order];
 
-    const isRead = state.isReadOnly;
+    const isRead = (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly);
     const writeIds = ['btn-save', 'btn-add-row', 'btn-add-project', 'btn-import', 'btn-move-mode', 'btn-multi-delete', 'btn-clean-all', 'btn-collapse-gaps', 'btn-sort-rows'];
 
     order.forEach(id => {
@@ -479,7 +479,7 @@ window.setupUI = () => {
         new Sortable(actionsContainer, {
             animation: 150,
             ghostClass: 'btn-ghost',
-            disabled: state.isReadOnly,
+            disabled: (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly),
             onEnd: () => {
                 const newOrder = Array.from(actionsContainer.querySelectorAll('button')).map(b => b.id);
                 state.config.buttonOrder = newOrder;

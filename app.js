@@ -629,6 +629,29 @@ function getInsertIndexForRowByMouse(rowId) {
     return slots.length;
 }
 
+function getMouseSlotTarget(rowId) {
+    const rowEl = Array.from(document.querySelectorAll('.board-row')).find(el => el.dataset.id === rowId);
+    if (!rowEl) return { slot: null, slotIndex: -1, insertIndex: null };
+
+    const container = rowEl.querySelector('.row-projects');
+    if (!container) return { slot: null, slotIndex: -1, insertIndex: null };
+
+    const slots = Array.from(container.querySelectorAll(':scope > .slot'));
+    if (!slots.length) return { slot: null, slotIndex: -1, insertIndex: 0 };
+
+    const x = state.lastContextMenuPos && Number.isFinite(state.lastContextMenuPos.x) ? state.lastContextMenuPos.x : null;
+    if (x === null) return { slot: null, slotIndex: -1, insertIndex: null };
+
+    for (let i = 0; i < slots.length; i++) {
+        const rect = slots[i].getBoundingClientRect();
+        if (x >= rect.left && x <= rect.right) {
+            return { slot: slots[i], slotIndex: i, insertIndex: i };
+        }
+    }
+
+    return { slot: null, slotIndex: -1, insertIndex: getInsertIndexForRowByMouse(rowId) };
+}
+
 function findProjectByItemId(itemId) {
     if (!itemId) return null;
     for (const r of state.rows) {
@@ -1234,9 +1257,16 @@ window.showContextMenu = (e, type, id) => {
 window.addSlotToRow = (rowId) => {
     const r = state.rows.find(x => x.id === rowId);
     if (!r) return;
+
+    const mouseTarget = getMouseSlotTarget(rowId);
+    if (mouseTarget.slot && mouseTarget.slot.dataset && mouseTarget.slot.dataset.slotId) {
+        addItemToSpacer(mouseTarget.slot.dataset.slotId);
+        return;
+    }
+
     const slotId = generateId();
     const slot = { id: slotId, isSpacer: true, projects: [] };
-    const insertIndex = getInsertIndexForRowByMouse(rowId);
+    const insertIndex = mouseTarget.insertIndex;
     if (insertIndex === null || insertIndex < 0 || insertIndex > r.projects.length) r.projects.push(slot);
     else r.projects.splice(insertIndex, 0, slot);
     renderBoard();
@@ -1259,8 +1289,9 @@ window.addItemToSpacer = async (slotId) => {
     for (const r of state.rows) {
         const s = r.projects.find(x => x.id === slotId);
         if (s) {
-            s.isSpacer = false;
-            s.projects = [{ id: generateId(), title: t, items: [], collapsed: false }];
+            if (s.isSpacer) s.isSpacer = false;
+            if (!Array.isArray(s.projects)) s.projects = [];
+            s.projects.push({ id: generateId(), title: t, items: [], collapsed: false });
             break;
         }
     }

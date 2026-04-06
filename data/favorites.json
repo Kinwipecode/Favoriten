@@ -782,6 +782,43 @@
                 }
               ],
               "collapsed": true
+            },
+            {
+              "id": "eq6vomh4u",
+              "title": "Laptop",
+              "items": [
+                {
+                  "id": "tc1a0nd1o",
+                  "title": "Laptopmedia",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/#p8"
+                },
+                {
+                  "id": "9ja8hwvim",
+                  "title": "Toppreise",
+                  "url": "https://www.toppreise.ch/preisvergleich/Notebooks/ASUS-ZenBook-Pro-15-Flip-OLED-UP6502ZA-M8019W-Core-90NB0W22-M00220-p701333?selsort=rd#f_anchorRelated_products"
+                },
+                {
+                  "id": "j69p5wbu8",
+                  "title": "Notebookcheck",
+                  "url": "https://www.notebookcheck.com/Test-HP-Pavilion-Power-15-i7-7700HQ-GTX-1050-Laptop.232274.0.html"
+                },
+                {
+                  "id": "p94nm2zvq",
+                  "title": "Notebookcheck",
+                  "url": "https://www.notebookcheck.com/Test-Asus-Zenbook-Pro-15-OLED-UM535Q-Laptop-Im-Prinzip-ein-XPS-15-AMD.620326.0.html"
+                },
+                {
+                  "id": "yyh6wu94k",
+                  "title": "Interdiscount",
+                  "url": "https://www.interdiscount.ch/de/computer-gaming/notebooks/notebooks--c511000/hp-pavilion-laptop-15-eg2717nz-15-6-intel-core-i7-16-gb-ram-1000-gb-ssd--p0006277540"
+                },
+                {
+                  "id": "5agtl4doy",
+                  "title": "Laptopmedia",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/"
+                }
+              ],
+              "collapsed": true
             }
           ]
         },
@@ -838,46 +875,8 @@
         },
         {
           "id": "dmy8ig91n",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "eq6vomh4u",
-              "title": "Laptop",
-              "items": [
-                {
-                  "id": "tc1a0nd1o",
-                  "title": "Laptopmedia",
-                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/#p8"
-                },
-                {
-                  "id": "9ja8hwvim",
-                  "title": "Toppreise",
-                  "url": "https://www.toppreise.ch/preisvergleich/Notebooks/ASUS-ZenBook-Pro-15-Flip-OLED-UP6502ZA-M8019W-Core-90NB0W22-M00220-p701333?selsort=rd#f_anchorRelated_products"
-                },
-                {
-                  "id": "j69p5wbu8",
-                  "title": "Notebookcheck",
-                  "url": "https://www.notebookcheck.com/Test-HP-Pavilion-Power-15-i7-7700HQ-GTX-1050-Laptop.232274.0.html"
-                },
-                {
-                  "id": "p94nm2zvq",
-                  "title": "Notebookcheck",
-                  "url": "https://www.notebookcheck.com/Test-Asus-Zenbook-Pro-15-OLED-UM535Q-Laptop-Im-Prinzip-ein-XPS-15-AMD.620326.0.html"
-                },
-                {
-                  "id": "yyh6wu94k",
-                  "title": "Interdiscount",
-                  "url": "https://www.interdiscount.ch/de/computer-gaming/notebooks/notebooks--c511000/hp-pavilion-laptop-15-eg2717nz-15-6-intel-core-i7-16-gb-ram-1000-gb-ssd--p0006277540"
-                },
-                {
-                  "id": "5agtl4doy",
-                  "title": "Laptopmedia",
-                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/"
-                }
-              ],
-              "collapsed": true
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "0muzzdvdr",

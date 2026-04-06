@@ -3413,7 +3413,13 @@
             {
               "id": "e6azao2bo",
               "title": "Bild",
-              "items": [],
+              "items": [
+                {
+                  "id": "oqtj7fvhj",
+                  "title": "Public AI",
+                  "url": "https://chat.publicai.co/"
+                }
+              ],
               "collapsed": false
             }
           ]

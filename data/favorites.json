@@ -30,21 +30,8 @@
         },
         {
           "id": "0q9n5h1lc",
-          "isSpacer": false,
-          "projects": [
-            {
-              "id": "wzprpmcs8",
-              "title": "555",
-              "items": [
-                {
-                  "id": "vscukh6n2",
-                  "title": "Notube",
-                  "url": "https://notube.net/en/youtube-app-328"
-                }
-              ],
-              "collapsed": false
-            }
-          ]
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "4gxfbetol",

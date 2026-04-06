@@ -279,6 +279,7 @@ const btnHandlers = {
     'btn-move-mode': () => toggleMoveMode(),
     'btn-multi-delete': () => toggleDeleteMode(),
     'btn-cancel-move': () => toggleMoveMode(),
+    'btn-confirm-move': () => applyMove(),
     'btn-cancel-delete': () => toggleDeleteMode(),
     'btn-confirm-delete': () => applyDelete(),
     'btn-github': () => {
@@ -408,6 +409,7 @@ window.setupUI = () => {
         'btn-cancel-export': btnHandlers['btn-cancel-export'],
         'btn-confirm-export': btnHandlers['btn-confirm-export'],
         'btn-cancel-move': btnHandlers['btn-cancel-move'],
+        'btn-confirm-move': btnHandlers['btn-confirm-move'],
         'btn-cancel-delete': btnHandlers['btn-cancel-delete'],
         'btn-confirm-delete': btnHandlers['btn-confirm-delete']
     };

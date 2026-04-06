@@ -1357,6 +1357,12 @@
       ],
       "order": 10,
       "collapsed": true
+    },
+    {
+      "id": "nmi5895vt",
+      "title": "Neue Zeile",
+      "projects": [],
+      "order": 20
     }
   ],
   "config": {

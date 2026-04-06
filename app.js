@@ -1227,6 +1227,47 @@ window.sortRows = () => {
 };
 
 window.deleteRow = async (id) => { if (await showConfirm('Reihe löschen?')) { state.rows = state.rows.filter(r => r.id !== id); renderBoard(); saveData(); } };
+window.copyRowWithContent = async (id) => {
+    const src = state.rows.find(r => r.id === id);
+    if (!src) return;
+
+    const rowName = await showInputDialog({
+        title: 'Zeile kopieren',
+        label: 'Neuer Zeilenname',
+        value: `Kopie ${src.title || ''}`.trim(),
+        placeholder: 'Name der neuen Zeile',
+        confirmText: 'Kopieren'
+    });
+    if (rowName === null) return;
+
+    const nextOrder = state.rows.length > 0 ? Math.max(...state.rows.map(r => r.order || 0)) + 10 : 10;
+    const cloneSlot = (slot) => {
+        if (slot.isSpacer) return { id: generateId(), isSpacer: true, projects: [] };
+        return {
+            id: generateId(),
+            isSpacer: false,
+            projects: (slot.projects || []).map(p => ({
+                id: generateId(),
+                title: p.title,
+                collapsed: !!p.collapsed,
+                items: (p.items || []).map(it => ({ id: generateId(), title: it.title, url: it.url }))
+            }))
+        };
+    };
+
+    const copiedRow = {
+        id: generateId(),
+        title: String(rowName).trim() || `Kopie ${src.title || 'Zeile'}`,
+        projects: (src.projects || []).map(cloneSlot),
+        order: nextOrder,
+        collapsed: !!src.collapsed
+    };
+
+    state.rows.push(copiedRow);
+    renderBoard();
+    saveData();
+    showToast('Zeile mit Inhalt kopiert.', 'success');
+};
 window.deleteProject = async (id) => {
     if (!await showConfirm('Ordner löschen?')) return;
 
@@ -1843,6 +1884,7 @@ window.showContextMenu = (e, type, id) => {
         const r = state.rows.find(x => x.id === id);
         html = `<div class="context-menu-title">Zeile: ${r ? r.title : ''}</div>
         <div class="context-menu-item" onclick="addSlotToRow('${id}')">Gruppe hinzufuegen</div>
+        <div class="context-menu-item" onclick="copyRowWithContent('${id}')">Zeile mit Inhalt kopieren</div>
         <div class="context-menu-item" onclick="addRowSpacer('${id}')">Luecke hinzufuegen</div>
         <div class="context-menu-divider"></div>
         <div class="context-menu-item danger" onclick="deleteRow('${id}')">Zeile loeschen</div>`;

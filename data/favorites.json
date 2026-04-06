@@ -13,13 +13,7 @@
               "title": "333",
               "items": [],
               "collapsed": false
-            }
-          ]
-        },
-        {
-          "id": "dc70ayeca",
-          "isSpacer": false,
-          "projects": [
+            },
             {
               "id": "29u53parm",
               "title": "aaa",
@@ -27,6 +21,11 @@
               "collapsed": false
             }
           ]
+        },
+        {
+          "id": "dc70ayeca",
+          "isSpacer": true,
+          "projects": []
         },
         {
           "id": "h5xiprfer",

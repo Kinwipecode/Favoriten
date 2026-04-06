@@ -502,23 +502,46 @@ window.sendCachedFavoritesByEmail = async () => {
 
     const now = new Date();
     const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-    const fileName = `favoriten_cache_${dateStr}.html`;
 
-    const listHtml = items.map(it => `<li><a href="${it.url}">${it.title}</a> <small style="color:#666;">(${it.projectTitle})</small></li>`).join('');
-    const html = `<!doctype html><html><head><meta charset="utf-8"><title>Favoriten Cache Export</title></head><body><h2>Favoriten Cache Export</h2><p>Erstellt: ${now.toLocaleString()}</p><ul>${listHtml}</ul></body></html>`;
+    const format = await showSelectDialog({
+        title: 'Exportformat',
+        label: 'Dateiformat fuer E-Mail waehlen',
+        options: [
+            { value: 'html', label: 'HTML-Datei (.html)' },
+            { value: 'text', label: 'Text-Datei (.txt)' }
+        ],
+        confirmText: 'Erstellen'
+    });
+    if (!format) return;
+
+    const fileName = `favoriten_cache_${dateStr}.${format === 'text' ? 'txt' : 'html'}`;
+
+    const textLinesAll = items.map((it, i) => `${i + 1}. ${it.title} - ${it.url} (${it.projectTitle})`).join('\n');
+    const textPreview = items.slice(0, 30).map((it, i) => `${i + 1}. ${it.title} - ${it.url}`).join('\n');
+
+    let fileContent = '';
+    let mimeType = 'text/plain';
+
+    if (format === 'html') {
+        const listHtml = items.map(it => `<li><a href="${it.url}">${it.title}</a> <small style="color:#666;">(${it.projectTitle})</small></li>`).join('');
+        fileContent = `<!doctype html><html><head><meta charset="utf-8"><title>Favoriten Cache Export</title></head><body><h2>Favoriten Cache Export</h2><p>Erstellt: ${now.toLocaleString()}</p><ul>${listHtml}</ul></body></html>`;
+        mimeType = 'text/html';
+    } else {
+        fileContent = `Favoriten Cache Export\nErstellt: ${now.toLocaleString()}\n\n${textLinesAll}\n`;
+        mimeType = 'text/plain';
+    }
 
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+    a.href = URL.createObjectURL(new Blob([fileContent], { type: mimeType }));
     a.download = fileName;
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 
-    const textLines = items.slice(0, 30).map((it, i) => `${i + 1}. ${it.title} - ${it.url}`).join('\n');
     const subject = encodeURIComponent(`Favoriten Cache Export ${dateStr}`);
-    const body = encodeURIComponent(`HTML-Datei wurde lokal heruntergeladen: ${fileName}\nBitte als Anhang hinzufuegen.\n\nVorschau:\n${textLines}`);
+    const body = encodeURIComponent(`Datei wurde lokal heruntergeladen: ${fileName}\nBitte als Anhang hinzufuegen.\n\nVorschau:\n${textPreview}`);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
 
-    showToast('HTML erstellt + E-Mail-Entwurf geoeffnet.', 'success');
+    showToast('Datei erstellt + E-Mail-Entwurf geoeffnet.', 'success');
 
     if (await showConfirm('Cache-Liste nach dem Senden leeren?')) {
         setCachedMailItems([]);

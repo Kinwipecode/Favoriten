@@ -1,6 +1,6 @@
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
-const APP_VERSION = '8.20';
+const APP_VERSION = '8.21';
 
 let ghToken = localStorage.getItem('gh_token') || '';
 let ghOwner = 'Kinwipecode';
@@ -1363,9 +1363,33 @@ window.renameProject = async (id) => {
     saveData();
 };
 
-window.toggleRowCollapse = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.collapsed = !r.collapsed; renderBoard(); saveData(); } };
-window.collapseRow = (id) => { const r = state.rows.find(x => x.id === id); if (r) { r.projects = r.projects.filter(s => !s.isSpacer); renderBoard(); saveData(); } };
-window.toggleCollapse = (id) => { const p = findProject(id); if (p) { p.collapsed = !p.collapsed; renderBoard(); saveData(); } };
+window.toggleRowCollapse = (id) => {
+    if (isWriteLockedMode()) return;
+    const r = state.rows.find(x => x.id === id);
+    if (r) {
+        r.collapsed = !r.collapsed;
+        renderBoard();
+        saveData();
+    }
+};
+window.collapseRow = (id) => {
+    if (isWriteLockedMode()) return;
+    const r = state.rows.find(x => x.id === id);
+    if (r) {
+        r.projects = r.projects.filter(s => !s.isSpacer);
+        renderBoard();
+        saveData();
+    }
+};
+window.toggleCollapse = (id) => {
+    if (isWriteLockedMode()) return;
+    const p = findProject(id);
+    if (p) {
+        p.collapsed = !p.collapsed;
+        renderBoard();
+        saveData();
+    }
+};
 
 window.addItem = async (projectId, preUrl = "", preTitle = "") => {
     let targetProjectId = projectId;

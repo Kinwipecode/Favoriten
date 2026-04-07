@@ -1,6 +1,6 @@
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
-const APP_VERSION = '8.21';
+const APP_VERSION = '8.22';
 
 let ghToken = localStorage.getItem('gh_token') || '';
 let ghOwner = 'Kinwipecode';
@@ -2248,6 +2248,15 @@ function updateMobileEditUi() {
         : '<i class="fa-solid fa-lock"></i><span>Bearb. Aus</span>';
 
     document.body.classList.toggle('mobile-edit-enabled', enabled);
+
+    const actionsToggleBtn = document.getElementById('toggle-actions-btn');
+    if (actionsToggleBtn) actionsToggleBtn.disabled = !enabled && isMobile;
+
+    const actionsDrawer = document.getElementById('actions-drawer');
+    if (actionsDrawer && !enabled && isMobile) actionsDrawer.classList.add('hidden');
+
+    const viewDropdown = document.getElementById('view-dropdown-content');
+    if (viewDropdown && !enabled && isMobile) viewDropdown.classList.add('hidden');
 }
 
 window.toggleMobileEditMode = () => {

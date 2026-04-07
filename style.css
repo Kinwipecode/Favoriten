@@ -1279,6 +1279,24 @@ body.auto-mobile-layout .row-header-main {
     width: 100%;
 }
 
+body.auto-mobile-layout .row-title-display {
+    margin-left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body.auto-mobile-layout:not(.mobile-edit-enabled) .row-header-main,
+body.auto-mobile-layout:not(.mobile-edit-enabled) .column-header {
+    pointer-events: none;
+    cursor: default !important;
+}
+
+body.auto-mobile-layout:not(.mobile-edit-enabled) .row-header-main .fa-chevron-down,
+body.auto-mobile-layout:not(.mobile-edit-enabled) .row-header-main .fa-chevron-right {
+    opacity: 0.25 !important;
+}
+
 body.auto-mobile-layout .row-projects {
     grid-template-columns: 1fr;
     gap: 12px;

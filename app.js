@@ -1,6 +1,6 @@
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
-const APP_VERSION = '8.13';
+const APP_VERSION = '8.14';
 
 let ghToken = localStorage.getItem('gh_token') || '';
 let ghOwner = 'Kinwipecode';
@@ -2207,8 +2207,8 @@ function updateMobileEditUi() {
     btn.classList.toggle('hidden', !isMobile || !canWrite);
     btn.classList.toggle('active', enabled);
     btn.innerHTML = enabled
-        ? '<i class="fa-solid fa-lock-open"></i><span>Bearbeiten an</span>'
-        : '<i class="fa-solid fa-lock"></i><span>Bearbeiten aus</span>';
+        ? '<i class="fa-solid fa-lock-open"></i><span>Bearb. An</span>'
+        : '<i class="fa-solid fa-lock"></i><span>Bearb. Aus</span>';
 
     document.body.classList.toggle('mobile-edit-enabled', enabled);
 }

@@ -488,16 +488,29 @@ window.setupUI = () => {
 
     const actionsContainer = document.querySelector('.actions');
     if (actionsContainer && typeof Sortable !== 'undefined') {
-        new Sortable(actionsContainer, {
+        const mobileQuery = window.matchMedia('(max-width: 900px)');
+        const isButtonsSortDisabled = () => mobileQuery.matches || (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly);
+
+        const actionsSortable = new Sortable(actionsContainer, {
             animation: 150,
             ghostClass: 'btn-ghost',
-            disabled: (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly),
+            disabled: isButtonsSortDisabled(),
             onEnd: () => {
                 const newOrder = Array.from(actionsContainer.querySelectorAll('button')).map(b => b.id);
                 state.config.buttonOrder = newOrder;
                 saveData();
             }
         });
+
+        const updateActionsSortableState = () => {
+            actionsSortable.option('disabled', isButtonsSortDisabled());
+        };
+
+        if (mobileQuery.addEventListener) {
+            mobileQuery.addEventListener('change', updateActionsSortableState);
+        } else if (mobileQuery.addListener) {
+            mobileQuery.addListener(updateActionsSortableState);
+        }
     }
 };
 

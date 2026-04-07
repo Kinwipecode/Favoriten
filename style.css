@@ -1291,7 +1291,18 @@ body.auto-mobile-layout .slot {
 body.auto-mobile-layout .column {
     width: 100%;
     border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+body.auto-mobile-layout .column-header {
+    border-radius: var(--radius-lg);
+    background-clip: padding-box;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+}
+
+body.auto-mobile-layout .column-body {
+    background: transparent;
 }
 
 body.auto-mobile-layout .slot-index {

@@ -1,5 +1,6 @@
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
+const APP_VERSION = '8.12';
 
 let ghToken = localStorage.getItem('gh_token') || '';
 let ghOwner = 'Kinwipecode';
@@ -70,6 +71,25 @@ const state = {
 
 const CACHE_MAIL_KEY = 'favoriten_cached_items_for_mail';
 
+const autoMobileQuery = window.matchMedia('(max-width: 900px)');
+
+function applyAutoMobileLayout() {
+    document.body.classList.toggle('auto-mobile-layout', autoMobileQuery.matches);
+    if (typeof updateMobileEditUi === 'function') updateMobileEditUi();
+}
+
+if (autoMobileQuery.addEventListener) {
+    autoMobileQuery.addEventListener('change', () => {
+        applyAutoMobileLayout();
+        if (window.renderBoard) renderBoard();
+    });
+} else if (autoMobileQuery.addListener) {
+    autoMobileQuery.addListener(() => {
+        applyAutoMobileLayout();
+        if (window.renderBoard) renderBoard();
+    });
+}
+
 function isStrictReadOnlyMode() {
     return state.isReadOnly && !!ghToken;
 }
@@ -78,8 +98,14 @@ const generateId = () => Math.random().toString(36).substr(2, 9);
 
 async function init() {
     if (window.setupUI) setupUI();
+    const versionBadge = document.getElementById('app-version-badge');
+    if (versionBadge) versionBadge.textContent = `v${APP_VERSION}`;
+    const versionInfo = document.getElementById('app-version-info');
+    if (versionInfo) versionInfo.textContent = `Version ${APP_VERSION}`;
+    applyAutoMobileLayout();
     loadLocalSettings();
     await loadData();
+    updateMobileEditUi();
     if (window.renderHeaderButtons) renderHeaderButtons();
     renderBoard();
 
@@ -375,7 +401,7 @@ function renderBoard() {
         board.appendChild(rowEl);
     });
 
-    if (typeof Sortable !== 'undefined' && !isRead) {
+    if (typeof Sortable !== 'undefined' && !isRead && isMobileEditUnlocked()) {
         new Sortable(board, {
             animation: 150, handle: '.row-header', filter: 'input,textarea,select,button', forceFallback: true, fallbackOnBody: true,
             onStart: () => state.isDragging = true,
@@ -454,6 +480,7 @@ function renderBoard() {
             });
         });
     }
+    updateMobileEditUi();
     updateToolbars();
     updateSearchControls();
 }
@@ -2066,6 +2093,7 @@ window.applyLocalSettings = () => {
         themeValue = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     document.documentElement.setAttribute('data-theme', themeValue);
+    updateMobileEditUi();
 };
 
 window.updateLocalSettings = () => {
@@ -2160,8 +2188,39 @@ const localSettings = {
     compactMode: false,
     darkMode: 'system',
     animations: true,
-    fixedHeader: false
+    fixedHeader: false,
+    mobileEditEnabled: false
 };
+
+function isMobileEditUnlocked() {
+    return !autoMobileQuery.matches || !!localSettings.mobileEditEnabled;
+}
+
+function updateMobileEditUi() {
+    const btn = document.getElementById('mobile-edit-toggle');
+    if (!btn) return;
+
+    const isMobile = autoMobileQuery.matches;
+    const canWrite = !isStrictReadOnlyMode();
+    const enabled = isMobile && !!localSettings.mobileEditEnabled;
+
+    btn.classList.toggle('hidden', !isMobile || !canWrite);
+    btn.classList.toggle('active', enabled);
+    btn.innerHTML = enabled
+        ? '<i class="fa-solid fa-lock-open"></i><span>Bearbeiten an</span>'
+        : '<i class="fa-solid fa-lock"></i><span>Bearbeiten aus</span>';
+
+    document.body.classList.toggle('mobile-edit-enabled', enabled);
+}
+
+window.toggleMobileEditMode = () => {
+    if (!autoMobileQuery.matches || isStrictReadOnlyMode()) return;
+    localSettings.mobileEditEnabled = !localSettings.mobileEditEnabled;
+    localStorage.setItem('favoriten_app_settings', JSON.stringify(localSettings));
+    updateMobileEditUi();
+    renderBoard();
+};
+
 window.localSettings = localSettings;
 window.state = state;
 window.generateId = generateId;

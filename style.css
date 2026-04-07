@@ -1219,6 +1219,131 @@ body.delete-mode-active .favorite-item {
 }
 
 /* Responsive Mobile Styles */
+body.auto-mobile-layout {
+    min-height: 100dvh;
+    height: auto;
+}
+
+body.auto-mobile-layout .app-header {
+    padding: 10px 12px;
+}
+
+body.auto-mobile-layout .header-main-content {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+body.auto-mobile-layout .logo {
+    width: 100%;
+    min-width: 0 !important;
+}
+
+body.auto-mobile-layout #save-path-display {
+    display: none !important;
+}
+
+body.auto-mobile-layout .header-controls {
+    order: 2;
+    position: static !important;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+body.auto-mobile-layout .search-bar {
+    order: 3;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+body.auto-mobile-layout .board-container {
+    padding: 10px;
+}
+
+body.auto-mobile-layout .board-row {
+    padding: 14px 10px;
+    margin-bottom: 16px;
+}
+
+body.auto-mobile-layout .row-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+}
+
+body.auto-mobile-layout .row-header-main {
+    margin-right: 0;
+    width: 100%;
+}
+
+body.auto-mobile-layout .row-projects {
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.mobile-edit-toggle {
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 1200;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 14px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: #2d3436;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.mobile-edit-toggle.active {
+    background: #00b894;
+}
+
+body.auto-mobile-layout .mobile-edit-toggle {
+    display: flex;
+}
+
+body.auto-mobile-layout .column-body {
+    padding: 6px 10px 12px;
+}
+
+body.auto-mobile-layout .favorite-item {
+    touch-action: pan-y;
+}
+
+body.auto-mobile-layout.mobile-edit-enabled .favorite-item {
+    touch-action: none;
+}
+
+body.auto-mobile-layout .actions {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+body.auto-mobile-layout .actions .btn {
+    flex-shrink: 0;
+}
+
+body.auto-mobile-layout .modal-content {
+    width: min(96vw, 620px) !important;
+    max-height: 92dvh;
+    overflow: auto;
+}
+
+body.auto-mobile-layout .move-toolbar {
+    width: min(96vw, 720px);
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 12px;
+    padding: 10px 12px;
+}
+
 @media (max-width: 768px) {
     .app-header {
         padding: 10px 15px;

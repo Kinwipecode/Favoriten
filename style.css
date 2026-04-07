@@ -1290,6 +1290,8 @@ body.auto-mobile-layout .slot {
 
 body.auto-mobile-layout .column {
     width: 100%;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
 }
 
 body.auto-mobile-layout .slot-index {
@@ -1324,6 +1326,11 @@ body.auto-mobile-layout .mobile-edit-toggle {
 
 body.auto-mobile-layout .column-body {
     padding: 6px 10px 12px;
+}
+
+body.auto-mobile-layout .favorite-item {
+    border: none;
+    box-shadow: none;
 }
 
 body.auto-mobile-layout .favorite-item {

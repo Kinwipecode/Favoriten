@@ -1281,6 +1281,8 @@ body.auto-mobile-layout .row-header-main {
 
 body.auto-mobile-layout .row-title-display {
     margin-left: 0;
+    flex: 1;
+    min-width: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

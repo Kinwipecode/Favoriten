@@ -387,10 +387,11 @@ window.renderHeaderButtons = () => {
     if (!order.includes('btn-save')) order = ['btn-save', ...order];
 
     const isRead = (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly);
+    const isWriteLocked = (window.isUiWriteLocked ? window.isUiWriteLocked() : isRead);
     const writeIds = ['btn-save', 'btn-add-row', 'btn-add-project', 'btn-import', 'btn-import-mail', 'btn-move-mode', 'btn-copy-mode', 'btn-multi-delete', 'btn-clean-all', 'btn-collapse-gaps', 'btn-sort-rows'];
 
     order.forEach(id => {
-        if (isRead && writeIds.includes(id)) return;
+        if (isWriteLocked && writeIds.includes(id)) return;
 
         const meta = buttonMetadata[id];
         if (!meta) return;
@@ -489,7 +490,7 @@ window.setupUI = () => {
     const actionsContainer = document.querySelector('.actions');
     if (actionsContainer && typeof Sortable !== 'undefined') {
         const mobileQuery = window.matchMedia('(max-width: 900px)');
-        const isButtonsSortDisabled = () => mobileQuery.matches || (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly);
+        const isButtonsSortDisabled = () => mobileQuery.matches || (window.isUiWriteLocked ? window.isUiWriteLocked() : (window.isUiReadOnly ? window.isUiReadOnly() : state.isReadOnly));
 
         const actionsSortable = new Sortable(actionsContainer, {
             animation: 150,

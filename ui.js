@@ -47,12 +47,14 @@ window.hideModal = (id) => {
 };
 
 window.toggleActionsDrawer = () => {
+    if (window.isUiWriteLocked && window.isUiWriteLocked()) return;
     const drawer = document.getElementById('actions-drawer');
     if (!drawer) return;
     drawer.classList.toggle('hidden');
 };
 
 window.toggleViewDropdown = (event) => {
+    if (window.isUiWriteLocked && window.isUiWriteLocked()) return;
     if (event && event.stopPropagation) event.stopPropagation();
     const dd = document.getElementById('view-dropdown-content');
     if (!dd) return;

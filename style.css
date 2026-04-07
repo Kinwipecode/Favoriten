@@ -1293,8 +1293,7 @@ body.auto-mobile-layout .column {
 }
 
 body.auto-mobile-layout .slot-index {
-    left: -6px;
-    top: 8px;
+    display: none;
 }
 
 .mobile-edit-toggle {

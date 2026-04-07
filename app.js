@@ -1,6 +1,6 @@
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
-const APP_VERSION = '8.19';
+const APP_VERSION = '8.20';
 
 let ghToken = localStorage.getItem('gh_token') || '';
 let ghOwner = 'Kinwipecode';
@@ -315,10 +315,10 @@ function renderBoard() {
 
         rowEl.innerHTML = `
             <div class="row-header">
-                <div class="row-header-main" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button,input,textarea,select,label,.row-title-input,.row-order-input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
+                <div class="row-header-main" ${isWriteLocked ? '' : `onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button,input,textarea,select,label,.row-title-input,.row-order-input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;"`}>
                     ${isWriteLocked ? `<span class="row-order-display">${row.order || 0}</span>` : `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">`}
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="width:20px; opacity:0.5;"></i>
-                    ${isWriteLocked ? `<span>${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
+                    ${isWriteLocked ? `<span class="row-title-display">${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
                 </div>
                 <div class="row-actions">
                     ${!isWriteLocked ? `<button class="btn-icon" onclick="collapseRow('${row.id}')"><i class="fa-solid fa-compress"></i></button><button class="btn-icon" onclick="renameRow('${row.id}')"><i class="fa-solid fa-pen"></i></button><button class="btn-icon delete" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash-can"></i></button>` : ''}
@@ -359,7 +359,7 @@ function renderBoard() {
                     };
 
                     col.innerHTML = `
-                        <div class="column-header" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) { if (state.copyMode.active) toggleCopySelectionProject('${p.id}'); else if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }">
+                        <div class="column-header" ${isWriteLocked ? '' : `onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) { if (state.copyMode.active) toggleCopySelectionProject('${p.id}'); else if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }"`}>
                             <div class="header-left"><i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}"></i> <span>${p.title}</span></div>
                             <div class="column-actions" ${isWriteLocked ? 'style="display:none;"' : ''}>
                                 <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button>

@@ -1259,6 +1259,7 @@ body.auto-mobile-layout .search-bar {
 
 body.auto-mobile-layout .board-container {
     padding: 10px;
+    padding-bottom: 78px;
     overflow-x: hidden;
 }
 
@@ -1292,18 +1293,19 @@ body.auto-mobile-layout .column {
 }
 
 body.auto-mobile-layout .slot-index {
-    left: 8px;
+    left: -6px;
     top: 8px;
 }
 
 .mobile-edit-toggle {
     position: fixed;
-    right: 14px;
-    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(10px + env(safe-area-inset-bottom));
     z-index: 1200;
     border: none;
     border-radius: 999px;
-    padding: 10px 14px;
+    padding: 9px 12px;
     display: none;
     align-items: center;
     gap: 8px;

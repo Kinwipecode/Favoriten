@@ -1,6 +1,6 @@
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
-const APP_VERSION = '8.15';
+const APP_VERSION = '8.16';
 
 let ghToken = localStorage.getItem('gh_token') || '';
 let ghOwner = 'Kinwipecode';
@@ -81,17 +81,23 @@ function applyAutoMobileLayout() {
 if (autoMobileQuery.addEventListener) {
     autoMobileQuery.addEventListener('change', () => {
         applyAutoMobileLayout();
+        if (window.renderHeaderButtons) renderHeaderButtons();
         if (window.renderBoard) renderBoard();
     });
 } else if (autoMobileQuery.addListener) {
     autoMobileQuery.addListener(() => {
         applyAutoMobileLayout();
+        if (window.renderHeaderButtons) renderHeaderButtons();
         if (window.renderBoard) renderBoard();
     });
 }
 
 function isStrictReadOnlyMode() {
     return state.isReadOnly && !!ghToken;
+}
+
+function isWriteLockedMode() {
+    return isStrictReadOnlyMode() || !isMobileEditUnlocked();
 }
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -272,6 +278,7 @@ function renderBoard() {
     if (!board) return;
     board.innerHTML = "";
     const isRead = isStrictReadOnlyMode();
+    const isWriteLocked = isWriteLockedMode();
     const isSearching = !!state.searchTerm;
     const term = state.searchTerm.toLowerCase();
     const sortedRows = [...state.rows].sort((a, b) => (a.order || 0) - (b.order || 0));
@@ -294,7 +301,7 @@ function renderBoard() {
         rowEl.dataset.id = row.id;
 
         const triggerContext = (e) => {
-            if (isRead) return; if (e.preventDefault) e.preventDefault();
+            if (isWriteLocked) return; if (e.preventDefault) e.preventDefault();
             if (e.stopPropagation) e.stopPropagation();
             state.lastContextMenuTime = Date.now();
             showContextMenu(e, 'row', row.id);
@@ -304,12 +311,12 @@ function renderBoard() {
         rowEl.innerHTML = `
             <div class="row-header">
                 <div class="row-header-main" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button,input,textarea,select,label,.row-title-input,.row-order-input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;">
-                    ${isRead ? `<span class="row-order-display">${row.order || 0}</span>` : `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">`}
+                    ${isWriteLocked ? `<span class="row-order-display">${row.order || 0}</span>` : `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">`}
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="width:20px; opacity:0.5;"></i>
-                    ${isRead ? `<span>${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
+                    ${isWriteLocked ? `<span>${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
                 </div>
                 <div class="row-actions">
-                    ${!isRead ? `<button class="btn-icon" onclick="collapseRow('${row.id}')"><i class="fa-solid fa-compress"></i></button><button class="btn-icon" onclick="renameRow('${row.id}')"><i class="fa-solid fa-pen"></i></button><button class="btn-icon delete" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash-can"></i></button>` : ''}
+                    ${!isWriteLocked ? `<button class="btn-icon" onclick="collapseRow('${row.id}')"><i class="fa-solid fa-compress"></i></button><button class="btn-icon" onclick="renameRow('${row.id}')"><i class="fa-solid fa-pen"></i></button><button class="btn-icon delete" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash-can"></i></button>` : ''}
                 </div>
             </div>
             <div class="row-projects"></div>
@@ -340,7 +347,7 @@ function renderBoard() {
                     col.dataset.projectId = p.id;
 
                     const triggerProjContext = (e) => {
-                        if (isRead) return; if (e.preventDefault) e.preventDefault();
+                        if (isWriteLocked) return; if (e.preventDefault) e.preventDefault();
                         if (e.stopPropagation) e.stopPropagation();
                         state.lastContextMenuTime = Date.now();
                         showContextMenu(e, 'project', p.id);
@@ -349,7 +356,7 @@ function renderBoard() {
                     col.innerHTML = `
                         <div class="column-header" onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button')) { if (state.copyMode.active) toggleCopySelectionProject('${p.id}'); else if (state.moveMode.active || state.deleteMode.active) toggleSelection('${p.id}'); else toggleCollapse('${p.id}'); }">
                             <div class="header-left"><i class="fa-solid fa-folder${p.collapsed ? '' : '-open'}"></i> <span>${p.title}</span></div>
-                            <div class="column-actions">
+                            <div class="column-actions" ${isWriteLocked ? 'style="display:none;"' : ''}>
                                 <button class="btn-text" onclick="event.stopPropagation(); addItem('${p.id}')"><i class="fa-solid fa-plus"></i></button>
                                 <button class="btn-text" onclick="event.stopPropagation(); renameProject('${p.id}')"><i class="fa-solid fa-pen"></i></button>
                                 <button class="btn-text" onclick="event.stopPropagation(); deleteProject('${p.id}')"><i class="fa-solid fa-trash-can"></i></button>
@@ -370,7 +377,7 @@ function renderBoard() {
                         itEl.setAttribute('ondragstart', 'return false;');
 
                         const triggerItemContext = (e) => {
-                            if (isRead) return; if (e.preventDefault) e.preventDefault();
+                            if (isWriteLocked) return; if (e.preventDefault) e.preventDefault();
                             if (e.stopPropagation) e.stopPropagation();
                             state.lastContextMenuTime = Date.now();
                             showContextMenu(e, 'item', it.id);
@@ -378,16 +385,16 @@ function renderBoard() {
                         itEl.oncontextmenu = (e) => { triggerItemContext(e); return false; };
 
                         itEl.innerHTML = `<a href="${it.url}" target="_blank" class="item-link-wrapper" draggable="false" ondragstart="return false;" data-id="${it.id}" onclick="if(state.isDragging) { event.preventDefault(); return false; } if(Date.now() - state.lastContextMenuTime < 300) { event.preventDefault(); return false; } if(state.moveMode.active || state.deleteMode.active) { event.preventDefault(); toggleSelection('${it.id}'); return false; }"><span>${it.title}</span>
-                        ${!isRead ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}
+                        ${!isWriteLocked ? `<div class="item-actions"><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); editItem('${it.id}')">✎</button><button class="btn-text" onclick="event.stopPropagation(); event.preventDefault(); deleteItem('${it.id}')">×</button></div>` : ''}
                         </a>`;
                         body.appendChild(itEl);
                     });
                     slotEl.appendChild(col);
 
                     const h = col.querySelector('.column-header');
-                    if (h && !isRead) { h.oncontextmenu = (e) => { triggerProjContext(e); return false; }; }
+                    if (h && !isWriteLocked) { h.oncontextmenu = (e) => { triggerProjContext(e); return false; }; }
                 });
-            } else if (!isRead) {
+            } else if (!isWriteLocked) {
                 const actions = document.createElement('div');
                 actions.className = 'spacer-actions';
                 actions.style.opacity = '0.2';
@@ -401,7 +408,7 @@ function renderBoard() {
         board.appendChild(rowEl);
     });
 
-    if (typeof Sortable !== 'undefined' && !isRead && isMobileEditUnlocked()) {
+    if (typeof Sortable !== 'undefined' && !isWriteLocked) {
         new Sortable(board, {
             animation: 150, handle: '.row-header', filter: 'input,textarea,select,button', forceFallback: true, fallbackOnBody: true,
             onStart: () => state.isDragging = true,
@@ -2067,8 +2074,9 @@ function updateSearchControls() {
     if (controls) controls.classList.remove('hidden');
 }
 
-window.checkAuth = () => !isStrictReadOnlyMode();
+window.checkAuth = () => !isWriteLockedMode();
 window.isUiReadOnly = () => isStrictReadOnlyMode();
+window.isUiWriteLocked = () => isWriteLockedMode();
 window.loadLocalSettings = () => {
     const s = localStorage.getItem('favoriten_app_settings');
     if (s) {
@@ -2218,6 +2226,7 @@ window.toggleMobileEditMode = () => {
     localSettings.mobileEditEnabled = !localSettings.mobileEditEnabled;
     localStorage.setItem('favoriten_app_settings', JSON.stringify(localSettings));
     updateMobileEditUi();
+    if (window.renderHeaderButtons) renderHeaderButtons();
     renderBoard();
 };
 

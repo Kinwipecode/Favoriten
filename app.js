@@ -1,6 +1,6 @@
 const API_URL = '/api/favorites';
 const board = document.getElementById("board");
-const APP_VERSION = '8.18';
+const APP_VERSION = '8.19';
 
 let ghToken = localStorage.getItem('gh_token') || '';
 let ghOwner = 'Kinwipecode';
@@ -176,18 +176,6 @@ async function loadFromGitHub() {
                 state.rows = migrate(content);
                 state.isReadOnly = true;
 
-                if (!ghToken) {
-                    try {
-                        const cached = localStorage.getItem('favoriten_backup');
-                        if (cached) {
-                            const parsed = JSON.parse(cached);
-                            if (parsed && parsed.rows) {
-                                state.rows = migrate(parsed);
-                            }
-                        }
-                    } catch (_) { }
-                }
-
                 if (window.applyTheme) applyTheme();
                 renderBoard();
                 if (disp) {
@@ -197,6 +185,23 @@ async function loadFromGitHub() {
                 return;
             }
         } catch (e) { console.warn(`Versuch über ${branch} fehlgeschlagen.`, e); }
+    }
+
+    if (!ghToken) {
+        try {
+            const cached = localStorage.getItem('favoriten_backup');
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                if (parsed && parsed.rows) {
+                    state.rows = migrate(parsed);
+                    state.isReadOnly = true;
+                    if (window.applyTheme) applyTheme();
+                    renderBoard();
+                    if (disp) disp.innerHTML = '<i class="fa-solid fa-hard-drive"></i> Browser-Cache Modus';
+                    return;
+                }
+            }
+        } catch (_) { }
     }
 }
 

@@ -1259,6 +1259,7 @@ body.auto-mobile-layout .search-bar {
 
 body.auto-mobile-layout .board-container {
     padding: 10px;
+    overflow-x: hidden;
 }
 
 body.auto-mobile-layout .board-row {
@@ -1280,6 +1281,19 @@ body.auto-mobile-layout .row-header-main {
 body.auto-mobile-layout .row-projects {
     grid-template-columns: 1fr;
     gap: 12px;
+}
+
+body.auto-mobile-layout .slot {
+    min-width: 0;
+}
+
+body.auto-mobile-layout .column {
+    width: 100%;
+}
+
+body.auto-mobile-layout .slot-index {
+    left: 8px;
+    top: 8px;
 }
 
 .mobile-edit-toggle {

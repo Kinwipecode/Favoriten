@@ -682,6 +682,11 @@
                   "id": "jun16ecaq",
                   "title": "Mepcontent",
                   "url": "https://www.mepcontent.com/de/bim-files/"
+                },
+                {
+                  "id": "1pr0hx66k",
+                  "title": "Sharecad DXF Online",
+                  "url": "https://sharecad.org/de/"
                 }
               ],
               "collapsed": true
@@ -1362,7 +1367,8 @@
       "id": "fd2pviff6",
       "title": "Neue Zeile",
       "projects": [],
-      "order": 20
+      "order": 20,
+      "collapsed": false
     }
   ],
   "config": {

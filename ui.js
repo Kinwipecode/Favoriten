@@ -1,5 +1,4 @@
 
-
 let posX = 0, posY = 0, currentPickerVar = null;
 
 
@@ -195,7 +194,7 @@ const buttonMetadata = {
     'btn-pull-cloud': { icon: 'fa-solid fa-cloud-arrow-down', text: 'Cloud Download', class: 'btn btn-secondary', title: 'Daten von GitHub auf diesen PC laden (überschreibt lokal)' },
     'btn-save': { icon: 'fa-solid fa-floppy-disk', text: 'Speichern', class: 'btn btn-secondary' },
     'btn-check-links': { icon: 'fa-solid fa-heart-circle-check', text: 'Link-Check', class: 'btn btn-secondary', title: 'Alle Links auf Erreichbarkeit prüfen', style: 'color:#ff7675' },
-    'btn-import': { icon: 'fa-solid fa-file-import', text: 'Importieren', class: 'btn btn-secondary', title: 'HTML Bookmarks Datei importieren' },
+    'btn-import': { icon: 'fa-solid fa-file-import', text: 'Importieren', class: 'btn btn-secondary', title: 'HTML-Bookmarks oder JSON (Jonson) importieren' },
     'btn-export': { icon: 'fa-solid fa-file-export', text: 'Exportieren', class: 'btn btn-secondary' },
     'btn-github': { icon: 'fa-brands fa-github', text: 'Sync-Token', class: 'btn btn-secondary' },
     'btn-app-settings': { icon: 'fa-desktop', text: 'App Settings', class: 'btn btn-secondary', title: 'App Ansicht' },
@@ -206,6 +205,7 @@ const buttonMetadata = {
     'btn-move-mode': { icon: 'fa-solid fa-arrows-up-down-left-right', text: 'Multi Vesch.', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links verschieben' },
     'btn-copy-mode': { icon: 'fa-solid fa-copy', text: 'Multi Copy', class: 'btn btn-secondary', title: 'Mehrere Gruppen markieren und in neue Zeile kopieren' },
     'btn-multi-delete': { icon: 'fa-solid fa-eraser', text: 'Multi Del', class: 'btn btn-secondary', title: 'Mehrere Gruppen oder Links gleichzeitig löschen' },
+    'btn-find-duplicates': { icon: 'fa-solid fa-clone', text: 'Duplikate finden', class: 'btn btn-secondary', title: 'Identische URLs über alle Gruppen hinweg finden und bereinigen' },
     'btn-send-cache-mail': { icon: 'fa-solid fa-envelope', text: 'Cache per E-Mail', class: 'btn btn-secondary', title: 'Lokale Cache-Favoriten als HTML fuer E-Mail exportieren' },
     'btn-send-cache-mail-only': { icon: 'fa-solid fa-paper-plane', text: 'Export to txt', class: 'btn btn-secondary', title: 'Cache-Favoriten direkt in E-Mail-Text senden (ohne Datei)' },
     'btn-import-mail': { icon: 'fa-solid fa-inbox', text: 'Import E-Mail', class: 'btn btn-secondary', title: 'Favoriten aus E-Mail-Text importieren (Paste oder Drag & Drop)' },
@@ -220,6 +220,7 @@ const btnHandlers = {
     'btn-check-links': () => checkAllLinks(),
     'btn-pull-cloud': async () => { if (await showConfirm('Daten von GitHub laden? Lokale Änderungen auf diesem PC werden überschrieben!')) await pullFromCloud(); },
     'btn-save': () => saveData(),
+    'btn-find-duplicates': () => window.findAndHandleDuplicates(),
     'btn-import': () => {
         const select = document.getElementById('import-row-select');
         const nameContainer = document.getElementById('import-new-row-name-container');
@@ -536,3 +537,81 @@ async function pullFromCloud() {
         showToast('Verbindungsfehler zum lokalen Server.', 'error');
     }
 }
+
+window.showDuplicateModal = (duplicates) => {
+    const list = document.getElementById('duplicate-list');
+    list.innerHTML = '';
+
+    duplicates.forEach((group, groupIdx) => {
+        const groupEl = document.createElement('div');
+        groupEl.style.padding = '15px';
+        groupEl.style.borderBottom = '1px solid #eee';
+        if (groupIdx % 2 === 1) groupEl.style.background = 'rgba(0,0,0,0.02)';
+
+        const header = document.createElement('div');
+        header.style.marginBottom = '10px';
+        header.innerHTML = `<code style="color:var(--primary-color); font-weight:bold; word-break:break-all;">${group.url}</code>`;
+        groupEl.appendChild(header);
+
+        group.entries.forEach(entry => {
+            const row = document.createElement('div');
+            row.style.display = 'flex';
+            row.style.alignItems = 'center';
+            row.style.gap = '10px';
+            row.style.padding = '5px 0';
+            row.style.fontSize = '0.9rem';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'duplicate-check';
+            checkbox.dataset.itemId = entry.item.id;
+            checkbox.dataset.projectId = entry.projectId;
+            checkbox.dataset.rowId = entry.rowId;
+
+            const label = document.createElement('label');
+            label.style.flex = '1';
+            label.innerHTML = `<b>${entry.item.title}</b> <span style="color:#888;">(in ${entry.projectName} / ${entry.rowName})</span>`;
+            
+            row.appendChild(checkbox);
+            row.appendChild(label);
+            groupEl.appendChild(row);
+        });
+
+        list.appendChild(groupEl);
+    });
+
+    document.getElementById('btn-confirm-delete-duplicates').onclick = () => {
+        const checked = document.querySelectorAll('.duplicate-check:checked');
+        if (checked.length === 0) {
+            hideModal('duplicate-modal');
+            return;
+        }
+
+        if (confirm(`Möchtest du wirklich ${checked.length} Favoriten löschen?`)) {
+            checked.forEach(cb => {
+                const itemId = cb.dataset.itemId;
+                const projectId = cb.dataset.projectId;
+                const rowId = cb.dataset.rowId;
+                
+                const row = state.rows.find(r => r.id === rowId);
+                if (row) {
+                    const slot = row.projects.find(s => !s.isSpacer && s.projects && s.projects[0].id === projectId);
+                    if (slot) {
+                        const project = slot.projects[0];
+                        project.items = project.items.filter(it => it.id !== itemId);
+                    }
+                }
+            });
+            hideModal('duplicate-modal');
+            renderBoard();
+            saveData();
+            showToast(`${checked.length} Duplikate entfernt.`, 'success');
+        }
+    };
+
+    showModal('duplicate-modal');
+};
+
+window.selectAllDuplicates = (checked) => {
+    document.querySelectorAll('.duplicate-check').forEach(cb => cb.checked = checked);
+};

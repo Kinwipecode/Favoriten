@@ -1357,6 +1357,2937 @@
       ],
       "order": 10,
       "collapsed": false
+    },
+    {
+      "id": "to5014mo9",
+      "title": "Importierte Favoriten",
+      "projects": [
+        {
+          "id": "801wyjb5k",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "csv4ywbgt",
+              "title": "AAA",
+              "items": [
+                {
+                  "id": "tx1iy5xul",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
+                },
+                {
+                  "id": "en6xttnom",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "sc8j5pfv9",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "g545pi96z",
+              "title": "AAA",
+              "items": [
+                {
+                  "id": "4w6i3doyh",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/produkte/it-loesungen/katalogkonverter/"
+                },
+                {
+                  "id": "fihsxm7p8",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/produkte/kataloge/publizierte-kataloge/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "jck0zsa2o",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "7j5gy1uv3",
+              "title": "AI",
+              "items": [
+                {
+                  "id": "ko7fa2mbq",
+                  "title": "Gemini.google",
+                  "url": "https://gemini.google.com/app"
+                },
+                {
+                  "id": "n08ve3dy8",
+                  "title": "Chat.openai",
+                  "url": "https://chat.openai.com/"
+                },
+                {
+                  "id": "ok1uki5fo",
+                  "title": "Openai",
+                  "url": "https://openai.com/index/sora/"
+                },
+                {
+                  "id": "kcsxha22w",
+                  "title": "Bing",
+                  "url": "https://www.bing.com/search?form=MW00X7&ef_id=_k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&OCID=AIDcmm3kkv2p4j_SEM__k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&gad_source=1&gclid=Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB&q=Bing+AI&showconv=1"
+                },
+                {
+                  "id": "na4bkhm52",
+                  "title": "Grok",
+                  "url": "https://grok.com/"
+                },
+                {
+                  "id": "za769kg7m",
+                  "title": "Chat.deepseek",
+                  "url": "https://chat.deepseek.com/"
+                },
+                {
+                  "id": "avzq6xm85",
+                  "title": "Chat.mistral",
+                  "url": "https://chat.mistral.ai/chat"
+                },
+                {
+                  "id": "e17kpjwog",
+                  "title": "Pixlr",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "78mlqkxgj",
+                  "title": "Notebooklm.google",
+                  "url": "https://notebooklm.google.com/"
+                },
+                {
+                  "id": "t3ngdkpkx",
+                  "title": "Perplexity",
+                  "url": "https://www.perplexity.ai/"
+                },
+                {
+                  "id": "58ug3kqeh",
+                  "title": "Huggingface",
+                  "url": "https://huggingface.co/"
+                },
+                {
+                  "id": "yo3mt5n65",
+                  "title": "Videotranslator.blipcut",
+                  "url": "https://videotranslator.blipcut.com/en/tool?page=1"
+                },
+                {
+                  "id": "z4wcx3f42",
+                  "title": "Artguru",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "wpr5dtddf",
+                  "title": "Hedra",
+                  "url": "https://www.hedra.com/app/characters"
+                },
+                {
+                  "id": "atgkrflq2",
+                  "title": "Theresanaiforthat",
+                  "url": "https://theresanaiforthat.com/"
+                },
+                {
+                  "id": "x09l0oix2",
+                  "title": "Dreamina.capcut",
+                  "url": "https://dreamina.capcut.com/ai-tool/generate"
+                },
+                {
+                  "id": "kbmdx73vl",
+                  "title": "Modelplayground",
+                  "url": "https://modelplayground.ai/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "lnha6hw7u",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "4jp3l3ayj",
+              "title": "AI",
+              "items": [
+                {
+                  "id": "7c5wld5g9",
+                  "title": "Gemini.google",
+                  "url": "https://gemini.google.com/app"
+                },
+                {
+                  "id": "oigqiiurm",
+                  "title": "Chat.openai",
+                  "url": "https://chat.openai.com/"
+                },
+                {
+                  "id": "ib462ex3b",
+                  "title": "Openai",
+                  "url": "https://openai.com/index/sora/"
+                },
+                {
+                  "id": "9qwr8z739",
+                  "title": "Bing",
+                  "url": "https://www.bing.com/search?form=MW00X7&ef_id=_k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&OCID=AIDcmm3kkv2p4j_SEM__k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&gad_source=1&gclid=Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB&q=Bing+AI&showconv=1"
+                },
+                {
+                  "id": "u6l5obfw9",
+                  "title": "Grok",
+                  "url": "https://grok.com/"
+                },
+                {
+                  "id": "lg6zj8ff2",
+                  "title": "Chat.deepseek",
+                  "url": "https://chat.deepseek.com/"
+                },
+                {
+                  "id": "eisjwg7r3",
+                  "title": "Chat.mistral",
+                  "url": "https://chat.mistral.ai/chat"
+                },
+                {
+                  "id": "gbo04hxgi",
+                  "title": "Pixlr",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "zxrg44m8t",
+                  "title": "Notebooklm.google",
+                  "url": "https://notebooklm.google.com/"
+                },
+                {
+                  "id": "ayq2ttzqq",
+                  "title": "Perplexity",
+                  "url": "https://www.perplexity.ai/"
+                },
+                {
+                  "id": "yifttu8nv",
+                  "title": "Huggingface",
+                  "url": "https://huggingface.co/"
+                },
+                {
+                  "id": "m7myg1m7n",
+                  "title": "Videotranslator.blipcut",
+                  "url": "https://videotranslator.blipcut.com/en/tool?page=1"
+                },
+                {
+                  "id": "ry5xnv7lb",
+                  "title": "Artguru",
+                  "url": "https://www.artguru.ai/de/"
+                },
+                {
+                  "id": "kmq73kcog",
+                  "title": "Hedra",
+                  "url": "https://www.hedra.com/app/characters"
+                },
+                {
+                  "id": "0xoulret9",
+                  "title": "Theresanaiforthat",
+                  "url": "https://theresanaiforthat.com/"
+                },
+                {
+                  "id": "5alhgqcb7",
+                  "title": "Dreamina.capcut",
+                  "url": "https://dreamina.capcut.com/ai-tool/generate"
+                },
+                {
+                  "id": "xtbcbj669",
+                  "title": "Modelplayground",
+                  "url": "https://modelplayground.ai/"
+                },
+                {
+                  "id": "e38j9slra",
+                  "title": "Kimi",
+                  "url": "https://www.kimi.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "rw4xanc6a",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "kuq1vms0s",
+              "title": "Bild",
+              "items": [
+                {
+                  "id": "qvel01xbh",
+                  "title": "Pixlr",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "2vx86qgfz",
+                  "title": "Artguru",
+                  "url": "https://www.artguru.ai/de/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "652foe53g",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "bf0il5kc1",
+              "title": "Bild",
+              "items": [
+                {
+                  "id": "c2o9vgbxe",
+                  "title": "Pixlr",
+                  "url": "https://pixlr.com/de/express/"
+                },
+                {
+                  "id": "wkbz6a47i",
+                  "title": "Artguru",
+                  "url": "https://www.artguru.ai/de/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "kqcqi3z2o",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "apvwpavfq",
+              "title": "CAD",
+              "items": [
+                {
+                  "id": "8ryvgs6di",
+                  "title": "Revid",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
+                  "id": "0nvq8nzwf",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
+                },
+                {
+                  "id": "k4iswtl08",
+                  "title": "Ifcwiki",
+                  "url": "https://www.ifcwiki.org/index.php?title=KIT_IFC_Examples"
+                },
+                {
+                  "id": "a9tp8dirr",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "z9npapoq4",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "9wr25ww45",
+              "title": "CAD",
+              "items": [
+                {
+                  "id": "hojgktiyq",
+                  "title": "Revid",
+                  "url": "https://www.revid.ai/projects"
+                },
+                {
+                  "id": "3tbb13zz6",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=K7wjjYTAdEM"
+                },
+                {
+                  "id": "yp4f5q4sx",
+                  "title": "Ifcwiki",
+                  "url": "https://www.ifcwiki.org/index.php?title=KIT_IFC_Examples"
+                },
+                {
+                  "id": "3cvqneqwt",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                },
+                {
+                  "id": "6li2sw18t",
+                  "title": "Sharecad",
+                  "url": "https://sharecad.org/de/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "jdhixv4az",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "refuhxgij",
+              "title": "CAD BIM",
+              "items": [
+                {
+                  "id": "btxmpiatd",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                },
+                {
+                  "id": "l2wkhgcvv",
+                  "title": "Graphisoft",
+                  "url": "https://graphisoft.com/at/downloads/parametric_objects"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "95fy3p0y1",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "hd4q4o9ba",
+              "title": "CAD BIM",
+              "items": [
+                {
+                  "id": "yl662cahd",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/"
+                },
+                {
+                  "id": "dlhsmw5ke",
+                  "title": "Graphisoft",
+                  "url": "https://graphisoft.com/at/downloads/parametric_objects"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "04z63udgd",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "gmz04ievk",
+              "title": "CAD IFC mit nova",
+              "items": [
+                {
+                  "id": "cdnqvd73m",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
+                },
+                {
+                  "id": "xb9oc6bk7",
+                  "title": "Novauser.xobor",
+                  "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ljsc4ydg0",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "r553asn0i",
+              "title": "CAD IFC mit nova",
+              "items": [
+                {
+                  "id": "f8aopy3o4",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=6JSRncWnNcY"
+                },
+                {
+                  "id": "ioy7s5h92",
+                  "title": "Novauser.xobor",
+                  "url": "http://novauser.xobor.de/f32-BIM-IFC.html"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "hics6e271",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "5owhp6jrk",
+              "title": "Coden",
+              "items": [
+                {
+                  "id": "e6tthauu3",
+                  "title": "Bolt",
+                  "url": "https://bolt.new/"
+                },
+                {
+                  "id": "d33zbshwh",
+                  "title": "Filedn",
+                  "url": "https://filedn.eu/l9B9c0qnIV5k2PVR8vdTK40/Todo/index_pro.html"
+                },
+                {
+                  "id": "wkippv0wz",
+                  "title": "Dash.cloudflare",
+                  "url": "https://dash.cloudflare.com/23e8d19ed8337818e554e2ac87b3029a/pages/new/upload"
+                },
+                {
+                  "id": "wlk9k2x93",
+                  "title": "File:///G:/Miro%20copy/index.html",
+                  "url": "file:///G:/Miro%20copy/index.html"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "yjphzk9lr",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "rmfu7km2t",
+              "title": "Coden",
+              "items": [
+                {
+                  "id": "borj7xugh",
+                  "title": "Bolt",
+                  "url": "https://bolt.new/"
+                },
+                {
+                  "id": "vcv221mh5",
+                  "title": "Filedn",
+                  "url": "https://filedn.eu/l9B9c0qnIV5k2PVR8vdTK40/Todo/index_pro.html"
+                },
+                {
+                  "id": "65rfa3lrl",
+                  "title": "Dash.cloudflare",
+                  "url": "https://dash.cloudflare.com/23e8d19ed8337818e554e2ac87b3029a/pages/new/upload"
+                },
+                {
+                  "id": "mff1hqahd",
+                  "title": "File:///G:/Miro%20copy/index.html",
+                  "url": "file:///G:/Miro%20copy/index.html"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "0w1rb6eud",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "ydm03mn65",
+              "title": "Dämmung",
+              "items": [
+                {
+                  "id": "g2pcs3q9k",
+                  "title": "Jada",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "xzv0mfqel",
+                  "title": "A3bau",
+                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
+                },
+                {
+                  "id": "bch2hqawo",
+                  "title": "Suissetec",
+                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "012ffvhyq",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "a84xdsh4s",
+              "title": "Dämmung",
+              "items": [
+                {
+                  "id": "2i4a9ahms",
+                  "title": "Jada",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "pc5yuwplu",
+                  "title": "A3bau",
+                  "url": "https://a3bau.at/kaeltedaemmung-neues-system-von-rockwool"
+                },
+                {
+                  "id": "959698som",
+                  "title": "Suissetec",
+                  "url": "https://suissetec.ch/files/PDFs/Merkblaetter/Alle%20Branchen/Deutsch/2021_05_MB_Technische_Daemmung_DE_editierbar.pdf"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ouflplq7z",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "guu6ur3kj",
+              "title": "Diverse",
+              "items": [
+                {
+                  "id": "2xwey888t",
+                  "title": "192.168.178.1/",
+                  "url": "http://192.168.178.1/"
+                },
+                {
+                  "id": "5iwjshz2t",
+                  "title": "Email.bluewin",
+                  "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "bwr8p5d9v",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "8u09yn8u1",
+              "title": "Diverse",
+              "items": [
+                {
+                  "id": "76yu4iz4i",
+                  "title": "192.168.178.1/",
+                  "url": "http://192.168.178.1/"
+                },
+                {
+                  "id": "1qv41ef0o",
+                  "title": "Email.bluewin",
+                  "url": "https://email.bluewin.ch/appsuite/#!!&app=io.ox/mail&folder=default0/INBOX"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "2xdf90pdp",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "qzqouqmr5",
+              "title": "EDV",
+              "items": [
+                {
+                  "id": "pw3kr46sr",
+                  "title": "Wgi-desktop.leuchter-cloud",
+                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
+                },
+                {
+                  "id": "zo92nnb2w",
+                  "title": "Lizenzguru",
+                  "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
+                },
+                {
+                  "id": "c7p0i3pqp",
+                  "title": "Netzwelt",
+                  "url": "https://www.netzwelt.de/anleitung/179687-linux-mint-neben-windows-10-installieren-so-gehts.html"
+                },
+                {
+                  "id": "rf96kpqsg",
+                  "title": "Duckdns",
+                  "url": "https://www.duckdns.org/"
+                },
+                {
+                  "id": "kxtg1mnbp",
+                  "title": "Kinweb.duckdns",
+                  "url": "http://www.kinweb.duckdns.org/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ry8v6kegk",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "zpjbnhm8k",
+              "title": "EDV",
+              "items": [
+                {
+                  "id": "4x56axcky",
+                  "title": "Wgi-desktop.leuchter-cloud",
+                  "url": "https://wgi-desktop.leuchter-cloud.ch/logon/LogonPoint/index.html"
+                },
+                {
+                  "id": "sk9jj49wh",
+                  "title": "Lizenzguru",
+                  "url": "https://lizenzguru.de/office-organisation/office-2016/office-2016-professional/"
+                },
+                {
+                  "id": "fwqoyamkm",
+                  "title": "Netzwelt",
+                  "url": "https://www.netzwelt.de/anleitung/179687-linux-mint-neben-windows-10-installieren-so-gehts.html"
+                },
+                {
+                  "id": "r5r6dsu0b",
+                  "title": "Duckdns",
+                  "url": "https://www.duckdns.org/"
+                },
+                {
+                  "id": "pzr9q4o34",
+                  "title": "Kinweb.duckdns",
+                  "url": "http://www.kinweb.duckdns.org/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "78ijv7cxz",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "qqls99qlc",
+              "title": "Frankreich",
+              "items": [
+                {
+                  "id": "wlshpe1ga",
+                  "title": "Booking",
+                  "url": "https://www.booking.com/hotel/fr/cannes-palais.de.html?aid=2311236&label=de-ch-booking-desktop-AwtDBrnbKfbY5w%2AnVlwfWAS652829000584%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9187028%3Ali%3Adec%3Adm&sid=e323f6018906327c5e0789c4cefafa95&all_sr_blocks=342360101_400674165_2_1_0&checkin=2025-07-21&checkout=2025-07-28&dest_id=-1416533&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=4&highlighted_blocks=342360101_400674165_2_1_0&hpos=4&matching_block_id=342360101_400674165_2_1_0&nflt=mealplan%3D1%3Bhotelfacility%3D2%3Bprice%3DCHF-min-250-1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=342360101_400674165_2_1_0__148391&srepoch=1752946227&srpvid=1ae1cb6d311f6dd1c9be65c4b4de1a98&type=total&ucfs=1&"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ti2hf99k9",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "xnqgdq6s7",
+              "title": "Frankreich",
+              "items": [
+                {
+                  "id": "gk184obq1",
+                  "title": "Booking",
+                  "url": "https://www.booking.com/hotel/fr/cannes-palais.de.html?aid=2311236&label=de-ch-booking-desktop-AwtDBrnbKfbY5w%2AnVlwfWAS652829000584%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9187028%3Ali%3Adec%3Adm&sid=e323f6018906327c5e0789c4cefafa95&all_sr_blocks=342360101_400674165_2_1_0&checkin=2025-07-21&checkout=2025-07-28&dest_id=-1416533&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=4&highlighted_blocks=342360101_400674165_2_1_0&hpos=4&matching_block_id=342360101_400674165_2_1_0&nflt=mealplan%3D1%3Bhotelfacility%3D2%3Bprice%3DCHF-min-250-1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=342360101_400674165_2_1_0__148391&srepoch=1752946227&srpvid=1ae1cb6d311f6dd1c9be65c4b4de1a98&type=total&ucfs=1&"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "fua1p1d6y",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "g7wjjnwuv",
+              "title": "für Suno ",
+              "items": [
+                {
+                  "id": "bk00k3qtv",
+                  "title": "Meinhomestudio",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "1r8bc47re",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "t14vvx235",
+              "title": "für Suno ",
+              "items": [
+                {
+                  "id": "738o30nyt",
+                  "title": "Meinhomestudio",
+                  "url": "https://www.meinhomestudio.de/suno-prompt-generator-ki-assistent/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "oneo0cu16",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "295qstjsf",
+              "title": "GitHub",
+              "items": [
+                {
+                  "id": "nucvwn4jg",
+                  "title": "Github radio",
+                  "url": "https://kinwipecode.github.io/Swissradio/"
+                },
+                {
+                  "id": "cd56npyc5",
+                  "title": "Kinwipecode.github miro",
+                  "url": "https://kinwipecode.github.io/Miro_plus/"
+                },
+                {
+                  "id": "fkk2j6xq3",
+                  "title": "Kinwipecode.github kinpdf",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
+                },
+                {
+                  "id": "31so3agl7",
+                  "title": "Kinwipecode.github favo",
+                  "url": "https://kinwipecode.github.io/Favoriten/"
+                },
+                {
+                  "id": "vz9zpi0s2",
+                  "title": "Kinwipecode.github seiten",
+                  "url": "https://kinwipecode.github.io/seiten/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "3hhxo3y5h",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "cwhazf0wb",
+              "title": "GitHub",
+              "items": [
+                {
+                  "id": "3zvxzxu9f",
+                  "title": "Github",
+                  "url": "https://github.com/Kinwipecode/Swissradio/settings/pages"
+                },
+                {
+                  "id": "qkwe9xem7",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Miro_plus/"
+                },
+                {
+                  "id": "r86s8to4t",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Kinpdf/"
+                },
+                {
+                  "id": "fo6xlrdyn",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/Favoriten/"
+                },
+                {
+                  "id": "07z27qiio",
+                  "title": "Kinwipecode.github",
+                  "url": "https://kinwipecode.github.io/seiten/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "8e9f6lqtq",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "yiku8j293",
+              "title": "HLK",
+              "items": [
+                {
+                  "id": "66sqac9mr",
+                  "title": "Erdsondenoptimierung",
+                  "url": "https://www.erdsondenoptimierung.ch/"
+                },
+                {
+                  "id": "iuhhv3qj1",
+                  "title": "J3l7h",
+                  "url": "https://j3l7h.de/videos.html"
+                },
+                {
+                  "id": "cj4tfkznf",
+                  "title": "Docs.google",
+                  "url": "https://docs.google.com/document/u/0/"
+                },
+                {
+                  "id": "sb8nuh2ak",
+                  "title": "Bsvonline",
+                  "url": "https://www.bsvonline.ch/de/vorschriften/"
+                },
+                {
+                  "id": "w6awxuy93",
+                  "title": "Reftec",
+                  "url": "http://www.reftec.ch/downloads.htm"
+                },
+                {
+                  "id": "zelz3yxbw",
+                  "title": "Formeln.technis",
+                  "url": "http://formeln.technis.ch/"
+                },
+                {
+                  "id": "a1q5wxnb4",
+                  "title": "Enbau-online",
+                  "url": "https://enbau-online.ch/heizung-lueftung-elektrizitaet/"
+                },
+                {
+                  "id": "sxwlw73oo",
+                  "title": "Endk",
+                  "url": "https://www.endk.ch/de/fachleute-1/energienachweis/EN-101%20bis%20EN-141"
+                },
+                {
+                  "id": "9068b6qyz",
+                  "title": "Hqs.sbt.siemens",
+                  "url": "https://www.hqs.sbt.siemens.com/gip/hq/webapps/ventilschieber/index.html"
+                },
+                {
+                  "id": "aktjabbl3",
+                  "title": "Edelstahl-waermetauscher",
+                  "url": "https://www.edelstahl-waermetauscher.de/berechnung/berechnung.htm"
+                },
+                {
+                  "id": "5k0x96p17",
+                  "title": "Hit.sbt.siemens",
+                  "url": "https://hit.sbt.siemens.com/RWD/app.aspx?lang=de&RC=CH&WINX=1259&WINY=828"
+                },
+                {
+                  "id": "xv32s50c5",
+                  "title": "Product-selection-classic.grundfos",
+                  "url": "https://product-selection-classic.grundfos.com/front-page.html?custid=GWS&qcid=1163726686"
+                },
+                {
+                  "id": "cns4jfsxa",
+                  "title": "D-a",
+                  "url": "https://www.d-a.ch/product.cfm?CFID=248046615&CFTOKEN=cdf256dff6db341d-7DC52C24-90CC-C0CF-1D7427AB1F49445D&id=32937&ParentID=6535"
+                },
+                {
+                  "id": "f0mu9gdyj",
+                  "title": "Bhkw-forum",
+                  "url": "https://www.bhkw-forum.de/diskussion/thread/3542-w%C3%A4rmeinhalt-pufferspeicher-berechnen-mit-ip-symcon/"
+                },
+                {
+                  "id": "v8f8d0ifv",
+                  "title": "Berechnungstool.isolsuisse",
+                  "url": "https://berechnungstool.isolsuisse.ch/"
+                },
+                {
+                  "id": "vqgp26n3l",
+                  "title": "Suissetec",
+                  "url": "https://suissetec.ch/de/merkblaetter.html"
+                },
+                {
+                  "id": "65bxqu89c",
+                  "title": "Lueftungsteile",
+                  "url": "https://lueftungsteile.ch/13-rohr-formteile"
+                },
+                {
+                  "id": "ze6xrc4aq",
+                  "title": "Enbau-online",
+                  "url": "https://enbau-online.ch/heizung-lueftung-elektrizitaet/1-3-planungsvorgehen/"
+                },
+                {
+                  "id": "4plmn929w",
+                  "title": "Schweizer-fn",
+                  "url": "https://www.schweizer-fn.de/berechnung/waerme/rohrisol/rohrisol_start.php"
+                },
+                {
+                  "id": "13p473zfu",
+                  "title": "Reflex-winkelmann",
+                  "url": "https://www.reflex-winkelmann.com/reflexhex/?lang=de"
+                },
+                {
+                  "id": "uve5r1se5",
+                  "title": "Durrisolkuster",
+                  "url": "https://durrisolkuster.ch/sortiment/"
+                },
+                {
+                  "id": "2upcrxs49",
+                  "title": "Kindlimann",
+                  "url": "https://www.kindlimann.ch/sites/en/assets/File/rohre_c_stahl.pdf"
+                },
+                {
+                  "id": "8gki01t6v",
+                  "title": "Kindlimann",
+                  "url": "https://www.kindlimann.ch/de/downloads/"
+                },
+                {
+                  "id": "zxx8huww7",
+                  "title": "Jada",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "0ed9conwt",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/channel/UCogSE6uiJyiL31IG-tlxBAw"
+                },
+                {
+                  "id": "f2pf0a13r",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/kgenerator-it.html"
+                },
+                {
+                  "id": "pfv2bsl81",
+                  "title": "Tc.fastplot",
+                  "url": "https://tc.fastplot.ch/"
+                },
+                {
+                  "id": "7ohnkn1vp",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/?query=manufacturer%3D416"
+                },
+                {
+                  "id": "jcpe6rawf",
+                  "title": "Bkk-produkte",
+                  "url": "https://www.bkk-produkte.ch/sortiment/swiss-line.html"
+                },
+                {
+                  "id": "lc4rjqn64",
+                  "title": "Tlk-energy",
+                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
+                },
+                {
+                  "id": "iv1ko5xho",
+                  "title": "Eshop.meiertobler",
+                  "url": "https://eshop.meiertobler.ch/shop/?_gl=1*1ojjt51*_ga*NzExNjYzODYxLjE3MDkzOTI4MDI.*_ga_6LZT1ZHS61*MTcxNTI1NDA4OS45LjAuMTcxNTI1NDA4OS42MC4wLjA."
+                },
+                {
+                  "id": "3i4z5uah8",
+                  "title": "Druckgeraete-online",
+                  "url": "https://www.druckgeraete-online.de/seiten/konstruktion/pn_bestimmung_a_test.htm"
+                },
+                {
+                  "id": "3lq1q7unr",
+                  "title": "Ausschreiben",
+                  "url": "https://www.ausschreiben.de/katalog/imi/position/1861"
+                },
+                {
+                  "id": "x064z3ad7",
+                  "title": "Dataselect",
+                  "url": "https://www.dataselect.ch/public/Catalogue.aspx"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "985gz5wtz",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "rhcqk08zq",
+              "title": "HLK",
+              "items": [
+                {
+                  "id": "b503wtm4m",
+                  "title": "Erdsondenoptimierung",
+                  "url": "https://www.erdsondenoptimierung.ch/"
+                },
+                {
+                  "id": "b0mzmmiwz",
+                  "title": "J3l7h",
+                  "url": "https://j3l7h.de/videos.html"
+                },
+                {
+                  "id": "2tgpehyt0",
+                  "title": "Docs.google",
+                  "url": "https://docs.google.com/document/u/0/"
+                },
+                {
+                  "id": "hk0kknu40",
+                  "title": "Bsvonline",
+                  "url": "https://www.bsvonline.ch/de/vorschriften/"
+                },
+                {
+                  "id": "hqt25eygc",
+                  "title": "Reftec",
+                  "url": "http://www.reftec.ch/downloads.htm"
+                },
+                {
+                  "id": "d773bvcuj",
+                  "title": "Formeln.technis",
+                  "url": "http://formeln.technis.ch/"
+                },
+                {
+                  "id": "en293pjng",
+                  "title": "Enbau-online",
+                  "url": "https://enbau-online.ch/heizung-lueftung-elektrizitaet/"
+                },
+                {
+                  "id": "tjmp3ewrl",
+                  "title": "Endk",
+                  "url": "https://www.endk.ch/de/fachleute-1/energienachweis/EN-101%20bis%20EN-141"
+                },
+                {
+                  "id": "rsyytj2k4",
+                  "title": "Hqs.sbt.siemens",
+                  "url": "https://www.hqs.sbt.siemens.com/gip/hq/webapps/ventilschieber/index.html"
+                },
+                {
+                  "id": "yctgoyujn",
+                  "title": "Edelstahl-waermetauscher",
+                  "url": "https://www.edelstahl-waermetauscher.de/berechnung/berechnung.htm"
+                },
+                {
+                  "id": "96o9ja5au",
+                  "title": "Hit.sbt.siemens",
+                  "url": "https://hit.sbt.siemens.com/RWD/app.aspx?lang=de&RC=CH&WINX=1259&WINY=828"
+                },
+                {
+                  "id": "3rs1plk4x",
+                  "title": "Product-selection-classic.grundfos",
+                  "url": "https://product-selection-classic.grundfos.com/front-page.html?custid=GWS&qcid=1163726686"
+                },
+                {
+                  "id": "atvfei4id",
+                  "title": "D-a",
+                  "url": "https://www.d-a.ch/product.cfm?CFID=248046615&CFTOKEN=cdf256dff6db341d-7DC52C24-90CC-C0CF-1D7427AB1F49445D&id=32937&ParentID=6535"
+                },
+                {
+                  "id": "6540t89kx",
+                  "title": "Bhkw-forum",
+                  "url": "https://www.bhkw-forum.de/diskussion/thread/3542-w%C3%A4rmeinhalt-pufferspeicher-berechnen-mit-ip-symcon/"
+                },
+                {
+                  "id": "8czxpfj4x",
+                  "title": "Berechnungstool.isolsuisse",
+                  "url": "https://berechnungstool.isolsuisse.ch/"
+                },
+                {
+                  "id": "k7pi0fkpk",
+                  "title": "Suissetec",
+                  "url": "https://suissetec.ch/de/merkblaetter.html"
+                },
+                {
+                  "id": "0n896x3oi",
+                  "title": "Lueftungsteile",
+                  "url": "https://lueftungsteile.ch/13-rohr-formteile"
+                },
+                {
+                  "id": "dxe2wxtha",
+                  "title": "Enbau-online",
+                  "url": "https://enbau-online.ch/heizung-lueftung-elektrizitaet/1-3-planungsvorgehen/"
+                },
+                {
+                  "id": "amhcqzm0t",
+                  "title": "Schweizer-fn",
+                  "url": "https://www.schweizer-fn.de/berechnung/waerme/rohrisol/rohrisol_start.php"
+                },
+                {
+                  "id": "nifce9l39",
+                  "title": "Reflex-winkelmann",
+                  "url": "https://www.reflex-winkelmann.com/reflexhex/?lang=de"
+                },
+                {
+                  "id": "9racgs9q9",
+                  "title": "Durrisolkuster",
+                  "url": "https://durrisolkuster.ch/sortiment/"
+                },
+                {
+                  "id": "9j6mpjjxi",
+                  "title": "Kindlimann",
+                  "url": "https://www.kindlimann.ch/sites/en/assets/File/rohre_c_stahl.pdf"
+                },
+                {
+                  "id": "dmzgikubi",
+                  "title": "Kindlimann",
+                  "url": "https://www.kindlimann.ch/de/downloads/"
+                },
+                {
+                  "id": "db5au2aqq",
+                  "title": "Jada",
+                  "url": "https://www.jada.ch/leitungen"
+                },
+                {
+                  "id": "itbby01gw",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/channel/UCogSE6uiJyiL31IG-tlxBAw"
+                },
+                {
+                  "id": "00wxcw1vr",
+                  "title": "Igh",
+                  "url": "https://www.igh.ch/de/kgenerator-it.html"
+                },
+                {
+                  "id": "wzfvtumwg",
+                  "title": "Tc.fastplot",
+                  "url": "https://tc.fastplot.ch/"
+                },
+                {
+                  "id": "m5fzk6lm9",
+                  "title": "Mepcontent",
+                  "url": "https://www.mepcontent.com/de/bim-files/?query=manufacturer%3D416"
+                },
+                {
+                  "id": "msyrm6ps5",
+                  "title": "Bkk-produkte",
+                  "url": "https://www.bkk-produkte.ch/sortiment/swiss-line.html"
+                },
+                {
+                  "id": "f6zzty84t",
+                  "title": "Tlk-energy",
+                  "url": "https://tlk-energy.de/phasendiagramme/mollier-h-x"
+                },
+                {
+                  "id": "oeigz4vty",
+                  "title": "Eshop.meiertobler",
+                  "url": "https://eshop.meiertobler.ch/shop/?_gl=1*1ojjt51*_ga*NzExNjYzODYxLjE3MDkzOTI4MDI.*_ga_6LZT1ZHS61*MTcxNTI1NDA4OS45LjAuMTcxNTI1NDA4OS42MC4wLjA."
+                },
+                {
+                  "id": "37i5h12h8",
+                  "title": "Druckgeraete-online",
+                  "url": "https://www.druckgeraete-online.de/seiten/konstruktion/pn_bestimmung_a_test.htm"
+                },
+                {
+                  "id": "hbd0u1ewj",
+                  "title": "Ausschreiben",
+                  "url": "https://www.ausschreiben.de/katalog/imi/position/1861"
+                },
+                {
+                  "id": "7lf3i971e",
+                  "title": "Dataselect",
+                  "url": "https://www.dataselect.ch/public/Catalogue.aspx"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "6juxcpga6",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "h0bxtf2nb",
+              "title": "Keybord",
+              "items": [
+                {
+                  "id": "xhahu9hjr",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/c/Rafa%C5%82Piwowarczuk"
+                },
+                {
+                  "id": "owhjlz9ho",
+                  "title": "De.yamaha",
+                  "url": "https://de.yamaha.com/de/products/musical_instruments/pianos/portable_grand/dgx-670/specs.html"
+                },
+                {
+                  "id": "3gnjcgqog",
+                  "title": "Houseofsound",
+                  "url": "https://www.houseofsound.ch/about_us/"
+                },
+                {
+                  "id": "v94mcsrz2",
+                  "title": "Superprof",
+                  "url": "https://www.superprof.pl/witam-tnie-udziel-lekcji-gry-pianinie-osobom-pocz-tkuj-cym-lub-dzieciom-zainteresowanym-rozwijaniem-swojej-muzycznej.html"
+                },
+                {
+                  "id": "90syopqz6",
+                  "title": "Bitmidi",
+                  "url": "https://bitmidi.com/"
+                },
+                {
+                  "id": "mna9djfxd",
+                  "title": "Theorie-musik",
+                  "url": "https://www.theorie-musik.de/training/violin-noten-lesen.php"
+                },
+                {
+                  "id": "1o707j70u",
+                  "title": "Peterson.interblock",
+                  "url": "http://peterson.interblock.pl/Karaoke/KARAOKE/Karaoke%20midi/k/?C=M;O=D"
+                },
+                {
+                  "id": "zttpnxvlp",
+                  "title": "Brainly",
+                  "url": "https://brainly.pl/zadanie/8453409?source=offer-page-top-continue&cb=1659728971644"
+                },
+                {
+                  "id": "bhouvkukt",
+                  "title": "Kinguin",
+                  "url": "https://www.kinguin.net/category/69713/flowkey-3-months-subscription-voucher?noff=1&nosalesbooster=1"
+                },
+                {
+                  "id": "uk5lmjtaj",
+                  "title": "Midi",
+                  "url": "https://www.midi.com.au/"
+                },
+                {
+                  "id": "g71z90hx9",
+                  "title": "De.wikipedia",
+                  "url": "https://de.wikipedia.org/wiki/Liste_musikalischer_Symbole"
+                },
+                {
+                  "id": "0hid523mi",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=1QPmL-2PhgU"
+                },
+                {
+                  "id": "55g1ct7pq",
+                  "title": "Superprof",
+                  "url": "https://www.superprof.pl/"
+                },
+                {
+                  "id": "jheujlg3p",
+                  "title": "Revolut",
+                  "url": "https://www.revolut.com/pl-PL/help/dokonywanie-platnosci"
+                },
+                {
+                  "id": "gnxmj1tdr",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=OxNe9pqSAik"
+                },
+                {
+                  "id": "2tm9yyg2u",
+                  "title": "Sheetmusic-free",
+                  "url": "https://sheetmusic-free.com/we-are-the-champions-sheet-music-queen/"
+                },
+                {
+                  "id": "hdeq7dj9d",
+                  "title": "Learn.piano",
+                  "url": "https://learn.piano.university/login"
+                },
+                {
+                  "id": "2it600j1f",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/results?search_query=does+clara+luciani+piano"
+                },
+                {
+                  "id": "hmu2ja8hd",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/results?search_query=als+ich+fortging+piano+tutorial"
+                },
+                {
+                  "id": "spyzwht56",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=9CyRAyenVts"
+                },
+                {
+                  "id": "jzdue8hev",
+                  "title": "Musicca",
+                  "url": "https://www.musicca.com/pl/papier-nutowy"
+                },
+                {
+                  "id": "pxzzu8446",
+                  "title": "Hooktheory",
+                  "url": "https://www.hooktheory.com/theorytab/view/fancy/flames-of-love"
+                },
+                {
+                  "id": "9jrw31ojv",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=rFcAQybcIms"
+                },
+                {
+                  "id": "yw6wg0rkq",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=GFPLOw4f8jI"
+                },
+                {
+                  "id": "n7vzmmu5j",
+                  "title": "Midi24",
+                  "url": "https://www.midi24.pl/"
+                },
+                {
+                  "id": "t2fim1et1",
+                  "title": "Brack",
+                  "url": "https://www.brack.ch/roland-klavierbank-rpb-200--satin-black-1352062?utm_source=google&utm_medium=cpc&utm_campaign=%21cc-pssh%21l-d%21e-g%21t-pla%21k1-it%21z-it_multimedia_channable&utm_term=&adgroup_id=95297775786&ad_type=pla&prod_id=1352062&campaign_id=9422718872&gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmM8_b6HFkaWPbGS8qXHg45DtAmzzpihNJN0LD7dZzV52gf_pHr2n7saAiTQEALw_wcB&hc_fcv=Y1OlXAKYAtRjezJc~MpCZLBM3E-fvXE0vzzzzzzzz~MKvtBs71ARRwek3nzzzzzzzz"
+                },
+                {
+                  "id": "1v0eiu9pr",
+                  "title": "Thomannmusic",
+                  "url": "https://www.thomannmusic.ch/thomann_kb_15whm.htm?glp=1&gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOmXpijNFcW6Hb1Z8ilAfRdeqrwoZWPHdIOmJTWgNJGXYlORCi4094aAid7EALw_wcB"
+                },
+                {
+                  "id": "x89iekc2k",
+                  "title": "Szkolapianina",
+                  "url": "https://szkolapianina.pl/"
+                },
+                {
+                  "id": "a7zhlopcw",
+                  "title": "E-korepetycje",
+                  "url": "https://www.e-korepetycje.net/ogloszenia-online/muzyka,pianino"
+                },
+                {
+                  "id": "adxn4op7d",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=r9_hspxjIik"
+                },
+                {
+                  "id": "a31w4ys96",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=r9_hspxjIik"
+                },
+                {
+                  "id": "mc8gjpebg",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=-BrWdwpVeoo"
+                },
+                {
+                  "id": "ccc0hvfor",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=hmTkq_7QGRc"
+                },
+                {
+                  "id": "pu52lnwc7",
+                  "title": "Chrome://newtab/",
+                  "url": "chrome://newtab/"
+                },
+                {
+                  "id": "rojezoeru",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/@user-bp1xk6vj2h"
+                },
+                {
+                  "id": "910wcmesw",
+                  "title": "Pdfcoffee",
+                  "url": "https://pdfcoffee.com/"
+                },
+                {
+                  "id": "7jz6wsjb4",
+                  "title": "Brack",
+                  "url": "https://www.brack.ch/saramonic-uebertragungssystem-blink100-b3-1486611"
+                },
+                {
+                  "id": "1vrvjbbv8",
+                  "title": "Soundium",
+                  "url": "https://soundium.pl/"
+                },
+                {
+                  "id": "kt5stfpkr",
+                  "title": "Notebooklm.google",
+                  "url": "https://notebooklm.google.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "5n8e8jvra",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "xqekt6by0",
+              "title": "Keybord",
+              "items": [
+                {
+                  "id": "rxasriuiy",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/c/Rafa%C5%82Piwowarczuk"
+                },
+                {
+                  "id": "yaygt30hc",
+                  "title": "De.yamaha",
+                  "url": "https://de.yamaha.com/de/products/musical_instruments/pianos/portable_grand/dgx-670/specs.html"
+                },
+                {
+                  "id": "o5gkm6jis",
+                  "title": "Houseofsound",
+                  "url": "https://www.houseofsound.ch/about_us/"
+                },
+                {
+                  "id": "vdg66hi9a",
+                  "title": "Superprof",
+                  "url": "https://www.superprof.pl/witam-tnie-udziel-lekcji-gry-pianinie-osobom-pocz-tkuj-cym-lub-dzieciom-zainteresowanym-rozwijaniem-swojej-muzycznej.html"
+                },
+                {
+                  "id": "fvce7a01h",
+                  "title": "Bitmidi",
+                  "url": "https://bitmidi.com/"
+                },
+                {
+                  "id": "trj518d05",
+                  "title": "Theorie-musik",
+                  "url": "https://www.theorie-musik.de/training/violin-noten-lesen.php"
+                },
+                {
+                  "id": "8rg6z3mp1",
+                  "title": "Peterson.interblock",
+                  "url": "http://peterson.interblock.pl/Karaoke/KARAOKE/Karaoke%20midi/k/?C=M;O=D"
+                },
+                {
+                  "id": "lxivj8n8s",
+                  "title": "Brainly",
+                  "url": "https://brainly.pl/zadanie/8453409?source=offer-page-top-continue&cb=1659728971644"
+                },
+                {
+                  "id": "4hsqcxu0h",
+                  "title": "Kinguin",
+                  "url": "https://www.kinguin.net/category/69713/flowkey-3-months-subscription-voucher?noff=1&nosalesbooster=1"
+                },
+                {
+                  "id": "r3kirr4fw",
+                  "title": "Midi",
+                  "url": "https://www.midi.com.au/"
+                },
+                {
+                  "id": "76p5mr631",
+                  "title": "De.wikipedia",
+                  "url": "https://de.wikipedia.org/wiki/Liste_musikalischer_Symbole"
+                },
+                {
+                  "id": "tql5bsinj",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=1QPmL-2PhgU"
+                },
+                {
+                  "id": "pe7gbpkph",
+                  "title": "Superprof",
+                  "url": "https://www.superprof.pl/"
+                },
+                {
+                  "id": "1f0jsw0va",
+                  "title": "Revolut",
+                  "url": "https://www.revolut.com/pl-PL/help/dokonywanie-platnosci"
+                },
+                {
+                  "id": "xmpw91dru",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=OxNe9pqSAik"
+                },
+                {
+                  "id": "dggn1zbsh",
+                  "title": "Sheetmusic-free",
+                  "url": "https://sheetmusic-free.com/we-are-the-champions-sheet-music-queen/"
+                },
+                {
+                  "id": "dksqi3mub",
+                  "title": "Learn.piano",
+                  "url": "https://learn.piano.university/login"
+                },
+                {
+                  "id": "tztmsirn9",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/results?search_query=does+clara+luciani+piano"
+                },
+                {
+                  "id": "33pitc6a1",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/results?search_query=als+ich+fortging+piano+tutorial"
+                },
+                {
+                  "id": "fghvvd9g9",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=9CyRAyenVts"
+                },
+                {
+                  "id": "qe8692ui4",
+                  "title": "Musicca",
+                  "url": "https://www.musicca.com/pl/papier-nutowy"
+                },
+                {
+                  "id": "4qq781c0e",
+                  "title": "Hooktheory",
+                  "url": "https://www.hooktheory.com/theorytab/view/fancy/flames-of-love"
+                },
+                {
+                  "id": "v6wg4s7hi",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=rFcAQybcIms"
+                },
+                {
+                  "id": "5d34aygg4",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=GFPLOw4f8jI"
+                },
+                {
+                  "id": "c0g9ypt1g",
+                  "title": "Midi24",
+                  "url": "https://www.midi24.pl/"
+                },
+                {
+                  "id": "orrntnpmd",
+                  "title": "Brack",
+                  "url": "https://www.brack.ch/roland-klavierbank-rpb-200--satin-black-1352062?utm_source=google&utm_medium=cpc&utm_campaign=%21cc-pssh%21l-d%21e-g%21t-pla%21k1-it%21z-it_multimedia_channable&utm_term=&adgroup_id=95297775786&ad_type=pla&prod_id=1352062&campaign_id=9422718872&gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmM8_b6HFkaWPbGS8qXHg45DtAmzzpihNJN0LD7dZzV52gf_pHr2n7saAiTQEALw_wcB&hc_fcv=Y1OlXAKYAtRjezJc~MpCZLBM3E-fvXE0vzzzzzzzz~MKvtBs71ARRwek3nzzzzzzzz"
+                },
+                {
+                  "id": "21mtyu8lq",
+                  "title": "Thomannmusic",
+                  "url": "https://www.thomannmusic.ch/thomann_kb_15whm.htm?glp=1&gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOmXpijNFcW6Hb1Z8ilAfRdeqrwoZWPHdIOmJTWgNJGXYlORCi4094aAid7EALw_wcB"
+                },
+                {
+                  "id": "40see1vxf",
+                  "title": "Szkolapianina",
+                  "url": "https://szkolapianina.pl/"
+                },
+                {
+                  "id": "pg6pcbdh7",
+                  "title": "E-korepetycje",
+                  "url": "https://www.e-korepetycje.net/ogloszenia-online/muzyka,pianino"
+                },
+                {
+                  "id": "va83vxkg1",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=r9_hspxjIik"
+                },
+                {
+                  "id": "u03xeovnr",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=r9_hspxjIik"
+                },
+                {
+                  "id": "e3z4uc3ol",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=-BrWdwpVeoo"
+                },
+                {
+                  "id": "6l6c0g6v8",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=hmTkq_7QGRc"
+                },
+                {
+                  "id": "amf4amdsp",
+                  "title": "Chrome://newtab/",
+                  "url": "chrome://newtab/"
+                },
+                {
+                  "id": "x9uk3atgw",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/@user-bp1xk6vj2h"
+                },
+                {
+                  "id": "bzsgtakcp",
+                  "title": "Pdfcoffee",
+                  "url": "https://pdfcoffee.com/"
+                },
+                {
+                  "id": "i2h0uw3e4",
+                  "title": "Brack",
+                  "url": "https://www.brack.ch/saramonic-uebertragungssystem-blink100-b3-1486611"
+                },
+                {
+                  "id": "h7swirxhg",
+                  "title": "Soundium",
+                  "url": "https://soundium.pl/"
+                },
+                {
+                  "id": "xnrsvek03",
+                  "title": "Notebooklm.google",
+                  "url": "https://notebooklm.google.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "baeo17iti",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "dpator6v5",
+              "title": "Laptop",
+              "items": [
+                {
+                  "id": "2otm6aceq",
+                  "title": "Laptopmedia",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/#p8"
+                },
+                {
+                  "id": "kmykqrwxj",
+                  "title": "Toppreise",
+                  "url": "https://www.toppreise.ch/preisvergleich/Notebooks/ASUS-ZenBook-Pro-15-Flip-OLED-UP6502ZA-M8019W-Core-90NB0W22-M00220-p701333?selsort=rd#f_anchorRelated_products"
+                },
+                {
+                  "id": "rmvbgmyni",
+                  "title": "Notebookcheck",
+                  "url": "https://www.notebookcheck.com/Test-HP-Pavilion-Power-15-i7-7700HQ-GTX-1050-Laptop.232274.0.html"
+                },
+                {
+                  "id": "b2b53kn7g",
+                  "title": "Notebookcheck",
+                  "url": "https://www.notebookcheck.com/Test-Asus-Zenbook-Pro-15-OLED-UM535Q-Laptop-Im-Prinzip-ein-XPS-15-AMD.620326.0.html"
+                },
+                {
+                  "id": "fjzdl4eb9",
+                  "title": "Interdiscount",
+                  "url": "https://www.interdiscount.ch/de/computer-gaming/notebooks/notebooks--c511000/hp-pavilion-laptop-15-eg2717nz-15-6-intel-core-i7-16-gb-ram-1000-gb-ssd--p0006277540"
+                },
+                {
+                  "id": "kp15m8wwb",
+                  "title": "Laptopmedia",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "a060luqet",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "ivd2kg7m9",
+              "title": "Laptop",
+              "items": [
+                {
+                  "id": "70tndf0fw",
+                  "title": "Laptopmedia",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/#p8"
+                },
+                {
+                  "id": "s60ojcs6w",
+                  "title": "Toppreise",
+                  "url": "https://www.toppreise.ch/preisvergleich/Notebooks/ASUS-ZenBook-Pro-15-Flip-OLED-UP6502ZA-M8019W-Core-90NB0W22-M00220-p701333?selsort=rd#f_anchorRelated_products"
+                },
+                {
+                  "id": "kjrwjyil8",
+                  "title": "Notebookcheck",
+                  "url": "https://www.notebookcheck.com/Test-HP-Pavilion-Power-15-i7-7700HQ-GTX-1050-Laptop.232274.0.html"
+                },
+                {
+                  "id": "nk5hsihbf",
+                  "title": "Notebookcheck",
+                  "url": "https://www.notebookcheck.com/Test-Asus-Zenbook-Pro-15-OLED-UM535Q-Laptop-Im-Prinzip-ein-XPS-15-AMD.620326.0.html"
+                },
+                {
+                  "id": "3z41zwkqg",
+                  "title": "Interdiscount",
+                  "url": "https://www.interdiscount.ch/de/computer-gaming/notebooks/notebooks--c511000/hp-pavilion-laptop-15-eg2717nz-15-6-intel-core-i7-16-gb-ram-1000-gb-ssd--p0006277540"
+                },
+                {
+                  "id": "ba5824yj1",
+                  "title": "Laptopmedia",
+                  "url": "https://laptopmedia.com/de/review/asus-zenbook-pro-15-flip-oled-up6502-review-a-diligent-product-for-serious-users/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "onblelkbk",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "3djf963l0",
+              "title": "Leki",
+              "items": [
+                {
+                  "id": "8tmltxo67",
+                  "title": "Vitaminexpress",
+                  "url": "https://www.vitaminexpress.org/ch-de/nac-n-acetyl-l-cystein-nac-kapseln?utm_source=google&utm_medium=cpc&utm_content=154418361589&utm_campaign=20582193567&utm_term=&gclid=CjwKCAiA_5WvBhBAEiwAZtCU784PZmn-XBC2340lrh_TnY-4dis9Bt2ecXLgRgd3Ufwk7qUleii6phoCNlQQAvD_BwE"
+                },
+                {
+                  "id": "qs6u1ozlw",
+                  "title": "American-supps",
+                  "url": "https://www.american-supps.com/Rich-Piana-5-Nutrition-Keto-Asalt-252g"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "wbisana82",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "44paqjnyb",
+              "title": "Leki",
+              "items": [
+                {
+                  "id": "c4rmqvlpy",
+                  "title": "Vitaminexpress",
+                  "url": "https://www.vitaminexpress.org/ch-de/nac-n-acetyl-l-cystein-nac-kapseln?utm_source=google&utm_medium=cpc&utm_content=154418361589&utm_campaign=20582193567&utm_term=&gclid=CjwKCAiA_5WvBhBAEiwAZtCU784PZmn-XBC2340lrh_TnY-4dis9Bt2ecXLgRgd3Ufwk7qUleii6phoCNlQQAvD_BwE"
+                },
+                {
+                  "id": "vulc3ozcc",
+                  "title": "American-supps",
+                  "url": "https://www.american-supps.com/Rich-Piana-5-Nutrition-Keto-Asalt-252g"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "vaz7mn9pr",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "87eic2zgc",
+              "title": "Linux",
+              "items": [
+                {
+                  "id": "41eugl7xz",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=bHTv0FmvrTo"
+                },
+                {
+                  "id": "csssdx8fc",
+                  "title": "Pastebin",
+                  "url": "https://pastebin.com/pnu311ih"
+                },
+                {
+                  "id": "c7mwjp27a",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+                },
+                {
+                  "id": "y3h1ncu49",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=IoPiRccFQb0"
+                },
+                {
+                  "id": "8uym3z3c7",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=Sc0f-sxDJy0"
+                },
+                {
+                  "id": "ma1eoc0g1",
+                  "title": "Wiki.zassenhaus",
+                  "url": "https://wiki.zassenhaus.net/ubuntu/eclipse_latex"
+                },
+                {
+                  "id": "59z0n5h2k",
+                  "title": "Help.nextcloud",
+                  "url": "https://help.nextcloud.com/t/datentragerstruktur-wo-finde-ich-die-personlichen-dateien/77308/4"
+                },
+                {
+                  "id": "u4dwbskj2",
+                  "title": "Hostflash",
+                  "url": "https://www.hostflash.de/blog/webhosting/so-erkennt-nextcloud-ihre-unkonventionell-hinzugefuegten-dateien.html"
+                },
+                {
+                  "id": "jqiu03fek",
+                  "title": "Tuxfixer",
+                  "url": "http://www.tuxfixer.com/configure-ssh-service-in-manjaro-linux/"
+                },
+                {
+                  "id": "5ic383j9k",
+                  "title": "Praxistipps.chip",
+                  "url": "https://praxistipps.chip.de/ubuntu-zugriffsrechte-aendern-so-gehts_49353"
+                },
+                {
+                  "id": "lfrfgximm",
+                  "title": "Ubuntu",
+                  "url": "https://ubuntu.com/server/docs/service-openssh"
+                },
+                {
+                  "id": "489e76fod",
+                  "title": "U-labs",
+                  "url": "https://u-labs.de/portal/festplatten-nach-inaktivitaet-in-standby-versetzen-unter-proxmox-zfs-debian/"
+                },
+                {
+                  "id": "ts0sjla00",
+                  "title": "Forum.proxmox",
+                  "url": "https://forum.proxmox.com/threads/disk-prevent-from-spinning-down-because-of-pvestatd.53237/"
+                },
+                {
+                  "id": "fpcpicmfm",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=BkVi2vRB75Q"
+                },
+                {
+                  "id": "6fqhglnba",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=3zIZS6A9RR4"
+                },
+                {
+                  "id": "crhkyweae",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=bazbHDek0t0"
+                },
+                {
+                  "id": "9kdccsdj5",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=xno647YMnj0"
+                },
+                {
+                  "id": "yh6kgf365",
+                  "title": "Code-reminder",
+                  "url": "https://www.code-reminder.com/sudo-etc-sudoers-d-world-writable-sudo-etcsudoers-ist-fur-alle-beschreibbar-world-writable-lese-und-schreibrechte/"
+                },
+                {
+                  "id": "jzu9vwk18",
+                  "title": "Strobelstefan",
+                  "url": "https://strobelstefan.org/2020/03/02/nextcloud-und-das-laestige-problem-mit-well-known-caldav-well-known-carddav/"
+                },
+                {
+                  "id": "94rlmwpmr",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+                },
+                {
+                  "id": "fl8s4u36s",
+                  "title": "Gist.github",
+                  "url": "https://gist.github.com/giantas/2c61f5495e89a288ca9934d80110c0a1"
+                },
+                {
+                  "id": "3do335ayo",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=--8cYE2_juU"
+                },
+                {
+                  "id": "r8h0j1cxm",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=EBx0APWD7Hc"
+                },
+                {
+                  "id": "elvx95ybe",
+                  "title": "Giga",
+                  "url": "https://www.giga.de/downloads/linux-mint/tipps/linux-gruppen-und-benutzer-anzeigen-so-gehts/"
+                },
+                {
+                  "id": "lpsp8fa02",
+                  "title": "Devconnected",
+                  "url": "https://devconnected.com/how-to-chown-recursive-on-linux/"
+                },
+                {
+                  "id": "70acz0bs3",
+                  "title": "Gridscale",
+                  "url": "https://gridscale.io/community/tutorials/ftp-ubuntu-erstellen/"
+                },
+                {
+                  "id": "5ldi2bd46",
+                  "title": "Help.nextcloud",
+                  "url": "https://help.nextcloud.com/t/zugriff-uber-eine-nicht-vertrauenswurdige-domain-config-php/101145"
+                },
+                {
+                  "id": "kec8bksdu",
+                  "title": "Web.mit",
+                  "url": "https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-rg-de-4/s1-apache-config.html"
+                },
+                {
+                  "id": "vhydftnhx",
+                  "title": "Smartwebdeveloper",
+                  "url": "http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu"
+                },
+                {
+                  "id": "3um9v2pxl",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&ab_channel=PWS"
+                },
+                {
+                  "id": "c2oszetgm",
+                  "title": "Ionos",
+                  "url": "https://www.ionos.de/digitalguide/server/knowhow/lamp-server-die-loesung-fuer-dynamische-websites/"
+                },
+                {
+                  "id": "i9ll4zomw",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/c/TheMorpheus407/search?query=linux"
+                },
+                {
+                  "id": "wlw0cqoin",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=jljNPn02pe4&ab_channel=HostUnlimitedDE-Tutorials"
+                },
+                {
+                  "id": "8a8n7d1v3",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&list=PLk1geQSwTgPud7QC2DVBL4nNmeNOzwzAy&ab_channel=PWS"
+                },
+                {
+                  "id": "jycu2y3ab",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=bazbHDek0t0&ab_channel=Tutorialwork"
+                },
+                {
+                  "id": "g8ul2d9m8",
+                  "title": "Wiki.zassenhaus",
+                  "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "eh1wzc6et",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "6vw47vfdg",
+              "title": "Linux",
+              "items": [
+                {
+                  "id": "ossu4m7dc",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=bHTv0FmvrTo"
+                },
+                {
+                  "id": "s6gydrsmq",
+                  "title": "Pastebin",
+                  "url": "https://pastebin.com/pnu311ih"
+                },
+                {
+                  "id": "hmexcmf64",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+                },
+                {
+                  "id": "2dy3kd9xo",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=IoPiRccFQb0"
+                },
+                {
+                  "id": "3qpsf0340",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=Sc0f-sxDJy0"
+                },
+                {
+                  "id": "dugv59c6s",
+                  "title": "Wiki.zassenhaus",
+                  "url": "https://wiki.zassenhaus.net/ubuntu/eclipse_latex"
+                },
+                {
+                  "id": "c556dkyja",
+                  "title": "Help.nextcloud",
+                  "url": "https://help.nextcloud.com/t/datentragerstruktur-wo-finde-ich-die-personlichen-dateien/77308/4"
+                },
+                {
+                  "id": "mv10kuo95",
+                  "title": "Hostflash",
+                  "url": "https://www.hostflash.de/blog/webhosting/so-erkennt-nextcloud-ihre-unkonventionell-hinzugefuegten-dateien.html"
+                },
+                {
+                  "id": "6syn51obp",
+                  "title": "Tuxfixer",
+                  "url": "http://www.tuxfixer.com/configure-ssh-service-in-manjaro-linux/"
+                },
+                {
+                  "id": "pgxibnbru",
+                  "title": "Praxistipps.chip",
+                  "url": "https://praxistipps.chip.de/ubuntu-zugriffsrechte-aendern-so-gehts_49353"
+                },
+                {
+                  "id": "6acbleqtp",
+                  "title": "Ubuntu",
+                  "url": "https://ubuntu.com/server/docs/service-openssh"
+                },
+                {
+                  "id": "fou36b0e2",
+                  "title": "U-labs",
+                  "url": "https://u-labs.de/portal/festplatten-nach-inaktivitaet-in-standby-versetzen-unter-proxmox-zfs-debian/"
+                },
+                {
+                  "id": "swt7fq9hl",
+                  "title": "Forum.proxmox",
+                  "url": "https://forum.proxmox.com/threads/disk-prevent-from-spinning-down-because-of-pvestatd.53237/"
+                },
+                {
+                  "id": "nv34f41n3",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=BkVi2vRB75Q"
+                },
+                {
+                  "id": "ftapvpjm8",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=3zIZS6A9RR4"
+                },
+                {
+                  "id": "v2fs6oq8s",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=bazbHDek0t0"
+                },
+                {
+                  "id": "pv0ffk4ek",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=xno647YMnj0"
+                },
+                {
+                  "id": "zh9ahobnz",
+                  "title": "Code-reminder",
+                  "url": "https://www.code-reminder.com/sudo-etc-sudoers-d-world-writable-sudo-etcsudoers-ist-fur-alle-beschreibbar-world-writable-lese-und-schreibrechte/"
+                },
+                {
+                  "id": "gb4ekq80i",
+                  "title": "Strobelstefan",
+                  "url": "https://strobelstefan.org/2020/03/02/nextcloud-und-das-laestige-problem-mit-well-known-caldav-well-known-carddav/"
+                },
+                {
+                  "id": "e7x6q29f7",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=iBHcn0AY-u4"
+                },
+                {
+                  "id": "42mwlnl1c",
+                  "title": "Gist.github",
+                  "url": "https://gist.github.com/giantas/2c61f5495e89a288ca9934d80110c0a1"
+                },
+                {
+                  "id": "28skogk45",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=--8cYE2_juU"
+                },
+                {
+                  "id": "7hovrhhws",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=EBx0APWD7Hc"
+                },
+                {
+                  "id": "bq93v0aeg",
+                  "title": "Giga",
+                  "url": "https://www.giga.de/downloads/linux-mint/tipps/linux-gruppen-und-benutzer-anzeigen-so-gehts/"
+                },
+                {
+                  "id": "i2t3hfc0y",
+                  "title": "Devconnected",
+                  "url": "https://devconnected.com/how-to-chown-recursive-on-linux/"
+                },
+                {
+                  "id": "fc9ymmk7m",
+                  "title": "Gridscale",
+                  "url": "https://gridscale.io/community/tutorials/ftp-ubuntu-erstellen/"
+                },
+                {
+                  "id": "tb02wke8u",
+                  "title": "Help.nextcloud",
+                  "url": "https://help.nextcloud.com/t/zugriff-uber-eine-nicht-vertrauenswurdige-domain-config-php/101145"
+                },
+                {
+                  "id": "g3dipbmkt",
+                  "title": "Web.mit",
+                  "url": "https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-rg-de-4/s1-apache-config.html"
+                },
+                {
+                  "id": "bkzmgoc5h",
+                  "title": "Smartwebdeveloper",
+                  "url": "http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu"
+                },
+                {
+                  "id": "j4gwqj1v8",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&ab_channel=PWS"
+                },
+                {
+                  "id": "nmxbqu00q",
+                  "title": "Ionos",
+                  "url": "https://www.ionos.de/digitalguide/server/knowhow/lamp-server-die-loesung-fuer-dynamische-websites/"
+                },
+                {
+                  "id": "rnjhjlzqw",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/c/TheMorpheus407/search?query=linux"
+                },
+                {
+                  "id": "87opb31n8",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=jljNPn02pe4&ab_channel=HostUnlimitedDE-Tutorials"
+                },
+                {
+                  "id": "dcssu6xnv",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=lTCvjiTesEw&list=PLk1geQSwTgPud7QC2DVBL4nNmeNOzwzAy&ab_channel=PWS"
+                },
+                {
+                  "id": "3zpagkqqg",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=bazbHDek0t0&ab_channel=Tutorialwork"
+                },
+                {
+                  "id": "rykjxf3wc",
+                  "title": "Wiki.zassenhaus",
+                  "url": "https://wiki.zassenhaus.net/root-server/apache2-uninstall"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "nuzrjkmcy",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "1tnrvx7qe",
+              "title": "Lotto",
+              "items": [
+                {
+                  "id": "2mwvu37w7",
+                  "title": "Euro-millions",
+                  "url": "https://www.euro-millions.com/de-ch/swiss-lotto"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "3xi7obgvi",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "yuzvdihm7",
+              "title": "Lotto",
+              "items": [
+                {
+                  "id": "11ch0opkd",
+                  "title": "Euro-millions",
+                  "url": "https://www.euro-millions.com/de-ch/swiss-lotto"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "x4kpqomu9",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "abju8egy5",
+              "title": "Motorrad",
+              "items": [
+                {
+                  "id": "uacepxlkx",
+                  "title": "Mtp-racing",
+                  "url": "https://mtp-racing.de/LED-Mini-Kennzeichenbeleuchtung-Raximo-universal-MTP18144__Kawasaki-Z-650-H-ER650H-2019"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "hr0u2dauy",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "rs72htesl",
+              "title": "Motorrad",
+              "items": [
+                {
+                  "id": "7ycwof4xi",
+                  "title": "Mtp-racing",
+                  "url": "https://mtp-racing.de/LED-Mini-Kennzeichenbeleuchtung-Raximo-universal-MTP18144__Kawasaki-Z-650-H-ER650H-2019"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "gm447tbaq",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "ig8uw1oqq",
+              "title": "Musik",
+              "items": [
+                {
+                  "id": "50mpsmttq",
+                  "title": "Udio",
+                  "url": "https://udio.com/"
+                },
+                {
+                  "id": "iekvhnuak",
+                  "title": "Mubert",
+                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+                },
+                {
+                  "id": "8ql7v7bs7",
+                  "title": "App.plazmapunk",
+                  "url": "https://app.plazmapunk.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "6bs633aqi",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "2cz4uf2fl",
+              "title": "Musik",
+              "items": [
+                {
+                  "id": "2jg99tkom",
+                  "title": "Udio",
+                  "url": "https://udio.com/"
+                },
+                {
+                  "id": "kmv3kaswf",
+                  "title": "Mubert",
+                  "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
+                },
+                {
+                  "id": "zfmlj7298",
+                  "title": "App.plazmapunk",
+                  "url": "https://app.plazmapunk.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "rk5aajhps",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "15qavhhtq",
+              "title": "Musik KI",
+              "items": [
+                {
+                  "id": "jmtfqkl0f",
+                  "title": "Udio",
+                  "url": "https://www.udio.com/my-creations"
+                },
+                {
+                  "id": "awxbnxdu1",
+                  "title": "Vocalremover",
+                  "url": "https://vocalremover.org/de/"
+                },
+                {
+                  "id": "xpd1fwbjr",
+                  "title": "Aimodels",
+                  "url": "https://aimodels.org/ai-models/rvc-models-ai-voice/"
+                },
+                {
+                  "id": "yt2myle7i",
+                  "title": "Aimusic",
+                  "url": "https://aimusic.so/de/app"
+                },
+                {
+                  "id": "5k9fwjziv",
+                  "title": "App.visla",
+                  "url": "https://app.visla.us/project/1320538910622818304"
+                },
+                {
+                  "id": "so1i7ehq7",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "yk11idove",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "v5rkl2gpe",
+              "title": "Musik KI",
+              "items": [
+                {
+                  "id": "6z8w7mtus",
+                  "title": "Udio",
+                  "url": "https://www.udio.com/my-creations"
+                },
+                {
+                  "id": "v1uikcmum",
+                  "title": "Vocalremover",
+                  "url": "https://vocalremover.org/de/"
+                },
+                {
+                  "id": "ir5drji2u",
+                  "title": "Aimodels",
+                  "url": "https://aimodels.org/ai-models/rvc-models-ai-voice/"
+                },
+                {
+                  "id": "65akrsvxq",
+                  "title": "Aimusic",
+                  "url": "https://aimusic.so/de/app"
+                },
+                {
+                  "id": "23hjfn15d",
+                  "title": "App.visla",
+                  "url": "https://app.visla.us/project/1320538910622818304"
+                },
+                {
+                  "id": "0rern5imq",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=e1y527O9ZhU&ab_channel=ThomasFosterMusikproduktion"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "u7wudf6fe",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "8fha5fx4o",
+              "title": "Musik Videos",
+              "items": [
+                {
+                  "id": "9dnmyrdcj",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "fnh94rr9w",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "0phc7x8p2",
+              "title": "Musik Videos",
+              "items": [
+                {
+                  "id": "habc2bzkb",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "8q2aafy07",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "rlxii09eb",
+              "title": "Produkte",
+              "items": [
+                {
+                  "id": "6ladm9zkq",
+                  "title": "Armawin",
+                  "url": "https://armawin.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "jpg97h4zk",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "kurrjpluh",
+              "title": "Produkte",
+              "items": [
+                {
+                  "id": "atpkt580d",
+                  "title": "Armawin",
+                  "url": "https://armawin.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "xaf4ebk21",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "n3gw3xae3",
+              "title": "Radio",
+              "items": [
+                {
+                  "id": "qvk7gf247",
+                  "title": "Fmstream",
+                  "url": "https://fmstream.org/index.php"
+                },
+                {
+                  "id": "8fx4rnmnb",
+                  "title": "Bigfm",
+                  "url": "https://www.bigfm.de/webradio/one-world-radio?utm_source=Google&utm_medium=Max&utm_campaign=OneWorld&utm_id=Max&gad_source=1&gclid=Cj0KCQjw7ZO0BhDYARIsAFttkCgX1EryhpXksD2msdql1m6tox9stIf6zP_WxeWHCt2COYghO_e-wykaAixvEALw_wcB"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "451ch6giv",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "h2yb3pw2j",
+              "title": "Radio",
+              "items": [
+                {
+                  "id": "thoz2gwy9",
+                  "title": "Fmstream",
+                  "url": "https://fmstream.org/index.php"
+                },
+                {
+                  "id": "3hjgktqyo",
+                  "title": "Bigfm",
+                  "url": "https://www.bigfm.de/webradio/one-world-radio?utm_source=Google&utm_medium=Max&utm_campaign=OneWorld&utm_id=Max&gad_source=1&gclid=Cj0KCQjw7ZO0BhDYARIsAFttkCgX1EryhpXksD2msdql1m6tox9stIf6zP_WxeWHCt2COYghO_e-wykaAixvEALw_wcB"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "syh0223gt",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "4f2z7dab1",
+              "title": "Social",
+              "items": [
+                {
+                  "id": "rxxb58ngf",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4&ab_channel=KaiWeissmann"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ivcd8q2jo",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "o0uyurwu6",
+              "title": "Social",
+              "items": [
+                {
+                  "id": "6vzwu2h3v",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=X0XqtqDvb-4&ab_channel=KaiWeissmann"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "pjph4hs8u",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "2hkgy741t",
+              "title": "Suno",
+              "items": [
+                {
+                  "id": "nfi0rct8y",
+                  "title": "Suno",
+                  "url": "https://www.suno.wiki/faq/metatags/song-structure/"
+                },
+                {
+                  "id": "buirj5qmx",
+                  "title": "Slooply",
+                  "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "t8l0q8sde",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "gehw3pt3b",
+              "title": "Suno",
+              "items": [
+                {
+                  "id": "17p15row9",
+                  "title": "Suno",
+                  "url": "https://www.suno.wiki/faq/metatags/song-structure/"
+                },
+                {
+                  "id": "pb3j2w8u7",
+                  "title": "Slooply",
+                  "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "1vua4qliu",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "d1rp8ir2s",
+              "title": "Ticket",
+              "items": [
+                {
+                  "id": "pvxols9sk",
+                  "title": "Ticketmaster",
+                  "url": "https://www.ticketmaster.ch/?utm_source=TM-google&gad_source=1&gad_campaignid=12808319707&gbraid=0AAAAADHXLq3LOFgI82hzETTZVlL08IqMT&gclid=Cj0KCQjw_8rBBhCFARIsAJrc9yBWve8pYzY3JL6zvq4lX9P8TNvcathlazI-BgBkbMTuYpXYcEHMP5oaApAIEALw_wcB&gclsrc=aw.ds"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "v671fun2t",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "xrqqcc9gh",
+              "title": "Ticket",
+              "items": [
+                {
+                  "id": "afn2rny6y",
+                  "title": "Ticketmaster",
+                  "url": "https://www.ticketmaster.ch/?utm_source=TM-google&gad_source=1&gad_campaignid=12808319707&gbraid=0AAAAADHXLq3LOFgI82hzETTZVlL08IqMT&gclid=Cj0KCQjw_8rBBhCFARIsAJrc9yBWve8pYzY3JL6zvq4lX9P8TNvcathlazI-BgBkbMTuYpXYcEHMP5oaApAIEALw_wcB&gclsrc=aw.ds"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "qj7he0uwd",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "8fjwmgpsh",
+              "title": "Tools",
+              "items": [
+                {
+                  "id": "a1uc2bu11",
+                  "title": "Notube",
+                  "url": "https://notube.net/en/youtube-app-155"
+                },
+                {
+                  "id": "hm9e4kij7",
+                  "title": "Online-video-cutter",
+                  "url": "https://online-video-cutter.com/de/resize-video"
+                },
+                {
+                  "id": "7xj6dhjsx",
+                  "title": "Flexclip",
+                  "url": "https://www.flexclip.com/de/tools/compress-video/"
+                },
+                {
+                  "id": "26yr8hltl",
+                  "title": "Languagetool",
+                  "url": "https://languagetool.org/de/?utm_source=google&utm_medium=cpc&utm_campaign=GA_LT_DACH_de_Sales_KW_BroadMatch_3Upgrade&utm_content=textkorrektur&utm_term=text%20korrektur&gad_source=1&gclid=CjwKCAiAopuvBhBCEiwAm8jaMdphHRuufYQVAf2-DiHQ09Z4GLPG0q3H_Z0hvJ7OILb-cs9r5sOoHhoCbaUQAvD_BwE"
+                },
+                {
+                  "id": "z20gudi4z",
+                  "title": "Narakeet",
+                  "url": "https://www.narakeet.com/app/text-to-audio/?projectId=6cb75bd9-8d7d-4814-986f-9ca0c71f8955"
+                },
+                {
+                  "id": "j1qruiays",
+                  "title": "Myedit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "8jy5jnn46",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "2zv2pzuto",
+              "title": "Tools",
+              "items": [
+                {
+                  "id": "mo928qqkg",
+                  "title": "Notube",
+                  "url": "https://notube.net/en/youtube-app-155"
+                },
+                {
+                  "id": "meysezpm1",
+                  "title": "Online-video-cutter",
+                  "url": "https://online-video-cutter.com/de/resize-video"
+                },
+                {
+                  "id": "vwm8xspt6",
+                  "title": "Flexclip",
+                  "url": "https://www.flexclip.com/de/tools/compress-video/"
+                },
+                {
+                  "id": "nfm80nbr9",
+                  "title": "Languagetool",
+                  "url": "https://languagetool.org/de/?utm_source=google&utm_medium=cpc&utm_campaign=GA_LT_DACH_de_Sales_KW_BroadMatch_3Upgrade&utm_content=textkorrektur&utm_term=text%20korrektur&gad_source=1&gclid=CjwKCAiAopuvBhBCEiwAm8jaMdphHRuufYQVAf2-DiHQ09Z4GLPG0q3H_Z0hvJ7OILb-cs9r5sOoHhoCbaUQAvD_BwE"
+                },
+                {
+                  "id": "9uuuevnx2",
+                  "title": "Narakeet",
+                  "url": "https://www.narakeet.com/app/text-to-audio/?projectId=6cb75bd9-8d7d-4814-986f-9ca0c71f8955"
+                },
+                {
+                  "id": "3pkfqpqxk",
+                  "title": "Myedit",
+                  "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "zmm5y6yj9",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "ax6ks7lar",
+              "title": "Trimble",
+              "items": [
+                {
+                  "id": "xvnxdaqn1",
+                  "title": "Trimbleenterprisecommunity",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "ovamcaqe5",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "tl9hr2akc",
+              "title": "Trimble",
+              "items": [
+                {
+                  "id": "cyeg8c7nv",
+                  "title": "Trimbleenterprisecommunity",
+                  "url": "https://www.trimbleenterprisecommunity.com/s/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "887b1xapj",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "0sj7z54s6",
+              "title": "TV + Kucken",
+              "items": [
+                {
+                  "id": "u5rpz46tx",
+                  "title": "Netflix",
+                  "url": "https://www.netflix.com/YourAccount"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "v7lfy5nck",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "v1yc8n4cq",
+              "title": "TV + Kucken",
+              "items": [
+                {
+                  "id": "fwwy5q3jt",
+                  "title": "Netflix",
+                  "url": "https://www.netflix.com/YourAccount"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "1rfjox1vf",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "mp0n9t6rf",
+              "title": "Virt PC",
+              "items": [
+                {
+                  "id": "dylcmvvz9",
+                  "title": "1blu",
+                  "url": "https://www.1blu.de/?gad_source=1&gclid=Cj0KCQjw6auyBhDzARIsALIo6v_siiWhXT53QPaGIUPoIjb-VSDWQzHYnybyeVSfVplQLS9vm_o6a6UaAqGKEALw_wcB"
+                },
+                {
+                  "id": "k2w5oh4nz",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=3YsoTnsg8E0"
+                },
+                {
+                  "id": "j7c6vg0ye",
+                  "title": "Portal.azure",
+                  "url": "https://portal.azure.com/#home"
+                },
+                {
+                  "id": "frj1vptnd",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=Ty7lslVYc5s"
+                },
+                {
+                  "id": "c7x5cvnm1",
+                  "title": "Chatgpt",
+                  "url": "https://chatgpt.com/g/g-myd1ckFtF-copilot-ai"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "qsafrgn3u",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "shikzozn9",
+              "title": "Virt PC",
+              "items": [
+                {
+                  "id": "cwsttwgvd",
+                  "title": "1blu",
+                  "url": "https://www.1blu.de/?gad_source=1&gclid=Cj0KCQjw6auyBhDzARIsALIo6v_siiWhXT53QPaGIUPoIjb-VSDWQzHYnybyeVSfVplQLS9vm_o6a6UaAqGKEALw_wcB"
+                },
+                {
+                  "id": "erzt5z3tf",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=3YsoTnsg8E0"
+                },
+                {
+                  "id": "kwcqus8lb",
+                  "title": "Portal.azure",
+                  "url": "https://portal.azure.com/#home"
+                },
+                {
+                  "id": "mtup3ehmi",
+                  "title": "Youtube",
+                  "url": "https://www.youtube.com/watch?v=Ty7lslVYc5s"
+                },
+                {
+                  "id": "iixj6duod",
+                  "title": "Chatgpt",
+                  "url": "https://chatgpt.com/g/g-myd1ckFtF-copilot-ai"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "9irbqa2uo",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "8dyrpzlrl",
+              "title": "VST",
+              "items": [
+                {
+                  "id": "zo0ghgzoc",
+                  "title": "Hiphopmakers",
+                  "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
+                },
+                {
+                  "id": "48ra0fj3h",
+                  "title": "Hiphopmakers",
+                  "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
+                },
+                {
+                  "id": "0tmzhspwl",
+                  "title": "Hermannseib",
+                  "url": "https://www.hermannseib.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "y8viwdvza",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "8w5hb14ua",
+              "title": "VST",
+              "items": [
+                {
+                  "id": "f24fixhod",
+                  "title": "Hiphopmakers",
+                  "url": "https://hiphopmakers.com/category/free-vst-plugins-instruments"
+                },
+                {
+                  "id": "1y4qnhdeb",
+                  "title": "Hiphopmakers",
+                  "url": "https://hiphopmakers.com/best-free-vst-host-applications#cantabile-lite"
+                },
+                {
+                  "id": "r3oey76on",
+                  "title": "Hermannseib",
+                  "url": "https://www.hermannseib.com/"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "v3b3yb95a",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "96vrjs9vx",
+              "title": "Wissen",
+              "items": [
+                {
+                  "id": "pn5kf9xcq",
+                  "title": "Connect.imi-hydronic",
+                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        },
+        {
+          "id": "lr82r5yxq",
+          "isSpacer": false,
+          "projects": [
+            {
+              "id": "uf844364l",
+              "title": "Wissen",
+              "items": [
+                {
+                  "id": "a2yeg2cl8",
+                  "title": "Connect.imi-hydronic",
+                  "url": "https://connect.imi-hydronic.com/login?lang=de_DE"
+                }
+              ],
+              "collapsed": true
+            }
+          ]
+        }
+      ],
+      "order": 999
     }
   ],
   "config": {

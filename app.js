@@ -313,12 +313,24 @@ function renderBoard() {
         };
         rowEl.oncontextmenu = (e) => { triggerContext(e); return false; };
 
+        let linkCount = 0;
+        row.projects.forEach(slot => {
+            if (!slot.isSpacer && slot.projects) {
+                slot.projects.forEach(p => {
+                    linkCount += (p.items || []).length;
+                });
+            }
+        });
+
         rowEl.innerHTML = `
             <div class="row-header">
                 <div class="row-header-main" ${isWriteLocked ? '' : `onclick="if(!state.isDragging && Date.now() - state.lastContextMenuTime > 500 && !event.target.closest('button,input,textarea,select,label,.row-title-input,.row-order-input')) toggleRowCollapse('${row.id}')" style="cursor:pointer;"`}>
                     ${isWriteLocked ? `<span class="row-order-display">${row.order || 0}</span>` : `<input type="number" class="row-order-input" value="${row.order || 0}" onchange="updateRowOrder('${row.id}', this.value)" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">`}
                     <i class="fa-solid fa-chevron-${row.collapsed ? 'right' : 'down'}" style="width:20px; opacity:0.5;"></i>
                     ${isWriteLocked ? `<span class="row-title-display">${row.title}</span>` : `<input type="text" class="row-title-input" value="${row.title}" oninput="this.style.width = (this.value.length + 2) + 'ch'" style="width: ${(row.title.length + 2)}ch" onchange="updateRowTitle('${row.id}', this.value)">`}
+                </div>
+                <div class="row-header-center">
+                    <span class="row-link-counter"><i class="fa-solid fa-link"></i> ${linkCount} Adressen</span>
                 </div>
                 <div class="row-actions">
                     ${!isWriteLocked ? `<button class="btn-icon" onclick="collapseRow('${row.id}')"><i class="fa-solid fa-compress"></i></button><button class="btn-icon" onclick="renameRow('${row.id}')"><i class="fa-solid fa-pen"></i></button><button class="btn-icon delete" onclick="deleteRow('${row.id}')"><i class="fa-solid fa-trash-can"></i></button>` : ''}
@@ -1583,29 +1595,180 @@ window.moveProjectViaMenu = async (projectId) => {
         showToast('Gruppe konnte nicht verschoben werden.', 'error');
         return;
     }
-
     targetSlot.isSpacer = false;
     targetSlot.projects = [movedProject];
     renderBoard();
     saveData();
     showToast(`Gruppe verschoben: ${movedProject.title}`, 'success');
-}
+};
 
-window.importFromHTML = (html, targetRowId, newRowName) => {
-    const parser = new DOMParser(); const doc = parser.parseFromString(html, 'text/html'); const dl = doc.querySelector('dl');
-    if (!dl) { showToast('Keine Lesezeichen.', 'error'); return; }
-    let target = (targetRowId === 'new') ? { id: generateId(), title: newRowName || 'Import', projects: [], order: 999 } : state.rows.find(r => r.id === targetRowId);
-    if (!target) return; if (targetRowId === 'new') state.rows.push(target);
-    const process = (l, folder) => {
-        const links = Array.from(l.children).filter(dt => dt.tagName === 'DT').map(dt => dt.querySelector(':scope > a')).filter(a => a);
-        if (links.length > 0) {
-            let p = { id: generateId(), title: folder || 'Import', items: [], collapsed: true };
-            target.projects.push({ id: generateId(), isSpacer: false, projects: [p] });
-            links.forEach(a => p.items.push({ id: generateId(), title: a.textContent.trim(), url: a.href }));
+window.importFromHTML = (content, targetRowId, newRowName) => {
+    let targetRow;
+    if (targetRowId === 'new') {
+        targetRow = { id: generateId(), title: newRowName || 'Importierte Favoriten', projects: [], order: 999 };
+        state.rows.push(targetRow);
+    } else {
+        targetRow = state.rows.find(r => r.id === targetRowId);
+    }
+    if (!targetRow) return;
+
+    // Helper to find or create a project (folder) in the target row by title
+    const findOrCreateProject = (title) => {
+        const cleanTitle = (title || 'Unbenannt').trim();
+        const searchTitle = cleanTitle.toLowerCase();
+        // Search in all slots of the target row
+        for (const slot of targetRow.projects) {
+            if (!slot.isSpacer && slot.projects && slot.projects[0]) {
+                const existingTitle = (slot.projects[0].title || '').trim().toLowerCase();
+                if (existingTitle === searchTitle) {
+                    return slot.projects[0];
+                }
+            }
         }
-        Array.from(l.children).forEach(dt => { const h3 = dt.querySelector(':scope > h3'), sDl = dt.querySelector(':scope > dl'); if (h3 && sDl) process(sDl, h3.textContent); });
+        // Not found, create new
+        const newProject = { id: generateId(), title: cleanTitle, items: [], collapsed: true };
+        const spacer = targetRow.projects.find(s => s.isSpacer);
+        if (spacer) {
+            spacer.isSpacer = false;
+            spacer.projects = [newProject];
+        } else {
+            targetRow.projects.push({ id: generateId(), isSpacer: false, projects: [newProject] });
+        }
+        return newProject;
     };
-    process(dl, null); renderBoard(); saveData(); showToast('Import fertig!');
+
+    // Helper to remove duplicate links within a row
+    const deduplicateRow = (row) => {
+        row.projects.forEach(slot => {
+            if (!slot.isSpacer && slot.projects && slot.projects[0]) {
+                const p = slot.projects[0];
+                const seen = new Set();
+                p.items = p.items.filter(item => {
+                    const url = (item.url || '').toLowerCase().trim();
+                    const title = (item.title || '').toLowerCase().trim();
+                    const key = `${title}|${url}`;
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                    return true;
+                });
+            }
+        });
+    };
+
+    // --- JSON Handling ---
+    if (content.trim().startsWith('{') || content.trim().startsWith('[')) {
+        try {
+            const data = JSON.parse(content);
+            const importedRows = Array.isArray(data) ? data : (data.rows || []);
+            if (importedRows.length === 0) { showToast('JSON enthält keine gültigen Daten.', 'error'); return; }
+
+            importedRows.forEach(row => {
+                if (row.projects) {
+                    row.projects.forEach(slot => {
+                        if (!slot.isSpacer && slot.projects && slot.projects[0]) {
+                            const impP = slot.projects[0];
+                            const p = findOrCreateProject(impP.title);
+                            if (impP.items) {
+                                impP.items.forEach(item => {
+                                    p.items.push({ ...item, id: generateId() });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+            deduplicateRow(targetRow);
+            renderBoard(); saveData();
+            const foundDuplicates = findAndHandleDuplicates(targetRow);
+            if (!foundDuplicates) {
+                showToast('Intelligenter JSON-Import abgeschlossen.', 'success');
+            } else {
+                showToast('Import abgeschlossen. Doppelte Adressen gefunden!', 'warning');
+            }
+            return;
+        } catch (e) {
+            console.error("JSON Import Error:", e);
+            showToast('Fehler beim JSON-Import.', 'error');
+            return;
+        }
+    }
+
+    // --- HTML Handling ---
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, 'text/html');
+    const dl = doc.querySelector('dl');
+    if (!dl) { showToast('Keine Lesezeichen (DL-Tag) gefunden.', 'error'); return; }
+
+    const process = (l, folderTitle) => {
+        const links = Array.from(l.children)
+            .filter(dt => dt.tagName === 'DT')
+            .map(dt => dt.querySelector(':scope > a'))
+            .filter(a => a);
+
+        if (links.length > 0) {
+            const p = findOrCreateProject(folderTitle || 'Import');
+            links.forEach(a => {
+                p.items.push({ id: generateId(), title: a.textContent.trim(), url: a.href });
+            });
+        }
+
+        Array.from(l.children).forEach(dt => {
+            const h3 = dt.querySelector(':scope > h3');
+            const sDl = dt.querySelector(':scope > dl');
+            if (h3 && sDl) process(sDl, h3.textContent);
+        });
+    };
+
+    process(dl, null);
+    deduplicateRow(targetRow);
+    renderBoard(); saveData();
+    const foundDuplicates = findAndHandleDuplicates(targetRow);
+    if (!foundDuplicates) {
+        showToast('Intelligenter HTML-Import abgeschlossen.', 'success');
+    } else {
+        showToast('Import abgeschlossen. Doppelte Adressen gefunden!', 'warning');
+    }
+};
+
+window.findAndHandleDuplicates = (targetRow = null) => {
+    const urlMap = {};
+    const rowsToCheck = targetRow ? [targetRow] : state.rows;
+    
+    rowsToCheck.forEach(row => {
+        row.projects.forEach(slot => {
+            if (!slot.isSpacer && slot.projects && slot.projects[0]) {
+                const project = slot.projects[0];
+                project.items.forEach(item => {
+                    const url = (item.url || '').toLowerCase().trim();
+                    if (!url) return;
+                    if (!urlMap[url]) urlMap[url] = [];
+                    urlMap[url].push({
+                        item,
+                        projectName: project.title,
+                        rowName: row.title,
+                        projectId: project.id,
+                        rowId: row.id
+                    });
+                });
+            }
+        });
+    });
+
+    const duplicates = [];
+    for (const url in urlMap) {
+        if (urlMap[url].length > 1) {
+            duplicates.push({ url, entries: urlMap[url] });
+        }
+    }
+
+    if (duplicates.length === 0) {
+        if (!targetRow) showToast('Keine doppelten URLs gefunden.', 'success');
+        return false;
+    }
+
+    window.showDuplicateModal(duplicates);
+    return true;
 };
 
 function updateToolbars() {

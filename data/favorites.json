@@ -1797,7 +1797,7 @@
                   "url": "https://kinwipecode.github.io/seiten/"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         },
@@ -2741,7 +2741,7 @@
                   "url": "https://www.netflix.com/YourAccount"
                 }
               ],
-              "collapsed": true
+              "collapsed": false
             }
           ]
         },

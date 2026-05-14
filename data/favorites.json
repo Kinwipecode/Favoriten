@@ -5769,7 +5769,8 @@
           ]
         }
       ],
-      "order": 999
+      "order": 999,
+      "collapsed": false
     }
   ],
   "config": {

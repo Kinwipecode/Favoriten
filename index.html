@@ -364,10 +364,8 @@
 
             <label for="file-input" class="file-upload-wrapper">
                 <i class="fa-solid fa-cloud-arrow-up"></i>
-                <span id="file-label" style="font-size:0.9rem; font-weight:600; color:#555;">Datei auswählen
-                    oder
-                    hierher ziehen</span>
-                <input type="file" id="file-input" accept=".html">
+                <span id="file-label" style="font-size:0.9rem; font-weight:600; color:#555;">HTML-Bookmarks oder JSON (Jonson) auswählen</span>
+                <input type="file" id="file-input" accept=".html,.json">
             </label>
 
             <div class="modal-actions" style="justify-content:center; gap:15px; margin-top:10px;">
@@ -642,6 +640,32 @@
         <i class="fa-solid fa-lock"></i>
         <span>Bearb. Aus</span>
     </button>
+
+    <!-- Duplicate Selection Modal -->
+    <div id="duplicate-modal" class="modal hidden">
+        <div class="modal-content glass-effect" style="max-width: 800px; width: 90%;">
+            <div class="modal-header">
+                <h3 style="margin:0; font-family:'Outfit',sans-serif; font-weight:800;"><i class="fa-solid fa-clone"></i> Identische Adressen bereinigen</h3>
+                <button onclick="hideModal('duplicate-modal')" class="btn-text" style="font-size:1.5rem;">×</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <p style="font-size: 0.95rem; color: #555; margin-bottom: 15px;">Folgende Favoriten haben identische URLs. Wähle die Einträge aus, die <b>gelöscht</b> werden sollen:</p>
+                <div id="duplicate-list" style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; background: rgba(255,255,255,0.5); margin-bottom: 20px;">
+                    <!-- Content will be injected here -->
+                </div>
+                <div class="modal-actions" style="justify-content: space-between; gap:15px;">
+                    <div style="display:flex; gap:10px;">
+                        <button onclick="selectAllDuplicates(true)" class="btn btn-secondary">Alle markieren</button>
+                        <button onclick="selectAllDuplicates(false)" class="btn btn-secondary">Keine</button>
+                    </div>
+                    <div style="display:flex; gap:12px;">
+                        <button onclick="hideModal('duplicate-modal')" class="btn btn-secondary">Abbrechen</button>
+                        <button id="btn-confirm-delete-duplicates" class="btn btn-primary" style="background:#d63031; border-color:#d63031;">Markierte löschen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Confirm Modal -->
     <div id="confirm-modal" class="modal hidden">

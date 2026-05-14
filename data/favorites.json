@@ -1812,7 +1812,7 @@
                   "url": "https://kinwipecode.github.io/seiten/"
                 }
               ],
-              "collapsed": false
+              "collapsed": true
             }
           ]
         },
@@ -2845,7 +2845,8 @@
           ]
         }
       ],
-      "order": 999
+      "order": 999,
+      "collapsed": true
     }
   ],
   "config": {

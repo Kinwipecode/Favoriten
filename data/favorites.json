@@ -14,12 +14,12 @@
               "items": [
                 {
                   "id": "f82go0vkw",
-                  "title": "Germini",
+                  "title": "Gemini.google",
                   "url": "https://gemini.google.com/app"
                 },
                 {
                   "id": "axtlvixy8",
-                  "title": "Chat GPT",
+                  "title": "Chat.openai",
                   "url": "https://chat.openai.com/"
                 },
                 {
@@ -29,7 +29,7 @@
                 },
                 {
                   "id": "jruuq7hp1",
-                  "title": "copilot",
+                  "title": "Bing",
                   "url": "https://www.bing.com/search?form=MW00X7&ef_id=_k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&OCID=AIDcmm3kkv2p4j_SEM__k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&gad_source=1&gclid=Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB&q=Bing+AI&showconv=1"
                 },
                 {
@@ -39,7 +39,7 @@
                 },
                 {
                   "id": "1mku1cosa",
-                  "title": "Deepseek",
+                  "title": "Chat.deepseek",
                   "url": "https://chat.deepseek.com/"
                 },
                 {
@@ -49,12 +49,12 @@
                 },
                 {
                   "id": "idu3ht0xe",
-                  "title": "Pixlr Foto Bearb mit KI",
+                  "title": "Pixlr",
                   "url": "https://pixlr.com/de/express/"
                 },
                 {
                   "id": "i9ogw2cdv",
-                  "title": "Notebooklm",
+                  "title": "Notebooklm.google",
                   "url": "https://notebooklm.google.com/"
                 },
                 {
@@ -69,17 +69,17 @@
                 },
                 {
                   "id": "7182zuqt2",
-                  "title": "Videotranslator Blipcut",
+                  "title": "Videotranslator.blipcut",
                   "url": "https://videotranslator.blipcut.com/en/tool?page=1"
                 },
                 {
                   "id": "1ppuog6a1",
-                  "title": "Artguru Fotoqualität",
+                  "title": "Artguru",
                   "url": "https://www.artguru.ai/de/"
                 },
                 {
                   "id": "j7k3zmdek",
-                  "title": "Hedra Video AI",
+                  "title": "Hedra",
                   "url": "https://www.hedra.com/app/characters"
                 },
                 {
@@ -89,12 +89,12 @@
                 },
                 {
                   "id": "vrtkcvq8r",
-                  "title": "Dreamina.capcut Bild Video",
+                  "title": "Dreamina.capcut",
                   "url": "https://dreamina.capcut.com/ai-tool/generate"
                 },
                 {
                   "id": "pghs04sqr",
-                  "title": "Modelplayground Interessant",
+                  "title": "Modelplayground",
                   "url": "https://modelplayground.ai/"
                 }
               ],
@@ -159,7 +159,7 @@
                 },
                 {
                   "id": "16goi2iol",
-                  "title": "https://kinwipecode.github.io/seiten/",
+                  "title": "Kinwipecode.github",
                   "url": "https://kinwipecode.github.io/seiten/"
                 }
               ],
@@ -192,17 +192,17 @@
                 },
                 {
                   "id": "spwpxpo13",
-                  "title": "Languagetool LT",
+                  "title": "Languagetool",
                   "url": "https://languagetool.org/de/?utm_source=google&utm_medium=cpc&utm_campaign=GA_LT_DACH_de_Sales_KW_BroadMatch_3Upgrade&utm_content=textkorrektur&utm_term=text%20korrektur&gad_source=1&gclid=CjwKCAiAopuvBhBCEiwAm8jaMdphHRuufYQVAf2-DiHQ09Z4GLPG0q3H_Z0hvJ7OILb-cs9r5sOoHhoCbaUQAvD_BwE"
                 },
                 {
                   "id": "frd87qsjw",
-                  "title": "Narakeet Text to Audio",
+                  "title": "Narakeet",
                   "url": "https://www.narakeet.com/app/text-to-audio/?projectId=6cb75bd9-8d7d-4814-986f-9ca0c71f8955"
                 },
                 {
                   "id": "t1h1ujgyt",
-                  "title": "Myedit Videoschnitt",
+                  "title": "Myedit",
                   "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
                 }
               ],
@@ -249,7 +249,7 @@
               "items": [
                 {
                   "id": "jop9w5bg6",
-                  "title": "Youtube Nonstop Eurodisco",
+                  "title": "Youtube",
                   "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
                 }
               ],
@@ -344,7 +344,7 @@
                 },
                 {
                   "id": "t09yomq28",
-                  "title": "Slooply Techno Sample",
+                  "title": "Slooply",
                   "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
                 }
               ],
@@ -374,17 +374,17 @@
               "items": [
                 {
                   "id": "02i2tflp0",
-                  "title": "Udio AI Musik",
+                  "title": "Udio",
                   "url": "https://udio.com/"
                 },
                 {
                   "id": "bh2lwwhoi",
-                  "title": "Mubert liz Free",
+                  "title": "Mubert",
                   "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
                 },
                 {
                   "id": "3f9slzesp",
-                  "title": "App.plazmapunk Video zu Musik",
+                  "title": "App.plazmapunk",
                   "url": "https://app.plazmapunk.com/"
                 }
               ],
@@ -1351,7 +1351,7 @@
               "items": [
                 {
                   "id": "ufl36hj9j",
-                  "title": "Booking Tip von Max",
+                  "title": "Booking",
                   "url": "https://www.booking.com/hotel/fr/cannes-palais.de.html?aid=2311236&label=de-ch-booking-desktop-AwtDBrnbKfbY5w%2AnVlwfWAS652829000584%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9187028%3Ali%3Adec%3Adm&sid=e323f6018906327c5e0789c4cefafa95&all_sr_blocks=342360101_400674165_2_1_0&checkin=2025-07-21&checkout=2025-07-28&dest_id=-1416533&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=4&highlighted_blocks=342360101_400674165_2_1_0&hpos=4&matching_block_id=342360101_400674165_2_1_0&nflt=mealplan%3D1%3Bhotelfacility%3D2%3Bprice%3DCHF-min-250-1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=342360101_400674165_2_1_0__148391&srepoch=1752946227&srpvid=1ae1cb6d311f6dd1c9be65c4b4de1a98&type=total&ucfs=1&"
                 }
               ],
@@ -1407,12 +1407,12 @@
               "items": [
                 {
                   "id": "w3tzu7q9i",
-                  "title": "Germini",
+                  "title": "Gemini.google",
                   "url": "https://gemini.google.com/app"
                 },
                 {
                   "id": "6va6dls1x",
-                  "title": "Chat GPT",
+                  "title": "Chat.openai",
                   "url": "https://chat.openai.com/"
                 },
                 {
@@ -1422,7 +1422,7 @@
                 },
                 {
                   "id": "hccg9i71x",
-                  "title": "copilot",
+                  "title": "Bing",
                   "url": "https://www.bing.com/search?form=MW00X7&ef_id=_k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&OCID=AIDcmm3kkv2p4j_SEM__k_Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB_k_&gad_source=1&gclid=Cj0KCQiAhomtBhDgARIsABcaYynn8aAsFmJHWRGYeb-VtevT6y3HHwvAYGtPR28cWh0dfkuVQsErFQYaAvbdEALw_wcB&q=Bing+AI&showconv=1"
                 },
                 {
@@ -1432,7 +1432,7 @@
                 },
                 {
                   "id": "mbe82utzu",
-                  "title": "Deepseek",
+                  "title": "Chat.deepseek",
                   "url": "https://chat.deepseek.com/"
                 },
                 {
@@ -1442,12 +1442,12 @@
                 },
                 {
                   "id": "62dufm3u4",
-                  "title": "Pixlr Foto Bearb mit KI",
+                  "title": "Pixlr",
                   "url": "https://pixlr.com/de/express/"
                 },
                 {
                   "id": "v352n63ck",
-                  "title": "Notebooklm",
+                  "title": "Notebooklm.google",
                   "url": "https://notebooklm.google.com/"
                 },
                 {
@@ -1462,17 +1462,17 @@
                 },
                 {
                   "id": "eft7d50g1",
-                  "title": "Videotranslator Blipcut",
+                  "title": "Videotranslator.blipcut",
                   "url": "https://videotranslator.blipcut.com/en/tool?page=1"
                 },
                 {
                   "id": "ax0n61sva",
-                  "title": "Artguru Fotoqualität",
+                  "title": "Artguru",
                   "url": "https://www.artguru.ai/de/"
                 },
                 {
                   "id": "wm3qtnllh",
-                  "title": "Hedra Video AI",
+                  "title": "Hedra",
                   "url": "https://www.hedra.com/app/characters"
                 },
                 {
@@ -1482,12 +1482,12 @@
                 },
                 {
                   "id": "r90ocgfw1",
-                  "title": "Dreamina.capcut Bild Video",
+                  "title": "Dreamina.capcut",
                   "url": "https://dreamina.capcut.com/ai-tool/generate"
                 },
                 {
                   "id": "2no3k99nd",
-                  "title": "Modelplayground Interessant",
+                  "title": "Modelplayground",
                   "url": "https://modelplayground.ai/"
                 },
                 {
@@ -1553,7 +1553,7 @@
                 },
                 {
                   "id": "37psvbzqs",
-                  "title": "Sharecad DXF Online",
+                  "title": "Sharecad",
                   "url": "https://sharecad.org/de/"
                 }
               ],
@@ -1739,7 +1739,7 @@
               "items": [
                 {
                   "id": "nsbvgapu7",
-                  "title": "Booking Tip von Max",
+                  "title": "Booking",
                   "url": "https://www.booking.com/hotel/fr/cannes-palais.de.html?aid=2311236&label=de-ch-booking-desktop-AwtDBrnbKfbY5w%2AnVlwfWAS652829000584%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9187028%3Ali%3Adec%3Adm&sid=e323f6018906327c5e0789c4cefafa95&all_sr_blocks=342360101_400674165_2_1_0&checkin=2025-07-21&checkout=2025-07-28&dest_id=-1416533&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=4&highlighted_blocks=342360101_400674165_2_1_0&hpos=4&matching_block_id=342360101_400674165_2_1_0&nflt=mealplan%3D1%3Bhotelfacility%3D2%3Bprice%3DCHF-min-250-1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=342360101_400674165_2_1_0__148391&srepoch=1752946227&srpvid=1ae1cb6d311f6dd1c9be65c4b4de1a98&type=total&ucfs=1&"
                 }
               ],
@@ -1780,22 +1780,22 @@
                 },
                 {
                   "id": "btm4loq8t",
-                  "title": "Kinwipecode.github miro",
+                  "title": "Kinwipecode.github",
                   "url": "https://kinwipecode.github.io/Miro_plus/"
                 },
                 {
                   "id": "nkdunolef",
-                  "title": "Kinwipecode.github pdf",
+                  "title": "Kinwipecode.github",
                   "url": "https://kinwipecode.github.io/Kinpdf/"
                 },
                 {
                   "id": "1xaky35z1",
-                  "title": "Kinwipecode.github favo",
+                  "title": "Kinwipecode.github",
                   "url": "https://kinwipecode.github.io/Favoriten/"
                 },
                 {
                   "id": "o37tsgce1",
-                  "title": "Seiten",
+                  "title": "Kinwipecode.github",
                   "url": "https://kinwipecode.github.io/seiten/"
                 }
               ],
@@ -2499,17 +2499,17 @@
               "items": [
                 {
                   "id": "x283lt2c7",
-                  "title": "Udio AI Musik",
+                  "title": "Udio",
                   "url": "https://udio.com/"
                 },
                 {
                   "id": "a8hwei8tu",
-                  "title": "Mubert liz Free",
+                  "title": "Mubert",
                   "url": "https://mubert.com/render?authBy=google&state=%7B%22price_id%22%3A%22ambassador%22%2C%22is_black_friday%22%3Afalse%7D"
                 },
                 {
                   "id": "389gotlcp",
-                  "title": "App.plazmapunk Video zu Musik",
+                  "title": "App.plazmapunk",
                   "url": "https://app.plazmapunk.com/"
                 }
               ],
@@ -2570,7 +2570,7 @@
               "items": [
                 {
                   "id": "usybok1x8",
-                  "title": "Youtube Nonstop Eurodisco",
+                  "title": "Youtube",
                   "url": "https://www.youtube.com/watch?v=CaaTjeWD9hs"
                 }
               ],
@@ -2652,7 +2652,7 @@
                 },
                 {
                   "id": "t0vtf8wbw",
-                  "title": "Slooply Techno Sample",
+                  "title": "Slooply",
                   "url": "https://slooply.com/sample-packs/category/techno?genres[]=deep-tech&page=1"
                 }
               ],
@@ -2703,17 +2703,17 @@
                 },
                 {
                   "id": "ns949jo9a",
-                  "title": "Languagetool LT",
+                  "title": "Languagetool",
                   "url": "https://languagetool.org/de/?utm_source=google&utm_medium=cpc&utm_campaign=GA_LT_DACH_de_Sales_KW_BroadMatch_3Upgrade&utm_content=textkorrektur&utm_term=text%20korrektur&gad_source=1&gclid=CjwKCAiAopuvBhBCEiwAm8jaMdphHRuufYQVAf2-DiHQ09Z4GLPG0q3H_Z0hvJ7OILb-cs9r5sOoHhoCbaUQAvD_BwE"
                 },
                 {
                   "id": "9guhi2wz3",
-                  "title": "Narakeet Text to Audio",
+                  "title": "Narakeet",
                   "url": "https://www.narakeet.com/app/text-to-audio/?projectId=6cb75bd9-8d7d-4814-986f-9ca0c71f8955"
                 },
                 {
                   "id": "yut5be42x",
-                  "title": "Myedit Videoschnitt",
+                  "title": "Myedit",
                   "url": "https://myedit.online/de/audio-editor/audio-trimmer/edit"
                 }
               ],
